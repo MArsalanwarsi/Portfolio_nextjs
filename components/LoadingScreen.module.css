@@ -1,16 +1,19 @@
 .loader {
+  --loader-loop-duration: 2.6s;
+  --loader-accent-start: var(--pink);
+  --loader-accent-end: var(--cyan);
   --loader-bg-base: var(--bg);
-  --loader-bg-primary: color-mix(in srgb, var(--cyan) 16%, transparent);
-  --loader-bg-secondary: color-mix(in srgb, var(--pink) 14%, transparent);
-  --loader-bg-tertiary: color-mix(in srgb, var(--amber) 12%, transparent);
+  --loader-bg-primary: color-mix(in srgb, var(--loader-accent-start) 16%, transparent);
+  --loader-bg-secondary: color-mix(in srgb, var(--loader-accent-end) 16%, transparent);
   --loader-vignette-soft: color-mix(in srgb, var(--text) 6%, transparent);
   --loader-vignette-strong: color-mix(in srgb, var(--text) 24%, transparent);
   --loader-scanline: color-mix(in srgb, var(--text) 4%, transparent);
-  --loader-aura: color-mix(in srgb, var(--cyan) 32%, transparent);
+  --loader-aura-start: color-mix(in srgb, var(--loader-accent-start) 32%, transparent);
+  --loader-aura-end: color-mix(in srgb, var(--loader-accent-end) 28%, transparent);
   --loader-track: color-mix(in srgb, var(--text-muted) 28%, transparent);
-  --loader-glow: color-mix(in srgb, var(--pink) 56%, var(--cyan));
-  --loader-glow-soft: color-mix(in srgb, var(--amber) 28%, transparent);
-  --loader-stroke: var(--text);
+  --loader-glow-soft: color-mix(in srgb, var(--loader-accent-start) 42%, transparent);
+  --loader-glow-strong: color-mix(in srgb, var(--loader-accent-end) 54%, transparent);
+  --loader-stroke: color-mix(in srgb, white 88%, var(--text) 12%);
   --loader-copy: color-mix(in srgb, var(--text-soft) 72%, transparent);
   --loader-overlay-opacity: 0.84;
   position: fixed;
@@ -20,9 +23,8 @@
   place-items: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at center, var(--loader-bg-primary), transparent 16rem),
-    radial-gradient(circle at center, var(--loader-bg-secondary), transparent 24rem),
-    radial-gradient(circle at center, var(--loader-bg-tertiary), transparent 34rem),
+    radial-gradient(circle at 40% 50%, var(--loader-bg-primary), transparent 16rem),
+    radial-gradient(circle at 60% 50%, var(--loader-bg-secondary), transparent 17rem),
     var(--loader-bg-base);
   transition:
     opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
@@ -30,18 +32,20 @@
 }
 
 :global(html[data-theme="light"]) .loader {
-  --loader-bg-primary: color-mix(in srgb, var(--cyan) 18%, transparent);
-  --loader-bg-secondary: color-mix(in srgb, var(--pink) 16%, transparent);
-  --loader-bg-tertiary: color-mix(in srgb, var(--amber) 12%, transparent);
-  --loader-vignette-soft: color-mix(in srgb, var(--bg) 10%, transparent);
-  --loader-vignette-strong: color-mix(in srgb, var(--text-muted) 18%, transparent);
-  --loader-scanline: color-mix(in srgb, var(--text) 6%, transparent);
-  --loader-aura: color-mix(in srgb, var(--cyan) 24%, transparent);
-  --loader-track: color-mix(in srgb, var(--text-muted) 24%, transparent);
-  --loader-glow: color-mix(in srgb, var(--pink) 68%, var(--cyan));
-  --loader-glow-soft: color-mix(in srgb, var(--cyan) 24%, transparent);
-  --loader-copy: color-mix(in srgb, var(--text-soft) 78%, transparent);
-  --loader-overlay-opacity: 0.72;
+  --loader-bg-base: color-mix(in srgb, var(--bg) 92%, white 8%);
+  --loader-bg-primary: color-mix(in srgb, var(--loader-accent-start) 10%, transparent);
+  --loader-bg-secondary: color-mix(in srgb, var(--loader-accent-end) 12%, transparent);
+  --loader-vignette-soft: color-mix(in srgb, var(--text) 4%, transparent);
+  --loader-vignette-strong: color-mix(in srgb, var(--text-muted) 10%, transparent);
+  --loader-scanline: color-mix(in srgb, var(--text) 3%, transparent);
+  --loader-aura-start: color-mix(in srgb, var(--loader-accent-start) 16%, transparent);
+  --loader-aura-end: color-mix(in srgb, var(--loader-accent-end) 18%, transparent);
+  --loader-track: color-mix(in srgb, var(--text) 14%, transparent);
+  --loader-glow-soft: color-mix(in srgb, var(--loader-accent-start) 38%, transparent);
+  --loader-glow-strong: color-mix(in srgb, var(--loader-accent-end) 34%, transparent);
+  --loader-stroke: color-mix(in srgb, var(--text) 82%, white 18%);
+  --loader-copy: color-mix(in srgb, var(--text) 56%, transparent);
+  --loader-overlay-opacity: 0.38;
 }
 
 .loader::before,
@@ -54,9 +58,9 @@
 
 .loader::before {
   background:
-    radial-gradient(circle at center, var(--loader-glow), transparent 10rem),
-    radial-gradient(circle at center, var(--loader-glow-soft), transparent 22rem);
-  filter: blur(1.4rem);
+    radial-gradient(circle at 40% 50%, var(--loader-glow-soft), transparent 11rem),
+    radial-gradient(circle at 60% 50%, var(--loader-glow-strong), transparent 12rem);
+  filter: blur(1.6rem);
 }
 
 .loader::after {
@@ -91,10 +95,12 @@
   width: clamp(9rem, 18vw, 12rem);
   height: clamp(9rem, 18vw, 12rem);
   border-radius: 999px;
-  background: radial-gradient(circle, var(--loader-aura), transparent 68%);
+  background:
+    radial-gradient(circle at 36% 50%, var(--loader-aura-start), transparent 44%),
+    radial-gradient(circle at 64% 50%, var(--loader-aura-end), transparent 48%);
   transform: translate(-50%, -58%);
-  filter: blur(1.5rem);
-  animation: auraPulse 2.2s ease-in-out infinite;
+  filter: blur(1.8rem);
+  animation: auraPulse 2.8s ease-in-out infinite;
 }
 
 .visual {
@@ -108,40 +114,70 @@
   width: 100%;
   height: auto;
   overflow: visible;
+  shape-rendering: geometricPrecision;
+  transform: translateZ(0);
 }
 
 .track,
-.glow,
-.stroke {
+.trailGlow,
+.trailCore,
+.trailHighlight {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .track {
-  stroke: var(--loader-track);
-  stroke-width: 18;
+  stroke-width: 16;
 }
 
-.glow {
-  stroke: var(--loader-glow);
-  stroke-width: 18;
-  stroke-dasharray: 28 72;
-  animation: infinityLoop 2s linear infinite;
+.trailGlow {
+  stroke-width: 18.5;
+  stroke-dasharray: 39 61;
+  stroke-dashoffset: 0;
+  will-change: stroke-dashoffset;
   filter:
-    drop-shadow(0 0 0.4rem var(--loader-glow))
-    drop-shadow(0 0 1.2rem var(--loader-glow))
-    drop-shadow(0 0 2.4rem var(--loader-glow-soft));
+    drop-shadow(0 0 0.75rem var(--loader-glow-soft))
+    drop-shadow(0 0 1.6rem var(--loader-glow-strong));
 }
 
-.stroke {
+.trailCore {
   stroke: var(--loader-stroke);
-  stroke-width: 14;
-  stroke-dasharray: 28 72;
-  animation: infinityLoop 2s linear infinite;
+  stroke-width: 12.2;
+  stroke-dasharray: 36 64;
+  stroke-dashoffset: 0;
+  will-change: stroke-dashoffset;
   filter:
     drop-shadow(0 0 0.16rem var(--loader-stroke))
-    drop-shadow(0 0 0.8rem color-mix(in srgb, var(--loader-stroke) 74%, transparent));
+    drop-shadow(0 0 0.85rem color-mix(in srgb, var(--loader-stroke) 76%, transparent));
+}
+
+.trailHighlight {
+  stroke: color-mix(in srgb, white 96%, var(--loader-accent-end) 4%);
+  stroke-width: 8.8;
+  stroke-dasharray: 6 94;
+  stroke-dashoffset: 0;
+  will-change: stroke-dashoffset;
+  filter:
+    drop-shadow(0 0 0.24rem white)
+    drop-shadow(0 0 0.92rem color-mix(in srgb, var(--loader-accent-start) 38%, transparent));
+}
+
+.crossGlow {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: blur(0.42rem);
+  animation: crossPulse var(--loader-loop-duration) ease-in-out infinite;
+}
+
+.crossCore {
+  transform-box: fill-box;
+  transform-origin: center;
+  fill: var(--loader-stroke);
+  filter:
+    drop-shadow(0 0 0.24rem var(--loader-stroke))
+    drop-shadow(0 0 0.95rem color-mix(in srgb, var(--loader-accent-start) 44%, transparent));
+  animation: crossPulse var(--loader-loop-duration) ease-in-out infinite;
 }
 
 .copy {
@@ -165,8 +201,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .aura,
-  .glow,
-  .stroke,
+  .crossGlow,
+  .crossCore,
   .copy {
     animation: none !important;
   }
@@ -175,23 +211,34 @@
 @keyframes auraPulse {
   0%,
   100% {
-    opacity: 0.7;
-    transform: translate(-50%, -58%) scale(0.92);
+    opacity: 0.72;
+    transform: translate(-50%, -58%) scale(0.94);
   }
 
   50% {
     opacity: 1;
-    transform: translate(-50%, -58%) scale(1.08);
+    transform: translate(-50%, -58%) scale(1.02);
   }
 }
 
-@keyframes infinityLoop {
-  0% {
-    stroke-dashoffset: 0;
+@keyframes crossPulse {
+  0%,
+  48%,
+  100% {
+    opacity: 0.42;
+    transform: scale(0.88);
   }
 
-  100% {
-    stroke-dashoffset: -100;
+  6%,
+  56% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  12%,
+  62% {
+    opacity: 0.7;
+    transform: scale(0.96);
   }
 }
 
