@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import ThemeToggle, { type ThemeMode } from "@/components/ThemeToggle";
 import { navLinks, siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
 const THEME_STORAGE_KEY = "portfolio-theme";
+const THEME_CHANGE_EVENT = "portfolio-theme-change";
 
 type DocumentWithViewTransition = Document & {
   startViewTransition?: (callback: () => void) => {
@@ -13,9 +14,37 @@ type DocumentWithViewTransition = Document & {
   };
 };
 
-function readStoredTheme(): ThemeMode {
-  if (typeof window === "undefined") {
+function applyTheme(nextTheme: ThemeMode) {
+  const root = document.documentElement;
+  root.dataset.theme = nextTheme;
+  root.style.colorScheme = nextTheme;
+  window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+}
+
+function primeThemeRipple(
+  originX: number,
+  originY: number,
+  nextTheme: ThemeMode
+) {
+  const root = document.documentElement;
+  const maxX = Math.max(originX, window.innerWidth - originX);
+  const maxY = Math.max(originY, window.innerHeight - originY);
+  const radius = Math.hypot(maxX, maxY) + 96;
+
+  root.style.setProperty("--theme-ripple-x", `${originX}px`);
+  root.style.setProperty("--theme-ripple-y", `${originY}px`);
+  root.style.setProperty("--theme-ripple-size", `${radius}px`);
+  root.dataset.themeTarget = nextTheme;
+}
+
+function readResolvedTheme(): ThemeMode {
+  if (typeof document === "undefined") {
     return "dark";
+  }
+
+  if (document.documentElement.dataset.theme === "light") {
+    return "light";
   }
 
   const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -26,29 +55,43 @@ function readStoredTheme(): ThemeMode {
   return "dark";
 }
 
-function applyTheme(nextTheme: ThemeMode) {
-  const root = document.documentElement;
-  root.dataset.theme = nextTheme;
-  root.style.colorScheme = nextTheme;
-  window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+function subscribeToTheme(onStoreChange: () => void) {
+  const handleThemeChange = () => onStoreChange();
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key === null || event.key === THEME_STORAGE_KEY) {
+      onStoreChange();
+    }
+  };
+
+  window.addEventListener(THEME_CHANGE_EVENT, handleThemeChange);
+  window.addEventListener("storage", handleStorage);
+
+  return () => {
+    window.removeEventListener(THEME_CHANGE_EVENT, handleThemeChange);
+    window.removeEventListener("storage", handleStorage);
+  };
 }
 
-function getInitialTheme(): ThemeMode {
-  if (typeof document !== "undefined") {
-    return document.documentElement.dataset.theme === "light"
-      ? "light"
-      : readStoredTheme();
-  }
-
-  return "dark";
+function subscribeToHydration() {
+  return () => {};
 }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
+  const theme = useSyncExternalStore<ThemeMode>(
+    subscribeToTheme,
+    readResolvedTheme,
+    () => "dark"
+  );
+  const themeReady = useSyncExternalStore<boolean>(
+    subscribeToHydration,
+    () => true,
+    () => false
+  );
   const scrollResetRef = useRef<number | null>(null);
+  const themeCleanupRef = useRef<number | null>(null);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -154,28 +197,56 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  const toggleTheme = () => {
-    const nextTheme: ThemeMode = theme === "dark" ? "light" : "dark";
+  useEffect(() => {
+    return () => {
+      if (themeCleanupRef.current) {
+        window.clearTimeout(themeCleanupRef.current);
+      }
+    };
+  }, []);
+
+  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const currentTheme = readResolvedTheme();
+    const nextTheme: ThemeMode = currentTheme === "dark" ? "light" : "dark";
     const root = document.documentElement;
     const documentWithTransition = document as DocumentWithViewTransition;
+    const buttonBounds = event.currentTarget.getBoundingClientRect();
+    const originX =
+      event.clientX === 0 && event.clientY === 0
+        ? buttonBounds.left + buttonBounds.width / 2
+        : event.clientX;
+    const originY =
+      event.clientX === 0 && event.clientY === 0
+        ? buttonBounds.top + buttonBounds.height / 2
+        : event.clientY;
 
-    root.classList.add("theme-animating");
+    primeThemeRipple(originX, originY, nextTheme);
+    root.classList.add("theme-animating", "theme-ripple-active");
 
     const cleanup = () => {
-      window.setTimeout(() => {
-        root.classList.remove("theme-animating");
-      }, 520);
+      if (themeCleanupRef.current) {
+        window.clearTimeout(themeCleanupRef.current);
+      }
+
+      themeCleanupRef.current = window.setTimeout(() => {
+        root.classList.remove("theme-animating", "theme-ripple-active");
+        root.removeAttribute("data-theme-target");
+      }, 1100);
     };
 
     const updateTheme = () => {
-      setTheme(nextTheme);
       applyTheme(nextTheme);
     };
 
     if (documentWithTransition.startViewTransition) {
-      documentWithTransition
-        .startViewTransition(updateTheme)
-        .finished?.finally(cleanup);
+      const transition = documentWithTransition.startViewTransition(updateTheme);
+
+      if (transition.finished) {
+        transition.finished.finally(cleanup);
+      } else {
+        cleanup();
+      }
+
       return;
     }
 
@@ -235,7 +306,7 @@ export default function Navbar() {
           </div>
 
           <div className="nav-controls">
-            <ThemeToggle mode={theme} onToggle={toggleTheme} />
+            <ThemeToggle mode={theme} onToggle={toggleTheme} ready={themeReady} />
 
             <a
               className="nav-cta"
@@ -273,7 +344,12 @@ export default function Navbar() {
             </a>
           ))}
 
-          <ThemeToggle mode={theme} onToggle={toggleTheme} expanded />
+          <ThemeToggle
+            mode={theme}
+            onToggle={toggleTheme}
+            expanded
+            ready={themeReady}
+          />
 
           <a
             className="button-primary"

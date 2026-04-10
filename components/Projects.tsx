@@ -52,9 +52,8 @@ export default function Projects() {
         <div ref={headerRef}>
           <SectionHeader
             eyebrow="Projects"
-            title="Selected work with"
-            accent="real product weight."
-            description="The goal in each build is the same: clear interaction, solid structure, and a visual system strong enough to feel like a product, not a practice file."
+            title="Selected"
+            accent="projects."
           />
         </div>
 
@@ -74,7 +73,7 @@ export default function Projects() {
 
                 <div className="project-copy__body">
                   <h3>{project.title}</h3>
-                  <p>{project.longDescription}</p>
+                  <p>{project.description}</p>
                 </div>
 
                 <div className="project-chip-row">
@@ -137,18 +136,18 @@ export default function Projects() {
                     <div className="project-preview__stats">
                       <div>
                         <small>Focus</small>
-                        <strong>UX + architecture</strong>
+                        <strong>UI + backend</strong>
                       </div>
                       <div>
-                        <small>Approach</small>
-                        <strong>Clarity under scale</strong>
+                        <small>Goal</small>
+                        <strong>Clean and practical</strong>
                       </div>
                     </div>
 
                     <div className="project-preview__footer">
                       <span className="project-preview__accent" />
                       <strong style={{ color: project.accent }}>
-                        Designed to feel trustworthy on first contact
+                        Built for clear user flows
                       </strong>
                     </div>
                   </div>

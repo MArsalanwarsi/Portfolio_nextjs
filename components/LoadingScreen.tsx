@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/portfolio";
+import styles from "./LoadingScreen.module.css";
 
 interface LoadingScreenProps {
   exiting?: boolean;
@@ -9,61 +10,40 @@ export default function LoadingScreen({
 }: LoadingScreenProps) {
   return (
     <div
-      className={`boot-loader${exiting ? " is-exiting" : ""}`}
+      className={`${styles.loader}${exiting ? ` ${styles.isExiting}` : ""}`}
       role="status"
       aria-live="polite"
       aria-label={`Loading ${siteConfig.name} portfolio`}
     >
-      <div className="boot-loader__veil" aria-hidden="true" />
-      <div className="boot-loader__grid" aria-hidden="true" />
-      <div className="boot-loader__orb boot-loader__orb--pink" aria-hidden="true" />
-      <div className="boot-loader__orb boot-loader__orb--cyan" aria-hidden="true" />
-      <div className="boot-loader__orb boot-loader__orb--amber" aria-hidden="true" />
+      <div className={styles.inner}>
+        <div className={styles.aura} aria-hidden="true" />
 
-      <div className="boot-loader__panel">
-        <div className="boot-loader__meta">
-          <span className="boot-loader__eyebrow">Portfolio Boot Sequence</span>
-
-          <div className="boot-loader__signal" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
+        <div className={styles.visual} aria-hidden="true">
+          <svg
+            className={styles.infinity}
+            viewBox="0 0 320 220"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              className={styles.track}
+              d="M160 110C131 57 74 57 74 110C74 163 131 163 160 110C189 57 246 57 246 110C246 163 189 163 160 110Z"
+              pathLength="100"
+            />
+            <path
+              className={styles.glow}
+              d="M160 110C131 57 74 57 74 110C74 163 131 163 160 110C189 57 246 57 246 110C246 163 189 163 160 110Z"
+              pathLength="100"
+            />
+            <path
+              className={styles.stroke}
+              d="M160 110C131 57 74 57 74 110C74 163 131 163 160 110C189 57 246 57 246 110C246 163 189 163 160 110Z"
+              pathLength="100"
+            />
+          </svg>
         </div>
 
-        <div className="boot-loader__identity">
-          <div className="boot-loader__avatar" aria-hidden="true">
-            <div className="boot-loader__avatar-ring" />
-            <div className="boot-loader__avatar-core">
-              <span>{siteConfig.portrait.initials}</span>
-            </div>
-          </div>
-
-          <div className="boot-loader__copy">
-            <p>{siteConfig.name}</p>
-            <h1>{siteConfig.role}</h1>
-            <span>{siteConfig.specialization}</span>
-          </div>
-        </div>
-
-        <div className="boot-loader__statusline">
-          <span className="boot-loader__statuscopy">
-            Building a premium interface layer
-          </span>
-
-          <div className="boot-loader__progress" aria-hidden="true">
-            <span className="boot-loader__progress-track">
-              <span className="boot-loader__progress-bar" />
-            </span>
-          </div>
-        </div>
-
-        <div className="boot-loader__chips" aria-hidden="true">
-          {siteConfig.focusAreas.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
+        <span className={styles.copy}>Loading...</span>
       </div>
     </div>
   );

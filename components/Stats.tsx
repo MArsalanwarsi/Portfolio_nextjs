@@ -58,9 +58,8 @@ export default function Stats() {
         <div ref={headerRef}>
           <SectionHeader
             eyebrow="Impact"
-            title="A snapshot of"
-            accent="the work so far."
-            description="The numbers are still early, but they reflect a strong foundation across projects, tools, and mentoring experience."
+            title="Quick"
+            accent="snapshot."
             align="center"
           />
         </div>

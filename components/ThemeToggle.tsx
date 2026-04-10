@@ -6,23 +6,30 @@ export type ThemeMode = "dark" | "light";
 
 interface ThemeToggleProps {
   mode: ThemeMode;
-  onToggle: () => void;
+  onToggle: (event: React.MouseEvent<HTMLButtonElement>) => void;
   expanded?: boolean;
+  ready?: boolean;
 }
 
 export default function ThemeToggle({
   mode,
   onToggle,
   expanded = false,
+  ready = true,
 }: ThemeToggleProps) {
+  const nextTheme = mode === "dark" ? "light" : "dark";
+  const buttonLabel = ready
+    ? `Switch to ${nextTheme} theme`
+    : "Toggle color theme";
+
   return (
     <button
       type="button"
       className={`theme-toggle${expanded ? " is-expanded" : ""}`}
       onClick={onToggle}
-      aria-label="Toggle theme"
-      aria-pressed={mode === "light"}
-      title="Toggle theme"
+      aria-label={buttonLabel}
+      aria-pressed={ready ? mode === "light" : undefined}
+      title={buttonLabel}
     >
       <span className="theme-toggle__track" aria-hidden="true">
         <span className="theme-toggle__icon theme-toggle__icon--moon">
@@ -39,11 +46,6 @@ export default function ThemeToggle({
             <Sun size={14} />
           </span>
         </span>
-      </span>
-
-      <span className="theme-toggle__copy">
-        <small>Theme</small>
-        <strong>Switch theme</strong>
       </span>
     </button>
   );

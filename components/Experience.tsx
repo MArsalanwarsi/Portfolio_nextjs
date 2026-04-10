@@ -51,9 +51,8 @@ export default function Experience() {
         <div ref={headerRef}>
           <SectionHeader
             eyebrow="Experience"
-            title="Teaching and building in"
-            accent="real environments."
-            description="My recent work blends technical instruction with practical product development, which keeps both my communication and implementation grounded."
+            title="Recent"
+            accent="experience."
           />
         </div>
 

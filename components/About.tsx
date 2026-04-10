@@ -72,46 +72,38 @@ export default function About() {
         <div ref={headerRef}>
           <SectionHeader
             eyebrow="About"
-            title="Not just building screens,"
-            accent="building feeling."
-            description="The best interfaces do more than function. They establish trust fast, carry a clear point of view, and make complexity feel calm."
+            title="Building products with"
+            accent="clarity."
+            description="I focus on clean UI, readable code, and practical full-stack work."
           />
         </div>
 
         <div className="about-grid">
           <div ref={storyRef} className="about-story surface-card">
             <div className="about-story__lead">
-              <span className="about-story__label">What I optimize for</span>
+              <span className="about-story__label">About me</span>
               <p>
-                I&apos;m <strong>{siteConfig.name}</strong>, a developer who
-                cares deeply about the way software lands. I like products that
-                feel confident in the first five seconds and stay clear under
-                real usage.
+                I&apos;m <strong>{siteConfig.name}</strong>, a full-stack
+                developer focused on React, Next.js, Node.js, and MongoDB.
               </p>
             </div>
 
             <p>
-              My background in teaching sharpened the way I think about
-              structure. It pushed me to explain clearly, design intentionally,
-              and build systems that make sense for both users and teams.
-            </p>
-
-            <p>
-              That means clean architecture on the backend, considered motion on
-              the frontend, and a steady focus on detail everywhere in between.
+              Teaching improved my communication and teamwork, which helps me
+              build products that are easier to use and easier to maintain.
             </p>
 
             <div className="about-snapshot outline-card">
               <span className="section-kicker">Working style</span>
               <ul className="about-detail-list">
                 <li className="about-detail-item">
-                  Strong visual hierarchy before decorative noise.
+                  Clean UI over visual noise.
                 </li>
                 <li className="about-detail-item">
-                  Scalable implementation over short-term hacks.
+                  Scalable structure over quick fixes.
                 </li>
                 <li className="about-detail-item">
-                  Clear communication as part of the engineering work.
+                  Clear communication throughout the work.
                 </li>
               </ul>
             </div>

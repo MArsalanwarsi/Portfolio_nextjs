@@ -84,11 +84,9 @@ export default function Hero() {
 
             <h1 className="hero-title">
               <span className="hero-title__name">{siteConfig.name}</span>
-              <span className="hero-title__line">
-                interfaces with presence,
-              </span>
+              <span className="hero-title__line">React and Next.js apps</span>
               <span className="hero-title__line hero-title__line--accent">
-                speed, and edge.
+                built clean and fast.
               </span>
             </h1>
 
@@ -100,7 +98,7 @@ export default function Hero() {
                 className="button-primary"
                 onClick={() => scrollToSection("projects")}
               >
-                View selected work
+                View projects
                 <ArrowDownRight size={18} />
               </button>
 
@@ -110,7 +108,7 @@ export default function Hero() {
                 target={hasRealEmail ? undefined : "_blank"}
                 rel={hasRealEmail ? undefined : "noopener noreferrer"}
               >
-                {hasRealEmail ? "Start a conversation" : "Connect on LinkedIn"}
+                {hasRealEmail ? "Contact me" : "Connect on LinkedIn"}
                 <ArrowUpRight size={18} />
               </a>
             </div>
@@ -162,7 +160,7 @@ export default function Hero() {
               <div className="hero-stage__panel">
                 <div className="hero-stage__header">
                   <span className="hero-stage__status">
-                    Live portrait / real profile
+                    Open to work
                   </span>
                   <span className="hero-stage__eyebrow">Arsalan Warsi</span>
                 </div>
@@ -176,7 +174,7 @@ export default function Hero() {
 
                 <div className="hero-stage__caption">
                   <span className="section-kicker">Current focus</span>
-                  <h2>Frontend craft with production discipline.</h2>
+                  <h2>Full-stack work with clean UI.</h2>
                   <p>{siteConfig.intro}</p>
                 </div>
               </div>
@@ -187,8 +185,8 @@ export default function Hero() {
               </div>
 
               <div className="floating-card floating-card--bottom">
-                <span>Design signal</span>
-                <strong>Built to feel sharp, cinematic, and deliberate</strong>
+                <span>Strength</span>
+                <strong>Clean UI with practical engineering</strong>
               </div>
             </div>
           </div>

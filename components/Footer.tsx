@@ -63,7 +63,7 @@ export default function Footer() {
 
         <div className="site-footer__bottom">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <p>Built with Next.js, TypeScript, and careful attention to interface detail.</p>
+          <p>Built with Next.js and TypeScript.</p>
         </div>
       </div>
     </footer>

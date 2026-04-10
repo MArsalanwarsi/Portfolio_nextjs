@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 
-const MIN_DISPLAY_MS = 1100;
+const MIN_DISPLAY_MS = 1600;
 const EXIT_DURATION_MS = 520;
 
 export default function BootLoader() {

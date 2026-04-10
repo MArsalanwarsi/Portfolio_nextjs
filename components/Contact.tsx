@@ -18,28 +18,28 @@ const contactLinks = [
     label: "GitHub",
     href: siteConfig.github,
     icon: <GithubIcon size={20} />,
-    description: "Browse repositories and selected code work.",
+    description: "Code and projects.",
     disabled: false,
   },
   {
     label: "LinkedIn",
     href: siteConfig.linkedin,
     icon: <LinkedinIcon size={20} />,
-    description: "Connect for roles, collaboration, or intros.",
+    description: "Experience and updates.",
     disabled: false,
   },
   {
     label: "Email",
     href: hasRealEmail ? `mailto:${siteConfig.email}` : "",
     icon: <Mail size={20} />,
-    description: "Reach out directly for opportunities and freelance work.",
+    description: "Direct contact.",
     disabled: !hasRealEmail,
   },
   {
     label: "Resume",
     href: hasResume ? siteConfig.resumeUrl : "",
     icon: <FileText size={20} />,
-    description: "Open the latest resume and experience summary.",
+    description: "One-page summary.",
     disabled: !hasResume,
   },
 ].filter((link) => !link.disabled);
@@ -86,9 +86,8 @@ export default function Contact() {
         <div ref={headerRef}>
           <SectionHeader
             eyebrow="Contact"
-            title="If you want the UI to"
-            accent="actually hit, let’s build."
-            description="I’m open to teams, founders, and collaborators who want strong frontend execution backed by clean full-stack thinking."
+            title="Let&apos;s"
+            accent="connect."
             align="center"
           />
         </div>
@@ -97,10 +96,7 @@ export default function Contact() {
           <div className="contact-panel surface-card">
             <span className="section-kicker">Open for opportunities</span>
             <h3>{siteConfig.availability}</h3>
-            <p>
-              The best projects start with a clear brief, sharp taste, and a
-              willingness to care about the details users actually feel.
-            </p>
+            <p>Internship, freelance, and full-time opportunities.</p>
 
             <a
               className="button-primary contact-cta"

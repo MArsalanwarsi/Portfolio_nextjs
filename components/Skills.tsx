@@ -60,27 +60,23 @@ const iconComponents: Record<string, React.ReactNode> = {
 const categories = [
   {
     key: "frontend" as const,
-    title: "Frontend Systems",
-    description:
-      "Interface layers, responsive structure, and interactive polish for modern product experiences.",
+    title: "Frontend",
+    description: "React, Next.js, TypeScript, and UI work.",
   },
   {
     key: "backend" as const,
-    title: "Backend Logic",
-    description:
-      "Authentication, API structure, and business logic focused on clean, dependable delivery.",
+    title: "Backend",
+    description: "Node.js, Express, auth, and APIs.",
   },
   {
     key: "database" as const,
-    title: "Data Layer",
-    description:
-      "Practical database work across document and relational models depending on the product need.",
+    title: "Database",
+    description: "MongoDB and MySQL.",
   },
   {
     key: "tools" as const,
-    title: "Workflow Tools",
-    description:
-      "Version control, animation, cloud services, and integrations that strengthen the build process.",
+    title: "Tools",
+    description: "Git, GSAP, cloud tools, and integrations.",
   },
 ];
 
@@ -126,9 +122,8 @@ export default function Skills() {
         <div ref={headerRef}>
           <SectionHeader
             eyebrow="Skills"
-            title="Tools I use to ship"
-            accent="solid product work."
-            description="I enjoy the full path from interface direction to backend implementation, so my toolkit stays broad but intentionally practical."
+            title="Core"
+            accent="skills."
           />
         </div>
 

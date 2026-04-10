@@ -3,12 +3,12 @@ export const siteConfig = {
   shortName: "Arsalan",
   role: "Full-Stack Developer",
   specialization: "MERN Stack + Next.js",
-  tagline: "Thoughtful product interfaces backed by scalable full-stack systems.",
+  tagline: "Full-stack developer focused on React, Next.js, and MERN apps.",
   description:
-    "I build polished web products that balance speed, clarity, and clean architecture. From frontend craft to backend structure, I focus on work that feels premium and performs under real use.",
+    "I build clean, responsive web apps with React, Next.js, Node.js, and MongoDB.",
   intro:
-    "Alongside shipping projects, I teach modern web development and help developers turn complex concepts into practical, production-ready thinking.",
-  availability: "Available for freelance, internship, and full-time opportunities",
+    "I teach web development and build practical products with a focus on clear UI and solid structure.",
+  availability: "Open to work",
   email: "arsalanwarsi@example.com",
   github: "https://github.com/MArsalanwarsi",
   linkedin: "https://linkedin.com/in/marsalanwarsi",
@@ -20,14 +20,14 @@ export const siteConfig = {
     initials: "AW",
   },
   focusAreas: [
-    "Premium frontend execution",
-    "Scalable MERN architecture",
-    "Teaching-led communication",
+    "React & Next.js",
+    "Node.js & APIs",
+    "Clear communication",
   ],
   heroMetrics: [
-    { value: "03+", label: "Projects shipped" },
-    { value: "22", label: "Core technologies" },
-    { value: "100+", label: "Students mentored" },
+    { value: "03+", label: "Projects" },
+    { value: "22", label: "Technologies" },
+    { value: "100+", label: "Students taught" },
   ],
 };
 
@@ -87,9 +87,9 @@ export const experiences: Experience[] = [
     location: "Shahrah-e-Faisal",
     period: "Dec 2025 — Present",
     description: [
-      "Teach MERN Stack and PHP development to aspiring developers.",
-      "Train students on JWT authentication, cookies, OTP systems, and REST APIs.",
-      "Guide real-world projects while reinforcing industry-standard coding practices.",
+      "Teach MERN Stack and PHP to students.",
+      "Cover JWT auth, REST APIs, cookies, and project-based learning.",
+      "Guide students through practical assignments and code reviews.",
     ],
     skills: ["MERN Stack", "PHP", "JWT", "REST APIs", "Teaching"],
   },
@@ -99,8 +99,8 @@ export const experiences: Experience[] = [
     location: "",
     period: "Aug 2025 — Dec 2025",
     description: [
-      "Taught computing fundamentals and programming concepts.",
-      "Introduced students to web technologies, structured problem solving, and logical thinking.",
+      "Taught computing basics and programming fundamentals.",
+      "Introduced web development and problem-solving skills.",
     ],
     skills: ["Computing", "Programming", "Web Basics"],
   },
@@ -124,15 +124,14 @@ export const projects: Project[] = [
     title: "Hotel Management System",
     label: "Hospitality Platform",
     description:
-      "A full-stack hotel booking and operations system with secure authentication and admin workflows.",
+      "Hotel booking and admin system with secure auth and role-based workflows.",
     longDescription:
-      "Built as a practical business system for bookings, guest management, and operational control, this project focuses on clear flows, dependable access control, and a backend structure that can scale with real usage.",
+      "Full-stack app for bookings, guest records, and admin operations.",
     techStack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     features: [
-      "Booking and guest management flows",
-      "JWT authentication and protected routes",
+      "Booking and guest management",
+      "JWT auth and protected routes",
       "Role-based admin controls",
-      "Structured backend for operational scaling",
     ],
     github: "https://github.com/MArsalanwarsi",
     live: "#",
@@ -144,9 +143,9 @@ export const projects: Project[] = [
     title: "Fitness Tracker",
     label: "AI Product Build",
     description:
-      "An AI-assisted fitness app with OTP verification, analytics, and secure user flows.",
+      "Fitness app with OTP verification, AI features, and secure auth.",
     longDescription:
-      "This project combines fitness tracking with Gemini-powered assistance, OTP verification, and performance-focused UX decisions. It reflects a stronger product mindset around user trust, responsiveness, and practical feature depth.",
+      "Tracks fitness activity with OTP login, analytics, and Gemini-powered help.",
     techStack: [
       "React",
       "Redux",
@@ -157,9 +156,8 @@ export const projects: Project[] = [
     ],
     features: [
       "OTP verification with Nodemailer",
-      "Gemini AI-powered assistance",
-      "JWT and cookie-based authentication",
-      "Measured improvements in performance and validation flow",
+      "Gemini-powered assistance",
+      "JWT and cookie-based auth",
     ],
     github: "https://github.com/MArsalanwarsi/fitness-tracker-React.git",
     live: "#",
@@ -171,15 +169,14 @@ export const projects: Project[] = [
     title: "Personal Portfolio",
     label: "Design System",
     description:
-      "A premium portfolio built to showcase frontend craft, motion, and personal brand clarity.",
+      "Portfolio focused on motion, responsive UI, and clear personal branding.",
     longDescription:
-      "This portfolio is treated like a design and frontend case study: intentional typography, layered motion, strong hierarchy, and component decisions aimed at making the work feel considered rather than templated.",
+      "Personal portfolio built with Next.js, TypeScript, and GSAP.",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP"],
     features: [
-      "Custom art direction and section choreography",
-      "Responsive layouts with layered visual depth",
-      "Motion used to support hierarchy and storytelling",
-      "A reusable structure for ongoing portfolio updates",
+      "Responsive layouts",
+      "Custom motion and transitions",
+      "Reusable component structure",
     ],
     github: "https://github.com/MArsalanwarsi",
     live: "#",
@@ -197,35 +194,31 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: 3, suffix: "+", label: "Projects Built", icon: "FolderGit2" },
-  { value: 2, suffix: "+", label: "Professional Roles", icon: "Briefcase" },
-  { value: 22, suffix: "", label: "Technologies Used", icon: "Code2" },
-  { value: 100, suffix: "+", label: "Students Mentored", icon: "Users" },
+  { value: 3, suffix: "+", label: "Projects", icon: "FolderGit2" },
+  { value: 2, suffix: "+", label: "Roles", icon: "Briefcase" },
+  { value: 22, suffix: "", label: "Technologies", icon: "Code2" },
+  { value: 100, suffix: "+", label: "Students", icon: "Users" },
 ];
 
 export const aboutHighlights = [
   {
     title: "Scalable Architecture",
-    description:
-      "I build systems that stay maintainable as products, features, and teams grow.",
+    description: "Builds that stay organized as features grow.",
     icon: "Layers",
   },
   {
     title: "Premium UI Thinking",
-    description:
-      "Interfaces should feel confident, intentional, and easy to trust at a glance.",
+    description: "Clean interfaces that feel professional and easy to use.",
     icon: "Palette",
   },
   {
     title: "Performance First",
-    description:
-      "Fast interaction, clean structure, and reduced friction matter at every layer.",
+    description: "Fast loading and smooth interaction across the app.",
     icon: "Zap",
   },
   {
     title: "Clear Communication",
-    description:
-      "Teaching has made me stronger at breaking complexity into useful, practical decisions.",
+    description: "Clear explanations, teamwork, and practical thinking.",
     icon: "Code2",
   },
 ];

@@ -1,0 +1,206 @@
+.loader {
+  --loader-bg-base: var(--bg);
+  --loader-bg-primary: color-mix(in srgb, var(--cyan) 16%, transparent);
+  --loader-bg-secondary: color-mix(in srgb, var(--pink) 14%, transparent);
+  --loader-bg-tertiary: color-mix(in srgb, var(--amber) 12%, transparent);
+  --loader-vignette-soft: color-mix(in srgb, var(--text) 6%, transparent);
+  --loader-vignette-strong: color-mix(in srgb, var(--text) 24%, transparent);
+  --loader-scanline: color-mix(in srgb, var(--text) 4%, transparent);
+  --loader-aura: color-mix(in srgb, var(--cyan) 32%, transparent);
+  --loader-track: color-mix(in srgb, var(--text-muted) 28%, transparent);
+  --loader-glow: color-mix(in srgb, var(--pink) 56%, var(--cyan));
+  --loader-glow-soft: color-mix(in srgb, var(--amber) 28%, transparent);
+  --loader-stroke: var(--text);
+  --loader-copy: color-mix(in srgb, var(--text-soft) 72%, transparent);
+  --loader-overlay-opacity: 0.84;
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, var(--loader-bg-primary), transparent 16rem),
+    radial-gradient(circle at center, var(--loader-bg-secondary), transparent 24rem),
+    radial-gradient(circle at center, var(--loader-bg-tertiary), transparent 34rem),
+    var(--loader-bg-base);
+  transition:
+    opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:global(html[data-theme="light"]) .loader {
+  --loader-bg-primary: color-mix(in srgb, var(--cyan) 18%, transparent);
+  --loader-bg-secondary: color-mix(in srgb, var(--pink) 16%, transparent);
+  --loader-bg-tertiary: color-mix(in srgb, var(--amber) 12%, transparent);
+  --loader-vignette-soft: color-mix(in srgb, var(--bg) 10%, transparent);
+  --loader-vignette-strong: color-mix(in srgb, var(--text-muted) 18%, transparent);
+  --loader-scanline: color-mix(in srgb, var(--text) 6%, transparent);
+  --loader-aura: color-mix(in srgb, var(--cyan) 24%, transparent);
+  --loader-track: color-mix(in srgb, var(--text-muted) 24%, transparent);
+  --loader-glow: color-mix(in srgb, var(--pink) 68%, var(--cyan));
+  --loader-glow-soft: color-mix(in srgb, var(--cyan) 24%, transparent);
+  --loader-copy: color-mix(in srgb, var(--text-soft) 78%, transparent);
+  --loader-overlay-opacity: 0.72;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.loader::before {
+  background:
+    radial-gradient(circle at center, var(--loader-glow), transparent 10rem),
+    radial-gradient(circle at center, var(--loader-glow-soft), transparent 22rem);
+  filter: blur(1.4rem);
+}
+
+.loader::after {
+  background:
+    radial-gradient(circle at center, transparent 0 18%, var(--loader-vignette-soft) 56%, var(--loader-vignette-strong) 100%),
+    repeating-linear-gradient(
+      180deg,
+      var(--loader-scanline) 0 1px,
+      transparent 1px 4px
+    );
+  opacity: var(--loader-overlay-opacity);
+}
+
+.isExiting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aura {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: clamp(9rem, 18vw, 12rem);
+  height: clamp(9rem, 18vw, 12rem);
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--loader-aura), transparent 68%);
+  transform: translate(-50%, -58%);
+  filter: blur(1.5rem);
+  animation: auraPulse 2.2s ease-in-out infinite;
+}
+
+.visual {
+  position: relative;
+  width: clamp(15rem, 28vw, 18rem);
+  max-width: calc(100vw - 2rem);
+}
+
+.infinity {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.track,
+.glow,
+.stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.track {
+  stroke: var(--loader-track);
+  stroke-width: 18;
+}
+
+.glow {
+  stroke: var(--loader-glow);
+  stroke-width: 18;
+  stroke-dasharray: 28 72;
+  animation: infinityLoop 2s linear infinite;
+  filter:
+    drop-shadow(0 0 0.4rem var(--loader-glow))
+    drop-shadow(0 0 1.2rem var(--loader-glow))
+    drop-shadow(0 0 2.4rem var(--loader-glow-soft));
+}
+
+.stroke {
+  stroke: var(--loader-stroke);
+  stroke-width: 14;
+  stroke-dasharray: 28 72;
+  animation: infinityLoop 2s linear infinite;
+  filter:
+    drop-shadow(0 0 0.16rem var(--loader-stroke))
+    drop-shadow(0 0 0.8rem color-mix(in srgb, var(--loader-stroke) 74%, transparent));
+}
+
+.copy {
+  margin-top: -0.2rem;
+  color: var(--loader-copy);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  animation: copyPulse 1.6s ease-in-out infinite alternate;
+}
+
+@media (max-width: 640px) {
+  .visual {
+    width: min(100vw - 2rem, 15rem);
+  }
+
+  .copy {
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aura,
+  .glow,
+  .stroke,
+  .copy {
+    animation: none !important;
+  }
+}
+
+@keyframes auraPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -58%) scale(0.92);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -58%) scale(1.08);
+  }
+}
+
+@keyframes infinityLoop {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+@keyframes copyPulse {
+  0% {
+    opacity: 0.42;
+  }
+
+  100% {
+    opacity: 0.76;
+  }
+}
