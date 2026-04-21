@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 
-const MIN_DISPLAY_MS = 1600;
-const EXIT_DURATION_MS = 520;
+const MIN_DISPLAY_MS = 2400;
+const EXIT_DURATION_MS = 720;
 
 export default function BootLoader() {
   const [phase, setPhase] = useState<"visible" | "closing" | "hidden">(

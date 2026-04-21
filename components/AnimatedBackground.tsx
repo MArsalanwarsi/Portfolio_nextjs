@@ -3,11 +3,9 @@
 export default function AnimatedBackground() {
   return (
     <div className="ambient-background" aria-hidden="true">
-      <div className="ambient-orb ambient-orb--one" />
-      <div className="ambient-orb ambient-orb--two" />
-      <div className="ambient-orb ambient-orb--three" />
-      <div className="ambient-lines" />
-      <div className="ambient-noise" />
+      <div className="starfield starfield--near" />
+      <div className="starfield starfield--mid" />
+      <div className="starfield starfield--far" />
     </div>
   );
 }

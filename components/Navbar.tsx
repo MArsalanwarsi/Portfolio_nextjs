@@ -282,10 +282,6 @@ export default function Navbar() {
             onClick={(event) => handleNavClick(event, "#home")}
           >
             <span className="brand-mark__monogram">AW</span>
-            <span className="brand-mark__text">
-              <strong>{siteConfig.name}</strong>
-              <small>{siteConfig.specialization}</small>
-            </span>
           </a>
 
           <div className="nav-links">

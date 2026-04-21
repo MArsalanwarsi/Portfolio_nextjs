@@ -162,7 +162,6 @@ export default function Hero() {
                   <span className="hero-stage__status">
                     Open to work
                   </span>
-                  <span className="hero-stage__eyebrow">Arsalan Warsi</span>
                 </div>
 
                 <ProfilePortrait

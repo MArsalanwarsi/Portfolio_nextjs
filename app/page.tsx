@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import CursorGlow from "@/components/CursorGlow";
 import Experience from "@/components/Experience";
@@ -23,6 +24,7 @@ export default function Home() {
         <Experience />
         <Skills />
         <Projects />
+        <Certificates />
         <Stats />
         <Contact />
       </main>
