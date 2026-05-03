@@ -1,52 +1,49 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
 
-export type ThemeMode = "dark" | "light";
-
-interface ThemeToggleProps {
-  mode: ThemeMode;
-  onToggle: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  expanded?: boolean;
-  ready?: boolean;
+function subscribeToHydration() {
+  return () => {};
 }
 
-export default function ThemeToggle({
-  mode,
-  onToggle,
-  expanded = false,
-  ready = true,
-}: ThemeToggleProps) {
-  const nextTheme = mode === "dark" ? "light" : "dark";
-  const buttonLabel = ready
-    ? `Switch to ${nextTheme} theme`
-    : "Toggle color theme";
+export default function ThemeToggle() {
+  const mounted = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false
+  );
+  const { resolvedTheme, setTheme } = useTheme();
+
+  const isDark = mounted ? resolvedTheme !== "light" : true;
+  const nextTheme = isDark ? "light" : "dark";
+  const label = `Switch to ${nextTheme} theme`;
 
   return (
-    <button
+    <Button
       type="button"
-      className={`theme-toggle${expanded ? " is-expanded" : ""}`}
-      onClick={onToggle}
-      aria-label={buttonLabel}
-      aria-pressed={ready ? mode === "light" : undefined}
-      title={buttonLabel}
+      variant="ghost"
+      size="icon-lg"
+      onClick={() => setTheme(nextTheme)}
+      aria-label={label}
+      title={label}
+      className="relative overflow-hidden rounded-full border border-border/60 bg-muted/30 text-foreground transition hover:border-primary/50 hover:bg-primary/10"
     >
-      <span className="theme-toggle__track" aria-hidden="true">
-        <span className="theme-toggle__icon theme-toggle__icon--moon">
-          <Moon size={14} />
-        </span>
-        <span className="theme-toggle__icon theme-toggle__icon--sun">
-          <Sun size={14} />
-        </span>
-        <span className="theme-toggle__thumb">
-          <span className="theme-toggle__thumb-icon theme-toggle__thumb-icon--moon">
-            <Moon size={14} />
-          </span>
-          <span className="theme-toggle__thumb-icon theme-toggle__thumb-icon--sun">
-            <Sun size={14} />
-          </span>
-        </span>
-      </span>
-    </button>
+      <Sun
+        className={`absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 transition duration-300 ${
+          isDark ? "scale-75 rotate-45 opacity-0" : "scale-100 rotate-0 opacity-100"
+        }`}
+        aria-hidden="true"
+      />
+      <Moon
+        className={`absolute left-1/2 top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 transition duration-300 ${
+          isDark ? "scale-100 rotate-0 opacity-100" : "scale-75 -rotate-45 opacity-0"
+        }`}
+        aria-hidden="true"
+      />
+      <span className="sr-only">{label}</span>
+    </Button>
   );
 }

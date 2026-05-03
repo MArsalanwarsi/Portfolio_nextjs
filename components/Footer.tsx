@@ -1,7 +1,7 @@
-"use client";
-
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
@@ -10,19 +10,19 @@ const socials = [
   {
     label: "GitHub",
     href: siteConfig.github,
-    icon: <GithubIcon size={18} />,
+    icon: GithubIcon,
   },
   {
     label: "LinkedIn",
     href: siteConfig.linkedin,
-    icon: <LinkedinIcon size={18} />,
+    icon: LinkedinIcon,
   },
   ...(hasRealEmail
     ? [
         {
           label: "Email",
           href: `mailto:${siteConfig.email}`,
-          icon: <Mail size={18} />,
+          icon: Mail,
         },
       ]
     : []),
@@ -30,39 +30,56 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="section-shell">
-        <div className="site-footer__inner">
-          <div className="footer-brand">
-            <span className="brand-mark__monogram">AW</span>
+    <footer className="px-4 pb-8 sm:px-6">
+      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3">
+            <Avatar className="size-11 border border-border bg-muted">
+              <AvatarFallback className="bg-primary text-primary-foreground font-display font-semibold">
+                AW
+              </AvatarFallback>
+            </Avatar>
             <div>
-              <strong>{siteConfig.name}</strong>
-              <p>{siteConfig.tagline}</p>
+              <strong className="block text-sm">{siteConfig.name}</strong>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {siteConfig.tagline}
+              </p>
             </div>
           </div>
 
-          <div className="footer-socials">
-            {socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target={social.href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={
-                  social.href.startsWith("mailto:")
-                    ? undefined
-                    : "noopener noreferrer"
-                }
-                className="social-button"
-                aria-label={social.label}
-              >
-                {social.icon}
-              </a>
-            ))}
+          <div className="flex gap-2">
+            {socials.map((social) => {
+              const Icon = social.icon;
+              const isMail = social.href.startsWith("mailto:");
+
+              return (
+                <Button
+                  key={social.label}
+                  nativeButton={false}
+                  render={
+                    <a
+                      href={social.href}
+                      target={isMail ? undefined : "_blank"}
+                      rel={isMail ? undefined : "noopener noreferrer"}
+                      aria-label={social.label}
+                    />
+                  }
+                  variant="outline"
+                  size="icon-lg"
+                  className="rounded-full bg-background/60"
+                >
+                  <Icon className="size-4" aria-hidden="true" />
+                </Button>
+              );
+            })}
           </div>
         </div>
 
-        <div className="site-footer__bottom">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+        <div className="mt-8 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} {siteConfig.name}. All rights
+            reserved.
+          </p>
           <p>Built with Next.js and TypeScript.</p>
         </div>
       </div>

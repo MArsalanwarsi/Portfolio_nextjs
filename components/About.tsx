@@ -1,122 +1,65 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Code2, Layers, Palette, Zap } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { aboutHighlights, siteConfig } from "@/data/portfolio";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const iconMap: Record<string, React.ReactNode> = {
-  Code2: <Code2 size={22} />,
-  Layers: <Layers size={22} />,
-  Palette: <Palette size={22} />,
-  Zap: <Zap size={22} />,
+const iconMap = {
+  Code2,
+  Layers,
+  Palette,
+  Zap,
 };
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const storyRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headerRef.current, {
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-        y: 36,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.from(storyRef.current, {
-        scrollTrigger: {
-          trigger: storyRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-        y: 28,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.08,
-        ease: "power3.out",
-      });
-
-      gsap.from(cardsRef.current?.children ?? [], {
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-        y: 22,
-        opacity: 0,
-        duration: 0.72,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="about">
-      <div className="section-shell section-divider">
-        <div ref={headerRef}>
-          <SectionHeader
-            eyebrow="About"
-            title="Building products with"
-            accent="clarity."
-            description="I focus on clean UI, readable code, and practical full-stack work."
-          />
-        </div>
+    <section id="about" className="px-4 py-20 sm:px-6 lg:py-28">
+      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
+        <SectionHeader
+          eyebrow="About"
+          title="Building products with"
+          accent="clarity."
+          description="I focus on clean UI, readable code, and practical full-stack work."
+        />
 
-        <div className="about-grid">
-          <div ref={storyRef} className="about-story surface-card">
-            <div className="about-story__lead">
-              <span className="about-story__label">About me</span>
-              <p>
-                I&apos;m <strong>{siteConfig.name}</strong>, a full-stack
-                developer focused on React, Next.js, Node.js, and MongoDB.
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <Card className="rounded-3xl bg-card/80">
+            <CardContent className="space-y-6 p-6 sm:p-8">
+              <Badge variant="secondary" className="rounded-full">
+                About me
+              </Badge>
+              <p className="font-display text-3xl font-semibold leading-tight text-balance sm:text-4xl">
+                I&apos;m {siteConfig.name}, a full-stack developer working
+                across React, Next.js, Node.js, and MongoDB.
               </p>
-            </div>
+              <p className="text-base leading-8 text-muted-foreground">
+                Teaching sharpened my communication and product thinking. That
+                helps me build interfaces that are easier to understand and
+                codebases that are easier to grow.
+              </p>
+            </CardContent>
+          </Card>
 
-            <p>
-              Teaching improved my communication and teamwork, which helps me
-              build products that are easier to use and easier to maintain.
-            </p>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {aboutHighlights.map((item) => {
+              const Icon = iconMap[item.icon as keyof typeof iconMap] ?? Code2;
 
-            <div className="about-snapshot outline-card">
-              <span className="section-kicker">Working style</span>
-              <ul className="about-detail-list">
-                <li className="about-detail-item">
-                  Clean UI over visual noise.
-                </li>
-                <li className="about-detail-item">
-                  Scalable structure over quick fixes.
-                </li>
-                <li className="about-detail-item">
-                  Clear communication throughout the work.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div ref={cardsRef} className="about-principles">
-            {aboutHighlights.map((item) => (
-              <article key={item.title} className="principle-card surface-card">
-                <div className="principle-icon">{iconMap[item.icon]}</div>
-                <h3 className="principle-title">{item.title}</h3>
-                <p className="principle-copy">{item.description}</p>
-              </article>
-            ))}
+              return (
+                <Card key={item.title} className="rounded-3xl bg-card/70">
+                  <CardContent className="flex h-full flex-col gap-4 p-5">
+                    <span className="grid size-11 place-items-center rounded-2xl bg-primary/10 text-primary">
+                      <Icon className="size-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </div>

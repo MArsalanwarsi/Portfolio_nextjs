@@ -1,8 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Atom,
   Bot,
@@ -28,33 +23,33 @@ import {
 } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 import SectionHeader from "@/components/SectionHeader";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { skills } from "@/data/portfolio";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const iconComponents: Record<string, React.ReactNode> = {
-  Atom: <Atom size={16} />,
-  Bot: <Bot size={16} />,
-  Cloud: <Cloud size={16} />,
-  Code2: <Code2 size={16} />,
-  Cookie: <Cookie size={16} />,
-  Database: <Database size={16} />,
-  FileCode: <FileCode size={16} />,
-  FileType: <FileType size={16} />,
-  GitBranch: <GitBranch size={16} />,
-  Github: <GithubIcon size={16} />,
-  Globe: <Globe size={16} />,
-  KeyRound: <KeyRound size={16} />,
-  Layers: <Layers size={16} />,
-  Mail: <Mail size={16} />,
-  Network: <Network size={16} />,
-  Palette: <Palette size={16} />,
-  Server: <Server size={16} />,
-  Shield: <Shield size={16} />,
-  Sparkles: <Sparkles size={16} />,
-  Table: <Table size={16} />,
-  Wind: <Wind size={16} />,
-  Zap: <Zap size={16} />,
+const iconComponents = {
+  Atom,
+  Bot,
+  Cloud,
+  Code2,
+  Cookie,
+  Database,
+  FileCode,
+  FileType,
+  GitBranch,
+  Github: GithubIcon,
+  Globe,
+  KeyRound,
+  Layers,
+  Mail,
+  Network,
+  Palette,
+  Server,
+  Shield,
+  Sparkles,
+  Table,
+  Wind,
+  Zap,
 };
 
 const categories = [
@@ -76,79 +71,60 @@ const categories = [
   {
     key: "tools" as const,
     title: "Tools",
-    description: "Git, GSAP, cloud tools, and integrations.",
+    description: "Git, shadcn/ui, cloud tools, and integrations.",
   },
 ];
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headerRef.current, {
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-        y: 36,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.from(gridRef.current?.children ?? [], {
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-        y: 24,
-        opacity: 0,
-        duration: 0.75,
-        stagger: 0.12,
-        ease: "power3.out",
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="skills">
-      <div className="section-shell section-divider">
-        <div ref={headerRef}>
-          <SectionHeader
-            eyebrow="Skills"
-            title="Core"
-            accent="skills."
-          />
-        </div>
+    <section id="skills" className="px-4 py-20 sm:px-6 lg:py-28">
+      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
+        <SectionHeader eyebrow="Skills" title="Core" accent="skills." />
 
-        <div ref={gridRef} className="skills-grid">
+        <div className="grid gap-5 md:grid-cols-2">
           {categories.map((category) => {
             const categorySkills = skills.filter(
               (skill) => skill.category === category.key
             );
 
             return (
-              <article key={category.key} className="skill-cluster surface-card">
-                <div className="skill-cluster__head">
-                  <h3 className="skill-cluster__title">{category.title}</h3>
-                  <p className="skill-cluster__copy">{category.description}</p>
-                </div>
+              <Card key={category.key} className="rounded-3xl bg-card/75">
+                <CardContent className="p-5 sm:p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-display text-2xl font-semibold">
+                        {category.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                        {category.description}
+                      </p>
+                    </div>
+                    <Badge variant="outline" className="rounded-full">
+                      {String(categorySkills.length).padStart(2, "0")}
+                    </Badge>
+                  </div>
 
-                <div className="skill-chip-list">
-                  {categorySkills.map((skill) => (
-                    <span key={skill.name} className="skill-chip">
-                      {iconComponents[skill.icon] ?? <Code2 size={16} />}
-                      {skill.name}
-                    </span>
-                  ))}
-                </div>
-              </article>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {categorySkills.map((skill) => {
+                      const Icon =
+                        iconComponents[
+                          skill.icon as keyof typeof iconComponents
+                        ] ?? Code2;
+
+                      return (
+                        <Badge
+                          key={skill.name}
+                          variant="secondary"
+                          className="h-8 rounded-full gap-1.5 px-3"
+                        >
+                          <Icon className="size-3.5" aria-hidden="true" />
+                          {skill.name}
+                        </Badge>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
             );
           })}
         </div>

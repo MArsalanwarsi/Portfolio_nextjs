@@ -1,96 +1,55 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  Globe,
-  Layers,
-  FileCode,
-  Database,
-  Award,
-  Star,
-} from "lucide-react";
+import { Award, Database, FileCode, Globe, Layers, Star } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { certificates } from "@/data/portfolio";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
+const iconMap = {
+  Award,
+  Database,
+  FileCode,
   Globe,
   Layers,
-  FileCode,
-  Database,
-  Award,
   Star,
 };
 
 export default function Certificates() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headerRef.current, {
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-        y: 36,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.from(gridRef.current?.children ?? [], {
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="certificates">
-      <div className="section-shell section-divider">
-        <div ref={headerRef}>
-          <SectionHeader
-            eyebrow="Recognition"
-            title="Certificates &"
-            accent="awards."
-          />
-        </div>
+    <section id="certificates" className="px-4 py-20 sm:px-6 lg:py-28">
+      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
+        <SectionHeader
+          eyebrow="Recognition"
+          title="Certificates &"
+          accent="awards."
+        />
 
-        <div ref={gridRef} className="certificates-grid">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {certificates.map((cert) => {
-            const IconComponent = iconMap[cert.icon] || Award;
+            const Icon = iconMap[cert.icon as keyof typeof iconMap] ?? Award;
 
             return (
-              <article key={cert.title} className="certificate-card surface-card">
-                <div className="certificate-card__header">
-                  <span className="certificate-card__icon">
-                    <IconComponent size={20} />
-                  </span>
-                  <span className="certificate-card__date meta-chip">
-                    {cert.date}
-                  </span>
-                </div>
+              <Card key={cert.title} className="rounded-3xl bg-card/75">
+                <CardContent className="flex h-full flex-col p-5">
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <span className="grid size-11 place-items-center rounded-2xl bg-primary/10 text-primary">
+                      <Icon className="size-5" aria-hidden="true" />
+                    </span>
+                    <Badge variant="outline" className="rounded-full">
+                      {cert.date}
+                    </Badge>
+                  </div>
 
-                <h3 className="certificate-card__title">{cert.title}</h3>
-                <p className="certificate-card__issuer">{cert.issuer}</p>
-                <p className="certificate-card__desc">{cert.description}</p>
-              </article>
+                  <h3 className="font-display text-2xl font-semibold leading-tight">
+                    {cert.title}
+                  </h3>
+                  <p className="mt-2 text-sm font-medium text-primary">
+                    {cert.issuer}
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                    {cert.description}
+                  </p>
+                </CardContent>
+              </Card>
             );
           })}
         </div>

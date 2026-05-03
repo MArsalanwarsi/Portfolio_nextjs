@@ -1,258 +1,88 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import ThemeToggle, { type ThemeMode } from "@/components/ThemeToggle";
+import { useEffect, useState } from "react";
+import { Menu, Send } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { navLinks, siteConfig } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
-const THEME_STORAGE_KEY = "portfolio-theme";
-const THEME_CHANGE_EVENT = "portfolio-theme-change";
-
-type DocumentWithViewTransition = Document & {
-  startViewTransition?: (callback: () => void) => {
-    finished?: Promise<void>;
-  };
-};
-
-function applyTheme(nextTheme: ThemeMode) {
-  const root = document.documentElement;
-  root.dataset.theme = nextTheme;
-  root.style.colorScheme = nextTheme;
-  window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-  window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
-}
-
-function primeThemeRipple(
-  originX: number,
-  originY: number,
-  nextTheme: ThemeMode
-) {
-  const root = document.documentElement;
-  const maxX = Math.max(originX, window.innerWidth - originX);
-  const maxY = Math.max(originY, window.innerHeight - originY);
-  const radius = Math.hypot(maxX, maxY) + 96;
-
-  root.style.setProperty("--theme-ripple-x", `${originX}px`);
-  root.style.setProperty("--theme-ripple-y", `${originY}px`);
-  root.style.setProperty("--theme-ripple-size", `${radius}px`);
-  root.dataset.themeTarget = nextTheme;
-}
-
-function readResolvedTheme(): ThemeMode {
-  if (typeof document === "undefined") {
-    return "dark";
-  }
-
-  if (document.documentElement.dataset.theme === "light") {
-    return "light";
-  }
-
-  const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-  if (storedTheme === "dark" || storedTheme === "light") {
-    return storedTheme;
-  }
-
-  return "dark";
-}
-
-function subscribeToTheme(onStoreChange: () => void) {
-  const handleThemeChange = () => onStoreChange();
-  const handleStorage = (event: StorageEvent) => {
-    if (event.key === null || event.key === THEME_STORAGE_KEY) {
-      onStoreChange();
-    }
-  };
-
-  window.addEventListener(THEME_CHANGE_EVENT, handleThemeChange);
-  window.addEventListener("storage", handleStorage);
-
-  return () => {
-    window.removeEventListener(THEME_CHANGE_EVENT, handleThemeChange);
-    window.removeEventListener("storage", handleStorage);
-  };
-}
-
-function subscribeToHydration() {
-  return () => {};
-}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const theme = useSyncExternalStore<ThemeMode>(
-    subscribeToTheme,
-    readResolvedTheme,
-    () => "dark"
-  );
-  const themeReady = useSyncExternalStore<boolean>(
-    subscribeToHydration,
-    () => true,
-    () => false
-  );
-  const scrollResetRef = useRef<number | null>(null);
-  const themeCleanupRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const root = document.documentElement;
     let frame = 0;
-    let lastY = window.scrollY;
-    let lastTimestamp = performance.now();
+    const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
 
-    const clearFastScroll = () => {
-      root.classList.remove("is-scrolling-fast");
-      scrollResetRef.current = null;
+    const findActiveSection = () => {
+      const scrollPosition = window.scrollY + 140;
+      const viewportBottom = window.scrollY + window.innerHeight;
+      const pageBottom = document.documentElement.scrollHeight;
+
+      if (viewportBottom >= pageBottom - 8) {
+        return sectionIds[sectionIds.length - 1];
+      }
+
+      let currentSection = sectionIds[0];
+
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+
+        if (!section) {
+          continue;
+        }
+
+        if (section.offsetTop <= scrollPosition) {
+          currentSection = id;
+        } else {
+          break;
+        }
+      }
+
+      return currentSection;
     };
 
-    const handleScroll = () => {
+    const syncNavState = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 24);
+      setActiveSection(findActiveSection());
+    };
+
+    const requestSync = () => {
       if (frame) {
         return;
       }
 
-      frame = window.requestAnimationFrame(() => {
-        const currentY = window.scrollY;
-        const timestamp = performance.now();
-        const deltaY = Math.abs(currentY - lastY);
-        const elapsed = Math.max(timestamp - lastTimestamp, 16);
-        const velocity = deltaY / elapsed;
-
-        setScrolled(currentY > 32);
-
-        if (velocity > 1.4 || deltaY > 180) {
-          root.classList.add("is-scrolling-fast");
-        }
-
-        if (scrollResetRef.current) {
-          window.clearTimeout(scrollResetRef.current);
-        }
-
-        scrollResetRef.current = window.setTimeout(clearFastScroll, 180);
-        lastY = currentY;
-        lastTimestamp = timestamp;
-        frame = 0;
-      });
+      frame = window.requestAnimationFrame(syncNavState);
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    syncNavState();
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync);
 
     return () => {
       if (frame) {
         window.cancelAnimationFrame(frame);
       }
 
-      if (scrollResetRef.current) {
-        window.clearTimeout(scrollResetRef.current);
-        scrollResetRef.current = null;
-      }
-
-      root.classList.remove("is-scrolling-fast");
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", requestSync);
+      window.removeEventListener("resize", requestSync);
     };
   }, []);
-
-  useEffect(() => {
-    const sections = navLinks.map((link) => link.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
-
-    sections.forEach((id) => {
-      const element = document.getElementById(id);
-      if (!element) {
-        return;
-      }
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        {
-          threshold: 0.45,
-          rootMargin: "-20% 0px -30% 0px",
-        }
-      );
-
-      observer.observe(element);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((observer) => observer.disconnect());
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [mobileOpen]);
-
-  useEffect(() => {
-    return () => {
-      if (themeCleanupRef.current) {
-        window.clearTimeout(themeCleanupRef.current);
-      }
-    };
-  }, []);
-
-  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const currentTheme = readResolvedTheme();
-    const nextTheme: ThemeMode = currentTheme === "dark" ? "light" : "dark";
-    const root = document.documentElement;
-    const documentWithTransition = document as DocumentWithViewTransition;
-    const buttonBounds = event.currentTarget.getBoundingClientRect();
-    const originX =
-      event.clientX === 0 && event.clientY === 0
-        ? buttonBounds.left + buttonBounds.width / 2
-        : event.clientX;
-    const originY =
-      event.clientX === 0 && event.clientY === 0
-        ? buttonBounds.top + buttonBounds.height / 2
-        : event.clientY;
-
-    primeThemeRipple(originX, originY, nextTheme);
-    root.classList.add("theme-animating", "theme-ripple-active");
-
-    const cleanup = () => {
-      if (themeCleanupRef.current) {
-        window.clearTimeout(themeCleanupRef.current);
-      }
-
-      themeCleanupRef.current = window.setTimeout(() => {
-        root.classList.remove("theme-animating", "theme-ripple-active");
-        root.removeAttribute("data-theme-target");
-      }, 1100);
-    };
-
-    const updateTheme = () => {
-      applyTheme(nextTheme);
-    };
-
-    if (documentWithTransition.startViewTransition) {
-      const transition = documentWithTransition.startViewTransition(updateTheme);
-
-      if (transition.finished) {
-        transition.finished.finally(cleanup);
-      } else {
-        cleanup();
-      }
-
-      return;
-    }
-
-    updateTheme();
-    cleanup();
-  };
 
   const handleNavClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -260,103 +90,197 @@ export default function Navbar() {
   ) => {
     event.preventDefault();
     const id = href.replace("#", "");
-    const element = document.getElementById(id);
-
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setActiveSection(id);
     setMobileOpen(false);
   };
 
+  const contactHref = hasRealEmail
+    ? `mailto:${siteConfig.email}`
+    : siteConfig.linkedin;
+
   return (
-    <>
-      <nav
-        className={`site-nav${scrolled ? " is-scrolled" : ""}`}
-        aria-label="Primary"
+    <nav
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 px-4 pt-4 transition-all duration-300 sm:px-6",
+        scrolled && "pt-3"
+      )}
+      aria-label="Primary"
+    >
+      <div
+        className={cn(
+          "glass-nav mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border px-3 py-2 transition-all duration-300",
+          scrolled && "translate-y-[-1px]"
+        )}
       >
-        <div className="site-nav__inner">
-          <a
-            href="#home"
-            className="brand-mark"
-            onClick={(event) => handleNavClick(event, "#home")}
-          >
-            <span className="brand-mark__monogram">AW</span>
-          </a>
+        <a
+          href="#home"
+          onClick={(event) => handleNavClick(event, "#home")}
+          className="group flex min-w-0 items-center gap-3"
+          aria-label={`${siteConfig.name} home`}
+        >
+          <Avatar className="size-10 border border-border bg-muted">
+            <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
+              AW
+            </AvatarFallback>
+          </Avatar>
+          <span className="hidden min-w-0 flex-col leading-tight sm:flex">
+            <span className="truncate text-sm font-semibold">
+              {siteConfig.shortName}
+            </span>
+            <span className="truncate text-xs text-muted-foreground">
+              Full-stack developer
+            </span>
+          </span>
+        </a>
 
-          <div className="nav-links">
-            {navLinks.map((link) => {
-              const id = link.href.replace("#", "");
+        <div className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((link) => {
+            const id = link.href.replace("#", "");
+            const active = activeSection === id;
 
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`nav-link${activeSection === id ? " is-active" : ""}`}
-                  onClick={(event) => handleNavClick(event, link.href)}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-          </div>
-
-          <div className="nav-controls">
-            <ThemeToggle mode={theme} onToggle={toggleTheme} ready={themeReady} />
-
-            <a
-              className="nav-cta"
-              href={hasRealEmail ? `mailto:${siteConfig.email}` : siteConfig.linkedin}
-              target={hasRealEmail ? undefined : "_blank"}
-              rel={hasRealEmail ? undefined : "noopener noreferrer"}
-            >
-              {hasRealEmail ? "Start a project" : "Let’s connect"}
-            </a>
-          </div>
-
-          <button
-            type="button"
-            className={`menu-toggle${mobileOpen ? " open" : ""}`}
-            onClick={() => setMobileOpen((value) => !value)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-          >
-            <span />
-            <span />
-          </button>
+            return (
+              <Button
+                key={link.href}
+                nativeButton={false}
+                render={
+                  <a
+                    href={link.href}
+                    onClick={(event) => handleNavClick(event, link.href)}
+                  />
+                }
+                variant="ghost"
+                size="sm"
+                className={cn(
+                  "h-8 rounded-full px-3 text-xs text-muted-foreground hover:bg-primary/10 hover:text-foreground",
+                  active &&
+                    "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary hover:text-primary-foreground"
+                )}
+                aria-current={active ? "page" : undefined}
+              >
+                {link.label}
+              </Button>
+            );
+          })}
         </div>
-      </nav>
 
-      <div className={`mobile-panel${mobileOpen ? " open" : ""}`}>
-        <div className="mobile-panel__content">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="mobile-link"
-              onClick={(event) => handleNavClick(event, link.href)}
-            >
-              {link.label}
-            </a>
-          ))}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
 
-          <ThemeToggle
-            mode={theme}
-            onToggle={toggleTheme}
-            expanded
-            ready={themeReady}
-          />
-
-          <a
-            className="button-primary"
-            href={hasRealEmail ? `mailto:${siteConfig.email}` : siteConfig.linkedin}
-            target={hasRealEmail ? undefined : "_blank"}
-            rel={hasRealEmail ? undefined : "noopener noreferrer"}
+          <Button
+            nativeButton={false}
+            render={
+              <a
+                href={contactHref}
+                target={hasRealEmail ? undefined : "_blank"}
+                rel={hasRealEmail ? undefined : "noopener noreferrer"}
+              />
+            }
+            size="lg"
+            className="hidden rounded-full bg-primary px-4 text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary/90 md:inline-flex"
           >
-            {hasRealEmail ? "Email me" : "Open LinkedIn"}
-          </a>
+            <Send className="size-4" aria-hidden="true" />
+            Connect
+          </Button>
+
+          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon-lg"
+                  className="rounded-full border border-border/60 bg-muted/30 hover:bg-primary/10 lg:hidden"
+                />
+              }
+              aria-label="Open navigation menu"
+            >
+              <Menu className="size-5" aria-hidden="true" />
+            </SheetTrigger>
+            <SheetContent className="glass-nav w-[min(86vw,22rem)] gap-0 overflow-hidden border-primary/20">
+              <SheetHeader className="border-b border-border/60 px-5 pb-5 pt-5 pr-14">
+                <div className="flex items-center gap-3">
+                  <Avatar className="size-11 border border-border bg-muted">
+                    <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
+                      AW
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="min-w-0">
+                    <SheetTitle className="font-display text-2xl leading-none">
+                      {siteConfig.shortName}
+                    </SheetTitle>
+                    <SheetDescription className="mt-1 text-xs">
+                      {siteConfig.role}
+                    </SheetDescription>
+                  </div>
+                </div>
+              </SheetHeader>
+
+              <div className="flex flex-col gap-1 px-3 py-4">
+                {navLinks.map((link, index) => {
+                  const id = link.href.replace("#", "");
+                  const active = activeSection === id;
+
+                  return (
+                    <Button
+                      key={link.href}
+                      nativeButton={false}
+                      render={
+                        <a
+                          href={link.href}
+                          onClick={(event) => handleNavClick(event, link.href)}
+                        />
+                      }
+                      variant="ghost"
+                      size="lg"
+                      className={cn(
+                        "h-11 justify-start gap-3 rounded-2xl px-3 text-sm text-muted-foreground hover:bg-primary/10 hover:text-foreground",
+                        active &&
+                          "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary hover:text-primary-foreground"
+                      )}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      <span
+                        className={cn(
+                          "w-6 font-mono text-[0.68rem] text-muted-foreground",
+                          active && "text-primary-foreground/70"
+                        )}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      {link.label}
+                    </Button>
+                  );
+                })}
+              </div>
+
+              <SheetFooter className="border-t border-border/60 p-3">
+                <div className="flex items-center justify-between rounded-2xl bg-muted/25 p-2">
+                  <span className="px-2 text-sm text-muted-foreground">
+                    Theme
+                  </span>
+                  <ThemeToggle />
+                </div>
+
+                <Button
+                  nativeButton={false}
+                  render={
+                    <a
+                      href={contactHref}
+                      target={hasRealEmail ? undefined : "_blank"}
+                      rel={hasRealEmail ? undefined : "noopener noreferrer"}
+                    />
+                  }
+                  size="lg"
+                  className="h-11 rounded-2xl"
+                >
+                  <Send className="size-4" aria-hidden="true" />
+                  {hasRealEmail ? "Email me" : "Open LinkedIn"}
+                </Button>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-    </>
+    </nav>
   );
 }

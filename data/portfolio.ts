@@ -3,11 +3,11 @@ export const siteConfig = {
   shortName: "Arsalan",
   role: "Full-Stack Developer",
   specialization: "MERN Stack + Next.js",
-  tagline: "Full-stack developer focused on React, Next.js, and MERN apps.",
+  tagline: "Full-stack developer focused on calm UI and MERN product builds.",
   description:
-    "I build clean, responsive web apps with React, Next.js, Node.js, and MongoDB.",
+    "I design and build responsive web apps with React, Next.js, Node.js, and MongoDB.",
   intro:
-    "I teach web development and build practical products with a focus on clear UI and solid structure.",
+    "I teach web development and build practical products with clear interfaces, readable code, and dependable full-stack structure.",
   availability: "Open to work",
   email: "arsalanwarsi@example.com",
   github: "https://github.com/MArsalanwarsi",
@@ -20,9 +20,9 @@ export const siteConfig = {
     initials: "AW",
   },
   focusAreas: [
-    "React & Next.js",
-    "Node.js & APIs",
-    "Clear communication",
+    "Interface clarity",
+    "API structure",
+    "Teaching-led communication",
   ],
   heroMetrics: [
     { value: "06+", label: "Projects" },
@@ -67,7 +67,7 @@ export const skills: Skill[] = [
   { name: "Git", icon: "GitBranch", category: "tools" },
   { name: "GitHub", icon: "Github", category: "tools" },
   { name: "Cloudinary", icon: "Cloud", category: "tools" },
-  { name: "GSAP", icon: "Sparkles", category: "tools" },
+  { name: "shadcn/ui", icon: "Sparkles", category: "tools" },
   { name: "Gemini API", icon: "Bot", category: "tools" },
   { name: "Nodemailer", icon: "Mail", category: "tools" },
 ];
@@ -136,9 +136,9 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/MArsalanwarsi",
     live: "#",
-    accent: "#7c3aed",
+    accent: "#c084fc",
     surface:
-      "linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(88, 28, 135, 0.92))",
+      "linear-gradient(135deg, #7c3aed 0%, #16061f 100%)",
   },
   {
     title: "Fitness Tracker",
@@ -164,16 +164,16 @@ export const projects: Project[] = [
     live: "#",
     accent: "#a855f7",
     surface:
-      "linear-gradient(135deg, rgba(168, 85, 247, 0.92), rgba(109, 40, 217, 0.92))",
+      "linear-gradient(135deg, #a855f7 0%, #2e1065 100%)",
   },
   {
     title: "Personal Portfolio",
     label: "Design System",
     description:
-      "Portfolio with cinematic motion, responsive UI, dark/light themes, and clear personal branding.",
+      "Portfolio with responsive UI, dark/light themes, shadcn components, and clear personal branding.",
     longDescription:
-      "Personal portfolio built with Next.js, TypeScript, and GSAP.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP"],
+      "Personal portfolio built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     features: [
       "Responsive layouts",
       "Custom motion and transitions",
@@ -183,7 +183,7 @@ export const projects: Project[] = [
     live: "#",
     accent: "#c084fc",
     surface:
-      "linear-gradient(135deg, rgba(192, 132, 252, 0.92), rgba(124, 58, 237, 0.88))",
+      "linear-gradient(135deg, #c084fc 0%, #3b0764 100%)",
   },
   {
     title: "E-Commerce Dashboard",
@@ -202,7 +202,7 @@ export const projects: Project[] = [
     live: "#",
     accent: "#7c3aed",
     surface:
-      "linear-gradient(135deg, rgba(109, 40, 217, 0.9), rgba(88, 28, 135, 0.92))",
+      "linear-gradient(135deg, #6d28d9 0%, #1e0b32 100%)",
   },
   {
     title: "Task Manager App",
@@ -221,7 +221,7 @@ export const projects: Project[] = [
     live: "#",
     accent: "#a855f7",
     surface:
-      "linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(124, 58, 237, 0.92))",
+      "linear-gradient(135deg, #9333ea 0%, #12051d 100%)",
   },
   {
     title: "Blog Platform",
@@ -240,7 +240,7 @@ export const projects: Project[] = [
     live: "#",
     accent: "#c084fc",
     surface:
-      "linear-gradient(135deg, rgba(192, 132, 252, 0.9), rgba(147, 51, 234, 0.92))",
+      "linear-gradient(135deg, #8b5cf6 0%, #2e1065 100%)",
   },
 ];
 
@@ -260,22 +260,22 @@ export const stats: Stat[] = [
 
 export const aboutHighlights = [
   {
-    title: "Scalable Architecture",
+    title: "Feature Architecture",
     description: "Builds that stay organized as features grow.",
     icon: "Layers",
   },
   {
-    title: "Premium UI Thinking",
+    title: "Interface Clarity",
     description: "Clean interfaces that feel professional and easy to use.",
     icon: "Palette",
   },
   {
-    title: "Performance First",
+    title: "Fast Feedback",
     description: "Fast loading and smooth interaction across the app.",
     icon: "Zap",
   },
   {
-    title: "Clear Communication",
+    title: "Teaching-Led Communication",
     description: "Clear explanations, teamwork, and practical thinking.",
     icon: "Code2",
   },

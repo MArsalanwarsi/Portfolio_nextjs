@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Manrope, Syne } from "next/font/google";
+import { Geist, IBM_Plex_Mono, Manrope, Syne } from "next/font/google";
 import BootLoader from "@/components/BootLoader";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { cn } from "@/lib/utils";
 import "./globals.css";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 const syne = Syne({
   subsets: ["latin"],
@@ -21,24 +29,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   display: "swap",
 });
-
-const themeInitScript = `
-(() => {
-  try {
-    const storageKey = "portfolio-theme";
-    const storedTheme = window.localStorage.getItem(storageKey);
-    const theme = storedTheme === "light" || storedTheme === "dark"
-      ? storedTheme
-      : "dark";
-
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-  } catch {
-    document.documentElement.dataset.theme = "dark";
-    document.documentElement.style.colorScheme = "dark";
-  }
-})();
-`;
 
 export const metadata: Metadata = {
   title: "Muhammad Arsalan Warsi | Full-Stack Developer",
@@ -71,20 +61,31 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
       suppressHydrationWarning
-      className={`${syne.variable} ${manrope.variable} ${ibmPlexMono.variable}`}
+      className={cn(
+        geist.variable,
+        syne.variable,
+        manrope.variable,
+        ibmPlexMono.variable,
+        "font-sans"
+      )}
     >
-      <body className="boot-loader-active">
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <noscript>
-          <style>{`
-            body.boot-loader-active { overflow: auto !important; }
-            .boot-loader { display: none !important; }
-          `}</style>
-        </noscript>
-        <BootLoader />
-        {children}
+      <body className="boot-loader-active min-h-screen bg-background text-foreground antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <noscript>
+            <style>{`
+              body.boot-loader-active { overflow: auto !important; }
+              .boot-loader { display: none !important; }
+            `}</style>
+          </noscript>
+          <BootLoader />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

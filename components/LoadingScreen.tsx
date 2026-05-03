@@ -39,11 +39,9 @@ export default function LoadingScreen({
       aria-live="polite"
       aria-label={`Loading ${siteConfig.name} portfolio`}
     >
-      {/* Subtle purple ambient glow */}
       <div className={styles.glow} aria-hidden="true" />
 
-      <div className={styles.inner}>
-        {/* Name reveal */}
+      <div className={styles.content}>
         <div className={styles.nameBlock}>
           <div className={styles.nameLineWrap}>
             <span className={styles.firstName}>ARSALAN</span>
@@ -53,21 +51,25 @@ export default function LoadingScreen({
           </div>
         </div>
 
-        {/* Tagline */}
-        <p className={styles.tagline}>Full-Stack Developer</p>
-      </div>
+        <p className={styles.tagline}>{siteConfig.role}</p>
 
-      {/* Bottom progress */}
-      <div className={styles.bottom}>
-        <div className={styles.progressRow}>
-          <span className={styles.loadingLabel}>Loading</span>
-          <span className={styles.counter}>{counter}%</span>
-        </div>
-        <div className={styles.progressTrack}>
+        <div className={styles.progressArea}>
+          <div className={styles.progressRow}>
+            <span className={styles.loadingLabel}>Loading</span>
+            <span className={styles.percent}>{counter}%</span>
+          </div>
           <div
-            className={styles.progressBar}
-            style={{ transform: `scaleX(${counter / 100})` }}
-          />
+            className={styles.progressTrack}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={counter}
+          >
+            <div
+              className={styles.progressBar}
+              style={{ transform: `scaleX(${counter / 100})` }}
+            />
+          </div>
         </div>
       </div>
     </div>

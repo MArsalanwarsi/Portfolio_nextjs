@@ -2,12 +2,13 @@
   position: fixed;
   inset: 0;
   z-index: 140;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   overflow: hidden;
-  background: #050208;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(168, 85, 247, 0.18), transparent 24rem),
+    linear-gradient(180deg, #080312 0%, #050208 64%, #030106 100%);
   transition:
     transform 0.72s cubic-bezier(0.76, 0, 0.24, 1),
     opacity 0.72s cubic-bezier(0.76, 0, 0.24, 1);
@@ -17,32 +18,27 @@
   transform: translateY(-100%);
 }
 
-/* Ambient purple glow behind name */
 .glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 45%, rgba(168, 85, 247, 0.12), transparent 70%),
-    radial-gradient(ellipse 40% 35% at 50% 50%, rgba(192, 132, 252, 0.08), transparent 60%);
+    radial-gradient(ellipse 40% 32% at 50% 48%, rgba(192, 132, 252, 0.14), transparent 70%),
+    radial-gradient(ellipse 28% 24% at 50% 52%, rgba(124, 58, 237, 0.16), transparent 64%);
 }
 
-.inner {
+.content {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
+  width: min(100%, 25rem);
+  text-align: center;
 }
 
-/* Name text reveal */
 .nameBlock {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
+  gap: 0.05rem;
 }
 
 .nameLineWrap {
@@ -54,11 +50,11 @@
 .lastName {
   display: block;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(3.5rem, 12vw, 9rem);
+  font-size: clamp(3rem, 10vw, 6.5rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   line-height: 0.92;
-  color: #f0e6ff;
+  color: #f5edff;
   transform: translateY(110%);
   animation: nameReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -68,97 +64,81 @@
 }
 
 .lastName {
-  background: linear-gradient(135deg, #a855f7 0%, #c084fc 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 52%, #7c3aed 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation-delay: 0.4s;
+  animation-delay: 0.35s;
 }
 
 .tagline {
-  margin: 0;
+  margin: 1rem 0 0;
+  color: rgba(216, 180, 254, 0.62);
   font-family: var(--font-mono), monospace;
-  font-size: clamp(0.72rem, 1.4vw, 0.88rem);
-  letter-spacing: 0.28em;
+  font-size: clamp(0.72rem, 1.6vw, 0.84rem);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(168, 85, 247, 0.5);
   opacity: 0;
-  transform: translateY(12px);
-  animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+  transform: translateY(10px);
+  animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.68s forwards;
 }
 
-/* Bottom bar */
-.bottom {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+.progressArea {
+  margin-top: 2.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  width: min(82%, 22rem);
   opacity: 0;
-  animation: fadeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+  transform: translateY(10px);
+  animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.52s forwards;
 }
 
 .progressRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+}
+
+.loadingLabel,
+.percent {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .loadingLabel {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(245, 237, 255, 0.42);
 }
 
-.counter {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: rgba(168, 85, 247, 0.7);
+.percent {
+  color: rgba(216, 180, 254, 0.82);
   font-variant-numeric: tabular-nums;
 }
 
 .progressTrack {
   width: 100%;
   height: 2px;
-  background: rgba(168, 85, 247, 0.12);
-  border-radius: 999px;
   overflow: hidden;
+  border-radius: 999px;
+  background: rgba(216, 180, 254, 0.14);
 }
 
 .progressBar {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #7c3aed, #a855f7, #c084fc);
-  border-radius: 999px;
-  transform-origin: left center;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7c3aed, #a855f7, #d8b4fe);
   transform: scaleX(0);
+  transform-origin: left center;
   transition: transform 0.08s linear;
 }
 
-/* Animations */
 @keyframes nameReveal {
   to {
     transform: translateY(0);
   }
-}
-
-@keyframes fadeSlideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
-}
-
-/* Fix for elements without translateX */
-.inner .tagline {
-  animation-name: fadeUp;
 }
 
 @keyframes fadeUp {
@@ -168,30 +148,27 @@
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
+  .content {
+    width: min(100%, 19rem);
+  }
+
   .firstName,
   .lastName {
-    font-size: clamp(2.8rem, 16vw, 4.5rem);
+    font-size: clamp(2.7rem, 15vw, 4.45rem);
   }
 
   .tagline {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-  }
-
-  .bottom {
-    width: min(90%, 18rem);
-    bottom: 2rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
   }
 }
 
-/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .firstName,
   .lastName,
   .tagline,
-  .bottom {
+  .progressArea {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
