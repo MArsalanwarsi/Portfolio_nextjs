@@ -5,7 +5,7 @@ import { LiftCard, Reveal } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { siteConfig } from "@/data/portfolio";
+import { contactContent, siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
 const hasResume = siteConfig.resumeUrl !== "#";
@@ -50,10 +50,7 @@ export default function Contact() {
     <section id="contact" className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
         <SectionHeader
-          eyebrow="Contact"
-          title="Let's"
-          accent="connect."
-          align="center"
+          {...contactContent.header}
         />
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
@@ -62,14 +59,13 @@ export default function Contact() {
               <CardContent className="flex h-full flex-col justify-between gap-10 p-6 sm:p-8">
                 <div>
                   <p className="text-xs font-medium opacity-75">
-                    Open for opportunities
+                    {contactContent.card.eyebrow}
                   </p>
                   <h3 className="mt-5 font-display text-4xl font-semibold leading-tight text-balance sm:text-5xl">
                     {siteConfig.availability}
                   </h3>
                   <p className="mt-5 max-w-md text-base leading-8 opacity-80">
-                    Internship, freelance, and full-time opportunities where
-                    thoughtful UI and practical engineering matter.
+                    {contactContent.card.description}
                   </p>
                 </div>
 
@@ -87,7 +83,9 @@ export default function Contact() {
                     size="lg"
                     className="h-12 rounded-full px-5"
                   >
-                    {hasRealEmail ? "Send an email" : "Message on LinkedIn"}
+                    {hasRealEmail
+                      ? contactContent.card.emailButton
+                      : contactContent.card.linkedinButton}
                     <ArrowUpRight className="size-4" aria-hidden="true" />
                   </Button>
 

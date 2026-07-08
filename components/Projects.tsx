@@ -5,7 +5,7 @@ import ProjectMedia from "@/components/ProjectMedia";
 import SectionHeader from "@/components/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { projects } from "@/data/portfolio";
+import { projectsContent } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export default function Projects() {
@@ -13,14 +13,11 @@ export default function Projects() {
     <section id="projects" className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
         <SectionHeader
-          eyebrow="Projects"
-          title="Selected"
-          accent="work."
-          description="Each build is presented with the stack, tooling, product focus, and a small image gallery for the interface direction."
+          {...projectsContent.header}
         />
 
         <div className="space-y-5">
-          {projects.map((project, index) => (
+          {projectsContent.items.map((project, index) => (
             <LiftCard
               key={project.title}
               delay={index * 0.08}
@@ -187,18 +184,17 @@ export default function Projects() {
                     />
 
                     <div className="mt-4 grid gap-3 text-white/82 sm:grid-cols-2">
-                      <div className="rounded-lg border border-white/12 bg-white/10 p-3 backdrop-blur">
-                        <small className="text-white/58">Focus</small>
-                        <strong className="mt-1 block text-sm">
-                          UI + backend flow
-                        </strong>
-                      </div>
-                      <div className="rounded-lg border border-white/12 bg-white/10 p-3 backdrop-blur">
-                        <small className="text-white/58">Delivery</small>
-                        <strong className="mt-1 block text-sm">
-                          Responsive product UI
-                        </strong>
-                      </div>
+                      {projectsContent.previewMeta.map((item) => (
+                        <div
+                          key={item.label}
+                          className="rounded-lg border border-white/12 bg-white/10 p-3 backdrop-blur"
+                        >
+                          <small className="text-white/58">{item.label}</small>
+                          <strong className="mt-1 block text-sm">
+                            {item.value}
+                          </strong>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>

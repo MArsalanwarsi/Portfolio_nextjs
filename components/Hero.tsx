@@ -152,13 +152,13 @@ export default function Hero() {
 
               <div className="p-4">
                 <p className="text-xs font-medium text-primary">
-                  Product direction
+                  {siteConfig.heroCard.eyebrow}
                 </p>
                 <h2 className="mt-2 font-display text-xl font-semibold leading-tight">
-                  Polished MERN and Next.js applications.
+                  {siteConfig.heroCard.title}
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  Interfaces, APIs, auth, data models, and deployment-ready frontends.
+                  {siteConfig.heroCard.description}
                 </p>
               </div>
             </CardContent>

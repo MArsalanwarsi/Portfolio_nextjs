@@ -1,6 +1,5 @@
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
-import { Reveal } from "@/components/PremiumMotion";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/portfolio";
@@ -31,12 +30,8 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="px-4 pb-8 sm:px-6">
-      <Reveal
-        amount={0.5}
-        className="mx-auto w-full max-w-6xl border-t border-border/70 pt-8"
-        y={16}
-      >
+    <footer className="relative z-10 px-4 pb-8 sm:px-6">
+      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <Avatar className="size-11 border border-border bg-muted">
@@ -87,7 +82,7 @@ export default function Footer() {
           </p>
           <p>Built with Next.js and TypeScript.</p>
         </div>
-      </Reveal>
+      </div>
     </footer>
   );
 }

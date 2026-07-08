@@ -1,40 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { siteConfig } from "@/data/portfolio";
 import styles from "./LoadingScreen.module.css";
 
 interface LoadingScreenProps {
   exiting?: boolean;
+  progress: number;
 }
 
 export default function LoadingScreen({
   exiting = false,
+  progress,
 }: LoadingScreenProps) {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    const duration = 760;
-    const interval = 16;
-    const steps = duration / interval;
-    const increment = 100 / steps;
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= 100) {
-        current = 100;
-        clearInterval(timer);
-      }
-      setCounter(Math.floor(current));
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, []);
+  const counter = Math.max(0, Math.min(100, Math.round(progress)));
 
   return (
     <output
-      className={`${styles.loader}${exiting ? ` ${styles.isExiting}` : ""}`}
+      className={`boot-loader ${styles.loader}${exiting ? ` ${styles.isExiting}` : ""}`}
       aria-live="polite"
       aria-label={`Loading ${siteConfig.name} portfolio`}
     >

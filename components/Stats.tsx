@@ -2,7 +2,7 @@ import { Briefcase, Code2, FolderGit2, Users } from "lucide-react";
 import { LiftCard } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Card, CardContent } from "@/components/ui/card";
-import { stats } from "@/data/portfolio";
+import { statsContent } from "@/data/portfolio";
 
 const iconMap = {
   Briefcase,
@@ -16,14 +16,11 @@ export default function Stats() {
     <section className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
         <SectionHeader
-          eyebrow="Impact"
-          title="Quick"
-          accent="snapshot."
-          align="center"
+          {...statsContent.header}
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => {
+          {statsContent.items.map((stat, index) => {
             const Icon = iconMap[stat.icon as keyof typeof iconMap] ?? Code2;
 
             return (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import BootLoader from "@/components/BootLoader";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { seo, siteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -18,25 +19,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Arsalan Warsi | Full-Stack Developer",
-  description:
-    "Portfolio of Muhammad Arsalan Warsi, a MERN and Next.js developer crafting polished interfaces, scalable web applications, and thoughtful product experiences.",
-  keywords: [
-    "Muhammad Arsalan Warsi",
-    "Arsalan Warsi",
-    "Full-Stack Developer",
-    "MERN Developer",
-    "Next.js Portfolio",
-    "React Developer",
-    "UI Portfolio",
-  ],
-  authors: [{ name: "Muhammad Arsalan Warsi" }],
+  title: seo.title,
+  description: seo.description,
+  keywords: seo.keywords,
+  authors: [{ name: siteConfig.name }],
   openGraph: {
-    title: "Muhammad Arsalan Warsi | Full-Stack Developer",
-    description:
-      "Thoughtful product interfaces backed by scalable MERN and Next.js systems.",
-    type: "website",
-    locale: "en_US",
+    title: seo.openGraph.title,
+    description: seo.openGraph.description,
+    type: seo.openGraph.type,
+    locale: seo.openGraph.locale,
   },
 };
 

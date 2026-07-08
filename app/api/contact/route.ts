@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { contactContent } from "@/data/portfolio";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -7,6 +8,8 @@ const MAX_CONTENT_LENGTH = 10_000;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
 const rateLimits = new Map<string, { count: number; resetAt: number }>();
+const formCopy = contactContent.form;
+const validationMessages = formCopy.validationMessages;
 
 interface ContactPayload {
   name?: unknown;
@@ -59,27 +62,27 @@ function validatePayload(payload: ContactPayload): {
   const errors: Record<string, string> = {};
 
   if (data.name.length < 2) {
-    errors.name = "Enter your name.";
+    errors.name = validationMessages.nameRequired;
   } else if (data.name.length > 80) {
-    errors.name = "Name must be 80 characters or fewer.";
+    errors.name = validationMessages.nameMax;
   }
 
   if (!isEmail(data.email)) {
-    errors.email = "Enter a valid email address.";
+    errors.email = validationMessages.emailInvalid;
   } else if (data.email.length > 120) {
-    errors.email = "Email must be 120 characters or fewer.";
+    errors.email = validationMessages.emailMax;
   }
 
   if (data.subject.length < 3) {
-    errors.subject = "Enter a subject.";
+    errors.subject = validationMessages.subjectRequired;
   } else if (data.subject.length > 120) {
-    errors.subject = "Subject must be 120 characters or fewer.";
+    errors.subject = validationMessages.subjectMax;
   }
 
   if (data.message.length < 20) {
-    errors.message = "Message must be at least 20 characters.";
+    errors.message = validationMessages.messageMin;
   } else if (data.message.length > 2000) {
-    errors.message = "Message must be 2000 characters or fewer.";
+    errors.message = validationMessages.messageMax;
   }
 
   return Object.keys(errors).length > 0 ? { errors } : { data };
@@ -153,18 +156,15 @@ export async function POST(request: Request) {
   const contentLength = Number(request.headers.get("content-length") || "0");
 
   if (contentLength > MAX_CONTENT_LENGTH) {
-    return jsonResponse({ message: "Message is too large." }, 413);
+    return jsonResponse({ message: validationMessages.contentTooLarge }, 413);
   }
 
   if (!request.headers.get("content-type")?.includes("application/json")) {
-    return jsonResponse({ message: "Invalid request format." }, 415);
+    return jsonResponse({ message: validationMessages.invalidFormat }, 415);
   }
 
   if (isRateLimited(getClientKey(request))) {
-    return jsonResponse(
-      { message: "Too many messages. Please try again later." },
-      429
-    );
+    return jsonResponse({ message: validationMessages.rateLimited }, 429);
   }
 
   let payload: ContactPayload;
@@ -172,7 +172,7 @@ export async function POST(request: Request) {
   try {
     payload = (await request.json()) as ContactPayload;
   } catch {
-    return jsonResponse({ message: "Invalid request body." }, 400);
+    return jsonResponse({ message: validationMessages.invalidBody }, 400);
   }
 
   const validation = validatePayload(payload);
@@ -180,7 +180,7 @@ export async function POST(request: Request) {
   if (!validation.data) {
     return jsonResponse(
       {
-        message: "Please check the highlighted fields.",
+        message: validationMessages.highlightedFields,
         errors: validation.errors,
       },
       400
@@ -188,7 +188,7 @@ export async function POST(request: Request) {
   }
 
   if (validation.data.company) {
-    return jsonResponse({ message: "Message sent successfully." }, 200);
+    return jsonResponse({ message: formCopy.successFallback }, 200);
   }
 
   const config = getMailConfig();
@@ -196,8 +196,7 @@ export async function POST(request: Request) {
   if (!config) {
     return jsonResponse(
       {
-        message:
-          "Email service is not configured yet. Please set the SMTP environment variables.",
+        message: validationMessages.emailNotConfigured,
       },
       500
     );
@@ -250,11 +249,8 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error("Contact email failed", error);
-    return jsonResponse(
-      { message: "Message could not be sent. Please try again later." },
-      500
-    );
+    return jsonResponse({ message: validationMessages.sendFailed }, 500);
   }
 
-  return jsonResponse({ message: "Message sent successfully." }, 200);
+  return jsonResponse({ message: formCopy.successFallback }, 200);
 }

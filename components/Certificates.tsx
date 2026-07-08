@@ -3,7 +3,7 @@ import { LiftCard } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { certificates } from "@/data/portfolio";
+import { certificatesContent } from "@/data/portfolio";
 
 const iconMap = {
   Award,
@@ -19,13 +19,11 @@ export default function Certificates() {
     <section id="certificates" className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
         <SectionHeader
-          eyebrow="Recognition"
-          title="Certificates &"
-          accent="awards."
+          {...certificatesContent.header}
         />
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {certificates.map((cert, index) => {
+          {certificatesContent.items.map((cert, index) => {
             const Icon = iconMap[cert.icon as keyof typeof iconMap] ?? Award;
 
             return (

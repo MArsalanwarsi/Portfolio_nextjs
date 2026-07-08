@@ -33,6 +33,7 @@
   z-index: 1;
   width: min(100%, 25rem);
   text-align: center;
+  animation: contentSettle 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .nameBlock {
@@ -43,7 +44,7 @@
 }
 
 .nameLineWrap {
-  overflow: hidden;
+  overflow: visible;
   line-height: 1;
 }
 
@@ -56,12 +57,11 @@
   letter-spacing: 0;
   line-height: 0.92;
   color: #fff4f8;
-  transform: translateY(110%);
-  animation: nameReveal 0.54s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(0);
 }
 
 .firstName {
-  animation-delay: 0.08s;
+  animation: none;
 }
 
 .lastName {
@@ -69,7 +69,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation-delay: 0.16s;
+  animation: none;
 }
 
 .tagline {
@@ -79,9 +79,8 @@
   font-size: clamp(0.72rem, 1.6vw, 0.84rem);
   letter-spacing: 0;
   text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeUp 0.36s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .progressArea {
@@ -89,9 +88,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeUp 0.34s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .progressRow {
@@ -144,16 +142,15 @@
   background: linear-gradient(90deg, #ff365d, #a855f7, #d8b4fe);
 }
 
-@keyframes nameReveal {
-  to {
-    transform: translateY(0);
+@keyframes contentSettle {
+  from {
+    opacity: 0.01;
+    transform: translateY(12px) scale(0.985);
   }
-}
 
-@keyframes fadeUp {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

@@ -3,7 +3,7 @@ import { LiftCard } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { aboutHighlights, siteConfig } from "@/data/portfolio";
+import { aboutContent } from "@/data/portfolio";
 
 const iconMap = {
   Code2,
@@ -17,10 +17,7 @@ export default function About() {
     <section id="about" className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
         <SectionHeader
-          eyebrow="About"
-          title="Building products with"
-          accent="clarity."
-          description="I focus on clean UI, readable code, and practical full-stack work."
+          {...aboutContent.header}
         />
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
@@ -28,23 +25,20 @@ export default function About() {
             <Card className="h-full rounded-xl bg-card/80">
               <CardContent className="space-y-6 p-6 sm:p-8">
                 <Badge variant="secondary" className="rounded-full">
-                  About me
+                  {aboutContent.intro.badge}
                 </Badge>
                 <p className="font-display text-3xl font-semibold leading-tight text-balance sm:text-4xl">
-                  I&apos;m {siteConfig.name}, a full-stack developer working
-                  across React, Next.js, Node.js, and MongoDB.
+                  {aboutContent.intro.headline}
                 </p>
                 <p className="text-base leading-8 text-muted-foreground">
-                  Teaching sharpened my communication and product thinking. That
-                  helps me build interfaces that are easier to understand and
-                  codebases that are easier to grow.
+                  {aboutContent.intro.description}
                 </p>
               </CardContent>
             </Card>
           </LiftCard>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {aboutHighlights.map((item, index) => {
+            {aboutContent.highlights.map((item, index) => {
               const Icon = iconMap[item.icon as keyof typeof iconMap] ?? Code2;
 
               return (

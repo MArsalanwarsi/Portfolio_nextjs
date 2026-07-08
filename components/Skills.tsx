@@ -41,7 +41,7 @@ import { LiftCard, Stagger, StaggerItem } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { skills } from "@/data/portfolio";
+import { skillsContent } from "@/data/portfolio";
 
 const iconComponents = {
   Atom,
@@ -83,54 +83,19 @@ const iconComponents = {
   Zap,
 };
 
-const categories = [
-  {
-    key: "frontend" as const,
-    title: "Frontend",
-    description: "Interfaces, design systems, state, accessibility, and responsive delivery.",
-  },
-  {
-    key: "backend" as const,
-    title: "Backend",
-    description: "Node.js services, auth flows, route structure, and API contracts.",
-  },
-  {
-    key: "database" as const,
-    title: "Database",
-    description: "MongoDB, MySQL, schemas, and data modeling for product features.",
-  },
-  {
-    key: "tools" as const,
-    title: "Tools",
-    description: "Daily workflow tools for coding, debugging, deploying, and integrations.",
-  },
-];
-
-const stackHighlights = [
-  "Next.js 16",
-  "React 19",
-  "Tailwind CSS 4",
-  "TypeScript",
-  "Node.js",
-  "MongoDB",
-];
-
 export default function Skills() {
   return (
     <section id="skills" className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
         <SectionHeader
-          eyebrow="Skills"
-          title="Stack &"
-          accent="tooling."
-          description="A practical set of frontend, backend, database, and workflow tools used across the projects."
+          {...skillsContent.header}
         />
 
         <Stagger
           className="mb-5 grid gap-3 rounded-xl border border-border/70 bg-card/70 p-3 shadow-sm sm:grid-cols-3 lg:grid-cols-6"
           stagger={0.045}
         >
-          {stackHighlights.map((item) => (
+          {skillsContent.stackHighlights.map((item) => (
             <StaggerItem
               key={item}
               className="rounded-lg border border-border/60 bg-background/62 px-3 py-3 text-center text-sm font-medium"
@@ -141,8 +106,8 @@ export default function Skills() {
         </Stagger>
 
         <div className="grid gap-5 md:grid-cols-2">
-          {categories.map((category, index) => {
-            const categorySkills = skills.filter(
+          {skillsContent.categories.map((category, index) => {
+            const categorySkills = skillsContent.items.filter(
               (skill) => skill.category === category.key
             );
 

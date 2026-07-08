@@ -8,11 +8,105 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const premiumEase = [0.22, 1, 0.36, 1] as const;
 const instantTransition = { duration: 0.01 };
+type ScrollDirection = "down" | "up";
+
+let currentDirection: ScrollDirection = "down";
+let lastScrollY = 0;
+let scrollFrame = 0;
+let isListening = false;
+const directionListeners = new Set<() => void>();
+
+function notifyDirectionListeners() {
+  directionListeners.forEach((listener) => listener());
+}
+
+function handleScrollDirection() {
+  if (scrollFrame) {
+    return;
+  }
+
+  scrollFrame = window.requestAnimationFrame(() => {
+    scrollFrame = 0;
+    const nextScrollY = Math.max(0, window.scrollY);
+    const delta = nextScrollY - lastScrollY;
+
+    if (Math.abs(delta) > 6) {
+      const nextDirection = delta > 0 ? "down" : "up";
+
+      if (nextDirection !== currentDirection) {
+        currentDirection = nextDirection;
+        notifyDirectionListeners();
+      }
+    }
+
+    lastScrollY = nextScrollY;
+  });
+}
+
+function subscribeToScrollDirection(listener: () => void) {
+  directionListeners.add(listener);
+
+  if (typeof window !== "undefined" && !isListening) {
+    isListening = true;
+    lastScrollY = Math.max(0, window.scrollY);
+    window.addEventListener("scroll", handleScrollDirection, { passive: true });
+  }
+
+  return () => {
+    directionListeners.delete(listener);
+
+    if (
+      typeof window !== "undefined" &&
+      isListening &&
+      directionListeners.size === 0
+    ) {
+      isListening = false;
+      window.removeEventListener("scroll", handleScrollDirection);
+
+      if (scrollFrame) {
+        window.cancelAnimationFrame(scrollFrame);
+        scrollFrame = 0;
+      }
+    }
+  };
+}
+
+function getScrollDirectionSnapshot() {
+  return currentDirection;
+}
+
+function getServerScrollDirectionSnapshot(): ScrollDirection {
+  return "down";
+}
+
+function useScrollDirection() {
+  return useSyncExternalStore(
+    subscribeToScrollDirection,
+    getScrollDirectionSnapshot,
+    getServerScrollDirectionSnapshot
+  );
+}
+
+function useCanHover() {
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setCanHover(query.matches);
+
+    sync();
+    query.addEventListener("change", sync);
+
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  return canHover;
+}
 
 interface PremiumMotionProps {
   children: ReactNode;
@@ -50,27 +144,32 @@ interface RevealProps extends ControlledMotionDivProps {
 }
 
 export function Reveal({
-  amount = 0.2,
+  amount = 0.14,
   children,
   className,
   delay = 0,
-  once = true,
+  once = false,
   y = 24,
   ...props
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
+  const scrollDirection = useScrollDirection();
+  const offsetY = reduceMotion ? 0 : scrollDirection === "up" ? -y : y;
 
   return (
     <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount, once, margin: "0px 0px -8% 0px" }}
+      viewport={{ amount, once, margin: "0px 0px -4% 0px" }}
       variants={{
         hidden: {
           opacity: 0,
           scale: reduceMotion ? 1 : 0.985,
-          y: reduceMotion ? 0 : y,
+          transition: reduceMotion
+            ? instantTransition
+            : { duration: 0.26, ease: premiumEase },
+          y: offsetY,
         },
         visible: {
           opacity: 1,
@@ -96,11 +195,11 @@ interface StaggerProps extends ControlledMotionDivProps {
 }
 
 export function Stagger({
-  amount = 0.18,
+  amount = 0.12,
   children,
   className,
   delay = 0,
-  once = true,
+  once = false,
   stagger = 0.07,
   ...props
 }: StaggerProps) {
@@ -109,7 +208,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount, once, margin: "0px 0px -8% 0px" }}
+      viewport={{ amount, once, margin: "0px 0px -4% 0px" }}
       variants={{
         hidden: {},
         visible: {
@@ -137,6 +236,8 @@ export function StaggerItem({
   ...props
 }: StaggerItemProps) {
   const reduceMotion = useReducedMotion();
+  const scrollDirection = useScrollDirection();
+  const offsetY = reduceMotion ? 0 : scrollDirection === "up" ? -y : y;
 
   return (
     <m.div
@@ -144,7 +245,10 @@ export function StaggerItem({
       variants={{
         hidden: {
           opacity: 0,
-          y: reduceMotion ? 0 : y,
+          transition: reduceMotion
+            ? instantTransition
+            : { duration: 0.22, ease: premiumEase },
+          y: offsetY,
         },
         visible: {
           opacity: 1,
@@ -167,32 +271,38 @@ interface LiftCardProps extends RevealProps {
 }
 
 export function LiftCard({
-  amount = 0.18,
+  amount = 0.12,
   children,
   className,
   delay = 0,
   hoverScale = 1.008,
   hoverY = -6,
-  once = true,
+  once = false,
   y = 24,
   ...props
 }: LiftCardProps) {
   const reduceMotion = useReducedMotion();
+  const canHover = useCanHover();
+  const scrollDirection = useScrollDirection();
+  const offsetY = reduceMotion ? 0 : scrollDirection === "up" ? -y : y;
 
   return (
     <m.div
       className={cn("will-change-transform", className)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount, once, margin: "0px 0px -8% 0px" }}
+      viewport={{ amount, once, margin: "0px 0px -4% 0px" }}
       whileHover={
-        reduceMotion ? undefined : { y: hoverY, scale: hoverScale }
+        reduceMotion || !canHover ? undefined : { y: hoverY, scale: hoverScale }
       }
       variants={{
         hidden: {
           opacity: 0,
           scale: reduceMotion ? 1 : 0.99,
-          y: reduceMotion ? 0 : y,
+          transition: reduceMotion
+            ? instantTransition
+            : { duration: 0.26, ease: premiumEase },
+          y: offsetY,
         },
         visible: {
           opacity: 1,

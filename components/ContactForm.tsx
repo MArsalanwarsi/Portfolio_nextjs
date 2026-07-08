@@ -6,6 +6,7 @@ import { AlertCircle, CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { contactContent } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 interface FormState {
@@ -36,6 +37,7 @@ const initialFormState: FormState = {
 
 const fieldClassName =
   "min-h-12 w-full rounded-xl border border-border/70 bg-background/65 px-4 text-sm text-foreground shadow-inner shadow-black/10 outline-none transition placeholder:text-muted-foreground/65 focus:border-primary/60 focus:ring-3 focus:ring-primary/15 disabled:cursor-not-allowed disabled:opacity-60";
+const formCopy = contactContent.form;
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialFormState);
@@ -80,13 +82,13 @@ export default function ContactForm() {
 
       if (!response.ok) {
         setErrors(data.errors ?? {});
-        throw new Error(data.message || "Message could not be sent.");
+        throw new Error(data.message || formCopy.errorFallback);
       }
 
       setForm(initialFormState);
       setStatus({
         type: "success",
-        message: data.message || "Message sent successfully.",
+        message: data.message || formCopy.successFallback,
       });
     } catch (error) {
       setStatus({
@@ -94,7 +96,7 @@ export default function ContactForm() {
         message:
           error instanceof Error
             ? error.message
-            : "Message could not be sent. Please try again.",
+            : formCopy.errorFallback,
       });
     } finally {
       setIsSubmitting(false);
@@ -110,14 +112,13 @@ export default function ContactForm() {
               variant="outline"
               className="mb-3 h-7 rounded-full border-primary/25 bg-primary/8 px-3 text-xs font-medium text-primary"
             >
-              Contact form
+              {formCopy.badge}
             </Badge>
             <h3 className="font-display text-3xl font-semibold leading-tight">
-              Send a project message.
+              {formCopy.title}
             </h3>
             <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
-              Share the idea, role, timeline, or collaboration details and I
-              will reply as soon as possible.
+              {formCopy.description}
             </p>
           </div>
         </div>
@@ -138,7 +139,7 @@ export default function ContactForm() {
           <div className="grid gap-4 sm:grid-cols-2">
             <Field
               id="contact-name"
-              label="Name"
+              label={formCopy.fields.name.label}
               error={errors?.name}
             >
               <input
@@ -148,7 +149,7 @@ export default function ContactForm() {
                 autoComplete="name"
                 value={form.name}
                 onChange={updateField("name")}
-                placeholder="Your name"
+                placeholder={formCopy.fields.name.placeholder}
                 className={fieldClassName}
                 aria-invalid={Boolean(errors?.name)}
                 disabled={isSubmitting}
@@ -157,7 +158,7 @@ export default function ContactForm() {
 
             <Field
               id="contact-email"
-              label="Email"
+              label={formCopy.fields.email.label}
               error={errors?.email}
             >
               <input
@@ -167,7 +168,7 @@ export default function ContactForm() {
                 autoComplete="email"
                 value={form.email}
                 onChange={updateField("email")}
-                placeholder="you@example.com"
+                placeholder={formCopy.fields.email.placeholder}
                 className={fieldClassName}
                 aria-invalid={Boolean(errors?.email)}
                 disabled={isSubmitting}
@@ -177,7 +178,7 @@ export default function ContactForm() {
 
           <Field
             id="contact-subject"
-            label="Subject"
+            label={formCopy.fields.subject.label}
             error={errors?.subject}
           >
             <input
@@ -186,7 +187,7 @@ export default function ContactForm() {
               type="text"
               value={form.subject}
               onChange={updateField("subject")}
-              placeholder="Project, internship, freelance, or teaching"
+              placeholder={formCopy.fields.subject.placeholder}
               className={fieldClassName}
               aria-invalid={Boolean(errors?.subject)}
               disabled={isSubmitting}
@@ -195,7 +196,7 @@ export default function ContactForm() {
 
           <Field
             id="contact-message"
-            label="Message"
+            label={formCopy.fields.message.label}
             error={errors?.message}
           >
             <textarea
@@ -203,7 +204,7 @@ export default function ContactForm() {
               name="message"
               value={form.message}
               onChange={updateField("message")}
-              placeholder="Tell me what you need, the scope, timeline, and best way to reply."
+              placeholder={formCopy.fields.message.placeholder}
               className={cn(fieldClassName, "min-h-40 resize-y py-3 leading-7")}
               aria-invalid={Boolean(errors?.message)}
               disabled={isSubmitting}
@@ -222,7 +223,7 @@ export default function ContactForm() {
               ) : (
                 <Send className="size-4" aria-hidden="true" />
               )}
-              {isSubmitting ? "Sending" : "Send message"}
+              {isSubmitting ? formCopy.submitLoading : formCopy.submitIdle}
             </Button>
 
             <AnimatePresence initial={false} mode="popLayout">

@@ -3,16 +3,16 @@ import { LiftCard } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { experiences } from "@/data/portfolio";
+import { experienceContent } from "@/data/portfolio";
 
 export default function Experience() {
   return (
     <section id="experience" className="px-4 py-20 sm:px-6 lg:py-28">
       <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
-        <SectionHeader eyebrow="Experience" title="Recent" accent="experience." />
+        <SectionHeader {...experienceContent.header} />
 
         <div className="relative space-y-5 before:absolute before:left-4 before:top-3 before:h-[calc(100%-1.5rem)] before:w-px before:bg-border sm:before:left-6">
-          {experiences.map((experience, index) => (
+          {experienceContent.items.map((experience, index) => (
             <LiftCard
               key={`${experience.company}-${experience.role}`}
               className="relative pl-12 sm:pl-16"
