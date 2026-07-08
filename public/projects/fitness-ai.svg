@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Fitness AI assistant</title>
+  <desc id="desc">Fitness AI chat assistant with workout recommendations and OTP security panel.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#22c55e"/><stop offset=".45" stop-color="#0f766e"/><stop offset="1" stop-color="#111827"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="82" y="70" width="1036" height="620" rx="32" fill="#101827" opacity=".94"/>
+  <text x="132" y="140" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="800">Gemini Coach</text>
+  <rect x="132" y="188" width="580" height="82" rx="20" fill="#dcfce7"/>
+  <text x="168" y="238" fill="#14532d" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700">Plan a low-impact leg day for me.</text>
+  <rect x="220" y="306" width="660" height="142" rx="22" fill="#f8fafc"/>
+  <text x="260" y="356" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="800">AI recommendation</text>
+  <g fill="#475569"><rect x="260" y="388" width="444" height="14" rx="7"/><rect x="260" y="420" width="512" height="14" rx="7"/></g>
+  <rect x="132" y="498" width="360" height="110" rx="22" fill="#052e16"/>
+  <text x="168" y="548" fill="#bbf7d0" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800">OTP verified</text>
+  <rect x="560" y="498" width="428" height="110" rx="22" fill="#064e3b"/>
+  <text x="596" y="548" fill="#ccfbf1" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800">Nutrition notes synced</text>
+</svg>

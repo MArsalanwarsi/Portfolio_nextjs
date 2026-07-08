@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio home system</title>
+  <desc id="desc">Portfolio home screen with navigation, hero copy, portrait module, and metrics.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#4f46e5"/><stop offset=".5" stop-color="#0ea5e9"/><stop offset="1" stop-color="#101827"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="86" y="76" width="1028" height="608" rx="34" fill="#f8fafc"/>
+  <rect x="138" y="122" width="924" height="64" rx="24" fill="#e0f2fe"/>
+  <text x="178" y="164" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800">AW</text>
+  <g fill="#0369a1"><rect x="680" y="146" width="58" height="10" rx="5"/><rect x="766" y="146" width="78" height="10" rx="5"/><rect x="872" y="146" width="66" height="10" rx="5"/></g>
+  <text x="138" y="296" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="48" font-weight="900">Next.js Portfolio</text>
+  <rect x="142" y="338" width="434" height="18" rx="9" fill="#64748b"/><rect x="142" y="376" width="338" height="18" rx="9" fill="#94a3b8"/>
+  <rect x="142" y="438" width="152" height="48" rx="24" fill="#4f46e5"/><rect x="316" y="438" width="152" height="48" rx="24" fill="#e2e8f0"/>
+  <rect x="716" y="236" width="282" height="350" rx="28" fill="#0f172a"/>
+  <circle cx="857" cy="354" r="86" fill="#38bdf8" opacity=".82"/>
+  <rect x="138" y="544" width="438" height="74" rx="22" fill="#eef2ff"/>
+</svg>

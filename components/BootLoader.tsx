@@ -3,8 +3,25 @@
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 
-const MIN_DISPLAY_MS = 2400;
-const EXIT_DURATION_MS = 720;
+const MIN_DISPLAY_MS = 900;
+const EXIT_DURATION_MS = 420;
+const SEEN_KEY = "portfolio-loader-seen";
+
+function hasSeenLoader() {
+  try {
+    return sessionStorage.getItem(SEEN_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function markLoaderSeen() {
+  try {
+    sessionStorage.setItem(SEEN_KEY, "true");
+  } catch {
+    // Storage can be unavailable in restricted browser contexts.
+  }
+}
 
 export default function BootLoader() {
   const [phase, setPhase] = useState<"visible" | "closing" | "hidden">(
@@ -16,10 +33,18 @@ export default function BootLoader() {
     const startedAt = performance.now();
     let closeTimer: number | null = null;
     let hideTimer: number | null = null;
+    let frame = 0;
+
+    if (hasSeenLoader()) {
+      body.classList.remove("boot-loader-active");
+      setPhase("hidden");
+      return;
+    }
 
     body.classList.add("boot-loader-active");
 
     const beginClose = () => {
+      markLoaderSeen();
       const elapsed = performance.now() - startedAt;
       const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
 
@@ -33,13 +58,13 @@ export default function BootLoader() {
       }, remaining);
     };
 
-    if (document.readyState === "complete") {
-      beginClose();
-    } else {
-      window.addEventListener("load", beginClose, { once: true });
-    }
+    frame = window.requestAnimationFrame(beginClose);
 
     return () => {
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+
       if (closeTimer) {
         window.clearTimeout(closeTimer);
       }
@@ -48,7 +73,6 @@ export default function BootLoader() {
         window.clearTimeout(hideTimer);
       }
 
-      window.removeEventListener("load", beginClose);
       body.classList.remove("boot-loader-active");
     };
   }, []);

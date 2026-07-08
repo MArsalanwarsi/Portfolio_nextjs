@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/PremiumMotion";
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
@@ -17,19 +18,21 @@ export default function SectionHeader({
   align = "left",
 }: SectionHeaderProps) {
   return (
-    <div
+    <Reveal
+      amount={0.35}
       className={cn(
         "mb-10 max-w-2xl",
         align === "center" && "mx-auto text-center"
       )}
+      y={18}
     >
       <Badge
         variant="outline"
-        className="mb-4 h-7 rounded-full border-primary/20 bg-primary/5 px-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-primary"
+        className="mb-4 h-7 rounded-full border-primary/25 bg-primary/8 px-3 text-xs font-medium text-primary"
       >
         {eyebrow}
       </Badge>
-      <h2 className="font-display text-4xl font-semibold leading-[0.95] tracking-normal text-balance sm:text-5xl lg:text-6xl">
+      <h2 className="font-display text-3xl font-semibold leading-[1.02] tracking-normal text-balance sm:text-4xl lg:text-5xl">
         {title} <span className="text-primary">{accent}</span>
       </h2>
       {description ? (
@@ -37,6 +40,6 @@ export default function SectionHeader({
           {description}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   );
 }

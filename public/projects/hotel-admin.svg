@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Hotel admin controls</title>
+  <desc id="desc">Admin panel with room inventory, guest records, and role permissions.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#134e4a"/><stop offset=".58" stop-color="#0f172a"/><stop offset="1" stop-color="#172554"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="72" y="60" width="1056" height="640" rx="30" fill="#f8fafc"/>
+  <rect x="72" y="60" width="228" height="640" rx="30" fill="#0f172a"/>
+  <text x="118" y="136" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="800">HotelOps</text>
+  <g fill="#94a3b8"><rect x="116" y="190" width="132" height="16" rx="8"/><rect x="116" y="242" width="108" height="16" rx="8"/><rect x="116" y="294" width="146" height="16" rx="8"/><rect x="116" y="346" width="92" height="16" rx="8"/></g>
+  <text x="350" y="132" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="800">Admin control center</text>
+  <rect x="350" y="178" width="690" height="96" rx="18" fill="#e0f2fe"/>
+  <g fill="#0369a1"><rect x="388" y="216" width="120" height="18" rx="9"/><rect x="562" y="216" width="100" height="18" rx="9"/><rect x="716" y="216" width="134" height="18" rx="9"/></g>
+  <rect x="350" y="314" width="308" height="278" rx="22" fill="#ecfeff"/>
+  <text x="386" y="368" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="800">Room inventory</text>
+  <g fill="#14b8a6"><rect x="386" y="416" width="218" height="18" rx="9"/><rect x="386" y="466" width="168" height="18" rx="9"/><rect x="386" y="516" width="238" height="18" rx="9"/></g>
+  <rect x="700" y="314" width="340" height="278" rx="22" fill="#fff7ed"/>
+  <text x="736" y="368" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="800">Permissions</text>
+  <g><rect x="738" y="414" width="248" height="44" rx="14" fill="#fed7aa"/><rect x="738" y="480" width="248" height="44" rx="14" fill="#ffedd5"/><rect x="738" y="546" width="248" height="44" rx="14" fill="#fed7aa"/></g>
+</svg>

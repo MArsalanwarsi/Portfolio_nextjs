@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Fitness analytics dashboard</title>
+  <desc id="desc">Fitness tracker dashboard with calories, workouts, weekly activity, and progress cards.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#16a34a"/><stop offset=".5" stop-color="#134e4a"/><stop offset="1" stop-color="#111827"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="86" y="72" width="1028" height="616" rx="34" fill="#f8fafc"/>
+  <text x="138" y="146" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="800">Fitness Tracker</text>
+  <rect x="138" y="190" width="280" height="160" rx="24" fill="#dcfce7"/><rect x="460" y="190" width="280" height="160" rx="24" fill="#ffedd5"/><rect x="782" y="190" width="280" height="160" rx="24" fill="#dbeafe"/>
+  <text x="174" y="256" fill="#15803d" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="900">8.4k</text>
+  <text x="496" y="256" fill="#c2410c" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="900">640</text>
+  <text x="818" y="256" fill="#1d4ed8" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="900">92%</text>
+  <g fill="#334155" font-family="Inter,Arial,sans-serif" font-size="18"><text x="174" y="294">Steps today</text><text x="496" y="294">Calories burned</text><text x="818" y="294">Weekly goal</text></g>
+  <rect x="138" y="396" width="588" height="214" rx="24" fill="#0f172a"/>
+  <polyline points="178,558 250,522 318,540 392,458 470,486 548,420 660,462" fill="none" stroke="#22c55e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#94a3b8"><rect x="178" y="438" width="104" height="12" rx="6"/><rect x="178" y="470" width="78" height="12" rx="6"/></g>
+  <rect x="766" y="396" width="296" height="214" rx="24" fill="#ecfdf5"/>
+  <circle cx="914" cy="502" r="70" fill="none" stroke="#bbf7d0" stroke-width="20"/><path d="M914 432a70 70 0 0 1 60 106" fill="none" stroke="#16a34a" stroke-width="20" stroke-linecap="round"/>
+</svg>

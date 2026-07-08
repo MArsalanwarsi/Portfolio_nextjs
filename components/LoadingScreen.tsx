@@ -14,8 +14,8 @@ export default function LoadingScreen({
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    const duration = 2100;
-    const interval = 22;
+    const duration = 760;
+    const interval = 16;
     const steps = duration / interval;
     const increment = 100 / steps;
     let current = 0;
@@ -33,9 +33,8 @@ export default function LoadingScreen({
   }, []);
 
   return (
-    <div
+    <output
       className={`${styles.loader}${exiting ? ` ${styles.isExiting}` : ""}`}
-      role="status"
       aria-live="polite"
       aria-label={`Loading ${siteConfig.name} portfolio`}
     >
@@ -58,20 +57,14 @@ export default function LoadingScreen({
             <span className={styles.loadingLabel}>Loading</span>
             <span className={styles.percent}>{counter}%</span>
           </div>
-          <div
+          <progress
             className={styles.progressTrack}
-            role="progressbar"
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-valuenow={counter}
-          >
-            <div
-              className={styles.progressBar}
-              style={{ transform: `scaleX(${counter / 100})` }}
-            />
-          </div>
+            value={counter}
+            max={100}
+            aria-label="Loading progress"
+          />
         </div>
       </div>
-    </div>
+    </output>
   );
 }

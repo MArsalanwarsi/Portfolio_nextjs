@@ -1,19 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, Send } from "lucide-react";
+import { m } from "framer-motion";
+import { Send } from "lucide-react";
+import MobileNav from "@/components/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { navLinks, siteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +14,6 @@ const hasRealEmail = !siteConfig.email.includes("example.com");
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
@@ -92,7 +84,6 @@ export default function Navbar() {
     const id = href.replace("#", "");
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(id);
-    setMobileOpen(false);
   };
 
   const contactHref = hasRealEmail
@@ -100,7 +91,10 @@ export default function Navbar() {
     : siteConfig.linkedin;
 
   return (
-    <nav
+    <m.nav
+      initial={{ opacity: 0, y: -18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 px-4 pt-4 transition-all duration-300 sm:px-6",
         scrolled && "pt-3"
@@ -109,7 +103,7 @@ export default function Navbar() {
     >
       <div
         className={cn(
-          "glass-nav mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 rounded-2xl border px-3 py-2 transition-all duration-300",
+          "glass-nav mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 rounded-xl border px-3 py-2 transition-all duration-300",
           scrolled && "translate-y-[-1px]"
         )}
       >
@@ -124,7 +118,7 @@ export default function Navbar() {
               AW
             </AvatarFallback>
           </Avatar>
-          <span className="hidden min-w-0 flex-col leading-tight sm:flex">
+          <span className="flex min-w-0 flex-col leading-tight max-[360px]:hidden">
             <span className="truncate text-sm font-semibold">
               {siteConfig.shortName}
             </span>
@@ -183,104 +177,14 @@ export default function Navbar() {
             Connect
           </Button>
 
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon-lg"
-                  className="rounded-full border border-border/60 bg-muted/30 hover:bg-primary/10 lg:hidden"
-                />
-              }
-              aria-label="Open navigation menu"
-            >
-              <Menu className="size-5" aria-hidden="true" />
-            </SheetTrigger>
-            <SheetContent className="glass-nav w-[min(86vw,22rem)] gap-0 overflow-hidden border-primary/20">
-              <SheetHeader className="border-b border-border/60 px-5 pb-5 pt-5 pr-14">
-                <div className="flex items-center gap-3">
-                  <Avatar className="size-11 border border-border bg-muted">
-                    <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
-                      AW
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="min-w-0">
-                    <SheetTitle className="font-display text-2xl leading-none">
-                      {siteConfig.shortName}
-                    </SheetTitle>
-                    <SheetDescription className="mt-1 text-xs">
-                      {siteConfig.role}
-                    </SheetDescription>
-                  </div>
-                </div>
-              </SheetHeader>
-
-              <div className="flex flex-col gap-1 px-3 py-4">
-                {navLinks.map((link, index) => {
-                  const id = link.href.replace("#", "");
-                  const active = activeSection === id;
-
-                  return (
-                    <Button
-                      key={link.href}
-                      nativeButton={false}
-                      render={
-                        <a
-                          href={link.href}
-                          onClick={(event) => handleNavClick(event, link.href)}
-                        />
-                      }
-                      variant="ghost"
-                      size="lg"
-                      className={cn(
-                        "h-11 justify-start gap-3 rounded-2xl px-3 text-sm text-muted-foreground hover:bg-primary/10 hover:text-foreground",
-                        active &&
-                          "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary hover:text-primary-foreground"
-                      )}
-                      aria-current={active ? "page" : undefined}
-                    >
-                      <span
-                        className={cn(
-                          "w-6 font-mono text-[0.68rem] text-muted-foreground",
-                          active && "text-primary-foreground/70"
-                        )}
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      {link.label}
-                    </Button>
-                  );
-                })}
-              </div>
-
-              <SheetFooter className="border-t border-border/60 p-3">
-                <div className="flex items-center justify-between rounded-2xl bg-muted/25 p-2">
-                  <span className="px-2 text-sm text-muted-foreground">
-                    Theme
-                  </span>
-                  <ThemeToggle />
-                </div>
-
-                <Button
-                  nativeButton={false}
-                  render={
-                    <a
-                      href={contactHref}
-                      target={hasRealEmail ? undefined : "_blank"}
-                      rel={hasRealEmail ? undefined : "noopener noreferrer"}
-                    />
-                  }
-                  size="lg"
-                  className="h-11 rounded-2xl"
-                >
-                  <Send className="size-4" aria-hidden="true" />
-                  {hasRealEmail ? "Email me" : "Open LinkedIn"}
-                </Button>
-              </SheetFooter>
-            </SheetContent>
-          </Sheet>
+          <MobileNav
+            activeSection={activeSection}
+            contactHref={contactHref}
+            hasRealEmail={hasRealEmail}
+            onNavigate={handleNavClick}
+          />
         </div>
       </div>
-    </nav>
+    </m.nav>
   );
 }

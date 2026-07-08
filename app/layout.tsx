@@ -1,31 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, IBM_Plex_Mono, Manrope, Syne } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import BootLoader from "@/components/BootLoader";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const geist = Geist({
+const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const syne = Syne({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -61,14 +48,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={cn(
-        geist.variable,
-        syne.variable,
-        manrope.variable,
-        ibmPlexMono.variable,
-        "font-sans"
-      )}
+      className={cn(geistSans.variable, geistMono.variable, "font-sans")}
     >
       <body className="boot-loader-active min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider

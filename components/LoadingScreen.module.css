@@ -7,11 +7,12 @@
   overflow: hidden;
   padding: 1.25rem;
   background:
-    radial-gradient(circle at 50% 44%, rgba(168, 85, 247, 0.18), transparent 24rem),
-    linear-gradient(180deg, #080312 0%, #050208 64%, #030106 100%);
+    radial-gradient(circle at 48% 38%, rgba(255, 54, 93, 0.18), transparent 22rem),
+    radial-gradient(circle at 58% 58%, rgba(168, 85, 247, 0.16), transparent 24rem),
+    linear-gradient(180deg, #14050e 0%, #070309 64%, #030104 100%);
   transition:
-    transform 0.72s cubic-bezier(0.76, 0, 0.24, 1),
-    opacity 0.72s cubic-bezier(0.76, 0, 0.24, 1);
+    transform 0.42s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.42s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .isExiting {
@@ -23,8 +24,8 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 40% 32% at 50% 48%, rgba(192, 132, 252, 0.14), transparent 70%),
-    radial-gradient(ellipse 28% 24% at 50% 52%, rgba(124, 58, 237, 0.16), transparent 64%);
+    radial-gradient(ellipse 42% 30% at 50% 46%, rgba(255, 54, 93, 0.12), transparent 70%),
+    radial-gradient(ellipse 30% 24% at 52% 54%, rgba(168, 85, 247, 0.16), transparent 64%);
 }
 
 .content {
@@ -50,37 +51,37 @@
 .lastName {
   display: block;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-size: 5.25rem;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 0.92;
-  color: #f5edff;
+  color: #fff4f8;
   transform: translateY(110%);
-  animation: nameReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: nameReveal 0.54s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .firstName {
-  animation-delay: 0.2s;
+  animation-delay: 0.08s;
 }
 
 .lastName {
-  background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 52%, #7c3aed 100%);
+  background: linear-gradient(135deg, #ff365d 0%, #f0abfc 52%, #7c3aed 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation-delay: 0.35s;
+  animation-delay: 0.16s;
 }
 
 .tagline {
   margin: 1rem 0 0;
-  color: rgba(216, 180, 254, 0.62);
+  color: rgba(248, 221, 234, 0.62);
   font-family: var(--font-mono), monospace;
   font-size: clamp(0.72rem, 1.6vw, 0.84rem);
-  letter-spacing: 0.22em;
+  letter-spacing: 0;
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.68s forwards;
+  animation: fadeUp 0.36s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards;
 }
 
 .progressArea {
@@ -90,7 +91,7 @@
   gap: 0.65rem;
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.52s forwards;
+  animation: fadeUp 0.34s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
 }
 
 .progressRow {
@@ -104,16 +105,16 @@
 .percent {
   font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .loadingLabel {
-  color: rgba(245, 237, 255, 0.42);
+  color: rgba(255, 244, 248, 0.42);
 }
 
 .percent {
-  color: rgba(216, 180, 254, 0.82);
+  color: rgba(240, 171, 252, 0.82);
   font-variant-numeric: tabular-nums;
 }
 
@@ -122,17 +123,25 @@
   height: 2px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(216, 180, 254, 0.14);
+  border: 0;
+  background: rgba(255, 228, 236, 0.14);
+  appearance: none;
 }
 
-.progressBar {
-  width: 100%;
-  height: 100%;
+.progressTrack::-webkit-progress-bar {
   border-radius: inherit;
-  background: linear-gradient(90deg, #7c3aed, #a855f7, #d8b4fe);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.08s linear;
+  background: rgba(255, 228, 236, 0.14);
+}
+
+.progressTrack::-webkit-progress-value {
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff365d, #a855f7, #d8b4fe);
+  transition: width 0.08s linear;
+}
+
+.progressTrack::-moz-progress-bar {
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff365d, #a855f7, #d8b4fe);
 }
 
 @keyframes nameReveal {
@@ -150,17 +159,24 @@
 
 @media (max-width: 640px) {
   .content {
-    width: min(100%, 19rem);
+    width: min(100%, 22rem);
   }
 
   .firstName,
   .lastName {
-    font-size: clamp(2.7rem, 15vw, 4.45rem);
+    font-size: 3.55rem;
   }
 
   .tagline {
     font-size: 0.66rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .firstName,
+  .lastName {
+    font-size: 3.1rem;
   }
 }
 
@@ -174,7 +190,7 @@
     transform: none !important;
   }
 
-  .progressBar {
+  .progressTrack::-webkit-progress-value {
     transition: none !important;
   }
 
