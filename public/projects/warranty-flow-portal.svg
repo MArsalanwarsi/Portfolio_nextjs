@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Warranty Flow customer portal</title>
+  <desc id="desc">Flutter customer portal preview with login, warranty jobs, status chips, metrics, and reusable portal UI.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#04131f"/>
+      <stop offset=".46" stop-color="#4c1d95"/>
+      <stop offset="1" stop-color="#0a050c"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#020617" flood-opacity=".38"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <path d="M92 614c148-148 298-84 444-214 118-106 214-214 388-156 86 28 140 10 208-48" fill="none" stroke="#38bdf8" stroke-width="3" stroke-opacity=".38"/>
+  <path d="M126 188c138 62 264 38 378-72 76-74 176-70 300 12 102 68 184 78 268 30" fill="none" stroke="#f43f5e" stroke-width="3" stroke-opacity=".28"/>
+  <rect x="94" y="92" width="436" height="576" rx="34" fill="#0f172a" fill-opacity=".82" stroke="#ffffff" stroke-opacity=".12" filter="url(#shadow)"/>
+  <text x="138" y="164" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="900">Warranty Flow</text>
+  <text x="140" y="202" fill="#bae6fd" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700">Customer service portal</text>
+  <rect x="140" y="252" width="342" height="110" rx="24" fill="url(#panel)"/>
+  <text x="174" y="304" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="900">08 Active jobs</text>
+  <text x="174" y="334" fill="#eff6ff" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700">Tracking, receipts, and status updates</text>
+  <rect x="140" y="400" width="342" height="66" rx="20" fill="#111827" stroke="#ffffff" stroke-opacity=".12"/>
+  <circle cx="180" cy="433" r="14" fill="#38bdf8"/>
+  <text x="212" y="428" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Phone repair</text>
+  <text x="212" y="450" fill="#93c5fd" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700">In progress</text>
+  <rect x="140" y="488" width="342" height="66" rx="20" fill="#111827" stroke="#ffffff" stroke-opacity=".12"/>
+  <circle cx="180" cy="521" r="14" fill="#a855f7"/>
+  <text x="212" y="516" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Warranty claim</text>
+  <text x="212" y="538" fill="#d8b4fe" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700">Ready for pickup</text>
+  <rect x="626" y="58" width="332" height="644" rx="54" fill="#050505" stroke="#ffffff" stroke-opacity=".16" filter="url(#shadow)"/>
+  <rect x="652" y="94" width="280" height="572" rx="38" fill="url(#phone)"/>
+  <rect x="684" y="138" width="216" height="58" rx="18" fill="#082f49"/>
+  <text x="714" y="174" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900">Customer Login</text>
+  <rect x="686" y="236" width="212" height="54" rx="16" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="710" y="270" fill="#0369a1" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800">Email address</text>
+  <rect x="686" y="310" width="212" height="54" rx="16" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="710" y="344" fill="#0369a1" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800">Password</text>
+  <rect x="686" y="398" width="212" height="56" rx="18" fill="#38bdf8"/>
+  <text x="748" y="433" fill="#082f49" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900">Sign in</text>
+  <rect x="686" y="504" width="96" height="78" rx="18" fill="#dbeafe"/>
+  <rect x="802" y="504" width="96" height="78" rx="18" fill="#f3e8ff"/>
+  <text x="718" y="548" fill="#075985" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="900">12</text>
+  <text x="830" y="548" fill="#581c87" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="900">04</text>
+  <text x="704" y="570" fill="#0369a1" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">Receipts</text>
+  <text x="822" y="570" fill="#7e22ce" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">Claims</text>
+  <circle cx="1018" cy="208" r="58" fill="#38bdf8" fill-opacity=".16"/>
+  <circle cx="1018" cy="208" r="32" fill="#38bdf8" fill-opacity=".35"/>
+  <circle cx="1038" cy="532" r="78" fill="#a855f7" fill-opacity=".14"/>
+</svg>

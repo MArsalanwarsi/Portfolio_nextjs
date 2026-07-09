@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Globe2, Mail, MapPin, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -17,12 +17,26 @@ const socials = [
     href: siteConfig.linkedin,
     icon: LinkedinIcon,
   },
+  {
+    label: "Website",
+    href: siteConfig.website,
+    icon: Globe2,
+  },
   ...(hasRealEmail
     ? [
         {
           label: "Email",
           href: `mailto:${siteConfig.email}`,
           icon: Mail,
+        },
+      ]
+    : []),
+  ...(siteConfig.phone
+    ? [
+        {
+          label: "Phone",
+          href: `tel:${siteConfig.phone}`,
+          icon: Phone,
         },
       ]
     : []),
@@ -44,6 +58,10 @@ export default function Footer() {
               <p className="mt-1 text-sm text-muted-foreground">
                 {siteConfig.tagline}
               </p>
+              <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                <MapPin className="size-3.5 text-primary" aria-hidden="true" />
+                {siteConfig.location}
+              </p>
             </div>
           </div>
 
@@ -51,6 +69,7 @@ export default function Footer() {
             {socials.map((social) => {
               const Icon = social.icon;
               const isMail = social.href.startsWith("mailto:");
+              const isPhone = social.href.startsWith("tel:");
 
               return (
                 <Button
@@ -59,8 +78,8 @@ export default function Footer() {
                   render={
                     <a
                       href={social.href}
-                      target={isMail ? undefined : "_blank"}
-                      rel={isMail ? undefined : "noopener noreferrer"}
+                      target={isMail || isPhone ? undefined : "_blank"}
+                      rel={isMail || isPhone ? undefined : "noopener noreferrer"}
                       aria-label={social.label}
                     />
                   }

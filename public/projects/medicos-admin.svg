@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">K-Medicos admin panel</title>
+  <desc id="desc">Admin table, SQL-backed catalog, orders, and account recovery workflow preview.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#111827"/><stop offset=".5" stop-color="#581c87"/><stop offset="1" stop-color="#be123c"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="86" y="76" width="1028" height="608" rx="34" fill="#0b0b0f" stroke="#ffffff" stroke-opacity=".1"/>
+  <rect x="126" y="116" width="220" height="528" rx="26" fill="#111114"/>
+  <text x="162" y="174" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="900">Admin</text>
+  <g fill="#27272a"><rect x="162" y="236" width="132" height="18" rx="9"/><rect x="162" y="292" width="150" height="18" rx="9"/><rect x="162" y="348" width="118" height="18" rx="9"/><rect x="162" y="404" width="146" height="18" rx="9"/></g>
+  <rect x="386" y="116" width="688" height="190" rx="28" fill="#111114"/>
+  <text x="430" y="176" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="900">Orders and stock</text>
+  <rect x="430" y="218" width="150" height="42" rx="21" fill="#a855f7"/>
+  <rect x="604" y="218" width="150" height="42" rx="21" fill="#be123c"/>
+  <rect x="778" y="218" width="150" height="42" rx="21" fill="#27272a"/>
+  <rect x="386" y="342" width="688" height="302" rx="28" fill="#111114"/>
+  <g fill="#27272a"><rect x="430" y="398" width="580" height="18" rx="9"/><rect x="430" y="458" width="508" height="18" rx="9"/><rect x="430" y="518" width="550" height="18" rx="9"/><rect x="430" y="578" width="470" height="18" rx="9"/></g>
+</svg>

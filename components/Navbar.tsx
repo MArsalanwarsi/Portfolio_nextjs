@@ -5,11 +5,11 @@ import { m } from "framer-motion";
 import { Send } from "lucide-react";
 import MobileNav from "@/components/MobileNav";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
-
+ 
 const hasRealEmail = !siteConfig.email.includes("example.com");
 
 export default function Navbar() {
@@ -107,26 +107,36 @@ export default function Navbar() {
           scrolled && "translate-y-[-1px]"
         )}
       >
-        <a
-          href="#home"
-          onClick={(event) => handleNavClick(event, "#home")}
-          className="group flex min-w-0 items-center gap-3"
-          aria-label={`${siteConfig.name} home`}
-        >
-          <Avatar className="size-10 border border-border bg-muted">
-            <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
-              AW
-            </AvatarFallback>
-          </Avatar>
-          <span className="flex min-w-0 flex-col leading-tight max-[360px]:hidden">
-            <span className="truncate text-sm font-semibold">
-              {siteConfig.shortName}
-            </span>
-            <span className="truncate text-xs text-muted-foreground">
-              Full-stack developer
-            </span>
-          </span>
-        </a>
+      
+
+<a
+  href="#home"
+  onClick={(event) => handleNavClick(event, "#home")}
+  className="group flex min-w-0 items-center gap-3"
+  aria-label={`${siteConfig.name} home`}
+>
+  <Avatar className="size-10 border border-border bg-muted">
+    <AvatarImage
+      src="/icon.png"
+      alt={`${siteConfig.name} logo`}
+      className="object-cover"
+    />
+
+    <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
+      AW
+    </AvatarFallback>
+  </Avatar>
+
+  <span className="flex min-w-0 flex-col leading-tight max-[360px]:hidden">
+    <span className="truncate text-sm font-semibold">
+      {siteConfig.shortName}
+    </span>
+
+    <span className="truncate text-xs text-muted-foreground">
+      {siteConfig.role}
+    </span>
+  </span>
+</a>
 
         <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => {

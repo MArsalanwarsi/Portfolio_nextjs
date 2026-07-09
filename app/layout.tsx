@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     type: seo.openGraph.type,
     locale: seo.openGraph.locale,
   },
+   
 };
 
 export default function RootLayout({

@@ -1,4 +1,4 @@
-import { ArrowUpRight, FileText, Mail } from "lucide-react";
+import { ArrowUpRight, FileText, Globe2, Mail, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { LiftCard, Reveal } from "@/components/PremiumMotion";
@@ -26,11 +26,25 @@ const contactLinks = [
     disabled: false,
   },
   {
+    label: "Website",
+    href: siteConfig.website,
+    icon: Globe2,
+    description: "Live portfolio.",
+    disabled: false,
+  },
+  {
     label: "Email",
     href: hasRealEmail ? `mailto:${siteConfig.email}` : "",
     icon: Mail,
     description: "Direct contact.",
     disabled: !hasRealEmail,
+  },
+  {
+    label: "Phone",
+    href: `tel:${siteConfig.phone}`,
+    icon: Phone,
+    description: "Direct call.",
+    disabled: !siteConfig.phone,
   },
   {
     label: "Resume",
@@ -67,6 +81,10 @@ export default function Contact() {
                   <p className="mt-5 max-w-md text-base leading-8 opacity-80">
                     {contactContent.card.description}
                   </p>
+                  <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary-foreground/18 bg-primary-foreground/10 px-3 py-1.5 text-sm font-medium">
+                    <MapPin className="size-4" aria-hidden="true" />
+                    {siteConfig.location}
+                  </p>
                 </div>
 
                 <div className="space-y-3">
@@ -93,13 +111,14 @@ export default function Contact() {
                     {contactLinks.map((link) => {
                       const Icon = link.icon;
                       const isMail = link.href.startsWith("mailto:");
+                      const isPhone = link.href.startsWith("tel:");
 
                       return (
                         <a
                           key={link.label}
                           href={link.href}
-                          target={isMail ? undefined : "_blank"}
-                          rel={isMail ? undefined : "noopener noreferrer"}
+                          target={isMail || isPhone ? undefined : "_blank"}
+                          rel={isMail || isPhone ? undefined : "noopener noreferrer"}
                           className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-primary-foreground/18 bg-primary-foreground/10 px-3 text-sm font-medium text-primary-foreground transition hover:bg-primary-foreground/16"
                         >
                           <span className="flex items-center gap-3">

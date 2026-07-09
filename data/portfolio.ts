@@ -32,6 +32,9 @@ export interface SiteConfig {
   description: string;
   intro: string;
   availability: string;
+  location: string;
+  website: string;
+  phone: string;
   email: string;
   github: string;
   linkedin: string;
@@ -87,6 +90,20 @@ export interface Experience {
 export interface ExperienceContent {
   header: SectionHeaderData;
   items: Experience[];
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  result: string;
+  description: string;
+  highlights: string[];
+}
+
+export interface EducationContent {
+  header: SectionHeaderData;
+  items: Education[];
 }
 
 export interface Skill {
@@ -225,6 +242,7 @@ export interface PortfolioData {
   sections: {
     about: AboutContent;
     experience: ExperienceContent;
+    education: EducationContent;
     skills: SkillsContent;
     projects: ProjectsContent;
     certificates: CertificatesContent;
@@ -244,6 +262,9 @@ export const aboutHighlights = aboutContent.highlights;
 
 export const experienceContent = portfolio.sections.experience;
 export const experiences = experienceContent.items;
+
+export const educationContent = portfolio.sections.education;
+export const education = educationContent.items;
 
 export const skillsContent = portfolio.sections.skills;
 export const stackHighlights = skillsContent.stackHighlights;

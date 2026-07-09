@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Master Wood Works furniture storefront</title>
+  <desc id="desc">Furniture ecommerce storefront preview with product cards, wood finishes, and WhatsApp ordering.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#12080a"/>
+      <stop offset=".48" stop-color="#7c2d12"/>
+      <stop offset="1" stop-color="#581c87"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" x2="1">
+      <stop stop-color="#fde68a"/>
+      <stop offset=".5" stop-color="#d97706"/>
+      <stop offset="1" stop-color="#78350f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="90" y="78" width="1020" height="604" rx="34" fill="#111827" stroke="#ffffff" stroke-opacity=".12"/>
+  <text x="144" y="154" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="900">Master Wood Works</text>
+  <text x="146" y="192" fill="#fed7aa" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="800">Furniture ecommerce storefront</text>
+  <rect x="144" y="248" width="262" height="326" rx="26" fill="#fff7ed"/>
+  <rect x="469" y="248" width="262" height="326" rx="26" fill="#ffedd5"/>
+  <rect x="794" y="248" width="262" height="326" rx="26" fill="#fef3c7"/>
+  <g fill="url(#wood)">
+    <rect x="188" y="304" width="174" height="74" rx="16"/>
+    <rect x="510" y="304" width="180" height="86" rx="18"/>
+    <rect x="846" y="304" width="158" height="112" rx="18"/>
+  </g>
+  <g stroke="#78350f" stroke-width="10" stroke-linecap="round">
+    <path d="M218 384v70M334 384v70M238 454h76"/>
+    <path d="M536 396v70M666 396v70M552 466h98"/>
+    <path d="M872 424v78M978 424v78M892 502h66"/>
+  </g>
+  <g font-family="Inter,Arial,sans-serif" font-weight="900">
+    <text x="188" y="514" fill="#7c2d12" font-size="20">Dining Set</text>
+    <text x="510" y="514" fill="#7c2d12" font-size="20">Sofa Frame</text>
+    <text x="846" y="514" fill="#7c2d12" font-size="20">Wardrobe</text>
+  </g>
+  <rect x="188" y="536" width="150" height="38" rx="19" fill="#16a34a"/>
+  <rect x="510" y="536" width="150" height="38" rx="19" fill="#16a34a"/>
+  <rect x="846" y="536" width="150" height="38" rx="19" fill="#16a34a"/>
+  <text x="220" y="561" fill="#f0fdf4" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="900">WhatsApp</text>
+  <text x="542" y="561" fill="#f0fdf4" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="900">WhatsApp</text>
+  <text x="878" y="561" fill="#f0fdf4" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="900">WhatsApp</text>
+</svg>

@@ -1,10 +1,11 @@
-import { Briefcase, Code2, FolderGit2, Users } from "lucide-react";
+import { Award, Briefcase, Code2, FolderGit2, Users } from "lucide-react";
 import { LiftCard } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { statsContent } from "@/data/portfolio";
 
 const iconMap = {
+  Award,
   Briefcase,
   Code2,
   FolderGit2,

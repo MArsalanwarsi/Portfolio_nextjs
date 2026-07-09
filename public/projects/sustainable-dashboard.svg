@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sustainable Living carbon dashboard</title>
+  <desc id="desc">Flutter carbon tracker dashboard with daily CO2 score, travel logs, energy logs, and lifestyle metrics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#050505"/><stop offset=".45" stop-color="#064e3b"/><stop offset="1" stop-color="#581c87"/></linearGradient>
+    <linearGradient id="phone" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#dcfce7"/></linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="438" y="58" width="324" height="644" rx="54" fill="#070707" stroke="#ffffff" stroke-opacity=".14"/>
+  <rect x="464" y="94" width="272" height="572" rx="36" fill="url(#phone)"/>
+  <text x="500" y="162" fill="#052e16" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="900">Sustainable Living</text>
+  <text x="500" y="196" fill="#15803d" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700">Daily carbon snapshot</text>
+  <circle cx="600" cy="300" r="88" fill="#ecfdf5" stroke="#10b981" stroke-width="16"/>
+  <path d="M552 300a48 48 0 0 1 96 0" fill="none" stroke="#581c87" stroke-width="16" stroke-linecap="round"/>
+  <text x="566" y="314" fill="#052e16" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="900">42%</text>
+  <rect x="500" y="430" width="200" height="58" rx="18" fill="#052e16"/>
+  <rect x="500" y="508" width="200" height="58" rx="18" fill="#14532d"/>
+  <rect x="500" y="586" width="200" height="58" rx="18" fill="#581c87"/>
+  <text x="526" y="466" fill="#dcfce7" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Travel logs</text>
+  <text x="526" y="544" fill="#dcfce7" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Energy use</text>
+  <text x="526" y="622" fill="#f5d0fe" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Lifestyle</text>
+  <path d="M222 534c88-96 164-40 238-128" fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round" opacity=".9"/>
+  <path d="M742 506c94-42 160-142 236-118" fill="none" stroke="#a855f7" stroke-width="14" stroke-linecap="round" opacity=".85"/>
+</svg>

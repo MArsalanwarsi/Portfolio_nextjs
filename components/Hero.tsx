@@ -1,4 +1,10 @@
-import { ArrowDownRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Globe2,
+  MapPin,
+} from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { LiftCard, Reveal, Stagger, StaggerItem } from "@/components/PremiumMotion";
 import ProfilePortrait from "@/components/ProfilePortrait";
@@ -34,6 +40,10 @@ export default function Hero() {
             </span>
             <span className="rounded-full border border-border/70 bg-background/55 px-3 py-1">
               {siteConfig.specialization}
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-background/55 px-3 py-1">
+              <MapPin className="size-3.5 text-primary" aria-hidden="true" />
+              {siteConfig.location}
             </span>
           </div>
 
@@ -118,6 +128,22 @@ export default function Hero() {
               className="glass-control rounded-full border"
             >
               <LinkedinIcon size={18} />
+            </Button>
+            <Button
+              nativeButton={false}
+              render={
+                <a
+                  href={siteConfig.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Portfolio website"
+                />
+              }
+              variant="outline"
+              size="icon-lg"
+              className="glass-control rounded-full border"
+            >
+              <Globe2 className="size-4" aria-hidden="true" />
             </Button>
           </div>
 
