@@ -3,7 +3,7 @@
 import {
   LazyMotion,
   MotionConfig,
-  domAnimation,
+  domMax,
   m,
   useReducedMotion,
 } from "framer-motion";
@@ -114,7 +114,7 @@ interface PremiumMotionProps {
 
 export default function PremiumMotion({ children }: PremiumMotionProps) {
   return (
-    <LazyMotion features={domAnimation} strict>
+    <LazyMotion features={domMax} strict>
       <MotionConfig
         reducedMotion="user"
         transition={{ duration: 0.62, ease: premiumEase }}
