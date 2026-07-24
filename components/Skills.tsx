@@ -145,13 +145,13 @@ export default function Skills() {
                         return (
                           <StaggerItem
                             key={skill.name}
-                            className="flex min-h-12 items-center gap-2 rounded-lg border border-border/65 bg-background/55 px-3 py-2 text-sm text-foreground"
+                            className="flex min-w-0 min-h-12 items-center gap-2 rounded-lg border border-border/65 bg-background/55 px-3 py-2 text-sm text-foreground"
                             y={10}
                           >
                             <span className="grid size-8 shrink-0 place-items-center rounded-md bg-primary/10 text-primary">
                               <Icon className="size-4" aria-hidden="true" />
                             </span>
-                            <span className="min-w-0 leading-5">
+                            <span className="min-w-0 break-words leading-5">
                               {skill.name}
                             </span>
                           </StaggerItem>

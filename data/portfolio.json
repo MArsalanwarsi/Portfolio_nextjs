@@ -36,7 +36,7 @@
     "linkedin": "https://www.linkedin.com/in/m-sheikh-arsalan/",
     "resumeUrl": "/M_Arsalan_Warsi_CV.pdf",
     "portrait": {
-      "src": "/header-photo.png",
+      "src": "/header-photo.webp",
       "fallbackSrc": "/profile-photo.svg",
       "alt": "Portrait of Muhammad Arsalan Warsi",
       "initials": "AW"

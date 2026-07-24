@@ -185,7 +185,7 @@ export default function ProjectMedia({
                 >
                   <Image
                     src={image.src}
-                    alt=""
+                    alt={`Thumbnail: ${image.alt}`}
                     fill
                     sizes="7rem"
                     className="object-cover"
@@ -275,7 +275,7 @@ export default function ProjectMedia({
                 <span className="relative block h-full overflow-hidden rounded-md bg-black/25">
                   <Image
                     src={image.src}
-                    alt=""
+                    alt={`Thumbnail: ${image.alt}`}
                     fill
                     sizes="5rem"
                     className="object-cover"

@@ -4,9 +4,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactCompiler: true,
   images: {
+    formats: ["image/avif", "image/webp"],
     localPatterns: [
       {
-        pathname: "/header-photo.png",
+        pathname: "/header-photo.webp",
         search: "",
       },
       {
