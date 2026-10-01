@@ -1,0 +1,196 @@
+/* Open studio canvas and instrument-style navigation. */
+.portfolio {
+  margin-top: 0;
+}
+.intro-frame {
+  border: 0;
+  border-radius: 0;
+}
+.orbit-header,
+.hero-frame-line,
+.hero-frame-orbit {
+  display: none;
+}
+.hero-portrait {
+  border: 0;
+}
+.site-header {
+  padding-block: 26px;
+}
+.site-header .desktop-nav {
+  display: none;
+}
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.wordmark .brand-symbol {
+  font:
+    500 38px/0.9 var(--font-mono),
+    monospace;
+  letter-spacing: -6px;
+  color: #f5f5f5;
+}
+.brand-symbol > span {
+  display: inline-block;
+  margin-left: 9px;
+  font-size: 22px;
+  vertical-align: top;
+  letter-spacing: 0;
+}
+.wordmark .brand-name {
+  font:
+    500 11px/1.6 var(--font-mono),
+    monospace;
+  letter-spacing: 0.15em;
+  color: #eee;
+}
+.brand-name small {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 0.13em;
+  color: #929292;
+}
+.site-header .header-resume {
+  display: flex;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 4px;
+  background: #f5f5f5;
+  color: #121212;
+  font-size: 12px;
+  gap: 18px;
+}
+.header-resume::after {
+  display: none;
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #ffffff03 1px, transparent 1px),
+    linear-gradient(#ffffff03 1px, transparent 1px),
+    radial-gradient(ellipse at 55% 40%, #ffffff08, transparent 60%);
+  background-size:
+    100px 100px,
+    100px 100px,
+    100% 100%;
+  mask-image: linear-gradient(transparent, #000 20%, #000 65%, transparent);
+}
+.section-rail {
+  position: fixed;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 9px;
+  background: #121212ba;
+  backdrop-filter: blur(14px);
+  border-radius: 8px;
+}
+.section-rail > a {
+  width: 40px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: #aaa;
+  border-radius: 5px;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.section-rail > a:hover,
+.section-rail > a[aria-current] {
+  background: #f5f5f5;
+  color: #121212;
+}
+.section-rail > a:hover {
+  transform: translateX(3px);
+}
+.rail-label {
+  position: absolute;
+  left: 54px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 13px;
+  background: #1c1c1c;
+  color: #f5f5f5;
+  border-radius: 3px;
+  white-space: nowrap;
+  font:
+    10px var(--font-mono),
+    monospace;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  pointer-events: none;
+}
+.rail-label small {
+  color: #888;
+  font-size: 8px;
+}
+.section-rail a:hover .rail-label,
+.section-rail a:focus-visible .rail-label {
+  opacity: 1;
+  transform: none;
+}
+@media (min-width: 701px) {
+  .portfolio {
+    max-width: 1420px;
+    padding-left: 60px;
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    padding: 22px 24px;
+    gap: 12px;
+  }
+  .wordmark .brand-symbol {
+    font-size: 32px;
+  }
+  .wordmark .brand-name {
+    font-size: 9px;
+  }
+  .brand-name small {
+    font-size: 6px;
+  }
+  .site-header .header-resume {
+    display: none;
+  }
+  .section-rail {
+    top: auto;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 8px;
+    padding: 6px 10px;
+    box-shadow: 0 4px 25px #0008;
+  }
+  .section-rail > a {
+    width: 40px;
+    height: 40px;
+  }
+  .rail-label {
+    display: none;
+  }
+  .portfolio {
+    padding-bottom: 80px;
+  }
+}

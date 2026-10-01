@@ -1,0 +1,129 @@
+:root {
+  --background: #121212;
+  --foreground: #f5f5f5;
+  --muted-foreground: #a6a6a6;
+  --border: #343434;
+  --primary: #f5f5f5;
+  --primary-foreground: #121212;
+  --card: #171717;
+  --card-foreground: #f5f5f5;
+  --muted: #202020;
+  --ring: #a6a6a6;
+  --radius: 1.75rem;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-ring: var(--ring);
+  --font-display: var(--font-mono);
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: #666 #121212;
+  scrollbar-width: thin;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  color: #121212;
+  background: #f5f5f5;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button,
+summary,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+summary {
+  cursor: pointer;
+}
+button {
+  color: inherit;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+a,
+button,
+summary,
+input,
+textarea {
+  outline-offset: 6px;
+}
+:focus-visible {
+  outline: 2px solid #f5f5f5;
+}
+.light-card :focus-visible,
+.featured-row :focus-visible {
+  outline-color: #f5f5f5;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+figure {
+  margin: 0;
+}
+svg {
+  flex-shrink: 0;
+}
+img {
+  max-width: 100%;
+}
+section,
+[id^="project-"],
+#skills {
+  scroll-margin-top: 35px;
+}
+em {
+  color: #e2e2e2;
+  font-weight: 400;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 20px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #f5f5f5;
+  color: #121212;
+  z-index: 100;
+  transform: translateY(-150%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}

@@ -1,0 +1,26 @@
+/* Apply rotation after centering so hover brackets stay on the pointer. */
+.portfolio-cursor > .cursor-reticle {
+  rotate: 0deg;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition:
+    width 0.2s,
+    height 0.2s,
+    transform 0.3s;
+}
+.portfolio-cursor[data-interactive="true"] > .cursor-reticle {
+  rotate: 0deg;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+@media (min-width: 701px) {
+  .hero-side-note {
+    top: 27%;
+  }
+  .hero-side-note a {
+    margin-top: 12px;
+  }
+}
+.portfolio-cursor > .cursor-reticle,
+.portfolio-cursor > .cursor-core {
+  left: 0;
+  top: 0;
+}
