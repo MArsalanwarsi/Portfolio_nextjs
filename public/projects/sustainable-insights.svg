@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sustainable Living eco insights</title>
+  <desc id="desc">Eco recommendation screen with emissions chart, tips, and weekly impact cards.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0b0b0f"/><stop offset=".52" stop-color="#064e3b"/><stop offset="1" stop-color="#7f1d1d"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="94" y="78" width="1012" height="604" rx="36" fill="#f8fafc"/>
+  <text x="150" y="156" fill="#052e16" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="900">Eco Insights</text>
+  <text x="150" y="196" fill="#475569" font-family="Inter,Arial,sans-serif" font-size="18">Recommendations, analytics, and greener habit feedback.</text>
+  <rect x="150" y="248" width="482" height="250" rx="28" fill="#052e16"/>
+  <path d="M202 424c58-70 104-28 150-78 44-46 82 18 124-28 30-34 62-44 108-22" fill="none" stroke="#10b981" stroke-width="12" stroke-linecap="round"/>
+  <path d="M202 454c72-34 112-26 166-48 52-22 84 0 132-26 22-12 46-22 84-18" fill="none" stroke="#a855f7" stroke-width="10" stroke-linecap="round"/>
+  <rect x="682" y="248" width="374" height="250" rx="28" fill="#ecfdf5"/>
+  <circle cx="748" cy="326" r="34" fill="#10b981"/>
+  <path d="M732 326h32M748 310v32" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#bbf7d0"><rect x="808" y="298" width="178" height="18" rx="9"/><rect x="808" y="348" width="210" height="18" rx="9"/><rect x="808" y="398" width="150" height="18" rx="9"/></g>
+  <rect x="150" y="542" width="268" height="78" rx="22" fill="#dcfce7"/>
+  <rect x="466" y="542" width="268" height="78" rx="22" fill="#f5d0fe"/>
+  <rect x="782" y="542" width="274" height="78" rx="22" fill="#fee2e2"/>
+  <text x="184" y="590" fill="#14532d" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900">Use transit</text>
+  <text x="500" y="590" fill="#581c87" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900">Reduce energy</text>
+  <text x="816" y="590" fill="#7f1d1d" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900">Track habits</text>
+</svg>

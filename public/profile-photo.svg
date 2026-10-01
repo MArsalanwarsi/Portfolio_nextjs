@@ -1,0 +1,48 @@
+<svg width="960" height="1120" viewBox="0 0 960 1120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="64" x2="824" y2="1056" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EBDD"/>
+      <stop offset="1" stop-color="#E0D1BF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(705 282) rotate(131.039) scale(441.631 427.382)">
+      <stop stop-color="#137C6D" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#137C6D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowWarm" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(258 882) rotate(-29.745) scale(387.284 303.369)">
+      <stop stop-color="#BA6B42" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#BA6B42" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="40" y="66" width="880" height="988" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="30" result="effect1_foregroundBlur_1_2"/>
+    </filter>
+  </defs>
+
+  <rect x="20" y="20" width="920" height="1080" rx="92" fill="url(#bg)"/>
+  <rect x="20" y="20" width="920" height="1080" rx="92" stroke="#1A120D" stroke-opacity="0.08" stroke-width="2"/>
+  <ellipse cx="734" cy="290" rx="214" ry="210" fill="url(#glow)"/>
+  <ellipse cx="252" cy="860" rx="250" ry="200" fill="url(#glowWarm)"/>
+
+  <g opacity="0.55">
+    <path d="M106 196H332" stroke="#1A120D" stroke-opacity="0.12" stroke-width="2"/>
+    <path d="M628 954H854" stroke="#1A120D" stroke-opacity="0.12" stroke-width="2"/>
+    <path d="M784 152L862 152" stroke="#1A120D" stroke-opacity="0.12" stroke-width="2"/>
+  </g>
+
+  <g filter="url(#blur)">
+    <path d="M478 242C565.261 242 636 312.739 636 400C636 487.261 565.261 558 478 558C390.739 558 320 487.261 320 400C320 312.739 390.739 242 478 242Z" fill="#CAB49B"/>
+    <path d="M300 816C300 688.975 402.975 586 530 586H540C667.025 586 770 688.975 770 816V864H300V816Z" fill="#B49574"/>
+    <path d="M208 884C208 838.712 244.712 802 290 802H770C815.288 802 852 838.712 852 884V952H208V884Z" fill="#1A120D" fill-opacity="0.18"/>
+  </g>
+
+  <path d="M474 218C584.457 218 674 307.543 674 418C674 528.457 584.457 618 474 618C363.543 618 274 528.457 274 418C274 307.543 363.543 218 474 218Z" fill="#D8C2A7"/>
+  <path d="M278 828C278 683.875 394.875 567 539 567H551C695.125 567 812 683.875 812 828V922H278V828Z" fill="#BD9873"/>
+  <path d="M166 930C166 875.324 210.324 831 265 831H767C821.676 831 866 875.324 866 930V992H166V930Z" fill="#1A120D" fill-opacity="0.12"/>
+
+  <circle cx="180" cy="160" r="48" fill="#FCF7EF" fill-opacity="0.8"/>
+  <circle cx="180" cy="160" r="20" fill="#137C6D" fill-opacity="0.9"/>
+
+  <text x="118" y="1010" fill="#1A120D" font-family="Georgia, 'Times New Roman', serif" font-size="112" font-weight="700" letter-spacing="0.08em">AW</text>
+  <text x="122" y="1060" fill="#5E5448" font-family="'Segoe UI', Arial, sans-serif" font-size="26" letter-spacing="0.22em">PORTRAIT SLOT READY</text>
+</svg>

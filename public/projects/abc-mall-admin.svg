@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">ABC Mall and Cinema admin dashboard</title>
+  <desc id="desc">Admin dashboard preview for cinema booking, operations, authentication, and system management.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#111827"/>
+      <stop offset=".52" stop-color="#4c1d95"/>
+      <stop offset="1" stop-color="#881337"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="84" y="68" width="1032" height="624" rx="34" fill="#f8fafc"/>
+  <rect x="84" y="68" width="236" height="624" rx="34" fill="#111827"/>
+  <text x="128" y="146" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="900">ABC Admin</text>
+  <text x="128" y="184" fill="#fda4af" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800">Protected operations</text>
+  <g fill="#374151">
+    <rect x="128" y="250" width="138" height="16" rx="8"/>
+    <rect x="128" y="304" width="104" height="16" rx="8"/>
+    <rect x="128" y="358" width="152" height="16" rx="8"/>
+    <rect x="128" y="412" width="118" height="16" rx="8"/>
+  </g>
+  <text x="378" y="144" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="900">Cinema Operations</text>
+  <rect x="378" y="200" width="202" height="126" rx="24" fill="#fce7f3"/>
+  <rect x="612" y="200" width="202" height="126" rx="24" fill="#ede9fe"/>
+  <rect x="846" y="200" width="202" height="126" rx="24" fill="#e0f2fe"/>
+  <text x="420" y="260" fill="#9f1239" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="900">128</text>
+  <text x="654" y="260" fill="#5b21b6" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="900">16</text>
+  <text x="888" y="260" fill="#0369a1" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="900">04</text>
+  <text x="420" y="292" fill="#9f1239" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800">Bookings</text>
+  <text x="654" y="292" fill="#5b21b6" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800">Screens</text>
+  <text x="888" y="292" fill="#0369a1" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="800">Admins</text>
+  <rect x="378" y="380" width="670" height="204" rx="24" fill="#ffffff" stroke="#e5e7eb"/>
+  <g font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800">
+    <text x="424" y="434" fill="#64748b">Booking ID</text>
+    <text x="622" y="434" fill="#64748b">Customer</text>
+    <text x="820" y="434" fill="#64748b">Status</text>
+    <text x="424" y="492" fill="#0f172a">ABC-1042</text>
+    <text x="622" y="492" fill="#0f172a">Walk-in</text>
+    <text x="820" y="492" fill="#16a34a">Confirmed</text>
+    <text x="424" y="548" fill="#0f172a">ABC-1043</text>
+    <text x="622" y="548" fill="#0f172a">Online</text>
+    <text x="820" y="548" fill="#be123c">Pending</text>
+  </g>
+  <path d="M396 634c80-54 138-22 214-68 76-46 152-70 268-24" fill="none" stroke="#7c3aed" stroke-width="12" stroke-linecap="round"/>
+</svg>

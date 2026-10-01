@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">ABC Mall and Cinema booking flow</title>
+  <desc id="desc">Cinema booking interface preview with movie cards, seat selection, and checkout summary.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#0f172a"/>
+      <stop offset=".48" stop-color="#581c87"/>
+      <stop offset="1" stop-color="#be123c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="86" y="76" width="1028" height="608" rx="34" fill="#030712" fill-opacity=".76" stroke="#ffffff" stroke-opacity=".12"/>
+  <text x="140" y="154" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="900">ABC Mall &amp; Cinema</text>
+  <text x="142" y="192" fill="#fecdd3" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="800">Booking flow and customer selection</text>
+  <rect x="142" y="252" width="294" height="354" rx="28" fill="#f8fafc"/>
+  <rect x="184" y="306" width="210" height="118" rx="20" fill="#be123c"/>
+  <circle cx="246" cy="365" r="34" fill="#fecdd3"/>
+  <path d="M260 344l46 21-46 21z" fill="#be123c"/>
+  <text x="184" y="478" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="900">Now Showing</text>
+  <rect x="184" y="510" width="168" height="42" rx="21" fill="#581c87"/>
+  <text x="222" y="537" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="900">Book seats</text>
+  <rect x="504" y="252" width="294" height="354" rx="28" fill="#f8fafc"/>
+  <text x="548" y="318" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="900">Seat Map</text>
+  <g fill="#cbd5e1">
+    <rect x="548" y="370" width="36" height="30" rx="9"/>
+    <rect x="600" y="370" width="36" height="30" rx="9"/>
+    <rect x="652" y="370" width="36" height="30" rx="9"/>
+    <rect x="704" y="370" width="36" height="30" rx="9"/>
+    <rect x="548" y="422" width="36" height="30" rx="9"/>
+    <rect x="600" y="422" width="36" height="30" rx="9"/>
+    <rect x="652" y="422" width="36" height="30" rx="9"/>
+    <rect x="704" y="422" width="36" height="30" rx="9"/>
+  </g>
+  <rect x="600" y="422" width="36" height="30" rx="9" fill="#be123c"/>
+  <rect x="652" y="422" width="36" height="30" rx="9" fill="#7c3aed"/>
+  <rect x="548" y="516" width="192" height="12" rx="6" fill="#0f172a"/>
+  <rect x="860" y="252" width="196" height="354" rx="28" fill="#fff1f2"/>
+  <text x="898" y="318" fill="#9f1239" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="900">Summary</text>
+  <text x="898" y="376" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800">Movie ticket</text>
+  <text x="898" y="418" fill="#0f172a" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800">2 seats</text>
+  <rect x="898" y="494" width="116" height="42" rx="21" fill="#be123c"/>
+  <text x="932" y="521" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="900">Pay</text>
+</svg>

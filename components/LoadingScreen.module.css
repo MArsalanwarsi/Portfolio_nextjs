@@ -1,0 +1,198 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 48% 38%, rgba(255, 54, 93, 0.18), transparent 22rem),
+    radial-gradient(circle at 58% 58%, rgba(168, 85, 247, 0.16), transparent 24rem),
+    linear-gradient(180deg, #14050e 0%, #070309 64%, #030104 100%);
+  transition:
+    transform 0.42s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.42s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.isExiting {
+  transform: translateY(-100%);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 42% 30% at 50% 46%, rgba(255, 54, 93, 0.12), transparent 70%),
+    radial-gradient(ellipse 30% 24% at 52% 54%, rgba(168, 85, 247, 0.16), transparent 64%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 25rem);
+  text-align: center;
+  animation: contentSettle 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+}
+
+.nameLineWrap {
+  overflow: visible;
+  line-height: 1;
+}
+
+.firstName,
+.lastName {
+  display: block;
+  font-family: var(--font-display), sans-serif;
+  font-size: 5.25rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.92;
+  color: #fff4f8;
+  transform: translateY(0);
+}
+
+.firstName {
+  animation: none;
+}
+
+.lastName {
+  background: linear-gradient(135deg, #ff365d 0%, #f0abfc 52%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: none;
+}
+
+.tagline {
+  margin: 1rem 0 0;
+  color: rgba(248, 221, 234, 0.62);
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(0.72rem, 1.6vw, 0.84rem);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.progressArea {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.loadingLabel,
+.percent {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.loadingLabel {
+  color: rgba(255, 244, 248, 0.42);
+}
+
+.percent {
+  color: rgba(240, 171, 252, 0.82);
+  font-variant-numeric: tabular-nums;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 228, 236, 0.14);
+  appearance: none;
+}
+
+.progressTrack::-webkit-progress-bar {
+  border-radius: inherit;
+  background: rgba(255, 228, 236, 0.14);
+}
+
+.progressTrack::-webkit-progress-value {
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff365d, #a855f7, #d8b4fe);
+  transition: width 0.08s linear;
+}
+
+.progressTrack::-moz-progress-bar {
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff365d, #a855f7, #d8b4fe);
+}
+
+@keyframes contentSettle {
+  from {
+    opacity: 0.01;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .content {
+    width: min(100%, 22rem);
+  }
+
+  .firstName,
+  .lastName {
+    font-size: 3.55rem;
+  }
+
+  .tagline {
+    font-size: 0.66rem;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .firstName,
+  .lastName {
+    font-size: 3.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firstName,
+  .lastName,
+  .tagline,
+  .progressArea {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .progressTrack::-webkit-progress-value {
+    transition: none !important;
+  }
+
+  .isExiting {
+    transform: none;
+    opacity: 0;
+  }
+}

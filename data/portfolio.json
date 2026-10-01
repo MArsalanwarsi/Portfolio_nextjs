@@ -1,0 +1,1105 @@
+{
+  "seo": {
+    "title": "Muhammad Arsalan Warsi | Full-Stack Developer",
+    "description": "Portfolio of Muhammad Arsalan Warsi, a full-stack developer building clean, scalable web applications with React, Next.js, Node.js, Express, MongoDB, and TypeScript.",
+    "keywords": [
+      "Muhammad Arsalan Warsi",
+      "Arsalan Warsi",
+      "Full-Stack Developer",
+      "MERN Developer",
+      "Next.js Portfolio",
+      "React Developer",
+      "UI Portfolio",
+      "Karachi Full Stack Developer"
+    ],
+    "openGraph": {
+      "title": "Muhammad Arsalan Warsi | Full-Stack Developer",
+      "description": "Clean interfaces, readable architecture, secure authentication, practical APIs, and smooth user experiences.",
+      "type": "website",
+      "locale": "en_US"
+    }
+  },
+  "siteConfig": {
+    "name": "Muhammad Arsalan Warsi",
+    "shortName": "Arsalan",
+    "role": "Full Stack Developer",
+    "specialization": "MERN Stack Developer",
+    "tagline": "MERN Stack developer building scalable, secure, high-performance web applications.",
+    "description": "MERN Stack Developer with hands-on experience building scalable, secure, and high-performance web applications using React, Next.js, Redux, Node.js, Express, MongoDB, PHP, and REST APIs.",
+    "intro": "Currently working as a Teaching Intern at Aptech Learning, delivering practical training in MERN Stack, Next.js, and PHP development.",
+    "availability": "Open to work",
+    "location": "Karachi, Pakistan",
+    "website": "https://arsalanwarsi.vercel.app/",
+    "phone": "+923150207265",
+    "email": "mohammadarsalanwarsi@gmail.com",
+    "github": "https://github.com/MArsalanwarsi",
+    "linkedin": "https://www.linkedin.com/in/m-sheikh-arsalan/",
+    "resumeUrl": "/M_Arsalan_Warsi_CV.pdf",
+    "portrait": {
+      "src": "/header-photo.webp",
+      "fallbackSrc": "/profile-photo.svg",
+      "alt": "Portrait of Muhammad Arsalan Warsi",
+      "initials": "AW"
+    },
+    "heroCard": {
+      "eyebrow": "Software engineer profile",
+      "title": "Secure MERN products with practical teaching experience.",
+      "description": "React, Next.js, Redux, Node.js, Express, MongoDB, PHP, JWT, cookies, OTP, REST APIs, and deployment-ready product UI."
+    },
+    "focusAreas": [
+      "MERN Stack training",
+      "Secure APIs & auth",
+      "Production UI"
+    ],
+    "heroMetrics": [
+      {
+        "value": "08",
+        "label": "Selected projects"
+      },
+      {
+        "value": "67",
+        "label": "Skills & tools"
+      },
+      {
+        "value": "25",
+        "label": "Public repos"
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "#home"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Experience",
+      "href": "#experience"
+    },
+    {
+      "label": "Education",
+      "href": "#education"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    },
+    {
+      "label": "Certificates",
+      "href": "#certificates"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "sections": {
+    "about": {
+      "header": {
+        "eyebrow": "About",
+        "title": "Building products with",
+        "accent": "clarity.",
+        "description": "Clean UI, readable architecture, secure authentication, practical APIs, and smooth user experiences."
+      },
+      "intro": {
+        "badge": "About me",
+        "headline": "I'm Muhammad Arsalan Warsi, a MERN Stack developer working across React, Next.js, Redux, Node.js, Express, MongoDB, PHP, and REST APIs.",
+        "description": "My CV focuses on scalable, secure, high-performance web applications, authentication systems, clean architecture, performance optimization, and real-world problem solving."
+      },
+      "highlights": [
+        {
+          "title": "Feature Architecture",
+          "description": "Builds that stay organized as features grow.",
+          "icon": "Layers"
+        },
+        {
+          "title": "Interface Clarity",
+          "description": "Clean interfaces that feel professional and easy to use.",
+          "icon": "Palette"
+        },
+        {
+          "title": "Fast Feedback",
+          "description": "Fast loading and smooth interaction across the app.",
+          "icon": "Zap"
+        },
+        {
+          "title": "Teaching-Led Communication",
+          "description": "Clear explanations, teamwork, and practical thinking.",
+          "icon": "Code2"
+        }
+      ]
+    },
+    "experience": {
+      "header": {
+        "eyebrow": "Experience",
+        "title": "Recent",
+        "accent": "experience."
+      },
+      "items": [
+        {
+          "role": "Teaching Associate",
+          "company": "Aptech Learning",
+          "location": "Shahrah-e-Faisal",
+          "period": "Dec 2025 - Present",
+          "description": [
+            "Deliver hands-on training in MERN Stack, Next.js, and Javascript development.",
+            "Teach authentication systems including JWT, cookies, and OTP verification.",
+            "Assist students in debugging, project structuring, best coding practices, and real-world full-stack workflows."
+          ],
+          "skills": [
+            "MERN Stack",
+            "Next.js",
+            "Javascript",
+            "JWT",
+            "OTP"
+          ]
+        },
+        {
+          "role": "Computer Teacher",
+          "company": "Boston Grammar School",
+          "location": "",
+          "period": "Aug 2025 - Dec 2025",
+          "description": [
+            "Taught computer fundamentals and programming basics to Grades 3-10.",
+            "Designed engaging lessons, improved student participation, and strengthened digital literacy and logical thinking."
+          ],
+          "skills": [
+            "Computing",
+            "Programming",
+            "Digital literacy"
+          ]
+        }
+      ]
+    },
+    "education": {
+      "header": {
+        "eyebrow": "Education",
+        "title": "Academic",
+        "accent": "path.",
+        "description": "Formal education and long-term technical training from the CV."
+      },
+      "items": [
+        {
+          "degree": "ACCP Computer Science",
+          "institution": "Aptech",
+          "period": "2023 - 2026",
+          "result": "In progress",
+          "description": "Professional computer science training focused on web development, programming, databases, and full-stack project work.",
+          "highlights": [
+            "MERN Stack",
+            "PHP development",
+            "Database fundamentals"
+          ]
+        },
+        {
+          "degree": "Bachelor of Commerce",
+          "institution": "University of Karachi",
+          "period": "2023",
+          "result": "1st Division",
+          "description": "Commerce degree with business, accounting, and analytical foundations that support product and client-facing work.",
+          "highlights": [
+            "Commerce",
+            "Business foundations",
+            "Analytical thinking"
+          ]
+        }
+      ]
+    },
+    "skills": {
+      "header": {
+        "eyebrow": "Skills",
+        "title": "Stack &",
+        "accent": "tooling.",
+        "description": "Frontend, backend, database, integration, deployment, and workflow tools used across selected public and private projects."
+      },
+      "stackHighlights": [
+        "React.js",
+        "Next.js 16",
+        "Redux Toolkit",
+        "TypeScript",
+        "Express.js",
+        "MongoDB"
+      ],
+      "categories": [
+        {
+          "key": "frontend",
+          "title": "Frontend",
+          "description": "Interfaces, design systems, state, accessibility, and responsive delivery."
+        },
+        {
+          "key": "backend",
+          "title": "Backend",
+          "description": "Node.js services, auth flows, route structure, and API contracts."
+        },
+        {
+          "key": "database",
+          "title": "Database",
+          "description": "MongoDB, MySQL, schemas, and data modeling for product features."
+        },
+        {
+          "key": "tools",
+          "title": "Tools",
+          "description": "Daily workflow tools for coding, debugging, deploying, and integrations."
+        }
+      ],
+      "items": [
+        {
+          "name": "HTML5",
+          "icon": "Code2",
+          "category": "frontend"
+        },
+        {
+          "name": "CSS3",
+          "icon": "Palette",
+          "category": "frontend"
+        },
+        {
+          "name": "JavaScript",
+          "icon": "FileCode",
+          "category": "frontend"
+        },
+        {
+          "name": "jQuery",
+          "icon": "Code2",
+          "category": "frontend"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "FileType",
+          "category": "frontend"
+        },
+        {
+          "name": "Dart",
+          "icon": "FileCode",
+          "category": "frontend"
+        },
+        {
+          "name": "React.js",
+          "icon": "Atom",
+          "category": "frontend"
+        },
+        {
+          "name": "Flutter",
+          "icon": "PanelsTopLeft",
+          "category": "frontend"
+        },
+        {
+          "name": "Flutter Riverpod",
+          "icon": "Workflow",
+          "category": "frontend"
+        },
+        {
+          "name": "GoRouter",
+          "icon": "Route",
+          "category": "frontend"
+        },
+        {
+          "name": "Flutter ScreenUtil",
+          "icon": "PanelsTopLeft",
+          "category": "frontend"
+        },
+        {
+          "name": "FlexColorScheme",
+          "icon": "Palette",
+          "category": "frontend"
+        },
+        {
+          "name": "Lottie",
+          "icon": "Zap",
+          "category": "frontend"
+        },
+        {
+          "name": "Next.js",
+          "icon": "Globe",
+          "category": "frontend"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "Wind",
+          "category": "frontend"
+        },
+        {
+          "name": "Bootstrap",
+          "icon": "Blocks",
+          "category": "frontend"
+        },
+        {
+          "name": "React Bootstrap",
+          "icon": "Blocks",
+          "category": "frontend"
+        },
+        {
+          "name": "Sass",
+          "icon": "Palette",
+          "category": "frontend"
+        },
+        {
+          "name": "Redux Toolkit",
+          "icon": "Layers",
+          "category": "frontend"
+        },
+        {
+          "name": "React Router",
+          "icon": "Route",
+          "category": "frontend"
+        },
+        {
+          "name": "Swiper",
+          "icon": "PanelsTopLeft",
+          "category": "frontend"
+        },
+        {
+          "name": "shadcn/ui",
+          "icon": "Component",
+          "category": "frontend"
+        },
+        {
+          "name": "Base UI",
+          "icon": "Blocks",
+          "category": "frontend"
+        },
+        {
+          "name": "Responsive UI",
+          "icon": "PanelsTopLeft",
+          "category": "frontend"
+        },
+        {
+          "name": "Recharts",
+          "icon": "Workflow",
+          "category": "frontend"
+        },
+        {
+          "name": "GSAP",
+          "icon": "Zap",
+          "category": "frontend"
+        },
+        {
+          "name": "Accessibility",
+          "icon": "ShieldCheck",
+          "category": "frontend"
+        },
+        {
+          "name": "Node.js",
+          "icon": "Server",
+          "category": "backend"
+        },
+        {
+          "name": "Express.js",
+          "icon": "Zap",
+          "category": "backend"
+        },
+        {
+          "name": "PHP",
+          "icon": "FileCode",
+          "category": "backend"
+        },
+        {
+          "name": "Laravel",
+          "icon": "ServerCog",
+          "category": "backend"
+        },
+        {
+          "name": "ASP.NET MVC",
+          "icon": "ServerCog",
+          "category": "backend"
+        },
+        {
+          "name": "REST APIs",
+          "icon": "Network",
+          "category": "backend"
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "Network",
+          "category": "backend"
+        },
+        {
+          "name": "API Routing",
+          "icon": "Route",
+          "category": "backend"
+        },
+        {
+          "name": "JWT Auth",
+          "icon": "Shield",
+          "category": "backend"
+        },
+        {
+          "name": "OTP Systems",
+          "icon": "KeyRound",
+          "category": "backend"
+        },
+        {
+          "name": "Cookies",
+          "icon": "Cookie",
+          "category": "backend"
+        },
+        {
+          "name": "Nodemailer",
+          "icon": "Mail",
+          "category": "backend"
+        },
+        {
+          "name": "Auth Guards",
+          "icon": "LockKeyhole",
+          "category": "backend"
+        },
+        {
+          "name": "Helmet",
+          "icon": "ShieldCheck",
+          "category": "backend"
+        },
+        {
+          "name": "Rate limiting",
+          "icon": "ShieldCheck",
+          "category": "backend"
+        },
+        {
+          "name": "Server Logic",
+          "icon": "ServerCog",
+          "category": "backend"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "Database",
+          "category": "database"
+        },
+        {
+          "name": "Mongoose",
+          "icon": "DatabaseZap",
+          "category": "database"
+        },
+        {
+          "name": "MySQL",
+          "icon": "Table",
+          "category": "database"
+        },
+        {
+          "name": "Redis",
+          "icon": "DatabaseZap",
+          "category": "database"
+        },
+        {
+          "name": "Firebase",
+          "icon": "DatabaseZap",
+          "category": "database"
+        },
+        {
+          "name": "Schema Design",
+          "icon": "Braces",
+          "category": "database"
+        },
+        {
+          "name": "Data Modeling",
+          "icon": "Workflow",
+          "category": "database"
+        },
+        {
+          "name": "Git",
+          "icon": "GitBranch",
+          "category": "tools"
+        },
+        {
+          "name": "GitHub",
+          "icon": "Github",
+          "category": "tools"
+        },
+        {
+          "name": "VS Code",
+          "icon": "Code2",
+          "category": "tools"
+        },
+        {
+          "name": "npm",
+          "icon": "Package",
+          "category": "tools"
+        },
+        {
+          "name": "JSON",
+          "icon": "Braces",
+          "category": "tools"
+        },
+        {
+          "name": "Postman",
+          "icon": "Plug",
+          "category": "tools"
+        },
+        {
+          "name": "Axios",
+          "icon": "Plug",
+          "category": "tools"
+        },
+        {
+          "name": "Vercel",
+          "icon": "CloudUpload",
+          "category": "tools"
+        },
+        {
+          "name": "Vercel Analytics",
+          "icon": "MonitorCog",
+          "category": "tools"
+        },
+        {
+          "name": "Netlify",
+          "icon": "CloudUpload",
+          "category": "tools"
+        },
+        {
+          "name": "Cloudinary",
+          "icon": "Cloud",
+          "category": "tools"
+        },
+        {
+          "name": "Gemini API",
+          "icon": "Bot",
+          "category": "tools"
+        },
+        {
+          "name": "WhatsApp Integration",
+          "icon": "Plug",
+          "category": "tools"
+        },
+        {
+          "name": "Chrome DevTools",
+          "icon": "MonitorCog",
+          "category": "tools"
+        },
+        {
+          "name": "Winston",
+          "icon": "MonitorCog",
+          "category": "tools"
+        },
+        {
+          "name": "Oxlint",
+          "icon": "TestTubeDiagonal",
+          "category": "tools"
+        },
+        {
+          "name": "Figma",
+          "icon": "Frame",
+          "category": "tools"
+        }
+      ]
+    },
+    "projects": {
+      "header": {
+        "eyebrow": "Projects",
+        "title": "Selected",
+        "accent": "work.",
+        "description": "Public repositories and selected private builds matched to the current GitHub profile, with stack, tooling, product focus, live links, and image galleries."
+      },
+      "previewMeta": [
+        {
+          "label": "Source",
+          "value": "Public + private repos"
+        },
+        {
+          "label": "Delivery",
+          "value": "Live demos + case studies"
+        }
+      ],
+      "items": [
+        {
+          "title": "GrowthRadar AI",
+          "label": "AI SaaS Platform",
+          "description": "Full-stack competitor intelligence and social analytics platform with AI recommendations, real-time signals, and dashboard workflows.",
+          "longDescription": "GrowthRadar AI decodes competitor momentum across social, ad, search, and review signals, then uses AI reasoning to generate marketing actions.",
+          "techStack": [
+            "React 19",
+            "Vite 8",
+            "Node.js",
+            "Express.js",
+            "Redux Toolkit",
+            "Socket.IO",
+            "Gemini API",
+            "Recharts"
+          ],
+          "tools": [
+            "Tailwind CSS 4",
+            "Axios",
+            "Helmet",
+            "Winston",
+            "Vercel"
+          ],
+          "features": [
+            "AI competitor analysis and recommendation templates",
+            "Socket.IO alerts for competitor momentum signals",
+            "MVC API with rate limits and standardized errors"
+          ],
+          "outcome": "A growth command center for competitor audits, live alerts, analytics, and AI-backed marketing suggestions.",
+          "github": "https://github.com/MArsalanwarsi/growthAi",
+          "live": "https://growth-ai-eight.vercel.app/",
+          "accent": "#a855f7",
+          "surface": "linear-gradient(135deg, #a855f7 0%, #7f1d1d 52%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/growthradar-dashboard.svg",
+              "alt": "GrowthRadar AI dashboard preview with competitor analytics",
+              "caption": "Command center"
+            },
+            {
+              "src": "/projects/growthradar-signals.svg",
+              "alt": "GrowthRadar AI live signals and recommendation preview",
+              "caption": "Live signals"
+            }
+          ]
+        },
+        {
+          "title": "Fitness Tracker Application",
+          "label": "AI Product Build",
+          "description": "MERN Stack fitness tracking system with JWT authentication, cookie-based sessions, OTP verification, Gemini recommendations, validation, and responsive ShadCN UI.",
+          "longDescription": "Fitness Tracker is a full-stack MERN application from the CV with JWT authentication, cookie-based session management, Nodemailer OTP verification, REST APIs for users and workouts, Google Gemini recommendations, strong validation, and React + Redux + ShadCN UI.",
+          "techStack": [
+            "React",
+            "Redux Toolkit",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Gemini API",
+            "ShadCN UI",
+            "Nodemailer"
+          ],
+          "tools": [
+            "Gemini API",
+            "Nodemailer",
+            "Redux DevTools",
+            "MongoDB",
+            "ShadCN UI"
+          ],
+          "features": [
+            "JWT authentication and cookie-based session management",
+            "OTP verification with Nodemailer and Google Gemini recommendations",
+            "Strong validation that reduced invalid data submissions by 40%"
+          ],
+          "outcome": "A responsive full-stack fitness tracker with stronger security, intelligent recommendations, and 30% better responsiveness noted in the CV.",
+          "github": "https://github.com/MArsalanwarsi/fitness-tracker-React",
+          "live": "https://fitness-tracker-react-seven.vercel.app/",
+          "accent": "#a855f7",
+          "surface": "linear-gradient(135deg, #a855f7 0%, #4c1d95 54%, #100710 100%)",
+          "images": [
+            {
+              "src": "/projects/fitness-dashboard.svg",
+              "alt": "Fitness Tracker analytics dashboard preview",
+              "caption": "Progress dashboard"
+            },
+            {
+              "src": "/projects/fitness-ai.svg",
+              "alt": "Fitness Tracker AI assistant preview",
+              "caption": "AI assistant"
+            }
+          ]
+        },
+        {
+          "title": "Sustainable Living",
+          "label": "Carbon Tracker App",
+          "description": "Flutter mobile app for tracking daily CO2 emissions, lifestyle carbon logs, analytics, and eco-friendly recommendations.",
+          "longDescription": "Sustainable Living is an eco-focused carbon tracker app that helps users understand environmental impact, break down daily emissions, and adopt greener habits.",
+          "techStack": [
+            "Flutter",
+            "Dart",
+            "Provider",
+            "Firebase",
+            "Local DB",
+            "Charts"
+          ],
+          "tools": [
+            "Flutter SDK",
+            "Firebase",
+            "fl_chart",
+            "GitHub"
+          ],
+          "features": [
+            "Daily CO2 emission tracking",
+            "Travel, energy, and lifestyle logs",
+            "Graphs, insights, and eco tips"
+          ],
+          "outcome": "A mobile-first sustainability app for carbon tracking, habit feedback, and cleaner daily choices.",
+          "github": "https://github.com/MArsalanwarsi/sustainable_living",
+          "live": "#",
+          "accent": "#10b981",
+          "surface": "linear-gradient(135deg, #10b981 0%, #581c87 48%, #100710 100%)",
+          "images": [
+            {
+              "src": "/projects/sustainable-dashboard.svg",
+              "alt": "Sustainable Living carbon tracker dashboard preview",
+              "caption": "Carbon dashboard"
+            },
+            {
+              "src": "/projects/sustainable-insights.svg",
+              "alt": "Sustainable Living eco insights and recommendations preview",
+              "caption": "Eco insights"
+            }
+          ]
+        },
+        {
+          "title": "Warranty Flow",
+          "label": "Private Flutter Portal",
+          "description": "Private Flutter customer portal for warranty and service workflows with login, job tracking, receipt viewing, status history, shared providers, and a reusable design system package.",
+          "longDescription": "Warranty Flow is a private Flutter portal structured around customer authentication, job tracking, receipt viewing, GoRouter navigation, Riverpod providers, formatted portal data, and a shared package for design tokens, reusable widgets, animations, status models, and mock warranty repository logic.",
+          "techStack": [
+            "Flutter",
+            "Dart",
+            "Flutter Riverpod",
+            "GoRouter",
+            "FlexColorScheme",
+            "Google Fonts",
+            "Flutter ScreenUtil",
+            "Lottie"
+          ],
+          "tools": [
+            "Flutter SDK",
+            "warranty_shared",
+            "Lucide Icons",
+            "flutter_svg",
+            "intl",
+            "GitHub"
+          ],
+          "features": [
+            "Customer login, splash flow, and portal routing",
+            "My-jobs, tracking, receipt view, status history, and payment status models",
+            "Shared design tokens, reusable UI widgets, animations, and mock warranty repository"
+          ],
+          "outcome": "A cross-platform customer portal foundation for warranty tracking, service status visibility, receipts, and reusable Flutter product UI.",
+          "github": "https://github.com/MArsalanwarsi/Warranty-Flow",
+          "live": "#",
+          "accent": "#38bdf8",
+          "surface": "linear-gradient(135deg, #38bdf8 0%, #7c3aed 46%, #100710 100%)",
+          "images": [
+            {
+              "src": "/projects/warranty-flow-portal.svg",
+              "alt": "Warranty Flow Flutter customer portal preview",
+              "caption": "Customer portal"
+            },
+            {
+              "src": "/projects/warranty-flow-tracking.svg",
+              "alt": "Warranty Flow job tracking and receipt preview",
+              "caption": "Job tracking"
+            }
+          ]
+        },
+        {
+          "title": "ThriftShoewear Commerce Platform",
+          "label": "Private Commerce Stack",
+          "description": "Full e-commerce stack with private storefront and backend repos plus a public admin dashboard for products, orders, users, coupons, reviews, wishlist, cart, payments, and shipments.",
+          "longDescription": "ThriftShoewear combines a React storefront, React/Vite admin dashboard, and Express/MongoDB backend with authentication, site settings, product operations, checkout workflows, reviews, coupons, payments, shipments, and production security middleware.",
+          "techStack": [
+            "React 19",
+            "Vite 8",
+            "Node.js",
+            "Express 5",
+            "MongoDB",
+            "Mongoose",
+            "Redux Toolkit",
+            "Tailwind CSS 4"
+          ],
+          "tools": [
+            "React Bootstrap",
+            "Redux Toolkit",
+            "Radix UI",
+            "Redis",
+            "Helmet",
+            "Nodemailer",
+            "Oxlint"
+          ],
+          "features": [
+            "Auth, email verification, password reset, and super-admin seeding",
+            "Products, categories, cart, wishlist, coupons, orders, payments, and shipments",
+            "Security middleware with CORS, Helmet, rate limits, sanitization, compression, and HPP protection"
+          ],
+          "outcome": "A private full-stack commerce system with customer storefront, admin operations, and a hardened Express API.",
+          "github": "https://github.com/MArsalanwarsi/thriftshoewear-dashboard",
+          "live": "https://thriftshoewear-dashboard.vercel.app/",
+          "accent": "#7c3aed",
+          "surface": "linear-gradient(135deg, #7c3aed 0%, #be123c 42%, #100710 100%)",
+          "images": [
+            {
+              "src": "/projects/thrift-dashboard.svg",
+              "alt": "ThriftShoewear dashboard analytics screen preview",
+              "caption": "Revenue overview"
+            },
+            {
+              "src": "/projects/thrift-products.svg",
+              "alt": "ThriftShoewear dashboard product management preview",
+              "caption": "Product table"
+            }
+          ]
+        },
+        {
+          "title": "Master Wood Works",
+          "label": "Client PHP Commerce",
+          "description": "Client furniture e-commerce project with PHP, CRUD inventory management, and WhatsApp ordering for direct customer communication.",
+          "longDescription": "Master Wood Works is a CV-backed client project for a custom furniture e-commerce store. The build focuses on a PHP storefront, CRUD inventory operations, product management, and WhatsApp ordering so customers can communicate directly before purchase.",
+          "techStack": [
+            "PHP",
+            "MySQL",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap"
+          ],
+          "tools": [
+            "WhatsApp Integration",
+            "CRUD",
+            "GitHub",
+            "Responsive UI"
+          ],
+          "features": [
+            "Custom furniture e-commerce storefront",
+            "CRUD inventory management system",
+            "WhatsApp ordering flow for direct customer communication"
+          ],
+          "outcome": "A client-focused commerce workflow for browsing furniture, managing stock, and converting customer interest into direct WhatsApp orders.",
+          "github": "#",
+          "live": "#",
+          "accent": "#c084fc",
+          "surface": "linear-gradient(135deg, #7c2d12 0%, #7e22ce 48%, #100710 100%)",
+          "images": [
+            {
+              "src": "/projects/masterwood-store.svg",
+              "alt": "Master Wood Works furniture ecommerce storefront preview",
+              "caption": "Furniture storefront"
+            },
+            {
+              "src": "/projects/masterwood-inventory.svg",
+              "alt": "Master Wood Works inventory CRUD preview",
+              "caption": "Inventory CRUD"
+            }
+          ]
+        },
+        {
+          "title": "ABC Mall & Cinema Management",
+          "label": "ASP.NET MVC System",
+          "description": "Full-stack ASP.NET MVC management system with authentication, cinema booking flow, and an admin dashboard for operational control.",
+          "longDescription": "ABC Mall & Cinema Management System is a CV-backed personal project built around authentication, booking workflows, and admin dashboard operations for managing mall and cinema processes.",
+          "techStack": [
+            "ASP.NET MVC",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Authentication",
+            "Booking Flow"
+          ],
+          "tools": [
+            "MVC",
+            "Admin Dashboard",
+            "Authentication",
+            "Booking Flow"
+          ],
+          "features": [
+            "Authentication and protected management screens",
+            "Cinema booking flow for users",
+            "Admin dashboard for system operations"
+          ],
+          "outcome": "A structured management system for booking, authentication, and administrative cinema operations.",
+          "github": "#",
+          "live": "#",
+          "accent": "#f43f5e",
+          "surface": "linear-gradient(135deg, #f43f5e 0%, #581c87 46%, #0f172a 100%)",
+          "images": [
+            {
+              "src": "/projects/abc-mall-booking.svg",
+              "alt": "ABC Mall and Cinema booking flow preview",
+              "caption": "Cinema booking"
+            },
+            {
+              "src": "/projects/abc-mall-admin.svg",
+              "alt": "ABC Mall and Cinema admin dashboard preview",
+              "caption": "Admin dashboard"
+            }
+          ]
+        },
+        {
+          "title": "K-Medicos Medicine Store",
+          "label": "PHP Commerce",
+          "description": "PHP medicine e-commerce platform with purchasing flow, drug interaction detection for user safety, scalable backend structure, and dynamic UI.",
+          "longDescription": "K-Medicos is a CV-backed Aptech Vision 2024 personal project and PHP/MySQL commerce build for medicine purchasing. It includes a dynamic storefront, scalable backend work, and drug interaction detection for safer user decisions.",
+          "techStack": [
+            "PHP",
+            "MySQL",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "SCSS"
+          ],
+          "tools": [
+            "PHPMailer",
+            "Composer",
+            "MySQL",
+            "GitHub"
+          ],
+          "features": [
+            "Medicine purchasing e-commerce flow",
+            "Drug interaction detection system for user safety",
+            "Dynamic UI and scalable PHP backend"
+          ],
+          "outcome": "A medicine commerce platform with safety-focused interaction checks and a live deployment from the CV.",
+          "github": "https://github.com/MArsalanwarsi/K-Medicos-drug-store-using-PHP-and-MYSQL",
+          "live": "https://k-medicos.free.nf/",
+          "accent": "#be123c",
+          "surface": "linear-gradient(135deg, #be123c 0%, #581c87 42%, #100710 100%)",
+          "images": [
+            {
+              "src": "/projects/medicos-store.svg",
+              "alt": "K-Medicos drug store ecommerce preview",
+              "caption": "Storefront"
+            },
+            {
+              "src": "/projects/medicos-admin.svg",
+              "alt": "K-Medicos drug store admin panel preview",
+              "caption": "Admin panel"
+            }
+          ]
+        }
+      ]
+    },
+    "certificates": {
+      "header": {
+        "eyebrow": "Recognition",
+        "title": "Certificates &",
+        "accent": "awards."
+      },
+      "items": [
+        {
+          "title": "Introduction to Front-End Development",
+          "issuer": "Meta",
+          "date": "Nov 2024",
+          "description": "Certificate covering front-end development foundations from Meta.",
+          "icon": "Globe"
+        },
+        {
+          "title": "Introduction to Back-End Development",
+          "issuer": "Meta",
+          "date": "Nov 2024",
+          "description": "Certificate covering back-end development foundations from Meta.",
+          "icon": "Layers"
+        },
+        {
+          "title": "M.S Office",
+          "issuer": "Aptech",
+          "date": "Dec 2023",
+          "description": "Certificate covering Microsoft Office productivity tools.",
+          "icon": "FileCode"
+        },
+        {
+          "title": "Amazon FBA",
+          "issuer": "Enablers",
+          "date": "Dec 2023",
+          "description": "Certificate covering Amazon FBA fundamentals and marketplace operations.",
+          "icon": "Award"
+        },
+        {
+          "title": "Visual Designing Course",
+          "issuer": "Techzone",
+          "date": "Dec 2020",
+          "description": "Certificate covering visual design foundations.",
+          "icon": "Star"
+        },
+        {
+          "title": "Aptech Ambassador",
+          "issuer": "Aptech",
+          "date": "May 2025",
+          "description": "Award listed in the CV.",
+          "icon": "Award"
+        }
+      ]
+    },
+    "stats": {
+      "header": {
+        "eyebrow": "Impact",
+        "title": "Quick",
+        "accent": "snapshot.",
+        "align": "center"
+      },
+      "items": [
+        {
+          "value": 8,
+          "suffix": "",
+          "label": "Selected projects",
+          "icon": "FolderGit2"
+        },
+        {
+          "value": 25,
+          "suffix": "",
+          "label": "Public repos",
+          "icon": "Briefcase"
+        },
+        {
+          "value": 67,
+          "suffix": "",
+          "label": "Skills & tools",
+          "icon": "Code2"
+        },
+        {
+          "value": 6,
+          "suffix": "",
+          "label": "Certificates & awards",
+          "icon": "Award"
+        }
+      ]
+    },
+    "contact": {
+      "header": {
+        "eyebrow": "Contact",
+        "title": "Let's",
+        "accent": "connect.",
+        "align": "center"
+      },
+      "card": {
+        "eyebrow": "Open for opportunities",
+        "description": "Internship, freelance, and full-time opportunities where thoughtful UI and practical engineering matter.",
+        "emailButton": "Send an email",
+        "linkedinButton": "Message on LinkedIn"
+      },
+      "form": {
+        "badge": "Contact form",
+        "title": "Send a project message.",
+        "description": "Share the idea, role, timeline, or collaboration details and I will reply as soon as possible.",
+        "fields": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Your name"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "you@example.com"
+          },
+          "subject": {
+            "label": "Subject",
+            "placeholder": "Project, internship, freelance, or teaching"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Tell me what you need, the scope, timeline, and best way to reply."
+          }
+        },
+        "validationMessages": {
+          "nameRequired": "Enter your name.",
+          "nameMax": "Name must be 80 characters or fewer.",
+          "emailInvalid": "Enter a valid email address.",
+          "emailMax": "Email must be 120 characters or fewer.",
+          "subjectRequired": "Enter a subject.",
+          "subjectMax": "Subject must be 120 characters or fewer.",
+          "messageMin": "Message must be at least 20 characters.",
+          "messageMax": "Message must be 2000 characters or fewer.",
+          "contentTooLarge": "Message is too large.",
+          "invalidFormat": "Invalid request format.",
+          "rateLimited": "Too many messages. Please try again later.",
+          "invalidBody": "Invalid request body.",
+          "highlightedFields": "Please check the highlighted fields.",
+          "emailNotConfigured": "Email service is not configured yet. Please set the SMTP environment variables.",
+          "sendFailed": "Message could not be sent. Please try again later."
+        },
+        "submitIdle": "Send message",
+        "submitLoading": "Sending",
+        "successFallback": "Message sent successfully.",
+        "errorFallback": "Message could not be sent. Please try again."
+      }
+    }
+  }
+}

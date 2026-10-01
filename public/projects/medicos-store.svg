@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">K-Medicos storefront</title>
+  <desc id="desc">PHP and MySQL drug store ecommerce storefront with category, cart, and checkout flow.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#050505"/><stop offset=".48" stop-color="#5b1231"/><stop offset="1" stop-color="#581c87"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="82" y="76" width="1036" height="608" rx="34" fill="#ffffff"/>
+  <rect x="126" y="120" width="948" height="82" rx="24" fill="#111827"/>
+  <text x="168" y="172" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="30" font-weight="900">K-Medicos</text>
+  <rect x="126" y="250" width="404" height="308" rx="28" fill="#f8fafc" stroke="#e5e7eb"/>
+  <text x="168" y="330" fill="#111827" font-family="Inter,Arial,sans-serif" font-size="40" font-weight="900">Drug Store</text>
+  <text x="168" y="374" fill="#64748b" font-family="Inter,Arial,sans-serif" font-size="18">PHP, MySQL, cart, checkout, OTP</text>
+  <rect x="168" y="430" width="168" height="52" rx="26" fill="#be123c"/>
+  <text x="214" y="464" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="800">Shop</text>
+  <rect x="580" y="250" width="186" height="250" rx="28" fill="#111827"/>
+  <rect x="804" y="250" width="186" height="250" rx="28" fill="#111827"/>
+  <circle cx="674" cy="340" r="42" fill="#a855f7"/>
+  <path d="M650 340h48M674 316v48" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="898" cy="340" r="42" fill="#dc2626"/>
+  <path d="M874 340h48M898 316v48" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+  <rect x="612" y="432" width="122" height="16" rx="8" fill="#27272a"/>
+  <rect x="836" y="432" width="122" height="16" rx="8" fill="#27272a"/>
+</svg>
