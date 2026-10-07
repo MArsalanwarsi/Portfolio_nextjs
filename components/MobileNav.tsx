@@ -14,7 +14,6 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import ThemeToggle from "@/components/ThemeToggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -57,7 +56,7 @@ export default function MobileNav({
 
   const handleNavClick = (
     event: MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
     onNavigate(event, href);
     setMobileOpen(false);
@@ -92,7 +91,7 @@ export default function MobileNav({
           </button>
 
           <div className="flex items-center gap-3">
-            <Avatar className="size-12 border border-primary/25 bg-muted shadow-[0_0_34px_rgba(255,54,93,0.18)]">
+            <Avatar className="size-12 border border-primary/25 bg-muted shadow-[0_0_34px_rgba(200,151,104,0.18)]">
               <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
                 AW
               </AvatarFallback>
@@ -129,14 +128,15 @@ export default function MobileNav({
                 className={cn(
                   "h-12 justify-start gap-3 rounded-xl border border-transparent px-3 text-[0.95rem] text-muted-foreground hover:border-primary/20 hover:bg-primary/10 hover:text-foreground",
                   active &&
-                    "border-primary/20 bg-primary text-primary-foreground shadow-[0_14px_34px_rgba(255,54,93,0.24)] hover:bg-primary hover:text-primary-foreground"
+                    "border-primary/20 bg-primary text-primary-foreground shadow-[0_14px_34px_rgba(200,151,104,0.24)] hover:bg-primary hover:text-primary-foreground",
                 )}
                 aria-current={active ? "page" : undefined}
               >
                 <span
                   className={cn(
                     "grid size-8 shrink-0 place-items-center rounded-full bg-muted/60 text-primary",
-                    active && "bg-primary-foreground/16 text-primary-foreground"
+                    active &&
+                      "bg-primary-foreground/16 text-primary-foreground",
                   )}
                 >
                   <Icon className="size-4" aria-hidden="true" />
@@ -145,7 +145,7 @@ export default function MobileNav({
                 <span
                   className={cn(
                     "font-mono text-xs text-muted-foreground",
-                    active && "text-primary-foreground/70"
+                    active && "text-primary-foreground/70",
                   )}
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -156,10 +156,6 @@ export default function MobileNav({
         </div>
 
         <SheetFooter className="mt-auto border-t border-border/60 p-3">
-          <div className="flex items-center justify-between rounded-xl border border-border/60 bg-muted/25 p-2">
-            <span className="px-2 text-sm text-muted-foreground">Theme</span>
-            <ThemeToggle />
-          </div>
 
           <Button
             nativeButton={false}

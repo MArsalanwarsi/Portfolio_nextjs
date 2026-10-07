@@ -29,7 +29,7 @@ interface ValidationResult {
 
 function jsonResponse(
   body: { message: string; errors?: Record<string, string> },
-  status: number
+  status: number,
 ) {
   return Response.json(body, { status });
 }
@@ -183,7 +183,7 @@ export async function POST(request: Request) {
         message: validationMessages.highlightedFields,
         errors: validation.errors,
       },
-      400
+      400,
     );
   }
 
@@ -198,7 +198,7 @@ export async function POST(request: Request) {
       {
         message: validationMessages.emailNotConfigured,
       },
-      500
+      500,
     );
   }
 

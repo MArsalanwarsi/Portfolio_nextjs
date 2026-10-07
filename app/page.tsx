@@ -1,8 +1,9 @@
+import CoffeeScrollRail from "@/components/CoffeeScrollRail";
 import About from "@/components/About";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
-import DeferredCursorGlow from "@/components/DeferredCursorGlow";
+import DeferredCoffeeCursor from "@/components/DeferredCoffeeCursor";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -17,7 +18,8 @@ export default function Home() {
   return (
     <PremiumMotion>
       <AnimatedBackground />
-      <DeferredCursorGlow />
+      <DeferredCoffeeCursor />
+      <CoffeeScrollRail />
       <Navbar />
 
       <main className="page-shell">

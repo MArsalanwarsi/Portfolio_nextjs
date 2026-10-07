@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import BootLoader from "@/components/BootLoader";
@@ -8,8 +8,9 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 
 const siteUrl = new URL(siteConfig.website);
-const analyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-const structuredData = {
+const analyticsId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.match(/^G-[A-Z0-9]+$/)?.[0];
+const person = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteConfig.name,
@@ -24,6 +25,34 @@ const structuredData = {
     addressCountry: "PK",
   },
   sameAs: [siteConfig.github, siteConfig.linkedin],
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { ...person, "@id": new URL("/#person", siteUrl).toString() },
+    {
+      "@type": "WebSite",
+      "@id": new URL("/#website", siteUrl).toString(),
+      name: seo.title,
+      url: siteConfig.website,
+      description: seo.description,
+      inLanguage: "en",
+      publisher: { "@id": new URL("/#person", siteUrl).toString() },
+    },
+    {
+      "@type": "ProfilePage",
+      url: siteConfig.website,
+      name: seo.title,
+      mainEntity: { "@id": new URL("/#person", siteUrl).toString() },
+      isPartOf: { "@id": new URL("/#website", siteUrl).toString() },
+    },
+  ],
+};
+
+export const viewport: Viewport = {
+  themeColor: "#211711",
+  colorScheme: "dark light",
 };
 
 const geistSans = Geist({
@@ -59,8 +88,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "1254x1254" }],
-    apple: [{ url: "/icon.png", type: "image/png", sizes: "180x180" }],
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "192x192" }],
+    apple: [
+      { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+    ],
   },
   openGraph: {
     title: seo.openGraph.title,
@@ -108,6 +139,7 @@ export default function RootLayout({
             <style>{`
               body.boot-loader-active { overflow: auto !important; }
               .boot-loader { display: none !important; }
+              .page-shell [style] { opacity: 1 !important; transform: none !important; }
             `}</style>
           </noscript>
           <BootLoader />
@@ -117,9 +149,9 @@ export default function RootLayout({
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics" strategy="lazyOnload">
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){window.dataLayer.push(arguments);}
 gtag('js', new Date());

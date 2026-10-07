@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import { m } from "framer-motion";
 import { Send } from "lucide-react";
 import MobileNav from "@/components/MobileNav";
-import ThemeToggle from "@/components/ThemeToggle";
-import { Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
- 
+
 const hasRealEmail = !siteConfig.email.includes("example.com");
 
 export default function Navbar() {
@@ -78,7 +77,7 @@ export default function Navbar() {
 
   const handleNavClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
     event.preventDefault();
     const id = href.replace("#", "");
@@ -97,46 +96,44 @@ export default function Navbar() {
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 px-4 pt-4 transition-all duration-300 sm:px-6",
-        scrolled && "pt-3"
+        scrolled && "pt-3",
       )}
       aria-label="Primary"
     >
       <div
         className={cn(
           "glass-nav mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 rounded-xl border px-3 py-2 transition-all duration-300",
-          scrolled && "translate-y-[-1px]"
+          scrolled && "translate-y-[-1px]",
         )}
       >
-      
+        <a
+          href="#home"
+          onClick={(event) => handleNavClick(event, "#home")}
+          className="group flex min-w-0 items-center gap-3"
+          title={`${siteConfig.name} home`}
+        >
+          <Avatar className="size-10 border border-border bg-muted">
+            <AvatarImage
+              src="/icon.png"
+              alt={`${siteConfig.name} logo`}
+              className="object-cover"
+            />
 
-<a
-  href="#home"
-  onClick={(event) => handleNavClick(event, "#home")}
-  className="group flex min-w-0 items-center gap-3"
-  aria-label={`${siteConfig.name} home`}
->
-  <Avatar className="size-10 border border-border bg-muted">
-    <AvatarImage
-      src="/icon.png"
-      alt={`${siteConfig.name} logo`}
-      className="object-cover"
-    />
+            <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
+              AW
+            </AvatarFallback>
+          </Avatar>
 
-    <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
-      AW
-    </AvatarFallback>
-  </Avatar>
+          <span className="flex min-w-0 flex-col leading-tight max-[360px]:hidden">
+            <span className="truncate text-sm font-semibold">
+              {siteConfig.shortName}
+            </span>
 
-  <span className="flex min-w-0 flex-col leading-tight max-[360px]:hidden">
-    <span className="truncate text-sm font-semibold">
-      {siteConfig.shortName}
-    </span>
-
-    <span className="truncate text-xs text-muted-foreground">
-      {siteConfig.role}
-    </span>
-  </span>
-</a>
+            <span className="truncate text-xs text-muted-foreground">
+              {siteConfig.role}
+            </span>
+          </span>
+        </a>
 
         <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => {
@@ -158,7 +155,7 @@ export default function Navbar() {
                 className={cn(
                   "h-8 rounded-full px-3 text-xs text-muted-foreground hover:bg-primary/10 hover:text-foreground",
                   active &&
-                    "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary hover:text-primary-foreground"
+                    "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary hover:text-primary-foreground",
                 )}
                 aria-current={active ? "page" : undefined}
               >
@@ -169,8 +166,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-
           <Button
             nativeButton={false}
             render={

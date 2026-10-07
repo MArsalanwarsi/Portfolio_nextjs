@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 
 const INITIAL_PROGRESS = 6;
-const MIN_DISPLAY_MS = 1_800;
-const PROGRESS_DURATION_MS = 1_850;
+const MIN_DISPLAY_MS = 800;
+const PROGRESS_DURATION_MS = 900;
 const EXIT_DURATION_MS = 460;
 
 function easeInOutCubic(value: number) {
@@ -16,12 +16,15 @@ function easeInOutCubic(value: number) {
 
 export default function BootLoader() {
   const [phase, setPhase] = useState<"visible" | "closing" | "hidden">(
-    "visible"
+    "visible",
   );
   const [progress, setProgress] = useState(INITIAL_PROGRESS);
 
   useEffect(() => {
     const body = document.body;
+    const reducedMotion = matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const startedAt = performance.now();
     let closeTimer: number | null = null;
     let hideTimer: number | null = null;
@@ -31,7 +34,10 @@ export default function BootLoader() {
 
     const beginClose = () => {
       const elapsed = performance.now() - startedAt;
-      const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
+      const remaining = Math.max(
+        0,
+        (reducedMotion ? 0 : MIN_DISPLAY_MS) - elapsed,
+      );
 
       closeTimer = window.setTimeout(() => {
         setPhase("closing");
@@ -45,7 +51,10 @@ export default function BootLoader() {
 
     const tick = (now: number) => {
       const elapsed = now - startedAt;
-      const rawProgress = Math.min(1, elapsed / PROGRESS_DURATION_MS);
+      const rawProgress = Math.min(
+        1,
+        elapsed / (reducedMotion ? 1 : PROGRESS_DURATION_MS),
+      );
       const nextProgress =
         INITIAL_PROGRESS +
         easeInOutCubic(rawProgress) * (100 - INITIAL_PROGRESS);

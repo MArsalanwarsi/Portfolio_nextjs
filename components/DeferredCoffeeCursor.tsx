@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-const CursorGlow = dynamic(() => import("@/components/CursorGlow"), {
+const CoffeeCursor = dynamic(() => import("@/components/CoffeeCursor"), {
   ssr: false,
 });
 
-export default function DeferredCursorGlow() {
+export default function DeferredCoffeeCursor() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) {
+    if (
+      !window.matchMedia(
+        "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+      ).matches
+    ) {
       return;
     }
 
@@ -33,5 +37,5 @@ export default function DeferredCursorGlow() {
     return () => window.clearTimeout(handle);
   }, []);
 
-  return ready ? <CursorGlow /> : null;
+  return ready ? <CoffeeCursor /> : null;
 }

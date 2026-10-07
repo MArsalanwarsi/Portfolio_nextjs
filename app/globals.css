@@ -1,78 +1,80 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@custom-variant data-open (&:is([data-state="open"], [data-open]:not([data-open="false"])));
+@custom-variant data-closed (&:is([data-state="closed"], [data-closed]:not([data-closed="false"])));
+@custom-variant data-active (&:is([data-state="active"], [data-active]:not([data-active="false"])));
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   --font-body: var(--font-sans);
   --font-display: var(--font-sans);
-  --background: #12070d;
-  --foreground: #fff7fb;
-  --card: #1a0c15;
-  --card-foreground: #fff7fb;
-  --popover: #1a0c15;
-  --popover-foreground: #fff7fb;
-  --primary: #e11d48;
-  --primary-foreground: #fff7fb;
-  --secondary: #241122;
-  --secondary-foreground: #f7dce8;
-  --muted: #21101c;
-  --muted-foreground: #b99baa;
-  --accent: #3b0f4f;
-  --accent-foreground: #f0abfc;
+  --background: #211711;
+  --foreground: #fff5e9;
+  --card: #2a1d15;
+  --card-foreground: #fff5e9;
+  --popover: #2a1d15;
+  --popover-foreground: #fff5e9;
+  --primary: #bb895b;
+  --primary-foreground: #1c120b;
+  --secondary: #38271b;
+  --secondary-foreground: #edd9bd;
+  --muted: #32231a;
+  --muted-foreground: #c4b19c;
+  --accent: #4a3221;
+  --accent-foreground: #dfb98d;
   --destructive: #fb7185;
-  --border: rgba(255, 231, 238, 0.14);
-  --input: rgba(255, 231, 238, 0.18);
-  --ring: #f43f5e;
-  --chart-1: #e11d48;
-  --chart-2: #a855f7;
-  --chart-3: #7c3aed;
+  --border: rgba(239, 213, 180, 0.14);
+  --input: rgba(239, 213, 180, 0.18);
+  --ring: #c89768;
+  --chart-1: #bb895b;
+  --chart-2: #a27651;
+  --chart-3: #855b3b;
   --chart-4: #fb7185;
-  --chart-5: #f0abfc;
+  --chart-5: #dfb98d;
   --radius: 0.38rem;
-  --sidebar: #160a12;
-  --sidebar-foreground: #fff7fb;
-  --sidebar-primary: #e11d48;
-  --sidebar-primary-foreground: #fff7fb;
-  --sidebar-accent: #241122;
-  --sidebar-accent-foreground: #f7dce8;
-  --sidebar-border: rgba(255, 231, 238, 0.14);
-  --sidebar-ring: #f43f5e;
+  --sidebar: #291c14;
+  --sidebar-foreground: #fff5e9;
+  --sidebar-primary: #bb895b;
+  --sidebar-primary-foreground: #1c120b;
+  --sidebar-accent: #38271b;
+  --sidebar-accent-foreground: #edd9bd;
+  --sidebar-border: rgba(239, 213, 180, 0.14);
+  --sidebar-ring: #c89768;
 }
 
 .dark {
-  --background: #070309;
-  --foreground: #fff4f8;
-  --card: #100710;
-  --card-foreground: #fff4f8;
-  --popover: #100710;
-  --popover-foreground: #fff4f8;
-  --primary: #ff365d;
-  --primary-foreground: #fff7fb;
-  --secondary: #18091a;
-  --secondary-foreground: #f8ddea;
-  --muted: #18091a;
-  --muted-foreground: #b79aaa;
-  --accent: #2b0a3d;
-  --accent-foreground: #d8b4fe;
+  --background: #130e0a;
+  --foreground: #fff4e5;
+  --card: #20160f;
+  --card-foreground: #fff4e5;
+  --popover: #20160f;
+  --popover-foreground: #fff4e5;
+  --primary: #cfa071;
+  --primary-foreground: #1c120b;
+  --secondary: #2b1e15;
+  --secondary-foreground: #edd8bc;
+  --muted: #2b1e15;
+  --muted-foreground: #c3ad96;
+  --accent: #3b291c;
+  --accent-foreground: #e1bc91;
   --destructive: #fb7185;
-  --border: rgba(255, 228, 236, 0.13);
-  --input: rgba(255, 228, 236, 0.17);
-  --ring: #ff365d;
-  --chart-1: #ff365d;
-  --chart-2: #a855f7;
-  --chart-3: #7c3aed;
+  --border: rgba(239, 213, 180, 0.13);
+  --input: rgba(239, 213, 180, 0.17);
+  --ring: #cfa071;
+  --chart-1: #cfa071;
+  --chart-2: #a27651;
+  --chart-3: #855b3b;
   --chart-4: #fb7185;
-  --chart-5: #f0abfc;
-  --sidebar: #100710;
-  --sidebar-foreground: #fff4f8;
-  --sidebar-primary: #ff365d;
-  --sidebar-primary-foreground: #fff7fb;
-  --sidebar-accent: #18091a;
-  --sidebar-accent-foreground: #f8ddea;
-  --sidebar-border: rgba(255, 228, 236, 0.13);
-  --sidebar-ring: #ff365d;
+  --chart-5: #dfb98d;
+  --sidebar: #20160f;
+  --sidebar-foreground: #fff4e5;
+  --sidebar-primary: #cfa071;
+  --sidebar-primary-foreground: #1c120b;
+  --sidebar-accent: #2b1e15;
+  --sidebar-accent-foreground: #edd8bc;
+  --sidebar-border: rgba(239, 213, 180, 0.13);
+  --sidebar-ring: #cfa071;
 }
 
 @theme inline {
@@ -128,7 +130,11 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--primary) 72%, var(--foreground) 18%)
+    scrollbar-color: color-mix(
+        in srgb,
+        var(--primary) 72%,
+        var(--foreground) 18%
+      )
       color-mix(in srgb, var(--background) 72%, transparent);
   }
 
@@ -150,7 +156,7 @@
       ),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--background) 82%, #210612 18%) 0%,
+        color-mix(in srgb, var(--background) 82%, #38251a 18%) 0%,
         var(--background) 34rem
       ),
       var(--background);
@@ -195,8 +201,13 @@ body.boot-loader-active {
 ::-webkit-scrollbar-thumb {
   border: 3px solid var(--background);
   border-radius: 999px;
-  background:
-    linear-gradient(180deg, #ff365d 0%, #a855f7 42%, #3b0f4f 72%, #be123c 100%);
+  background: linear-gradient(
+    180deg,
+    #cfa071 0%,
+    #a27651 42%,
+    #4a3221 72%,
+    #9c6b45 100%
+  );
   background-size: 100% 220%;
   animation: scrollbar-flow 7s ease-in-out infinite alternate;
 }
@@ -222,12 +233,11 @@ body.boot-loader-active {
   isolation: isolate;
   overflow: hidden;
   border-color: color-mix(in srgb, var(--primary) 22%, var(--border));
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--card) 88%, transparent) 0%,
-      color-mix(in srgb, var(--secondary) 52%, transparent) 100%
-    );
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--card) 88%, transparent) 0%,
+    color-mix(in srgb, var(--secondary) 52%, transparent) 100%
+  );
   box-shadow:
     0 22px 70px color-mix(in srgb, #000 28%, transparent),
     0 0 34px color-mix(in srgb, var(--primary) 10%, transparent),
@@ -244,13 +254,12 @@ body.boot-loader-active {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    linear-gradient(
-      120deg,
-      color-mix(in srgb, white 13%, transparent) 0%,
-      transparent 32%,
-      color-mix(in srgb, var(--accent-foreground) 11%, transparent) 100%
-    );
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, white 13%, transparent) 0%,
+    transparent 32%,
+    color-mix(in srgb, var(--accent-foreground) 11%, transparent) 100%
+  );
   opacity: 0.48;
 }
 
@@ -270,12 +279,11 @@ body.boot-loader-active {
 .dark .glass-card,
 .dark .glass-nav,
 .dark .glass-control {
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--card) 82%, transparent) 0%,
-      color-mix(in srgb, var(--secondary) 52%, transparent) 100%
-    );
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--card) 82%, transparent) 0%,
+    color-mix(in srgb, var(--secondary) 52%, transparent) 100%
+  );
   box-shadow:
     0 24px 90px color-mix(in srgb, #000 64%, transparent),
     0 0 46px color-mix(in srgb, var(--primary) 12%, transparent),
@@ -297,9 +305,9 @@ body.boot-loader-active {
   overflow: hidden;
   pointer-events: none;
   background:
-    linear-gradient(120deg, rgba(255, 54, 93, 0.1), transparent 28%),
-    linear-gradient(245deg, rgba(124, 58, 237, 0.14), transparent 36%),
-    linear-gradient(180deg, #13050e 0%, #070309 58%, #030104 100%);
+    linear-gradient(120deg, rgba(200, 151, 104, 0.1), transparent 28%),
+    linear-gradient(245deg, rgba(137, 96, 63, 0.14), transparent 36%),
+    linear-gradient(180deg, #24180f 0%, #130e0a 58%, #0d0906 100%);
 }
 
 .ambient-vignette,
@@ -311,8 +319,19 @@ body.boot-loader-active {
 .ambient-vignette {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(4, 1, 4, 0.82) 0%, transparent 24%, transparent 76%, rgba(4, 1, 4, 0.78) 100%),
-    linear-gradient(180deg, rgba(4, 1, 4, 0.04) 0%, transparent 36%, rgba(4, 1, 4, 0.72) 100%);
+    linear-gradient(
+      90deg,
+      rgba(15, 10, 6, 0.82) 0%,
+      transparent 24%,
+      transparent 76%,
+      rgba(15, 10, 6, 0.78) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(15, 10, 6, 0.04) 0%,
+      transparent 36%,
+      rgba(15, 10, 6, 0.72) 100%
+    );
 }
 
 .ambient-background canvas,
@@ -323,12 +342,11 @@ body.boot-loader-active {
 
 .ambient-grain {
   z-index: 2;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      color-mix(in srgb, var(--foreground) 4%, transparent) 0 1px,
-      transparent 1px 3px
-    );
+  background: repeating-linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--foreground) 4%, transparent) 0 1px,
+    transparent 1px 3px
+  );
   opacity: 0.06;
   mix-blend-mode: screen;
 }
@@ -338,36 +356,9 @@ body.boot-loader-active {
   opacity: 0.06;
 }
 
-.cursor-aura {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  width: 22rem;
-  height: 22rem;
-  border-radius: 999px;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--primary) 18%, transparent) 0%,
-    color-mix(in srgb, var(--accent-foreground) 10%, transparent) 30%,
-    transparent 68%
-  );
-  transform: translate3d(-50%, -50%, 0);
-  transition: opacity 180ms ease;
-  will-change: transform, opacity;
-}
-
 .page-shell {
   position: relative;
   z-index: 2;
-}
-
-@media (pointer: coarse), (max-width: 900px) {
-  .cursor-aura {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -386,5 +377,428 @@ body.boot-loader-active {
 
   ::-webkit-scrollbar-thumb {
     animation: none;
+  }
+}
+/* The cursor has an exact rim hotspot; the cup tilts and a small stream pours on controls. */
+html.coffee-pointer,
+html.coffee-pointer * {
+  cursor: none !important;
+}
+.coffee-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+.coffee-cursor > svg {
+  position: absolute;
+  left: -11px;
+  top: -15px;
+  overflow: visible;
+  filter: drop-shadow(0 1px 1px #0008);
+}
+.coffee-cursor-cup {
+  transform-origin: 18px 25px;
+  transition: transform 0.22s ease;
+}
+.coffee-cursor-pour,
+.coffee-cursor-drop {
+  opacity: 0;
+}
+.coffee-cursor-steam {
+  animation: coffee-steam 1.8s ease-in-out infinite;
+}
+.coffee-cursor[data-pouring="true"] .coffee-cursor-steam {
+  opacity: 0;
+  animation: none;
+}
+@keyframes coffee-steam {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(1px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+}
+.coffee-cursor[data-pouring="true"] .coffee-cursor-cup {
+  transform: rotate(-38deg);
+}
+.coffee-cursor[data-pouring="true"] .coffee-cursor-pour {
+  opacity: 1;
+  stroke-dasharray: 6 3;
+  animation: coffee-pour 0.5s linear infinite;
+}
+.coffee-cursor[data-pouring="true"] .coffee-cursor-drop {
+  animation: coffee-drop 0.65s ease-in infinite;
+}
+@keyframes coffee-pour {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+@keyframes coffee-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+}
+/* Native scrollbar keeps mouse dragging and keyboard navigation intact. */
+html {
+  scrollbar-color: #b8895e #1b120b;
+}
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #100b07, #342316, #100b07);
+  border-left: 1px solid #684a32;
+}
+::-webkit-scrollbar-thumb {
+  border: 2px solid #1b120b;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    #dfb98d,
+    #9b6943 38%,
+    #4b2b17 72%,
+    #c49366
+  );
+  animation: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#edcda3, #b17c4f, #503018);
+}
+.coffee-scroll-rail {
+  position: fixed;
+  right: 5px;
+  top: 16px;
+  bottom: 16px;
+  width: 38px;
+  z-index: 60;
+  pointer-events: none;
+  --brew-progress: 0;
+}
+.brew-machine {
+  width: 38px;
+  height: 61px;
+  filter: drop-shadow(0 2px 3px #0008);
+}
+.brew-track {
+  position: absolute;
+  top: 60px;
+  bottom: 34px;
+  left: 3px;
+  width: 32px;
+  pointer-events: auto;
+  touch-action: none;
+}
+.brew-track:focus-visible {
+  outline: 1px solid #e1bd92;
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+.brew-stream {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 6px;
+  height: calc(100% * var(--brew-progress));
+  border-radius: 0 0 50% 50%;
+  background: repeating-linear-gradient(
+    180deg,
+    #e0ad72 0px,
+    #9a5b2e 8px,
+    #3c2010 14px,
+    #c88b4c 20px
+  );
+  background-size: 100% 40px;
+  animation: brew-drip 1s linear infinite;
+  box-shadow: inset 1px 0 #edcda380;
+}
+.brew-bean {
+  position: absolute;
+  top: calc((100% - 9px) * var(--brew-progress));
+  left: 11px;
+  width: 10px;
+  height: 12px;
+  border-radius: 60% 60% 70% 70%;
+  background: radial-gradient(at 35% 30%, #edc08c, #a66a39 40%, #3e210f);
+  opacity: clamp(0, calc(var(--brew-progress) * 20), 1);
+}
+.brew-cup {
+  position: absolute;
+  bottom: 3px;
+  left: 4px;
+  width: 27px;
+  height: 30px;
+  border: 2px solid #e1bd92;
+  border-top: 3px solid #f0d9b7;
+  border-radius: 3px 3px 11px 11px;
+  background: #23170f;
+}
+.brew-cup::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -9px;
+  width: 8px;
+  height: 13px;
+  border: 2px solid #e1bd92;
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+}
+.brew-cup > span {
+  position: absolute;
+  inset: 2px;
+  border-radius: 0 0 7px 7px;
+  transform: scaleY(clamp(0, calc((var(--brew-progress) - 0.85) / 0.15), 1));
+  transform-origin: bottom;
+  background: linear-gradient(#c58c50 0 3px, #0e0804 3px);
+}
+@keyframes brew-drip {
+  to {
+    background-position: 0 40px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  body {
+    padding-right: 44px;
+  }
+}
+@media (pointer: coarse) {
+  .coffee-scroll-rail {
+    display: none;
+  }
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .coffee-cursor {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brew-stream {
+    animation: none !important;
+  }
+}
+/* Sculpted glass pot and ceramic cup scroll animation. */
+.coffee-scroll-rail {
+  width: 60px;
+  right: 2px;
+}
+.brew-machine {
+  width: 60px;
+  height: 82px;
+  overflow: visible;
+}
+.brew-pot {
+  transform-origin: 29px 42px;
+  transform: rotate(calc(-24deg - var(--brew-progress) * 12deg));
+  transition: transform 0.3s ease-out;
+}
+.brew-track {
+  top: 62px;
+  bottom: 37px;
+  left: 14px;
+}
+.brew-stream {
+  left: 13px;
+  width: 5px;
+  border-radius: 40% 60% 50% 50%;
+  background: repeating-linear-gradient(
+    180deg,
+    #d9a16a 0,
+    #78401e 12px,
+    #32180a 22px,
+    #c48848 40px
+  );
+  background-size: 100% 80px;
+  animation: brew-drip 1.2s linear infinite;
+}
+.brew-bean {
+  left: 11px;
+  width: 9px;
+  height: 14px;
+  border-radius: 70% 70% 65% 65%;
+}
+.brew-cup {
+  left: 0;
+  bottom: -4px;
+  width: 60px;
+  height: 55px;
+  border: 0;
+  background: none;
+  border-radius: 0;
+}
+.brew-cup::after {
+  content: none;
+}
+.brew-cup > svg {
+  width: 60px;
+  height: 55px;
+  overflow: visible;
+}
+.brew-cup-liquid {
+  transform-origin: 30px 46px;
+  transform: scaleY(clamp(0, calc((var(--brew-progress) - 0.85) / 0.15), 1));
+}
+.brew-steam {
+  opacity: clamp(0, calc((var(--brew-progress) - 0.9) * 10), 1);
+  animation: brew-steam 2s ease-in-out infinite;
+}
+@keyframes brew-steam {
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  body {
+    padding-right: 64px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brew-pot {
+    transition: none;
+  }
+  .brew-steam {
+    animation: none;
+  }
+}
+.brew-spout-flow {
+  opacity: clamp(0, calc(var(--brew-progress) * 20), 1);
+  stroke-dasharray: 4 2;
+  animation: brew-spout 0.7s linear infinite;
+}
+@keyframes brew-spout {
+  to {
+    stroke-dashoffset: -12;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brew-spout-flow {
+    animation: none;
+  }
+}
+/* Compact rail stays below navigation and outside the content column. */
+.coffee-scroll-rail {
+  top: 108px;
+  bottom: 12px;
+  width: 40px;
+  right: 3px;
+  z-index: 40;
+}
+.brew-machine {
+  width: 40px;
+  height: 52px;
+}
+.brew-pot {
+  transform: rotate(-30deg);
+}
+.brew-track {
+  top: 41px;
+  bottom: 25px;
+  left: 4px;
+}
+.brew-cup,
+.brew-cup > svg {
+  width: 40px;
+  height: 37px;
+}
+.brew-cup {
+  bottom: -2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  body {
+    padding-right: 46px;
+  }
+}
+@media (max-width: 1023px), (max-height: 500px) {
+  .coffee-scroll-rail {
+    display: none;
+  }
+  html {
+    scrollbar-width: thin;
+  }
+  html::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  body {
+    padding-right: 0;
+  }
+}
+/* Nozzle coordinates match the mirrored pot's fixed rotation exactly. */
+.brew-spout-flow {
+  stroke-dasharray: none;
+  animation: none;
+  stroke-width: 3.6;
+}
+.brew-stream {
+  left: 14.4px;
+  width: 2.3px;
+  box-shadow: none;
+  border-radius: 0 0 2px 2px;
+}
+/* Keep the coffee rail on touch screens without crowding navigation. */
+@media (max-width: 1023px), (pointer: coarse) {
+  .coffee-scroll-rail {
+    display: block;
+    top: 104px;
+    bottom: 10px;
+    right: 1px;
+    width: 28px;
+  }
+  .brew-machine {
+    width: 28px;
+    height: 36px;
+  }
+  .brew-track {
+    top: 29px;
+    bottom: 18px;
+    left: -2px;
+  }
+  .brew-stream {
+    left: 14.8px;
+    width: 2px;
+  }
+  .brew-cup,
+  .brew-cup > svg {
+    width: 28px;
+    height: 26px;
+  }
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  body {
+    padding-right: 30px;
+  }
+}
+@media (max-height: 500px) {
+  .coffee-scroll-rail {
+    top: 94px;
+    bottom: 6px;
   }
 }

@@ -32,15 +32,19 @@ export default function ProjectMedia({
   const activeImage = images[activeIndex];
   const titleId = useMemo(
     () => `${projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-gallery`,
-    [projectTitle]
+    [projectTitle],
   );
 
   const showPrevious = useCallback(() => {
-    setActiveIndex((current) => (current === 0 ? images.length - 1 : current - 1));
+    setActiveIndex((current) =>
+      current === 0 ? images.length - 1 : current - 1,
+    );
   }, [images.length]);
 
   const showNext = useCallback(() => {
-    setActiveIndex((current) => (current === images.length - 1 ? 0 : current + 1));
+    setActiveIndex((current) =>
+      current === images.length - 1 ? 0 : current + 1,
+    );
   }, [images.length]);
 
   useEffect(() => {
@@ -82,7 +86,7 @@ export default function ProjectMedia({
       {open ? (
         <m.dialog
           open
-          className="fixed inset-0 z-[100] m-0 flex h-[100dvh] w-screen max-h-none max-w-[100vw] items-center justify-center border-0 bg-[#020104] px-4 py-6"
+          className="fixed inset-0 z-[100] m-0 flex h-[100dvh] w-screen max-h-none max-w-[100vw] items-center justify-center border-0 bg-[#0c0805] px-4 py-6"
           aria-labelledby={titleId}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -97,7 +101,7 @@ export default function ProjectMedia({
             title="Close gallery"
           />
           <m.div
-            className="relative z-10 flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/14 bg-[#070a0f] text-white shadow-2xl"
+            className="relative z-10 flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/14 bg-[#17110c] text-white shadow-2xl"
             initial={{ opacity: 0, scale: 0.965, y: 22 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 12 }}
@@ -109,7 +113,10 @@ export default function ProjectMedia({
                   <Images className="size-3.5" aria-hidden="true" />
                   Project gallery
                 </p>
-                <h3 id={titleId} className="mt-1 truncate text-base font-semibold sm:text-lg">
+                <h3
+                  id={titleId}
+                  className="mt-1 truncate text-base font-semibold sm:text-lg"
+                >
                   {projectTitle} / {activeImage.caption}
                 </h3>
               </div>
@@ -175,7 +182,7 @@ export default function ProjectMedia({
                     "relative h-16 w-28 shrink-0 overflow-hidden rounded-lg border bg-white/8 outline-none transition focus-visible:ring-2 focus-visible:ring-white",
                     index === activeIndex
                       ? "border-white/70"
-                      : "border-white/14 hover:border-white/36"
+                      : "border-white/14 hover:border-white/36",
                   )}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
@@ -204,7 +211,9 @@ export default function ProjectMedia({
     <>
       <div
         className="relative overflow-hidden rounded-xl border border-white/15 bg-black/24 p-3 text-white shadow-2xl shadow-black/20"
-        style={{ boxShadow: `0 28px 80px color-mix(in srgb, ${accent} 34%, transparent)` }}
+        style={{
+          boxShadow: `0 28px 80px color-mix(in srgb, ${accent} 34%, transparent)`,
+        }}
       >
         <m.button
           type="button"
@@ -263,7 +272,7 @@ export default function ProjectMedia({
                   "group/thumb grid h-16 grid-cols-[4.75rem_minmax(0,1fr)] items-center gap-3 rounded-lg border bg-white/8 p-1.5 text-left outline-none transition focus-visible:ring-2 focus-visible:ring-white",
                   isActive
                     ? "border-white/55 bg-white/16"
-                    : "border-white/12 hover:border-white/35 hover:bg-white/12"
+                    : "border-white/12 hover:border-white/35 hover:bg-white/12",
                 )}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.985 }}

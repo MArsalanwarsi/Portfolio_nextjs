@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/portfolio";
 
+const copyrightYear = new Date().getFullYear();
 const hasRealEmail = !siteConfig.email.includes("example.com");
 
 const socials = [
@@ -79,7 +80,9 @@ export default function Footer() {
                     <a
                       href={social.href}
                       target={isMail || isPhone ? undefined : "_blank"}
-                      rel={isMail || isPhone ? undefined : "noopener noreferrer"}
+                      rel={
+                        isMail || isPhone ? undefined : "noopener noreferrer"
+                      }
                       aria-label={social.label}
                     />
                   }
@@ -96,8 +99,7 @@ export default function Footer() {
 
         <div className="mt-8 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. All rights
-            reserved.
+            © {copyrightYear} {siteConfig.name}. All rights reserved.
           </p>
           <p>Built with Next.js and TypeScript.</p>
         </div>
