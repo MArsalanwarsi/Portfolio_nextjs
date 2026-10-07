@@ -1,59 +1,38 @@
-import type { Metadata, Viewport } from "next";
-import { Fira_Code, Open_Sans } from "next/font/google";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import { seo, siteConfig, stackHighlights } from "@/data/portfolio";
+import BootLoader from "@/components/BootLoader";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { seo, siteConfig } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
 const siteUrl = new URL(siteConfig.website);
-const analyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.match(/^G-[A-Z0-9]+$/)?.[0];
-const personId = new URL("/#person", siteUrl).toString();
-const websiteId = new URL("/#website", siteUrl).toString();
+const analyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const structuredData = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": personId,
-      name: siteConfig.name,
-      url: siteConfig.website,
-      image: new URL(siteConfig.portrait.src, siteUrl).toString(),
-      jobTitle: siteConfig.role,
-      description: siteConfig.description,
-      email: siteConfig.email,
-      homeLocation: { "@type": "Place", name: siteConfig.location },
-      knowsAbout: stackHighlights,
-      sameAs: [siteConfig.github, siteConfig.linkedin],
-    },
-    {
-      "@type": "WebSite",
-      "@id": websiteId,
-      url: siteConfig.website,
-      name: seo.title,
-      description: seo.description,
-      inLanguage: "en",
-      publisher: { "@id": personId },
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": new URL("/#profile", siteUrl).toString(),
-      url: siteConfig.website,
-      name: seo.title,
-      description: seo.description,
-      inLanguage: "en",
-      isPartOf: { "@id": websiteId },
-      mainEntity: { "@id": personId },
-    },
-  ],
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.website,
+  image: new URL(siteConfig.portrait.src, siteUrl).toString(),
+  jobTitle: siteConfig.role,
+  description: siteConfig.description,
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Karachi",
+    addressCountry: "PK",
+  },
+  sameAs: [siteConfig.github, siteConfig.linkedin],
 };
 
-const openSans = Open_Sans({
+const geistSans = Geist({
   subsets: ["latin"],
-  style: ["normal", "italic"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const firaCode = Fira_Code({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
@@ -67,10 +46,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  applicationName: siteConfig.name,
-  category: "technology",
   alternates: { canonical: "/" },
-  appleWebApp: { capable: true, title: siteConfig.shortName, statusBarStyle: "black-translucent" },
   robots: {
     index: true,
     follow: true,
@@ -81,6 +57,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
       "max-video-preview": -1,
     },
+  },
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "1254x1254" }],
+    apple: [{ url: "/icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
     title: seo.openGraph.title,
@@ -97,11 +77,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: "#121212",
-  colorScheme: "dark",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -111,7 +86,8 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${openSans.variable} ${firaCode.variable}`}
+      suppressHydrationWarning
+      className={cn(geistSans.variable, geistMono.variable, "font-sans")}
     >
       <head>
         <script
@@ -121,15 +97,29 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
-        {children}
+      <body className="boot-loader-active min-h-screen bg-background text-foreground antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <noscript>
+            <style>{`
+              body.boot-loader-active { overflow: auto !important; }
+              .boot-loader { display: none !important; }
+            `}</style>
+          </noscript>
+          <BootLoader />
+          {children}
+        </ThemeProvider>
         {analyticsId ? (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
-              strategy="lazyOnload"
+              strategy="afterInteractive"
             />
-            <Script id="google-analytics" strategy="lazyOnload">
+            <Script id="google-analytics" strategy="afterInteractive">
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){window.dataLayer.push(arguments);}
 gtag('js', new Date());

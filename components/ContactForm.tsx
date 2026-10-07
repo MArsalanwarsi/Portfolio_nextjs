@@ -1,13 +1,13 @@
 "use client";
 
-import {
-  useState,
-  type ChangeEvent,
-  type FormEvent,
-  type ReactNode,
-} from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { AnimatePresence, m } from "framer-motion";
+import { AlertCircle, CheckCircle2, LoaderCircle, Send } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { contactContent } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
 
 interface FormState {
   name: string;
@@ -22,10 +22,10 @@ interface ContactResponse {
   errors?: Partial<Record<keyof FormState, string>>;
 }
 
-interface SubmitStatus {
-  type: "idle" | "success" | "error";
-  message: string;
-}
+type SubmitStatus =
+  | { type: "idle"; message: string }
+  | { type: "success"; message: string }
+  | { type: "error"; message: string };
 
 const initialFormState: FormState = {
   name: "",
@@ -35,9 +35,9 @@ const initialFormState: FormState = {
   company: "",
 };
 
+const fieldClassName =
+  "min-h-12 w-full rounded-xl border border-border/70 bg-background/65 px-4 text-sm text-foreground shadow-inner shadow-black/10 outline-none transition placeholder:text-muted-foreground/65 focus:border-primary/60 focus:ring-3 focus:ring-primary/15 disabled:cursor-not-allowed disabled:opacity-60";
 const formCopy = contactContent.form;
-const offlineMessage =
-  "You’re offline. Your message is still here — reconnect to send it.";
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialFormState);
@@ -51,27 +51,21 @@ export default function ContactForm() {
   const updateField =
     (field: keyof FormState) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setForm((current) => ({ ...current, [field]: event.target.value }));
+      setForm((current) => ({
+        ...current,
+        [field]: event.target.value,
+      }));
 
       if (errors?.[field]) {
-        setErrors((current) => ({ ...current, [field]: undefined }));
-      }
-
-      if (status.type === "success") {
-        setStatus({ type: "idle", message: "" });
+        setErrors((current) => ({
+          ...current,
+          [field]: undefined,
+        }));
       }
     };
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    if (isSubmitting) return;
-
-    if (!navigator.onLine) {
-      setStatus({ type: "error", message: offlineMessage });
-      return;
-    }
-
     setIsSubmitting(true);
     setStatus({ type: "idle", message: "" });
     setErrors({});
@@ -79,10 +73,12 @@ export default function ContactForm() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(form),
       });
-      const data: ContactResponse = await response.json().catch(() => ({}));
+      const data = (await response.json()) as ContactResponse;
 
       if (!response.ok) {
         setErrors(data.errors ?? {});
@@ -97,9 +93,8 @@ export default function ContactForm() {
     } catch (error) {
       setStatus({
         type: "error",
-        message: !navigator.onLine
-          ? offlineMessage
-          : error instanceof Error && !(error instanceof TypeError)
+        message:
+          error instanceof Error
             ? error.message
             : formCopy.errorFallback,
       });
@@ -109,141 +104,157 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      className="contact-form"
-      onSubmit={handleSubmit}
-      aria-labelledby="contact-form-title"
-      aria-busy={isSubmitting}
-    >
-      <div className="form-heading">
-        <span>{formCopy.badge}</span>
-        <h3 id="contact-form-title">{formCopy.title}</h3>
-        <p>{formCopy.description}</p>
-      </div>
+    <Card className="rounded-xl bg-card/82">
+      <CardContent className="p-5 sm:p-6">
+        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <Badge
+              variant="outline"
+              className="mb-3 h-7 rounded-full border-primary/25 bg-primary/8 px-3 text-xs font-medium text-primary"
+            >
+              {formCopy.badge}
+            </Badge>
+            <h3 className="font-display text-3xl font-semibold leading-tight">
+              {formCopy.title}
+            </h3>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
+              {formCopy.description}
+            </p>
+          </div>
+        </div>
 
-      <div hidden aria-hidden="true">
-        <label htmlFor="contact-company">Company</label>
-        <input
-          id="contact-company"
-          name="company"
-          tabIndex={-1}
-          autoComplete="off"
-          value={form.company}
-          onChange={updateField("company")}
-        />
-      </div>
+        <form className="relative space-y-4" onSubmit={handleSubmit} noValidate>
+          <div className="pointer-events-none absolute left-[-9999px] top-auto size-px overflow-hidden">
+            <label htmlFor="company">Company</label>
+            <input
+              id="company"
+              name="company"
+              tabIndex={-1}
+              autoComplete="organization"
+              value={form.company}
+              onChange={updateField("company")}
+            />
+          </div>
 
-      <div className="field-grid">
-        <Field
-          id="contact-name"
-          label={formCopy.fields.name.label}
-          error={errors?.name}
-        >
-          <input
-            id="contact-name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            required
-            minLength={2}
-            maxLength={80}
-            value={form.name}
-            onChange={updateField("name")}
-            placeholder={formCopy.fields.name.placeholder}
-            className="form-input"
-            aria-invalid={Boolean(errors?.name)}
-            aria-describedby={errors?.name ? "contact-name-error" : undefined}
-            disabled={isSubmitting}
-          />
-        </Field>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field
+              id="contact-name"
+              label={formCopy.fields.name.label}
+              error={errors?.name}
+            >
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                value={form.name}
+                onChange={updateField("name")}
+                placeholder={formCopy.fields.name.placeholder}
+                className={fieldClassName}
+                aria-invalid={Boolean(errors?.name)}
+                disabled={isSubmitting}
+              />
+            </Field>
 
-        <Field
-          id="contact-email"
-          label={formCopy.fields.email.label}
-          error={errors?.email}
-        >
-          <input
-            id="contact-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            maxLength={120}
-            value={form.email}
-            onChange={updateField("email")}
-            placeholder={formCopy.fields.email.placeholder}
-            className="form-input"
-            aria-invalid={Boolean(errors?.email)}
-            aria-describedby={errors?.email ? "contact-email-error" : undefined}
-            disabled={isSubmitting}
-          />
-        </Field>
-      </div>
+            <Field
+              id="contact-email"
+              label={formCopy.fields.email.label}
+              error={errors?.email}
+            >
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={form.email}
+                onChange={updateField("email")}
+                placeholder={formCopy.fields.email.placeholder}
+                className={fieldClassName}
+                aria-invalid={Boolean(errors?.email)}
+                disabled={isSubmitting}
+              />
+            </Field>
+          </div>
 
-      <Field
-        id="contact-subject"
-        label={formCopy.fields.subject.label}
-        error={errors?.subject}
-      >
-        <input
-          id="contact-subject"
-          name="subject"
-          type="text"
-          required
-          minLength={3}
-          maxLength={120}
-          value={form.subject}
-          onChange={updateField("subject")}
-          placeholder={formCopy.fields.subject.placeholder}
-          className="form-input"
-          aria-invalid={Boolean(errors?.subject)}
-          aria-describedby={
-            errors?.subject ? "contact-subject-error" : undefined
-          }
-          disabled={isSubmitting}
-        />
-      </Field>
+          <Field
+            id="contact-subject"
+            label={formCopy.fields.subject.label}
+            error={errors?.subject}
+          >
+            <input
+              id="contact-subject"
+              name="subject"
+              type="text"
+              value={form.subject}
+              onChange={updateField("subject")}
+              placeholder={formCopy.fields.subject.placeholder}
+              className={fieldClassName}
+              aria-invalid={Boolean(errors?.subject)}
+              disabled={isSubmitting}
+            />
+          </Field>
 
-      <Field
-        id="contact-message"
-        label={formCopy.fields.message.label}
-        error={errors?.message}
-      >
-        <textarea
-          id="contact-message"
-          name="message"
-          required
-          minLength={20}
-          maxLength={2000}
-          rows={5}
-          value={form.message}
-          onChange={updateField("message")}
-          placeholder={formCopy.fields.message.placeholder}
-          className="form-input"
-          aria-invalid={Boolean(errors?.message)}
-          aria-describedby={
-            errors?.message ? "contact-message-error" : undefined
-          }
-          disabled={isSubmitting}
-        />
-      </Field>
+          <Field
+            id="contact-message"
+            label={formCopy.fields.message.label}
+            error={errors?.message}
+          >
+            <textarea
+              id="contact-message"
+              name="message"
+              value={form.message}
+              onChange={updateField("message")}
+              placeholder={formCopy.fields.message.placeholder}
+              className={cn(fieldClassName, "min-h-40 resize-y py-3 leading-7")}
+              aria-invalid={Boolean(errors?.message)}
+              disabled={isSubmitting}
+            />
+          </Field>
 
-      <button type="submit" disabled={isSubmitting} className="form-submit">
-        <span>
-          {isSubmitting ? formCopy.submitLoading : formCopy.submitIdle}
-        </span>
-        <ArrowUpRight size={20} aria-hidden="true" />
-      </button>
+          <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
+            <Button
+              type="submit"
+              size="lg"
+              disabled={isSubmitting}
+              className="h-12 rounded-full px-5"
+            >
+              {isSubmitting ? (
+                <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
+              ) : (
+                <Send className="size-4" aria-hidden="true" />
+              )}
+              {isSubmitting ? formCopy.submitLoading : formCopy.submitIdle}
+            </Button>
 
-      <output
-        className="form-status"
-        data-status={status.type}
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        {status.message}
-      </output>
-    </form>
+            <AnimatePresence initial={false} mode="popLayout">
+              {status.message ? (
+                <m.output
+                  key={`${status.type}-${status.message}`}
+                  className={cn(
+                    "flex items-center gap-2 text-sm",
+                    status.type === "success"
+                      ? "text-primary"
+                      : "text-destructive"
+                  )}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                  aria-live="polite"
+                >
+                  {status.type === "success" ? (
+                    <CheckCircle2 className="size-4" aria-hidden="true" />
+                  ) : (
+                    <AlertCircle className="size-4" aria-hidden="true" />
+                  )}
+                  {status.message}
+                </m.output>
+              ) : null}
+            </AnimatePresence>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -256,16 +267,19 @@ function Field({
   id: string;
   label: string;
   error?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   return (
-    <div className="form-field">
-      <label htmlFor={id}>{label}</label>
+    <div>
+      <label
+        htmlFor={id}
+        className="mb-2 block text-sm font-medium text-foreground"
+      >
+        {label}
+      </label>
       {children}
       {error ? (
-        <p id={`${id}-error`} className="field-error">
-          {error}
-        </p>
+        <p className="mt-2 text-sm leading-6 text-destructive">{error}</p>
       ) : null}
     </div>
   );

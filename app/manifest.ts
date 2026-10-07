@@ -6,12 +6,10 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name,
     short_name: siteConfig.shortName,
     description: seo.description,
-    id: "/",
-    scope: "/",
     start_url: "/",
     display: "standalone",
-    background_color: "#121212",
-    theme_color: "#121212",
-    icons: [{ src: "/icon.png", sizes: "512x512", type: "image/png" }],
+    background_color: "#09090b",
+    theme_color: "#09090b",
+    icons: [{ src: "/icon.png", sizes: "1254x1254", type: "image/png" }],
   };
 }
