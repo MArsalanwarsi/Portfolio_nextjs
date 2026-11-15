@@ -1,195 +1,213 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { m } from "framer-motion";
-import { Send } from "lucide-react";
-import MobileNav from "@/components/MobileNav";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { navLinks, siteConfig } from "@/data/portfolio";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, X } from "lucide-react";
+import { siteConfig } from "@/data/portfolio";
+import styles from "./Chrome.module.css";
 
-const hasRealEmail = !siteConfig.email.includes("example.com");
+export const directoryLinks = [
+  { number: "01", label: "PROJECTS", href: "#projects" },
+  { number: "02", label: "ABOUT", href: "#about" },
+  { number: "03", label: "SKILLS", href: "#skills" },
+  { number: "04", label: "TIMELINE", href: "#experience" },
+  { number: "05", label: "CONTACT", href: "#contact" },
+] as const;
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [darkSurface, setDarkSurface] = useState(true);
 
   useEffect(() => {
     let frame = 0;
-    const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
-
-    const findActiveSection = () => {
-      const scrollPosition = window.scrollY + 140;
-      const viewportBottom = window.scrollY + window.innerHeight;
-      const pageBottom = document.documentElement.scrollHeight;
-
-      if (viewportBottom >= pageBottom - 8) {
-        return sectionIds[sectionIds.length - 1];
-      }
-
-      let currentSection = sectionIds[0];
-
-      for (const id of sectionIds) {
-        const section = document.getElementById(id);
-
-        if (!section) {
-          continue;
-        }
-
-        if (section.offsetTop <= scrollPosition) {
-          currentSection = id;
-        } else {
-          break;
-        }
-      }
-
-      return currentSection;
-    };
-
-    const syncNavState = () => {
+    const update = () => {
       frame = 0;
-      setScrolled(window.scrollY > 24);
-      setActiveSection(findActiveSection());
-    };
-
-    const requestSync = () => {
-      if (frame) {
-        return;
+      const section = document
+        .elementFromPoint(window.innerWidth / 2, 110)
+        ?.closest<HTMLElement>("[data-surface]");
+      if (section) {
+        setDarkSurface(
+          section.dataset.surface === "dark" || section.dataset.surface === "void"
+        );
       }
-
-      frame = window.requestAnimationFrame(syncNavState);
     };
-
-    syncNavState();
-    window.addEventListener("scroll", requestSync, { passive: true });
-    window.addEventListener("resize", requestSync);
-
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("hashchange", update);
     return () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
-      }
-
-      window.removeEventListener("scroll", requestSync);
-      window.removeEventListener("resize", requestSync);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("hashchange", update);
     };
   }, []);
 
-  const handleNavClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    event.preventDefault();
-    const id = href.replace("#", "");
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setActiveSection(id);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
+  const openMenu = () => {
+    dialog.current?.showModal();
+    setMenuOpen(true);
   };
 
-  const contactHref = hasRealEmail
-    ? `mailto:${siteConfig.email}`
-    : siteConfig.linkedin;
+  const closeMenu = () => {
+    dialog.current?.close();
+  };
+
+  const handleClose = () => {
+    setMenuOpen(false);
+    trigger.current?.focus({ preventScroll: true });
+  };
+
+  const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (e.target === dialog.current) {
+      closeMenu();
+    }
+  };
 
   return (
-    <m.nav
-      initial={{ opacity: 0, y: -18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 px-4 pt-4 transition-all duration-300 sm:px-6",
-        scrolled && "pt-3",
-      )}
-      aria-label="Primary"
-    >
-      <div
-        className={cn(
-          "glass-nav mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 rounded-xl border px-3 py-2 transition-all duration-300",
-          scrolled && "translate-y-[-1px]",
-        )}
+    <>
+      {/* Floating Chrome Navigation Bar */}
+      <header
+        className={`${styles.chrome} ${darkSurface ? styles.onDark : ""}`}
+        aria-label="Site header"
       >
+        {/* Top-Left Stacked Wordmark */}
         <a
           href="#home"
-          onClick={(event) => handleNavClick(event, "#home")}
-          className="group flex min-w-0 items-center gap-3"
-          title={`${siteConfig.name} home`}
+          className={styles.wordmark}
+          aria-label={`${siteConfig.name}, back to top`}
         >
-          <Avatar className="size-10 border border-border bg-muted">
-            <AvatarImage
-              src="/icon.png"
-              alt={`${siteConfig.name} logo`}
-              className="object-cover"
-            />
-
-            <AvatarFallback className="bg-primary text-primary-foreground font-display text-sm font-semibold">
-              AW
-            </AvatarFallback>
-          </Avatar>
-
-          <span className="flex min-w-0 flex-col leading-tight max-[360px]:hidden">
-            <span className="truncate text-sm font-semibold">
-              {siteConfig.shortName}
-            </span>
-
-            <span className="truncate text-xs text-muted-foreground">
-              {siteConfig.role}
-            </span>
-          </span>
+          <span>Arsalan</span>
+          <strong>WARSI</strong>
         </a>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          {navLinks.map((link) => {
-            const id = link.href.replace("#", "");
-            const active = activeSection === id;
-
-            return (
-              <Button
-                key={link.href}
-                nativeButton={false}
-                render={
-                  <a
-                    href={link.href}
-                    onClick={(event) => handleNavClick(event, link.href)}
-                  />
-                }
-                variant="ghost"
-                size="sm"
-                className={cn(
-                  "h-8 rounded-full px-3 text-xs text-muted-foreground hover:bg-primary/10 hover:text-foreground",
-                  active &&
-                    "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary hover:text-primary-foreground",
-                )}
-                aria-current={active ? "page" : undefined}
-              >
-                {link.label}
-              </Button>
-            );
-          })}
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Button
-            nativeButton={false}
-            render={
-              <a
-                href={contactHref}
-                target={hasRealEmail ? undefined : "_blank"}
-                rel={hasRealEmail ? undefined : "noopener noreferrer"}
-              />
-            }
-            size="lg"
-            className="hidden rounded-full bg-primary px-4 text-primary-foreground shadow-sm shadow-primary/20 hover:bg-primary/90 md:inline-flex"
+        {/* Top-Right Action Controls */}
+        <div className={styles.navActions}>
+          <a
+            href="#contact"
+            className={styles.talk}
+            aria-label="Let's talk, go to contact section"
           >
-            <Send className="size-4" aria-hidden="true" />
-            Connect
-          </Button>
-
-          <MobileNav
-            activeSection={activeSection}
-            contactHref={contactHref}
-            hasRealEmail={hasRealEmail}
-            onNavigate={handleNavClick}
-          />
+            <span>LET&apos;S TALK</span>
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+          <button
+            ref={trigger}
+            type="button"
+            className={`${styles.menuButton} w-[55.5px] h-[55.5px]`}
+            onClick={openMenu}
+            aria-label="Open navigation menu"
+            aria-expanded={menuOpen}
+            aria-controls="site-navigation"
+            aria-haspopup="dialog"
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
         </div>
-      </div>
-    </m.nav>
+      </header>
+
+      {/* Full-Bleed Directory Navigation Dialog */}
+      {/* oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+      <dialog
+        ref={dialog}
+        id="site-navigation"
+        className={styles.menu}
+        onClick={handleDialogClick}
+        onClose={handleClose}
+        aria-labelledby="menu-title"
+        aria-modal="true"
+      >
+        <div className={styles.menuTop}>
+          <a
+            href="#home"
+            onClick={closeMenu}
+            className={styles.wordmark}
+            aria-label={`${siteConfig.name}, home`}
+          >
+            <span>Arsalan</span>
+            <strong>WARSI</strong>
+          </a>
+          <span className={styles.micro}>
+            Independent Developer · Karachi, PK
+          </span>
+          <button
+            type="button"
+            onClick={closeMenu}
+            className={styles.close}
+            aria-label="Close navigation menu"
+          >
+            <X size={24} aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className={styles.menuContent}>
+          <div className={styles.menuIntro}>
+            <p id="menu-title" className={styles.micro}>
+              Directory
+            </p>
+            <p>
+              Good ideas.
+              <br />
+              <em>Better websites.</em>
+            </p>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className={styles.menuEmail}
+            >
+              {siteConfig.email} <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </div>
+
+          <nav className={styles.menuLinks} aria-label="Primary navigation">
+            {directoryLinks.map((link) => (
+              <a
+                href={link.href}
+                key={link.number}
+                onClick={closeMenu}
+                className={styles.directoryLink}
+              >
+                <span className={styles.dirNumber}>{link.number}</span>
+                <span className={styles.dirDivider}>//</span>
+                <span className={styles.dirLabel}>{link.label}</span>
+                <ArrowUpRight
+                  size={26}
+                  className={styles.dirArrow}
+                  aria-hidden="true"
+                />
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        <div className={styles.menuBottom}>
+          <span className={styles.micro}>
+            {siteConfig.role} · Aptech Associate
+          </span>
+          <a
+            href={siteConfig.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View résumé <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
+      </dialog>
+    </>
   );
 }
+
+
+

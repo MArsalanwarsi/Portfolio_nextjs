@@ -1,83 +1,160 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
 @custom-variant data-open (&:is([data-state="open"], [data-open]:not([data-open="false"])));
 @custom-variant data-closed (&:is([data-state="closed"], [data-closed]:not([data-closed="false"])));
 @custom-variant data-active (&:is([data-state="active"], [data-active]:not([data-active="false"])));
-
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-body: var(--font-sans);
-  --font-display: var(--font-sans);
-  --background: #211711;
-  --foreground: #fff5e9;
-  --card: #2a1d15;
-  --card-foreground: #fff5e9;
-  --popover: #2a1d15;
-  --popover-foreground: #fff5e9;
-  --primary: #bb895b;
-  --primary-foreground: #1c120b;
-  --secondary: #38271b;
-  --secondary-foreground: #edd9bd;
-  --muted: #32231a;
-  --muted-foreground: #c4b19c;
-  --accent: #4a3221;
-  --accent-foreground: #dfb98d;
-  --destructive: #fb7185;
-  --border: rgba(239, 213, 180, 0.14);
-  --input: rgba(239, 213, 180, 0.18);
-  --ring: #c89768;
-  --chart-1: #bb895b;
-  --chart-2: #a27651;
-  --chart-3: #855b3b;
-  --chart-4: #fb7185;
-  --chart-5: #dfb98d;
-  --radius: 0.38rem;
-  --sidebar: #291c14;
-  --sidebar-foreground: #fff5e9;
-  --sidebar-primary: #bb895b;
-  --sidebar-primary-foreground: #1c120b;
-  --sidebar-accent: #38271b;
-  --sidebar-accent-foreground: #edd9bd;
-  --sidebar-border: rgba(239, 213, 180, 0.14);
-  --sidebar-ring: #c89768;
+  /* ==========================================================================
+     Lando Norris Primitive Color Palette
+     ========================================================================== */
+  --paddock-olive: #202020;
+  --color-paddock-olive: #202020;
+  --chalk-cream: #f4f4f4;
+  --color-chalk-cream: #f4f4f4;
+  --signal-lime: #eeeeee;
+  --color-signal-lime: #eeeeee;
+  --moss-lime: #bcbcbc;
+  --color-moss-lime: #bcbcbc;
+  --visor-black: #151515;
+  --color-visor-black: #151515;
+  --sage-fog: #dedede;
+  --color-sage-fog: #dedede;
+  --tarmac-gray: #535353;
+  --color-tarmac-gray: #535353;
+  --lichen-gray: #b6b6b6;
+  --color-lichen-gray: #b6b6b6;
+  --stone-gray: #bababa;
+  --color-stone-gray: #bababa;
+
+  /* ==========================================================================
+     Default Semantic UI Tokens (Dark Ground Canvas: Paddock Olive)
+     ========================================================================== */
+  --surface: var(--paddock-olive);
+  --surface-foreground: var(--chalk-cream);
+  --background: var(--paddock-olive);
+  --foreground: var(--chalk-cream);
+  --card: var(--visor-black);
+  --card-foreground: var(--chalk-cream);
+  --popover: var(--visor-black);
+  --popover-foreground: var(--chalk-cream);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #343434;
+  --muted-foreground: var(--lichen-gray);
+  --accent: var(--moss-lime);
+  --accent-foreground: var(--paddock-olive);
+  --destructive: #909090;
+  --border: var(--tarmac-gray);
+  --input: var(--tarmac-gray);
+  --ring: var(--signal-lime);
+  --radius: 8px;
+
+  /* Navigation & Chrome */
+  --sidebar: var(--paddock-olive);
+  --sidebar-foreground: var(--chalk-cream);
+  --sidebar-primary: var(--signal-lime);
+  --sidebar-primary-foreground: var(--paddock-olive);
+  --sidebar-accent: var(--moss-lime);
+  --sidebar-accent-foreground: var(--paddock-olive);
+  --sidebar-border: var(--tarmac-gray);
+  --sidebar-ring: var(--signal-lime);
 }
 
+/* ============================================================================
+   Semantic Surface Overrides: Light Ground (Chalk Cream Sections)
+   ============================================================================ */
+[data-surface="light"],
+.surface-light {
+  --surface: var(--chalk-cream);
+  --surface-foreground: var(--paddock-olive);
+  --background: var(--chalk-cream);
+  --foreground: var(--paddock-olive);
+  --card: var(--chalk-cream);
+  --card-foreground: var(--paddock-olive);
+  --popover: var(--chalk-cream);
+  --popover-foreground: var(--paddock-olive);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #e5e5e5;
+  --muted-foreground: var(--tarmac-gray);
+  --border: rgba(42, 42, 42, 0.18);
+  --input: rgba(42, 42, 42, 0.22);
+  --ring: var(--signal-lime);
+}
+
+/* ============================================================================
+   Semantic Surface Overrides: Void Ground (Visor Black Showcase / Product Sections)
+   ============================================================================ */
+[data-surface="void"],
+.surface-void {
+  --surface: var(--visor-black);
+  --surface-foreground: var(--chalk-cream);
+  --background: var(--visor-black);
+  --foreground: var(--chalk-cream);
+  --card: var(--visor-black);
+  --card-foreground: var(--chalk-cream);
+  --popover: var(--visor-black);
+  --popover-foreground: var(--chalk-cream);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #1c1c1c;
+  --muted-foreground: var(--stone-gray);
+  --border: var(--tarmac-gray);
+  --input: var(--tarmac-gray);
+  --ring: var(--signal-lime);
+}
+
+/* Dark class synchronization */
 .dark {
-  --background: #130e0a;
-  --foreground: #fff4e5;
-  --card: #20160f;
-  --card-foreground: #fff4e5;
-  --popover: #20160f;
-  --popover-foreground: #fff4e5;
-  --primary: #cfa071;
-  --primary-foreground: #1c120b;
-  --secondary: #2b1e15;
-  --secondary-foreground: #edd8bc;
-  --muted: #2b1e15;
-  --muted-foreground: #c3ad96;
-  --accent: #3b291c;
-  --accent-foreground: #e1bc91;
-  --destructive: #fb7185;
-  --border: rgba(239, 213, 180, 0.13);
-  --input: rgba(239, 213, 180, 0.17);
-  --ring: #cfa071;
-  --chart-1: #cfa071;
-  --chart-2: #a27651;
-  --chart-3: #855b3b;
-  --chart-4: #fb7185;
-  --chart-5: #dfb98d;
-  --sidebar: #20160f;
-  --sidebar-foreground: #fff4e5;
-  --sidebar-primary: #cfa071;
-  --sidebar-primary-foreground: #1c120b;
-  --sidebar-accent: #2b1e15;
-  --sidebar-accent-foreground: #edd8bc;
-  --sidebar-border: rgba(239, 213, 180, 0.13);
-  --sidebar-ring: #cfa071;
+  --background: var(--paddock-olive);
+  --foreground: var(--chalk-cream);
+  --card: var(--visor-black);
+  --card-foreground: var(--chalk-cream);
+  --popover: var(--visor-black);
+  --popover-foreground: var(--chalk-cream);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #343434;
+  --muted-foreground: var(--lichen-gray);
+  --accent: var(--moss-lime);
+  --accent-foreground: var(--paddock-olive);
+  --border: var(--tarmac-gray);
+  --input: var(--tarmac-gray);
+  --ring: var(--signal-lime);
 }
 
+/* ============================================================================
+   Tailwind CSS v4 Inline Theme Definitions
+   ============================================================================ */
 @theme inline {
+  /* Lando Norris Colors (both short and verbose aliases) */
+  --color-paddock: #202020;
+  --color-paddock-olive: #202020;
+  --color-chalk: #f4f4f4;
+  --color-chalk-cream: #f4f4f4;
+  --color-signal-lime: #eeeeee;
+  --color-moss-lime: #bcbcbc;
+  --color-visor-black: #151515;
+  --color-sage-fog: #dedede;
+  --color-tarmac: #535353;
+  --color-tarmac-gray: #535353;
+  --color-lichen: #b6b6b6;
+  --color-lichen-gray: #b6b6b6;
+  --color-stone: #bababa;
+  --color-stone-gray: #bababa;
+
+  /* Semantic UI Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -96,32 +173,48 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: var(--font-sans);
-  --font-heading: var(--font-sans);
-  --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
-  --radius-sm: calc(var(--radius) * 0.55);
+
+  /* Font Families */
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-display: var(--font-serif), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Mona Sans Font Weight Tokens (400 to 800) */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Tracking Tokens */
+  --tracking-statement: -0.93px;
+  --tracking-title: -1.85px;
+  --tracking-impact: -3.7px;
+  --tracking-body: -0.19px;
+  --tracking-serif-wide: 0.74px;
+
+  /* Lando Precise Radii */
+  --radius-btn: 8px;
+  --radius-nav: 8px;
+  --radius-badge: 2.96px;
+  --radius-indicator: 14px;
+  --radius-card: 0px;
+
+  /* Derived Radii */
+  --radius-sm: calc(var(--radius) * 0.5);
   --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.3);
-  --radius-2xl: calc(var(--radius) * 1.65);
-  --radius-3xl: calc(var(--radius) * 2);
-  --radius-4xl: calc(var(--radius) * 2.4);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+
+  /* Motion Curves */
+  --ease-lando: cubic-bezier(0.65, 0.05, 0, 1);
+  --duration-lando: 0.75s;
 }
 
+/* ============================================================================
+   Base Layer & Typography
+   ============================================================================ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -130,36 +223,18 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: color-mix(
-        in srgb,
-        var(--primary) 72%,
-        var(--foreground) 18%
-      )
-      color-mix(in srgb, var(--background) 72%, transparent);
+    scrollbar-color: var(--tarmac-gray) var(--paddock-olive);
   }
 
   body {
     @apply bg-background text-foreground;
     min-height: 100vh;
     overflow-x: hidden;
-    font-family: var(--font-body), sans-serif;
-    background:
-      radial-gradient(
-        ellipse 72% 34% at 50% -10%,
-        color-mix(in srgb, var(--primary) 22%, transparent) 0%,
-        transparent 68%
-      ),
-      radial-gradient(
-        ellipse 70% 38% at 78% 16%,
-        color-mix(in srgb, var(--accent-foreground) 13%, transparent) 0%,
-        transparent 72%
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--background) 82%, #38251a 18%) 0%,
-        var(--background) 34rem
-      ),
-      var(--background);
+    font-family: var(--font-sans), sans-serif;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.19px;
+    background-color: var(--background);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -180,180 +255,101 @@
   }
 }
 
-body.boot-loader-active {
-  overflow: hidden;
+/* ============================================================================
+   ZERO CAST SHADOWS (Lando Norris Elevation Mandate)
+   ============================================================================ */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
+/* Highlighter Ink Selection */
 ::selection {
-  background: color-mix(in srgb, var(--primary) 30%, transparent);
-  color: var(--foreground);
+  background: var(--signal-lime);
+  color: var(--paddock-olive);
 }
 
+/* Precise Minimal Scrollbars */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: color-mix(in srgb, var(--background) 80%, var(--foreground) 4%);
-  border-left: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+  background: var(--paddock-olive);
 }
 
 ::-webkit-scrollbar-thumb {
-  border: 3px solid var(--background);
-  border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    #cfa071 0%,
-    #a27651 42%,
-    #4a3221 72%,
-    #9c6b45 100%
-  );
-  background-size: 100% 220%;
-  animation: scrollbar-flow 7s ease-in-out infinite alternate;
+  background: var(--tarmac-gray);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-position: 0 100%;
+  background: var(--lichen-gray);
 }
 
-@keyframes scrollbar-flow {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 0 100%;
-  }
-}
-
+/* ============================================================================
+   Glassmorphism Flat Redefinition (Zero Cast Shadows, 1px Tarmac Border)
+   ============================================================================ */
 .glass-card,
 .glass-nav,
 .glass-control {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  border-color: color-mix(in srgb, var(--primary) 22%, var(--border));
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--card) 88%, transparent) 0%,
-    color-mix(in srgb, var(--secondary) 52%, transparent) 100%
-  );
-  box-shadow:
-    0 22px 70px color-mix(in srgb, #000 28%, transparent),
-    0 0 34px color-mix(in srgb, var(--primary) 10%, transparent),
-    inset 0 1px 0 color-mix(in srgb, white 16%, transparent);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-}
-
-.glass-card::before,
-.glass-nav::before,
-.glass-control::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    120deg,
-    color-mix(in srgb, white 13%, transparent) 0%,
-    transparent 32%,
-    color-mix(in srgb, var(--accent-foreground) 11%, transparent) 100%
-  );
-  opacity: 0.48;
-}
-
-.glass-card > *,
-.glass-nav > *,
-.glass-control > * {
-  position: relative;
-  z-index: 1;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .glass-control {
-  box-shadow:
-    0 12px 34px color-mix(in srgb, var(--foreground) 8%, transparent),
-    inset 0 1px 0 color-mix(in srgb, white 28%, transparent);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
 }
 
 .dark .glass-card,
 .dark .glass-nav,
 .dark .glass-control {
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--card) 82%, transparent) 0%,
-    color-mix(in srgb, var(--secondary) 52%, transparent) 100%
-  );
-  box-shadow:
-    0 24px 90px color-mix(in srgb, #000 64%, transparent),
-    0 0 46px color-mix(in srgb, var(--primary) 12%, transparent),
-    0 0 72px color-mix(in srgb, var(--accent-foreground) 7%, transparent),
-    inset 0 1px 0 color-mix(in srgb, white 12%, transparent);
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
 }
 
-.dark .glass-control {
-  box-shadow:
-    0 14px 42px color-mix(in srgb, #000 38%, transparent),
-    0 0 28px color-mix(in srgb, var(--primary) 10%, transparent),
-    inset 0 1px 0 color-mix(in srgb, white 11%, transparent);
-}
-
+/* ============================================================================
+   Ambient Ground (Clean Neutral Base)
+   ============================================================================ */
 .ambient-background {
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background:
-    linear-gradient(120deg, rgba(200, 151, 104, 0.1), transparent 28%),
-    linear-gradient(245deg, rgba(137, 96, 63, 0.14), transparent 36%),
-    linear-gradient(180deg, #24180f 0%, #130e0a 58%, #0d0906 100%);
-}
-
-.ambient-vignette,
-.ambient-grain {
-  position: absolute;
-  inset: 0;
+  background: var(--background);
 }
 
 .ambient-vignette {
   z-index: 1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(15, 10, 6, 0.82) 0%,
-      transparent 24%,
-      transparent 76%,
-      rgba(15, 10, 6, 0.78) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(15, 10, 6, 0.04) 0%,
-      transparent 36%,
-      rgba(15, 10, 6, 0.72) 100%
-    );
-}
-
-.ambient-background canvas,
-.ambient-background svg {
-  z-index: 0;
-  opacity: 0.88;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(227, 227, 227, 0.03),
+    transparent 70%
+  );
 }
 
 .ambient-grain {
   z-index: 2;
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
   background: repeating-linear-gradient(
     0deg,
-    color-mix(in srgb, var(--foreground) 4%, transparent) 0 1px,
+    var(--foreground) 0 1px,
     transparent 1px 3px
   );
-  opacity: 0.06;
-  mix-blend-mode: screen;
-}
-
-.dark .ambient-grain {
-  mix-blend-mode: screen;
-  opacity: 0.06;
+  mix-blend-mode: overlay;
 }
 
 .page-shell {
@@ -361,6 +357,107 @@ body.boot-loader-active {
   z-index: 2;
 }
 
+/* ============================================================================
+   Chamfer Notch & Elevation Utilities
+   ============================================================================ */
+/* 1. Chamfered Corner Card (Bottom-Right Notch for Helmet / Showcase Cards) */
+.chamfer-card {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%
+  );
+}
+
+/* 2. Raised Inset Footer Tab */
+.footer-tab {
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
+}
+
+/* 3. Lime Halo Glow (Radial Glow rising behind Inset Footer Panel) */
+.lime-halo-glow {
+  background: radial-gradient(
+    circle at 50% -190%,
+    rgba(227, 227, 227, 0) 68%,
+    rgb(227, 227, 227) 83%
+  );
+}
+
+/* ============================================================================
+   OpenType Mona Sans & Bodoni Moda Variation Presets & Type Scale Utilities
+   ============================================================================ */
+.font-statement {
+  font-family: var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 93, "wght" 660;
+  font-size: 117.59px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.93px;
+}
+
+.font-title {
+  font-family: var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 93, "wght" 750;
+  font-size: clamp(2rem, 4vw, 66.67px);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -1.85px;
+  overflow-wrap: break-word;
+}
+
+.font-impact {
+  font-family: var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 93, "wght" 750;
+  font-size: 103.7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.82;
+  letter-spacing: -3.7px;
+}
+
+.font-button {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14.81px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+}
+
+.font-body {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 18.52px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.19px;
+}
+
+.font-serif-accent {
+  font-family: var(--font-serif), Georgia, serif;
+  color: var(--moss-lime);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* ============================================================================
+   Marquee Animation
+   ============================================================================ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================================
+   Accessibility: Reduced Motion
+   ============================================================================ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -374,431 +471,37 @@ body.boot-loader-active {
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
   }
+}
 
-  ::-webkit-scrollbar-thumb {
-    animation: none;
+.reading-progress { display:none }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reading-progress {
+      display:block; position:fixed; inset:0 0 auto; z-index:60; height:3px;
+      background:#c3c3c3; pointer-events:none; transform-origin:left;
+      animation:page-distance linear both; animation-timeline:scroll(root);
+    }
+    .page-shell > section h2:not(dialog h2), [data-scroll-enter], footer h2 {
+      animation:section-entry linear both;
+      animation-timeline:view(block);
+      animation-range:entry 0% entry 92%;
+    }
+    #home h1 {
+      animation:hero-distance linear both;
+      animation-timeline:view(block);
+      animation-range:exit 0% exit 100%;
+    }
+    @keyframes section-entry {
+      from { translate:0 clamp(16px,3vw,42px); opacity:.65 }
+      to { translate:0 0; opacity:1 }
+    }
+    @keyframes hero-distance { from {translate:0 0} to {translate:0 -1.5rem} }
+    @keyframes page-distance { from {scale:0 1} to {scale:1 1} }
   }
 }
-/* The cursor has an exact rim hotspot; the cup tilts and a small stream pours on controls. */
-html.coffee-pointer,
-html.coffee-pointer * {
-  cursor: none !important;
-}
-.coffee-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2147483647;
-  pointer-events: none;
-  opacity: 0;
-  will-change: transform;
-}
-.coffee-cursor > svg {
-  position: absolute;
-  left: -11px;
-  top: -15px;
-  overflow: visible;
-  filter: drop-shadow(0 1px 1px #0008);
-}
-.coffee-cursor-cup {
-  transform-origin: 18px 25px;
-  transition: transform 0.22s ease;
-}
-.coffee-cursor-pour,
-.coffee-cursor-drop {
-  opacity: 0;
-}
-.coffee-cursor-steam {
-  animation: coffee-steam 1.8s ease-in-out infinite;
-}
-.coffee-cursor[data-pouring="true"] .coffee-cursor-steam {
-  opacity: 0;
-  animation: none;
-}
-@keyframes coffee-steam {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: translateY(1px);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translateY(-2px);
-  }
-}
-.coffee-cursor[data-pouring="true"] .coffee-cursor-cup {
-  transform: rotate(-38deg);
-}
-.coffee-cursor[data-pouring="true"] .coffee-cursor-pour {
-  opacity: 1;
-  stroke-dasharray: 6 3;
-  animation: coffee-pour 0.5s linear infinite;
-}
-.coffee-cursor[data-pouring="true"] .coffee-cursor-drop {
-  animation: coffee-drop 0.65s ease-in infinite;
-}
-@keyframes coffee-pour {
-  to {
-    stroke-dashoffset: -18;
-  }
-}
-@keyframes coffee-drop {
-  0% {
-    opacity: 0;
-    transform: translateY(-3px);
-  }
-  30% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(7px);
-  }
-}
-/* Native scrollbar keeps mouse dragging and keyboard navigation intact. */
-html {
-  scrollbar-color: #b8895e #1b120b;
-}
-::-webkit-scrollbar {
-  width: 11px;
-}
-::-webkit-scrollbar-track {
-  background: linear-gradient(90deg, #100b07, #342316, #100b07);
-  border-left: 1px solid #684a32;
-}
-::-webkit-scrollbar-thumb {
-  border: 2px solid #1b120b;
-  border-radius: 20px;
-  background: linear-gradient(
-    180deg,
-    #dfb98d,
-    #9b6943 38%,
-    #4b2b17 72%,
-    #c49366
-  );
-  animation: none;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(#edcda3, #b17c4f, #503018);
-}
-.coffee-scroll-rail {
-  position: fixed;
-  right: 5px;
-  top: 16px;
-  bottom: 16px;
-  width: 38px;
-  z-index: 60;
-  pointer-events: none;
-  --brew-progress: 0;
-}
-.brew-machine {
-  width: 38px;
-  height: 61px;
-  filter: drop-shadow(0 2px 3px #0008);
-}
-.brew-track {
-  position: absolute;
-  top: 60px;
-  bottom: 34px;
-  left: 3px;
-  width: 32px;
-  pointer-events: auto;
-  touch-action: none;
-}
-.brew-track:focus-visible {
-  outline: 1px solid #e1bd92;
-  outline-offset: 2px;
-  border-radius: 12px;
-}
-.brew-stream {
-  position: absolute;
-  top: 0;
-  left: 13px;
-  width: 6px;
-  height: calc(100% * var(--brew-progress));
-  border-radius: 0 0 50% 50%;
-  background: repeating-linear-gradient(
-    180deg,
-    #e0ad72 0px,
-    #9a5b2e 8px,
-    #3c2010 14px,
-    #c88b4c 20px
-  );
-  background-size: 100% 40px;
-  animation: brew-drip 1s linear infinite;
-  box-shadow: inset 1px 0 #edcda380;
-}
-.brew-bean {
-  position: absolute;
-  top: calc((100% - 9px) * var(--brew-progress));
-  left: 11px;
-  width: 10px;
-  height: 12px;
-  border-radius: 60% 60% 70% 70%;
-  background: radial-gradient(at 35% 30%, #edc08c, #a66a39 40%, #3e210f);
-  opacity: clamp(0, calc(var(--brew-progress) * 20), 1);
-}
-.brew-cup {
-  position: absolute;
-  bottom: 3px;
-  left: 4px;
-  width: 27px;
-  height: 30px;
-  border: 2px solid #e1bd92;
-  border-top: 3px solid #f0d9b7;
-  border-radius: 3px 3px 11px 11px;
-  background: #23170f;
-}
-.brew-cup::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  right: -9px;
-  width: 8px;
-  height: 13px;
-  border: 2px solid #e1bd92;
-  border-left: 0;
-  border-radius: 0 8px 8px 0;
-}
-.brew-cup > span {
-  position: absolute;
-  inset: 2px;
-  border-radius: 0 0 7px 7px;
-  transform: scaleY(clamp(0, calc((var(--brew-progress) - 0.85) / 0.15), 1));
-  transform-origin: bottom;
-  background: linear-gradient(#c58c50 0 3px, #0e0804 3px);
-}
-@keyframes brew-drip {
-  to {
-    background-position: 0 40px;
-  }
-}
-@media (hover: hover) and (pointer: fine) {
-  html {
-    scrollbar-width: none;
-  }
-  html::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-  body {
-    padding-right: 44px;
-  }
-}
-@media (pointer: coarse) {
-  .coffee-scroll-rail {
-    display: none;
-  }
-}
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .coffee-cursor {
-    display: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .brew-stream {
-    animation: none !important;
-  }
-}
-/* Sculpted glass pot and ceramic cup scroll animation. */
-.coffee-scroll-rail {
-  width: 60px;
-  right: 2px;
-}
-.brew-machine {
-  width: 60px;
-  height: 82px;
-  overflow: visible;
-}
-.brew-pot {
-  transform-origin: 29px 42px;
-  transform: rotate(calc(-24deg - var(--brew-progress) * 12deg));
-  transition: transform 0.3s ease-out;
-}
-.brew-track {
-  top: 62px;
-  bottom: 37px;
-  left: 14px;
-}
-.brew-stream {
-  left: 13px;
-  width: 5px;
-  border-radius: 40% 60% 50% 50%;
-  background: repeating-linear-gradient(
-    180deg,
-    #d9a16a 0,
-    #78401e 12px,
-    #32180a 22px,
-    #c48848 40px
-  );
-  background-size: 100% 80px;
-  animation: brew-drip 1.2s linear infinite;
-}
-.brew-bean {
-  left: 11px;
-  width: 9px;
-  height: 14px;
-  border-radius: 70% 70% 65% 65%;
-}
-.brew-cup {
-  left: 0;
-  bottom: -4px;
-  width: 60px;
-  height: 55px;
-  border: 0;
-  background: none;
-  border-radius: 0;
-}
-.brew-cup::after {
-  content: none;
-}
-.brew-cup > svg {
-  width: 60px;
-  height: 55px;
-  overflow: visible;
-}
-.brew-cup-liquid {
-  transform-origin: 30px 46px;
-  transform: scaleY(clamp(0, calc((var(--brew-progress) - 0.85) / 0.15), 1));
-}
-.brew-steam {
-  opacity: clamp(0, calc((var(--brew-progress) - 0.9) * 10), 1);
-  animation: brew-steam 2s ease-in-out infinite;
-}
-@keyframes brew-steam {
-  50% {
-    transform: translateY(-3px);
-  }
-}
-@media (hover: hover) and (pointer: fine) {
-  body {
-    padding-right: 64px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .brew-pot {
-    transition: none;
-  }
-  .brew-steam {
-    animation: none;
-  }
-}
-.brew-spout-flow {
-  opacity: clamp(0, calc(var(--brew-progress) * 20), 1);
-  stroke-dasharray: 4 2;
-  animation: brew-spout 0.7s linear infinite;
-}
-@keyframes brew-spout {
-  to {
-    stroke-dashoffset: -12;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .brew-spout-flow {
-    animation: none;
-  }
-}
-/* Compact rail stays below navigation and outside the content column. */
-.coffee-scroll-rail {
-  top: 108px;
-  bottom: 12px;
-  width: 40px;
-  right: 3px;
-  z-index: 40;
-}
-.brew-machine {
-  width: 40px;
-  height: 52px;
-}
-.brew-pot {
-  transform: rotate(-30deg);
-}
-.brew-track {
-  top: 41px;
-  bottom: 25px;
-  left: 4px;
-}
-.brew-cup,
-.brew-cup > svg {
-  width: 40px;
-  height: 37px;
-}
-.brew-cup {
-  bottom: -2px;
-}
-@media (hover: hover) and (pointer: fine) {
-  body {
-    padding-right: 46px;
-  }
-}
-@media (max-width: 1023px), (max-height: 500px) {
-  .coffee-scroll-rail {
-    display: none;
-  }
-  html {
-    scrollbar-width: thin;
-  }
-  html::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  body {
-    padding-right: 0;
-  }
-}
-/* Nozzle coordinates match the mirrored pot's fixed rotation exactly. */
-.brew-spout-flow {
-  stroke-dasharray: none;
-  animation: none;
-  stroke-width: 3.6;
-}
-.brew-stream {
-  left: 14.4px;
-  width: 2.3px;
-  box-shadow: none;
-  border-radius: 0 0 2px 2px;
-}
-/* Keep the coffee rail on touch screens without crowding navigation. */
-@media (max-width: 1023px), (pointer: coarse) {
-  .coffee-scroll-rail {
-    display: block;
-    top: 104px;
-    bottom: 10px;
-    right: 1px;
-    width: 28px;
-  }
-  .brew-machine {
-    width: 28px;
-    height: 36px;
-  }
-  .brew-track {
-    top: 29px;
-    bottom: 18px;
-    left: -2px;
-  }
-  .brew-stream {
-    left: 14.8px;
-    width: 2px;
-  }
-  .brew-cup,
-  .brew-cup > svg {
-    width: 28px;
-    height: 26px;
-  }
-  html {
-    scrollbar-width: none;
-  }
-  html::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-  body {
-    padding-right: 30px;
-  }
-}
-@media (max-height: 500px) {
-  .coffee-scroll-rail {
-    top: 94px;
-    bottom: 6px;
-  }
-}
+
+.profile-note {display:grid;grid-template-columns:1fr 2fr;gap:4vw;padding:clamp(4rem,8vw,9rem) 5vw;background:#181818;color:#f3f3f3;border-bottom:1px solid #555}
+.profile-note h2 {font:600 .8rem/1.5 var(--font-mono),monospace;text-transform:uppercase}
+.profile-note p:first-child{max-width:30ch;font:600 clamp(1.7rem,3.5vw,4rem)/1.05 var(--font-sans),sans-serif;letter-spacing:-.055em}
+.profile-note p+p{margin-top:1.25rem;max-width:56ch;color:#bbb}.font-display{font-family:var(--font-sans),sans-serif}
+@media(max-width:680px){.profile-note{grid-template-columns:1fr;gap:1.25rem}}

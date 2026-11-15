@@ -1,36 +1,43 @@
-import CoffeeScrollRail from "@/components/CoffeeScrollRail";
-import About from "@/components/About";
+import PageScrollMotion from "@/components/PageScrollMotion";
+import StudioIntro from "@/components/StudioIntro";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
-import DeferredCoffeeCursor from "@/components/DeferredCoffeeCursor";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import Navbar from "@/components/Navbar";
 import PremiumMotion from "@/components/PremiumMotion";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import SocialDeck from "@/components/SocialDeck";
+
 import Stats from "@/components/Stats";
+import TechMarquee from "@/components/TechMarquee";
 
 export default function Home() {
   return (
     <PremiumMotion>
+      <StudioIntro />
+      <PageScrollMotion />
       <AnimatedBackground />
-      <DeferredCoffeeCursor />
-      <CoffeeScrollRail />
       <Navbar />
 
       <main className="page-shell">
         <Hero />
+        <TechMarquee />
+        <Projects />
         <About />
+
+
+        <Skills />
         <Experience />
         <Education />
-        <Skills />
-        <Projects />
         <Certificates />
         <Stats />
+        <SocialDeck />
         <Contact />
       </main>
 
@@ -38,3 +45,7 @@ export default function Home() {
     </PremiumMotion>
   );
 }
+
+
+
+

@@ -1,0 +1,11 @@
+.overlay{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#ececec;color:#141414;animation:fail-open 1ms 8s forwards;transition:clip-path .52s cubic-bezier(.76,0,.24,1);clip-path:inset(0)}
+.overlay[data-complete=true]{clip-path:inset(0 0 100%)}
+.status,.overlay button,.center span{font:650 .7rem/1.4 var(--font-mono),monospace;letter-spacing:.09em;text-transform:uppercase}
+.status{position:absolute;top:5vh}
+.center{display:flex;align-items:center;gap:1.2rem}.center b{font:900 clamp(3.4rem,8vw,7.5rem)/1 var(--font-sans),sans-serif;letter-spacing:-.14em;transform:skewX(-12deg)}
+.center span{min-width:4ch;font-variant-numeric:tabular-nums}.center small{font-size:.8em}
+.rail{position:absolute;bottom:5.6rem;left:4vw;right:4vw;height:2px;background:#b5b5b5}.rail span{display:block;width:100%;height:100%;background:#171717;transform-origin:left}
+.overlay button{position:absolute;bottom:1.5rem;right:4vw;min-height:44px;cursor:pointer}
+@keyframes fail-open{to{visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.overlay{transition:none}}
+@media(scripting:none){.overlay{display:none}}

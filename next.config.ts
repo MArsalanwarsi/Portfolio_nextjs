@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
         pathname: "/projects/**",
         search: "",
       },
+      {
+        pathname: "/avatar/**",
+        search: "",
+      },
     ],
     minimumCacheTTL: 31_536_000,
     qualities: [75],

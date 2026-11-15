@@ -15,7 +15,7 @@ interface ProjectMediaProps {
   images: ProjectImage[];
 }
 
-const mediaEase = [0.22, 1, 0.36, 1] as const;
+const mediaEase = [0.65, 0.05, 0, 1] as const;
 
 function isSvg(src: string) {
   return src.toLowerCase().endsWith(".svg");
@@ -24,7 +24,7 @@ function isSvg(src: string) {
 export default function ProjectMedia({
   projectTitle,
   label,
-  accent,
+  accent: _accent,
   images,
 }: ProjectMediaProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -101,11 +101,11 @@ export default function ProjectMedia({
             title="Close gallery"
           />
           <m.div
-            className="relative z-10 flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/14 bg-[#17110c] text-white shadow-2xl"
+            className="relative z-10 flex max-h-full w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-white/14 bg-[#111112] text-white"
             initial={{ opacity: 0, scale: 0.965, y: 22 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 12 }}
-            transition={{ duration: 0.34, ease: mediaEase }}
+            transition={{ duration: 0.75, ease: mediaEase }}
           >
             <div className="flex items-center justify-between gap-4 border-b border-white/12 px-4 py-3 sm:px-5">
               <div className="min-w-0">
@@ -210,10 +210,7 @@ export default function ProjectMedia({
   return (
     <>
       <div
-        className="relative overflow-hidden rounded-xl border border-white/15 bg-black/24 p-3 text-white shadow-2xl shadow-black/20"
-        style={{
-          boxShadow: `0 28px 80px color-mix(in srgb, ${accent} 34%, transparent)`,
-        }}
+        className="relative overflow-hidden rounded-none border border-tarmac-gray/40 bg-visor-black p-3 text-chalk-cream"
       >
         <m.button
           type="button"

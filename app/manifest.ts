@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: seo.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#17110c",
-    theme_color: "#17110c",
+    background_color: "#202020",
+    theme_color: "#202020",
     icons: [{ src: "/icon.png", sizes: "512x512", type: "image/png" }],
   };
 }

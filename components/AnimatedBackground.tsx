@@ -1,9 +1,10 @@
-import DotField from "@/components/DotField";
+import ContourBackground from "@/components/ContourBackground";
+
 export default function AnimatedBackground() {
   return (
     <div className="ambient-background" aria-hidden="true">
       <div className="ambient-vignette" />
-      <DotField />
+      <ContourBackground surface="dark" />
       <div className="ambient-grain" />
     </div>
   );

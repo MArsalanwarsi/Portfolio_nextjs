@@ -3,8 +3,6 @@ import ContactForm from "@/components/ContactForm";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { LiftCard, Reveal } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { contactContent, siteConfig } from "@/data/portfolio";
 
 const hasRealEmail = !siteConfig.email.includes("example.com");
@@ -61,78 +59,69 @@ export default function Contact() {
     : siteConfig.linkedin;
 
   return (
-    <section id="contact" className="px-4 py-20 sm:px-6 lg:py-28">
-      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
+    <section id="contact" className="px-4 py-20 sm:px-6 lg:py-28 bg-paddock-olive text-chalk-cream">
+      <div className="mx-auto w-full max-w-6xl border-t border-tarmac-gray/30 pt-16">
         <SectionHeader
           {...contactContent.header}
         />
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
           <LiftCard className="order-2 h-full lg:order-1">
-            <Card className="h-full rounded-xl bg-primary text-primary-foreground">
-              <CardContent className="flex h-full flex-col justify-between gap-10 p-6 sm:p-8">
-                <div>
-                  <p className="text-xs font-medium opacity-75">
-                    {contactContent.card.eyebrow}
-                  </p>
-                  <h3 className="mt-5 font-display text-4xl font-semibold leading-tight text-balance sm:text-5xl">
-                    {siteConfig.availability}
-                  </h3>
-                  <p className="mt-5 max-w-md text-base leading-8 opacity-80">
-                    {contactContent.card.description}
-                  </p>
-                  <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary-foreground/18 bg-primary-foreground/10 px-3 py-1.5 text-sm font-medium">
-                    <MapPin className="size-4" aria-hidden="true" />
-                    {siteConfig.location}
-                  </p>
+            <div className="h-full rounded-[8px] border border-tarmac-gray/40 bg-visor-black/90 p-6 sm:p-8 flex flex-col justify-between gap-10">
+              <div>
+                <span className="font-mono text-[9.26px] tracking-[0.2em] uppercase text-signal-lime">
+                  {contactContent.card.eyebrow}
+                </span>
+                <h3 className="mt-4 font-sans text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-chalk-cream">
+                  {siteConfig.availability}
+                </h3>
+                <p className="mt-4 max-w-md text-sm leading-6 text-stone-gray font-sans">
+                  {contactContent.card.description}
+                </p>
+                <div className="mt-5 inline-flex items-center gap-2 border border-tarmac-gray/40 bg-paddock-olive/50 px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-sage-fog">
+                  <MapPin className="size-3.5 text-signal-lime" aria-hidden="true" />
+                  {siteConfig.location}
                 </div>
+              </div>
 
-                <div className="space-y-3">
-                  <Button
-                    nativeButton={false}
-                    render={
+              <div className="space-y-4">
+                <a
+                  href={contactHref}
+                  target={hasRealEmail ? undefined : "_blank"}
+                  rel={hasRealEmail ? undefined : "noopener noreferrer"}
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-[8px] bg-signal-lime px-6 text-sm font-sans font-extrabold uppercase tracking-wider text-paddock-olive transition-transform hover:brightness-105 active:scale-[0.98]"
+                >
+                  {hasRealEmail
+                    ? contactContent.card.emailButton
+                    : contactContent.card.linkedinButton}
+                  <ArrowUpRight className="size-4" aria-hidden="true" />
+                </a>
+
+                <div className="grid gap-2 pt-2">
+                  {contactLinks.map((link) => {
+                    const Icon = link.icon;
+                    const isMail = link.href.startsWith("mailto:");
+                    const isPhone = link.href.startsWith("tel:");
+
+                    return (
                       <a
-                        href={contactHref}
-                        target={hasRealEmail ? undefined : "_blank"}
-                        rel={hasRealEmail ? undefined : "noopener noreferrer"}
-                      />
-                    }
-                    variant="secondary"
-                    size="lg"
-                    className="h-12 rounded-full px-5"
-                  >
-                    {hasRealEmail
-                      ? contactContent.card.emailButton
-                      : contactContent.card.linkedinButton}
-                    <ArrowUpRight className="size-4" aria-hidden="true" />
-                  </Button>
-
-                  <div className="grid gap-2 pt-2">
-                    {contactLinks.map((link) => {
-                      const Icon = link.icon;
-                      const isMail = link.href.startsWith("mailto:");
-                      const isPhone = link.href.startsWith("tel:");
-
-                      return (
-                        <a
-                          key={link.label}
-                          href={link.href}
-                          target={isMail || isPhone ? undefined : "_blank"}
-                          rel={isMail || isPhone ? undefined : "noopener noreferrer"}
-                          className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-primary-foreground/18 bg-primary-foreground/10 px-3 text-sm font-medium text-primary-foreground transition hover:bg-primary-foreground/16"
-                        >
-                          <span className="flex items-center gap-3">
-                            <Icon className="size-4" aria-hidden="true" />
-                            {link.label}
-                          </span>
-                          <ArrowUpRight className="size-4 opacity-70" aria-hidden="true" />
-                        </a>
-                      );
-                    })}
-                  </div>
+                        key={link.label}
+                        href={link.href}
+                        target={isMail || isPhone ? undefined : "_blank"}
+                        rel={isMail || isPhone ? undefined : "noopener noreferrer"}
+                        className="flex min-h-11 items-center justify-between gap-3 rounded-[8px] border border-tarmac-gray/30 bg-paddock-olive/40 px-3.5 text-xs font-sans uppercase tracking-wider text-sage-fog transition hover:border-signal-lime/60 hover:text-chalk-cream"
+                      >
+                        <span className="flex items-center gap-2.5">
+                          <Icon className="size-3.5 text-signal-lime" aria-hidden="true" />
+                          {link.label}
+                        </span>
+                        <ArrowUpRight className="size-3.5 text-tarmac-gray" aria-hidden="true" />
+                      </a>
+                    );
+                  })}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </LiftCard>
 
           <Reveal className="order-1 lg:order-2" delay={0.08}>

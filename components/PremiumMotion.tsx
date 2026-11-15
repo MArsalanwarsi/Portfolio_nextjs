@@ -11,7 +11,13 @@ import type { HTMLMotionProps } from "framer-motion";
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-const premiumEase = [0.22, 1, 0.36, 1] as const;
+export const landoEase = [0.65, 0.05, 0, 1] as const;
+export const landoTransition = {
+  duration: 0.75,
+  ease: landoEase,
+} as const;
+
+export const premiumEase = landoEase;
 const instantTransition = { duration: 0.01 };
 type ScrollDirection = "down" | "up";
 
@@ -117,7 +123,7 @@ export default function PremiumMotion({ children }: PremiumMotionProps) {
     <LazyMotion features={domMax} strict>
       <MotionConfig
         reducedMotion="user"
-        transition={{ duration: 0.62, ease: premiumEase }}
+        transition={{ duration: 0.75, ease: landoEase }}
       >
         {children}
       </MotionConfig>
@@ -168,7 +174,7 @@ export function Reveal({
           scale: reduceMotion ? 1 : 0.985,
           transition: reduceMotion
             ? instantTransition
-            : { duration: 0.26, ease: premiumEase },
+            : { duration: 0.26, ease: landoEase },
           y: offsetY,
         },
         visible: {
@@ -177,7 +183,7 @@ export function Reveal({
           y: 0,
           transition: reduceMotion
             ? instantTransition
-            : { duration: 0.7, ease: premiumEase, delay },
+            : { duration: 0.75, ease: landoEase, delay },
         },
       }}
       {...props}
@@ -247,7 +253,7 @@ export function StaggerItem({
           opacity: 0,
           transition: reduceMotion
             ? instantTransition
-            : { duration: 0.22, ease: premiumEase },
+            : { duration: 0.22, ease: landoEase },
           y: offsetY,
         },
         visible: {
@@ -255,7 +261,7 @@ export function StaggerItem({
           y: 0,
           transition: reduceMotion
             ? instantTransition
-            : { duration: 0.58, ease: premiumEase },
+            : { duration: 0.75, ease: landoEase },
         },
       }}
       {...props}
@@ -301,7 +307,7 @@ export function LiftCard({
           scale: reduceMotion ? 1 : 0.99,
           transition: reduceMotion
             ? instantTransition
-            : { duration: 0.26, ease: premiumEase },
+            : { duration: 0.26, ease: landoEase },
           y: offsetY,
         },
         visible: {
@@ -310,11 +316,11 @@ export function LiftCard({
           y: 0,
           transition: reduceMotion
             ? instantTransition
-            : { duration: 0.66, ease: premiumEase, delay },
+            : { duration: 0.75, ease: landoEase, delay },
         },
       }}
       transition={
-        reduceMotion ? instantTransition : { duration: 0.3, ease: premiumEase }
+        reduceMotion ? instantTransition : { duration: 0.75, ease: landoEase }
       }
       {...props}
     >

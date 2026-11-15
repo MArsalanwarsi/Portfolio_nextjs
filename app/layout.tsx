@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bodoni_Moda, Mona_Sans } from "next/font/google";
 import Script from "next/script";
-import BootLoader from "@/components/BootLoader";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { seo, siteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
@@ -51,20 +50,23 @@ const structuredData = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#211711",
+  themeColor: "#202020",
   colorScheme: "dark light",
 };
 
-const geistSans = Geist({
+const monaSans = Mona_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  axes: ["wdth"],
 });
 
-const geistMono = Geist_Mono({
+const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-serif",
   display: "swap",
+  axes: ["opsz"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -118,7 +120,7 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={cn(geistSans.variable, geistMono.variable, "font-sans")}
+      className={cn(monaSans.variable, bodoniModa.variable, "font-sans")}
     >
       <head>
         <script
@@ -128,21 +130,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="boot-loader-active min-h-screen bg-background text-foreground antialiased">
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
-          <noscript>
-            <style>{`
-              body.boot-loader-active { overflow: auto !important; }
-              .boot-loader { display: none !important; }
-              .page-shell [style] { opacity: 1 !important; transform: none !important; }
-            `}</style>
-          </noscript>
-          <BootLoader />
           {children}
         </ThemeProvider>
         {analyticsId ? (

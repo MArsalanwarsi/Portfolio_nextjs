@@ -10,8 +10,8 @@ export default function OpenGraphImage() {
       style={{
         alignItems: "center",
         background:
-          "linear-gradient(135deg, #17110c 0%, #2b1e15 55%, #49301f 100%)",
-        color: "white",
+          "linear-gradient(135deg, #202020 0%, #1e1e1e 55%, #151515 100%)",
+        color: "#f4f4f4",
         display: "flex",
         flexDirection: "column",
         height: "100%",
@@ -22,7 +22,7 @@ export default function OpenGraphImage() {
     >
       <div
         style={{
-          color: "#d3a472",
+          color: "#eeeeee",
           display: "flex",
           fontSize: 28,
           fontWeight: 700,
@@ -38,13 +38,14 @@ export default function OpenGraphImage() {
           fontWeight: 700,
           marginTop: 28,
           textAlign: "center",
+          color: "#f4f4f4",
         }}
       >
         Muhammad Arsalan Warsi
       </div>
       <div
         style={{
-          color: "#ddcebc",
+          color: "#dedede",
           display: "flex",
           fontSize: 34,
           marginTop: 28,

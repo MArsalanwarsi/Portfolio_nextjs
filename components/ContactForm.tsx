@@ -3,9 +3,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { AnimatePresence, m } from "framer-motion";
 import { AlertCircle, CheckCircle2, LoaderCircle, Send } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { contactContent } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +33,7 @@ const initialFormState: FormState = {
 };
 
 const fieldClassName =
-  "min-h-12 w-full rounded-xl border border-border/70 bg-background/65 px-4 text-sm text-foreground shadow-inner shadow-black/10 outline-none transition placeholder:text-muted-foreground/65 focus:border-primary/60 focus:ring-3 focus:ring-primary/15 disabled:cursor-not-allowed disabled:opacity-60";
+  "min-h-12 w-full rounded-[8px] border border-tarmac-gray/40 bg-paddock-olive/40 px-4 text-sm text-chalk-cream outline-none transition placeholder:text-stone-gray/60 focus:border-signal-lime focus:ring-1 focus:ring-signal-lime disabled:cursor-not-allowed disabled:opacity-60";
 const formCopy = contactContent.form;
 
 export default function ContactForm() {
@@ -104,26 +101,22 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="rounded-xl bg-card/82">
-      <CardContent className="p-5 sm:p-6">
-        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <Badge
-              variant="outline"
-              className="mb-3 h-7 rounded-full border-primary/25 bg-primary/8 px-3 text-xs font-medium text-primary"
-            >
-              {formCopy.badge}
-            </Badge>
-            <h3 className="font-display text-3xl font-semibold leading-tight">
-              {formCopy.title}
-            </h3>
-            <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
-              {formCopy.description}
-            </p>
-          </div>
+    <div className="rounded-[8px] border border-tarmac-gray/40 bg-visor-black/90 p-5 sm:p-7 text-chalk-cream">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <span className="mb-3 inline-flex items-center px-3 py-1 text-[9.26px] font-mono tracking-widest uppercase border border-signal-lime/40 text-signal-lime bg-paddock-olive/60">
+            {formCopy.badge}
+          </span>
+          <h3 className="font-sans text-3xl font-bold uppercase tracking-tight text-chalk-cream">
+            {formCopy.title}
+          </h3>
+          <p className="mt-2 max-w-xl text-sm leading-6 text-stone-gray font-sans">
+            {formCopy.description}
+          </p>
         </div>
+      </div>
 
-        <form className="relative space-y-4" onSubmit={handleSubmit} noValidate>
+      <form className="relative space-y-4" onSubmit={handleSubmit} noValidate>
           <div className="pointer-events-none absolute left-[-9999px] top-auto size-px overflow-hidden">
             <label htmlFor="company">Company</label>
             <input
@@ -211,12 +204,11 @@ export default function ContactForm() {
             />
           </Field>
 
-          <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
-            <Button
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+            <button
               type="submit"
-              size="lg"
               disabled={isSubmitting}
-              className="h-12 rounded-full px-5"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-[8px] bg-signal-lime px-6 text-sm font-sans font-extrabold uppercase tracking-wider text-paddock-olive transition-transform hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
             >
               {isSubmitting ? (
                 <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
@@ -224,17 +216,17 @@ export default function ContactForm() {
                 <Send className="size-4" aria-hidden="true" />
               )}
               {isSubmitting ? formCopy.submitLoading : formCopy.submitIdle}
-            </Button>
+            </button>
 
             <AnimatePresence initial={false} mode="popLayout">
               {status.message ? (
                 <m.output
                   key={`${status.type}-${status.message}`}
                   className={cn(
-                    "flex items-center gap-2 text-sm",
+                    "flex items-center gap-2 text-sm font-sans font-medium",
                     status.type === "success"
-                      ? "text-primary"
-                      : "text-destructive"
+                      ? "text-signal-lime"
+                      : "text-red-400"
                   )}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -253,8 +245,7 @@ export default function ContactForm() {
             </AnimatePresence>
           </div>
         </form>
-      </CardContent>
-    </Card>
+    </div>
   );
 }
 

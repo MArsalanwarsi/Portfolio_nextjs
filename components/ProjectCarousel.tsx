@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, m } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -18,13 +19,14 @@ import { GithubIcon } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import type { Project } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
+import styles from "./ProjectPresentation.module.css";
 
 interface ProjectCarouselProps {
   projects: Project[];
 }
 
 const AUTO_PLAY_MS = 5_000;
-const deckEase = [0.22, 1, 0.36, 1] as const;
+const deckEase = [0.65, 0.05, 0, 1] as const;
 const motionQuery = "(prefers-reduced-motion: reduce)";
 function subscribeMotion(callback: () => void) {
   const media = matchMedia(motionQuery);
@@ -50,17 +52,6 @@ function getDeckOffset(index: number, activeIndex: number, total: number) {
   }
 
   return offset;
-}
-
-function getFanPosition(offset: number) {
-  const distance = Math.abs(offset);
-
-  return {
-    rotate: offset * 14,
-    scale: 1 - distance * 0.1,
-    x: offset * 152,
-    y: distance * 28,
-  };
 }
 
 export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
@@ -181,7 +172,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
     <>
       <section
         ref={carousel}
-        className="relative"
+        className={styles.carousel}
         aria-label="Selected projects"
         aria-roledescription="carousel"
         onMouseEnter={() => setHovered(true)}
@@ -192,18 +183,18 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
             setFocused(false);
         }}
       >
-        <div className="mb-3 flex items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">Selected work</span>
-            <span className="mx-2 text-border">/</span>
-            Click a project to view the full case study
+        <div className={styles.toolbar}>
+          <p className={styles.workCount} aria-live="off">
+            <span>{String(activeIndex + 1).padStart(2, "0")}</span>
+            <span className={styles.countDivider}>/ {String(projects.length).padStart(2, "0")}</span>
+            <span className={styles.toolbarHint}>Drag to browse</span>
           </p>
           <div className="flex shrink-0 items-center gap-2">
             {!reduceMotion && projects.length > 1 ? (
               <button
                 type="button"
                 onClick={() => setIsPaused((value) => !value)}
-                className="grid size-10 place-items-center rounded-full border border-border bg-background/70 focus-visible:ring-2 focus-visible:ring-primary"
+                className={styles.control}
                 aria-label={
                   isPaused ? "Start project autoplay" : "Pause project autoplay"
                 }
@@ -218,7 +209,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
             <button
               type="button"
               onClick={showPrevious}
-              className="grid size-10 place-items-center rounded-full border border-border bg-background/70 transition hover:border-primary/50 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className={styles.control}
               aria-label="Previous project"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
@@ -226,7 +217,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
             <button
               type="button"
               onClick={showNext}
-              className="grid size-10 place-items-center rounded-full border border-border bg-background/70 transition hover:border-primary/50 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className={`${styles.control} ${styles.nextControl}`}
               aria-label="Next project"
             >
               <ArrowRight className="size-4" aria-hidden="true" />
@@ -235,7 +226,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
         </div>
 
         <div
-          className="relative h-[25rem] touch-pan-y overflow-hidden rounded-2xl border border-border/60 bg-card/45 sm:h-[29rem]"
+          className={styles.deck}
           onPointerDown={(event) => {
             if (!event.isPrimary || event.button !== 0 || projects.length < 2)
               return;
@@ -277,33 +268,26 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
             if (event.target === event.currentTarget) resetDeckDrag();
           }}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_14%,color-mix(in_srgb,var(--primary)_12%,transparent),transparent_42%)]" />
           {projects.map((project, index) => {
             const offset = getDeckOffset(index, activeIndex, projects.length);
             const distance = Math.abs(offset);
             const isVisible = distance <= 2;
             const isActive = offset === 0;
-            const fanPosition = getFanPosition(offset);
 
             return (
               <div
                 key={project.title}
-                className="pointer-events-none absolute inset-0 flex justify-center pt-7 sm:pt-9"
+                className={styles.cardPosition}
+                data-reverse={index % 2 === 1}
                 style={{ zIndex: isVisible ? 10 - distance : 0 }}
               >
                 <m.button
                   type="button"
                   onClick={(event) => openProject(project, event)}
                   className={cn(
-                    "pointer-events-auto relative flex h-[20rem] w-[min(17rem,calc(100vw-5rem))] transform-gpu select-none flex-col justify-between overflow-hidden rounded-2xl border p-5 text-left text-white shadow-2xl outline-none will-change-transform focus-visible:ring-2 focus-visible:ring-white sm:h-[23rem] sm:w-80 sm:p-6",
+                    styles.projectCard,
                     !isActive && "pointer-events-none",
                   )}
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--secondary), var(--accent), var(--card))",
-                    borderColor:
-                      "color-mix(in srgb, var(--primary) 45%, transparent)",
-                  }}
                   initial={false}
                   draggable={false}
                   animate={{
@@ -311,93 +295,80 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
                       ? isActive
                         ? 1
                         : 0
-                      : isVisible
-                        ? 1 - distance * 0.23
-                        : 0,
-                    rotate: reduceMotion ? 0 : fanPosition.rotate,
-                    scale: fanPosition.scale,
-                    x: (reduceMotion ? 0 : fanPosition.x) + dragOffset,
-                    y: reduceMotion ? 0 : fanPosition.y,
+                      : isActive
+                        ? 1
+                        : distance === 1
+                          ? 0.3
+                          : 0,
+                    scale: reduceMotion ? 1 : isActive ? 1 : 0.94,
+                    x: reduceMotion ? dragOffset : `calc(${offset * 108}% + ${dragOffset}px)`,
                     zIndex: 10 - distance,
                   }}
                   transition={
                     reduceMotion || dragOffset !== 0
                       ? { duration: 0.01 }
                       : {
-                          type: "spring",
-                          stiffness: 410,
-                          damping: 34,
-                          mass: 0.55,
+                          duration: 0.75,
+                          ease: deckEase,
                         }
                   }
                   title={`Open ${project.title} case study`}
                   tabIndex={isActive ? 0 : -1}
                   aria-hidden={!isActive}
                 >
-                  <div className="absolute -right-16 -top-14 size-48 rounded-full bg-white/10" />
-                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="relative flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-white/20 bg-black/15 px-3 py-1 text-[0.68rem] font-medium uppercase tracking-[0.15em] backdrop-blur">
-                      {project.label}
-                    </span>
-                    <span className="text-xs text-white/65">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div className="relative">
+                  <span data-scroll-enter className={styles.projectImage}>
+                    {project.images[0]?.src && <span className={styles.mainPreview}>
+                      <Image src={project.images[0].src} alt={project.images[0].alt} fill
+                        sizes="(max-width: 760px) 86vw, 48vw" unoptimized={project.images[0].src.endsWith(".svg")} draggable={false} className={styles.previewImage} />
+                    </span>}
+                    {project.images[1]?.src && <span className={styles.detailPreview}>
+                      <Image src={project.images[1].src} alt="" fill sizes="(max-width: 760px) 33vw, 19vw"
+                        unoptimized={project.images[1].src.endsWith(".svg")} draggable={false} className={styles.previewImage} />
+                    </span>}
+                  </span>
+                  <span className={styles.projectCopy}>
+                    <span className={styles.projectCategory}>{project.label}</span>
                     <h3
                       id={`project-card-title-${index}`}
-                      className="font-display text-3xl font-semibold leading-tight text-balance"
+                      className={styles.projectTitle}
                     >
                       {project.title}
                     </h3>
-                    <div className="mt-5 flex flex-wrap gap-1.5">
+                    <span className={styles.projectDescription}>{project.description}</span>
+                    <span className={styles.techList}>
                       {project.techStack.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full border border-white/18 bg-white/10 px-2.5 py-1 text-xs text-white/85 backdrop-blur"
+                          className={styles.tech}
                         >
                           {tech}
                         </span>
                       ))}
-                    </div>
+                    </span>
                     {isActive ? (
-                      <span className="mt-6 flex items-center gap-2 text-sm font-medium text-white">
-                        <span className="grid size-8 place-items-center rounded-full bg-white text-black">
+                      <span className={styles.openProject}>
+                        <span className={styles.openIcon}>
                           <ArrowUpRight className="size-4" aria-hidden="true" />
                         </span>
-                        Open project
+                        Read case study
                       </span>
                     ) : null}
-                  </div>
+                  </span>
                 </m.button>
               </div>
             );
           })}
         </div>
 
-        <div
-          className="mt-5 flex items-center justify-center gap-1"
-          aria-label="Project carousel navigation"
-        >
+        <div className={styles.workIndex} aria-label="Project index">
           {projects.map((project, index) => (
-            <button
-              key={project.title}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              className="group grid size-8 place-items-center rounded-full bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              aria-label={`Show ${project.title}`}
-              aria-current={index === activeIndex ? "true" : undefined}
-            >
-              <span
-                aria-hidden="true"
-                className={cn(
-                  "h-2 rounded-full transition-all",
-                  index === activeIndex
-                    ? "w-7 bg-primary"
-                    : "w-2 bg-border group-hover:bg-muted-foreground",
-                )}
-              />
+            <button type="button" key={project.title} aria-label={`Open ${project.title} details`}
+              data-current={index === activeIndex}
+              onPointerEnter={(event) => { if (event.pointerType === "mouse") setActiveIndex(index); }}
+              onFocus={() => setActiveIndex(index)}
+              onClick={() => { setActiveIndex(index); setSelectedProject(project); }}>
+              <span>{String(index + 1).padStart(2, "0")}</span><strong>{project.title}</strong>
+              <small>{project.label}</small><ArrowUpRight size={16} aria-hidden="true" />
             </button>
           ))}
         </div>
@@ -406,7 +377,8 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
       <AnimatePresence>
         {selectedProject ? (
           <m.div
-            className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/75 px-4 pb-4 pt-24 backdrop-blur-sm"
+            data-surface="void"
+            className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/85 px-4 pb-4 pt-24 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -415,7 +387,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
             <m.dialog
               open
               aria-labelledby="project-dialog-title"
-              className="relative max-h-[calc(100dvh-7rem)] w-full max-w-6xl overflow-y-auto rounded-2xl border border-white/15 bg-background p-0 text-foreground shadow-2xl"
+              className="relative max-h-[calc(100dvh-7rem)] w-full max-w-6xl overflow-y-auto rounded-none border border-tarmac-gray/40 bg-visor-black p-0 text-chalk-cream"
               initial={
                 reduceMotion ? false : { opacity: 0, y: 24, scale: 0.98 }
               }
@@ -433,7 +405,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 className="relative overflow-hidden p-5 text-white sm:p-7"
                 style={{
                   background:
-                    "linear-gradient(135deg, var(--secondary), var(--accent), var(--card))",
+                    "linear-gradient(125deg, #363636, #1a1a1a)",
                 }}
               >
                 <div className="absolute -right-20 -top-20 size-64 rounded-full bg-white/12" />
@@ -469,7 +441,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
               <div className="p-4 text-foreground sm:p-6">
                 <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(21rem,0.8fr)]">
                   <div>
-                    <p className="text-base leading-8 text-[#d9c5ae]">
+                    <p className="text-base leading-8 text-sage-fog">
                       {selectedProject.longDescription}
                     </p>
                     <div className="mt-6 flex flex-wrap gap-2">
@@ -487,7 +459,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
                       {selectedProject.features.map((feature) => (
                         <div
                           key={feature}
-                          className="rounded-xl border border-border/70 bg-muted/30 p-4 text-sm leading-6 text-[#d9c5ae]"
+                          className="rounded-xl border border-border/70 bg-muted/30 p-4 text-sm leading-6 text-sage-fog"
                         >
                           <CheckCircle2
                             className="mb-2 size-4 text-primary"
@@ -501,7 +473,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
                       <p className="text-sm font-semibold text-foreground">
                         Product outcome
                       </p>
-                      <p className="mt-2 text-sm leading-7 text-[#d9c5ae]">
+                      <p className="mt-2 text-sm leading-7 text-sage-fog">
                         {selectedProject.outcome}
                       </p>
                     </div>
@@ -510,7 +482,7 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
                     className="rounded-xl p-3"
                     style={{
                       background:
-                        "linear-gradient(135deg, var(--secondary), var(--accent), var(--card))",
+                        "linear-gradient(125deg, #363636, #1a1a1a)",
                     }}
                   >
                     <ProjectMedia
@@ -561,3 +533,8 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
     </>
   );
 }
+
+
+
+
+

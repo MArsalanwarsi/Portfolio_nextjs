@@ -1,0 +1,689 @@
+/* ============================================================================
+   Floating Chrome Navigation Layer (Lando Norris Aesthetic)
+   ============================================================================ */
+.chrome {
+  position: fixed;
+  inset: 18.52px 18.52px auto 18.52px;
+  top: 18.52px;
+  left: 18.52px;
+  right: 18.52px;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  color: #202020;
+  pointer-events: none;
+  box-shadow: none !important;
+  transition: color .3s ease;
+}
+
+.chrome a,
+.chrome button {
+  pointer-events: auto;
+}
+
+.onDark { color: #f4f4f4; }
+
+/* ----------------------------------------------------------------------------
+   Top-Left Stacked Wordmark
+   ---------------------------------------------------------------------------- */
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  width: fit-content;
+  text-decoration: none;
+  color: inherit;
+  line-height: .83;
+  user-select: none;
+}
+
+.wordmark span {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: .83;
+  color: inherit;
+}
+
+.wordmark strong {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.07em;
+  font-variation-settings: "wdth" 93;
+  line-height: .83;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+/* ----------------------------------------------------------------------------
+   Center Monogram Badge
+   ---------------------------------------------------------------------------- */
+.monogram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: inherit;
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 800;
+  font-size: 39px;
+  line-height: 1;
+  letter-spacing: -.12em;
+  text-decoration: none;
+  user-select: none;
+  transition: opacity .25s ease;
+}
+
+.monogram:hover {
+  opacity: .85;
+}
+
+.monogram span {
+  margin-top: -3px;
+  margin-left: 7px;
+  font-size: 20px;
+  letter-spacing: 0;
+  color: #eeeeee;
+}
+
+/* ----------------------------------------------------------------------------
+   Top-Right Action Controls
+   ---------------------------------------------------------------------------- */
+.navActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 9px;
+}
+
+.talk,
+.footerCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  height: 55.5px;
+  padding: 0 18.52px;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  background: #eeeeee;
+  color: #202020;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14.81px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1;
+  box-shadow: none !important;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.talk:hover,
+.footerCta:hover {
+  background: #ececec;
+  border-color: #ececec;
+}
+
+/* Square Menu Toggle Button (55.5px square with 2 unequal dashes) */
+/* w-[55.5px] h-[55.5px] */
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-shrink: 0;
+  width: 55px; height: 55px;
+  width: 55.5px;
+  height: 55.5px;
+  padding: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: none !important;
+  background: transparent;
+  border: 1px solid #202020;
+  color: #202020;
+  transition: background-color .25s cubic-bezier(.65,.05,0,1),
+              border-color .25s cubic-bezier(.65,.05,0,1),
+              color .25s cubic-bezier(.65,.05,0,1);
+}
+
+.onDark .menuButton {
+  background: #f4f4f4;
+  border: 1px solid #f4f4f4;
+  color: #202020;
+}
+
+.menuButton span {
+  height: 2px;
+  background: currentColor;
+  transition: width .25s cubic-bezier(.65,.05,0,1),
+              margin .25s cubic-bezier(.65,.05,0,1);
+}
+
+.menuButton span:first-child {
+  width: 23px;
+}
+
+.menuButton span:last-child {
+  width: 15px;
+  margin-left: 8px;
+}
+
+.menuButton:hover span:last-child {
+  width: 23px;
+  margin-left: 0;
+}
+
+.chrome :focus-visible,
+.menu :focus-visible,
+.footerGround :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* ----------------------------------------------------------------------------
+   Full-Bleed Numbered Directory Navigation Dialog
+   ---------------------------------------------------------------------------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  padding: 24px 4vw;
+  color: #f4f4f4;
+  background: #202020;
+  box-shadow: none !important;
+  overflow-y: auto;
+}
+
+.menu::backdrop {
+  background: #202020;
+}
+
+.menu[open] {
+  display: flex;
+  flex-direction: column;
+  animation: menu-reveal .75s cubic-bezier(.65,.05,0,1);
+}
+
+@keyframes menu-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.menuTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.micro {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.menuTop > .micro {
+  color: #b6b6b6;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px; height: 55px;
+  width: 55.5px;
+  height: 55.5px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #f4f4f4;
+  background: transparent;
+  color: #f4f4f4;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.close:hover {
+  background: #f4f4f4;
+  color: #202020;
+}
+
+.menuContent {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 10vw;
+  padding: 6vh 0;
+}
+
+.menuIntro > p:nth-child(2) {
+  margin-top: 28px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -.05em;
+  font-weight: 700;
+}
+
+.menuIntro em {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #bcbcbc;
+}
+
+.menuEmail {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  font-size: 14px;
+  color: #b6b6b6;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color .2s ease;
+}
+
+.menuEmail:hover {
+  color: #eeeeee;
+}
+
+/* ----------------------------------------------------------------------------
+   Numbered Directory Links
+   ---------------------------------------------------------------------------- */
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.directoryLink,
+.menuLinks a {
+  display: grid;
+  grid-template-columns: 36px 20px 1fr 32px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(26px, 3.8vw, 54px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+  transition: color .25s cubic-bezier(.65,.05,0,1),
+              transform .3s cubic-bezier(.65,.05,0,1);
+}
+
+.dirNumber {
+  color: #b6b6b6;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .05em;
+  font-weight: 400;
+}
+
+.dirDivider {
+  color: rgba(182, 182, 182, .4);
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  user-select: none;
+}
+
+.dirLabel {
+  min-width: 0;
+}
+
+.dirArrow {
+  opacity: 0;
+  color: #eeeeee;
+  transition: opacity .2s cubic-bezier(.65,.05,0,1),
+              transform .2s cubic-bezier(.65,.05,0,1);
+}
+
+.directoryLink:hover,
+.menuLinks a:hover {
+  color: #bcbcbc;
+  transform: translateX(8px);
+}
+
+.directoryLink:hover .dirArrow,
+.directoryLink:focus-visible .dirArrow,
+.menuLinks a:hover > svg,
+.menuLinks a:focus-visible > svg {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.menuBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  gap: 20px;
+  border-top: 1px solid #535353;
+}
+
+.menuBottom > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #f4f4f4;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.menuBottom > a:hover {
+  color: #eeeeee;
+}
+
+/* ----------------------------------------------------------------------------
+   Footer Panels and Ground Styles (Consumed by Footer.tsx)
+   ---------------------------------------------------------------------------- */
+.footerGround {
+  padding: 80px 20px 20px;
+  background: radial-gradient(ellipse at 50% 12%, #eeeeee 0%, #eeeeee80 13%, transparent 58%), #f4f4f4;
+}
+
+.footerPanel {
+  position: relative;
+  padding: 40px clamp(24px, 5vw, 88px) 24px;
+  background: #202020;
+  color: #f4f4f4;
+}
+
+.footerTab {
+  position: absolute;
+  left: calc(50% - 50px);
+  top: -22px;
+  display: grid;
+  width: 100px;
+  height: 24px;
+  place-items: center;
+  background: #202020;
+  color: #b6b6b6;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
+  font-size: 10px;
+  letter-spacing: .1em;
+  padding-top: 4px;
+}
+
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footerTop > p {
+  color: #b6b6b6;
+}
+
+.backTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #f4f4f4;
+  text-decoration: none;
+  letter-spacing: .08em;
+}
+
+.footerStatement {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 65px 0 80px;
+}
+
+.footerStatement h2 {
+  margin: 0;
+  font-size: clamp(44px, 7.9vw, 132px);
+  font-weight: 750;
+  letter-spacing: -.065em;
+  line-height: .94;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 93;
+}
+
+.footerStatement em {
+  color: #bcbcbc;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+}
+
+.footerColumns {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr 1.2fr;
+  gap: 32px;
+  padding: 34px 0 60px;
+  border-top: 1px solid #535353;
+}
+
+.footerIdentity > p {
+  margin-top: 24px;
+  color: #b6b6b6;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footerLinkGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footerLinkGroup h3 {
+  margin-bottom: 9px;
+  color: #b6b6b6;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: .12em;
+  font-weight: 400;
+}
+
+.footerLinkGroup > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: clamp(18px, 1.8vw, 28px);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f4f4f4;
+  text-decoration: none;
+}
+
+.footerLinkGroup > a:hover {
+  color: #bcbcbc;
+}
+
+.footerContact > a {
+  font-size: 13px;
+  text-transform: none;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #535353;
+  padding-top: 22px;
+  color: #b6b6b6;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------------------------
+   Responsive Breakpoints
+   ---------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .footerColumns {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+  .footerStatement {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 48px 0;
+  }
+  .menuContent {
+    gap: 5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .chrome {
+    inset: 16px 16px auto 16px;
+    top: 15px;
+    left: 16px;
+    right: 16px;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+  .wordmark span {
+    font-size: 23px;
+  }
+  .wordmark strong {
+    font-size: 22px;
+  }
+  .monogram {
+    display: none;
+  }
+  .talk {
+    height: 46px;
+    padding: 0 13px;
+    gap: 10px;
+    font-size: 11px;
+  }
+  .menuButton,
+  .close {
+    width: 46px;
+    height: 46px;
+  }
+  .menu {
+    padding: 18px 24px;
+  }
+  .menuTop > .micro {
+    display: none;
+  }
+  .menuContent {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 24px;
+    padding: 30px 0;
+  }
+  .menuIntro > p:nth-child(2),
+  .menuEmail {
+    display: none;
+  }
+  .directoryLink,
+  .menuLinks a {
+    font-size: clamp(24px, 6.5vw, 38px);
+    padding: 8px 0;
+    grid-template-columns: 30px 16px 1fr 24px;
+  }
+  .dirArrow,
+  .menuLinks a > svg {
+    opacity: 1;
+    width: 20px;
+  }
+  .menuBottom {
+    flex-wrap: wrap;
+  }
+  .footerGround {
+    padding: 60px 10px 10px;
+  }
+  .footerPanel {
+    padding: 24px 20px;
+  }
+  .footerStatement h2 {
+    font-size: clamp(38px, 10.2vw, 62px);
+  }
+  .footerColumns {
+    column-gap: 20px;
+    padding-bottom: 36px;
+  }
+  .footerIdentity {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+  }
+  .footerIdentity > p {
+    margin-top: 0;
+    font-size: 11px;
+  }
+  .footerContact {
+    grid-column: 1 / -1;
+  }
+  .footerBottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 601px) {
+  .menuContent {
+    padding: 20px 0;
+  }
+  .directoryLink,
+  .menuLinks a {
+    font-size: 27px;
+    padding: 6px 0;
+  }
+  .menuIntro > p:nth-child(2) {
+    font-size: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu[open] {
+    animation: none;
+  }
+  .chrome,
+  .directoryLink,
+  .menuLinks a,
+  .dirArrow,
+  .menuButton span {
+    transition: none;
+  }
+}
+
+.chrome .wordmark{flex-direction:row;align-items:baseline;gap:.25em}
+.chrome .wordmark span,.chrome .wordmark strong{font:750 1rem/.96 var(--font-sans),sans-serif;letter-spacing:-.055em;text-transform:none}
+.chrome .talk,.chrome .menuButton{height:42px;border-radius:5px}
+.chrome .menuButton{width:42px}.chrome .talk{background:#ececec;color:#151515}
+

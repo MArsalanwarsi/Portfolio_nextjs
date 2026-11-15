@@ -1,7 +1,6 @@
 import { Award, Briefcase, Code2, FolderGit2, Users } from "lucide-react";
 import { LiftCard } from "@/components/PremiumMotion";
 import SectionHeader from "@/components/SectionHeader";
-import { Card, CardContent } from "@/components/ui/card";
 import { statsContent } from "@/data/portfolio";
 
 const iconMap = {
@@ -14,8 +13,8 @@ const iconMap = {
 
 export default function Stats() {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:py-28">
-      <div className="mx-auto w-full max-w-6xl border-t border-border/70 pt-16">
+    <section className="px-4 py-20 sm:px-6 lg:py-28 bg-paddock-olive text-chalk-cream">
+      <div className="mx-auto w-full max-w-6xl border-t border-tarmac-gray/30 pt-16">
         <SectionHeader
           {...statsContent.header}
         />
@@ -26,20 +25,18 @@ export default function Stats() {
 
             return (
               <LiftCard key={stat.label} className="h-full" delay={index * 0.05}>
-                <Card className="h-full rounded-xl bg-card/75">
-                  <CardContent className="p-5 text-center">
-                    <span className="mx-auto grid size-12 place-items-center rounded-lg bg-primary/10 text-primary">
-                      <Icon className="size-5" aria-hidden="true" />
-                    </span>
-                    <div className="mt-5 font-display text-5xl font-semibold leading-none">
-                      {stat.value}
-                      {stat.suffix}
-                    </div>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {stat.label}
-                    </p>
-                  </CardContent>
-                </Card>
+                <div className="h-full rounded-[8px] border border-tarmac-gray/40 bg-visor-black/90 p-6 text-center">
+                  <span className="mx-auto grid size-10 place-items-center rounded-[8px] bg-paddock-olive text-signal-lime border border-tarmac-gray/40">
+                    <Icon className="size-4" aria-hidden="true" />
+                  </span>
+                  <div className="mt-4 font-sans text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-chalk-cream leading-none">
+                    {stat.value}
+                    <span className="text-signal-lime">{stat.suffix}</span>
+                  </div>
+                  <p className="mt-2.5 text-xs font-mono uppercase tracking-widest text-sage-fog">
+                    {stat.label}
+                  </p>
+                </div>
               </LiftCard>
             );
           })}
