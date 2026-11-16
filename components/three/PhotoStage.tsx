@@ -13,7 +13,11 @@ export default function PhotoStage() {
     const img = photo.current;
     if (!host || !img) return;
     let disposed = false;
-    let cleanup: (() => void) | undefined;
+    const tilt = (event: PointerEvent) => {
+      host.style.setProperty("--portrait-yaw", ((event.clientX / innerWidth - .5) * 12) + "deg");
+      host.style.setProperty("--portrait-pitch", ((.5 - event.clientY / innerHeight) * 5) + "deg");
+    };
+    window.addEventListener("pointermove", tilt, { passive: true });
     const settled = () => {
       if (disposed) return;
       host.dataset.scene = "ready";
@@ -23,15 +27,13 @@ export default function PhotoStage() {
       try {
         await img.decode();
         settled();
-        const { mountPhoto } = await import("./photoRelief");
-        if (!disposed) cleanup = mountPhoto(host, img);
       } catch { settled(); }
     };
     void enhance();
-    return () => { disposed = true; cleanup?.(); };
+    return () => { disposed = true; window.removeEventListener("pointermove", tilt); };
   }, []);
   return <div className={styles.stage} ref={frame}>
     <Image className={styles.portrait} ref={photo} src={siteConfig.portrait.src} alt={siteConfig.portrait.alt}
-      width={1003} height={1254} priority sizes="(max-width: 680px) 82vw, 42vw" />
+      width={1003} height={1254} priority unoptimized />
   </div>;
 }

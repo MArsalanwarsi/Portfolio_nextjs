@@ -682,7 +682,7 @@
   }
 }
 
-.chrome .wordmark{flex-direction:row;align-items:baseline;gap:.25em}
+.chrome .wordmark{flex-direction:row;align-items:center;gap:.25em}
 .chrome .wordmark span,.chrome .wordmark strong{font:750 1rem/.96 var(--font-sans),sans-serif;letter-spacing:-.055em;text-transform:none}
 .chrome .talk,.chrome .menuButton{height:42px;border-radius:5px}
 .chrome .menuButton{width:42px}.chrome .talk{background:#ececec;color:#151515}
