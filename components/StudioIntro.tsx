@@ -1,41 +1,45 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./StudioIntro.module.css";
 
 export default function StudioIntro() {
   const [open, setOpen] = useState(true);
-  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     if (!open) return;
-    const start = performance.now();
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let frame = 0;
-    let exit = 0;
     const dismiss = () => setOpen(false);
-    const update = (now: number) => {
-      const elapsed = now - start;
-      const settled = document.querySelector('[data-scene="ready"]') && document.fonts.status === "loaded";
-      const duration = reduced ? 0 : 4600;
-      if ((settled && elapsed >= duration) || elapsed > (reduced ? 1200 : 6500)) {
-        setProgress(100);
-        exit = window.setTimeout(dismiss, reduced ? 0 : 540);
-        return;
-      }
-      setProgress(reduced ? 0 : Math.min(97, Math.floor(elapsed / duration * 100)));
-      frame = requestAnimationFrame(update);
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    if (motion.matches) {
+      dismiss();
+      return;
+    }
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" || event.key === "Tab") dismiss();
     };
-    const key = (e: KeyboardEvent) => { if (e.key === "Tab" || e.key === "Escape") dismiss(); };
-    window.addEventListener("keydown",key);
-    frame=requestAnimationFrame(update);
-    return () => {cancelAnimationFrame(frame);clearTimeout(exit);window.removeEventListener("keydown",key);};
+    const timer = window.setTimeout(dismiss, 5400);
+    motion.addEventListener("change", dismiss);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      clearTimeout(timer);
+      motion.removeEventListener("change", dismiss);
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
+
   if (!open) return null;
-  return <div className={styles.overlay} data-complete={progress===100}>
-    <p className={styles.status} role="presentation">Preparing portfolio</p>
-    <div className={styles.center}><Image src="/ma-mark.webp" width={120} height={78} alt="" unoptimized /><span aria-hidden="true">{String(progress).padStart(2,"0")}<small>%</small></span></div>
-    <div className={styles.rail}><span style={{scale: String(progress / 100) + " 1"}} /></div>
-    <button type="button" onClick={() => setOpen(false)}>Skip intro ↗</button>
-  </div>;
+  return (
+    <div className={styles.overlay} aria-label="Portfolio introduction">
+      <div className={styles.signature} aria-hidden="true">Arsalan Warsi</div>
+      <div className={styles.panel} aria-hidden="true">
+        <div className={styles.grid} />
+        <div className={styles.line}>
+          <span>A website takes shape</span><span>layer</span><span>by</span><span>layer.</span>
+        </div>
+        <div className={styles.resolve}>Until it all works together.</div>
+        <small className={styles.credit}>Muhammad Arsalan Warsi<br />Full-stack developer</small>
+      </div>
+      <button type="button" onClick={() => setOpen(false)}>Skip intro ↗</button>
+    </div>
+  );
 }
