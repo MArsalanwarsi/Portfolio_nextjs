@@ -15,14 +15,10 @@ export default function StudioIntro() {
     if (!open) return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
-    if (motion.matches) {
-      dismiss();
-      return;
-    }
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape" || event.key === "Tab") dismiss();
     };
-    const timer = window.setTimeout(dismiss, 5400);
+    const timer = window.setTimeout(dismiss, motion.matches ? 0 : 5400);
     motion.addEventListener("change", dismiss);
     window.addEventListener("keydown", onKey);
     return () => {
