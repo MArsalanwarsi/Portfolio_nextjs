@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "./StudioIntro.module.css";
 
@@ -33,7 +34,7 @@ export default function StudioIntro() {
   if (!open) return null;
   return <div className={styles.overlay} data-complete={progress===100}>
     <p className={styles.status} role="presentation">Preparing portfolio</p>
-    <div className={styles.center}><b aria-hidden="true">AW</b><span aria-hidden="true">{String(progress).padStart(2,"0")}<small>%</small></span></div>
+    <div className={styles.center}><Image src="/ma-mark.webp" width={120} height={78} alt="" unoptimized /><span aria-hidden="true">{String(progress).padStart(2,"0")}<small>%</small></span></div>
     <div className={styles.rail}><span style={{scale: String(progress / 100) + " 1"}} /></div>
     <button type="button" onClick={() => setOpen(false)}>Skip intro ↗</button>
   </div>;

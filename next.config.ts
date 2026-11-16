@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     localPatterns: [
       {
-        pathname: "/header-photo.webp",
+        pathname: "/portrait-cutout.webp",
         search: "",
       },
       {

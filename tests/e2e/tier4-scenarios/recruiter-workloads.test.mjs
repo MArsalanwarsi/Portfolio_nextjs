@@ -194,9 +194,9 @@ describe('Tier 4: Real-World Recruiter, Visitor & Auditor Workload Scenarios', (
       }
 
       // 3. Verify header photo asset exists
-      const photoPath = path.join(publicDir, 'header-photo.webp');
-      assert.ok(fs.existsSync(photoPath), 'public/header-photo.webp must exist');
-      assert.ok(fs.statSync(photoPath).size > 10_000, 'header-photo.webp must be > 10 KB');
+      const photoPath = path.join(publicDir, 'portrait-cutout.webp');
+      assert.ok(fs.existsSync(photoPath), 'public/portrait-cutout.webp must exist');
+      assert.ok(fs.statSync(photoPath).size > 10_000, 'portrait-cutout.webp must be > 10 KB');
 
       // 4. Verify absolute absence of coffee palette hex codes
       const coffeeHexRegex = /#(?:211711|bb895b|38271b|4a3221|2c1d14|1f140e)\b/i;

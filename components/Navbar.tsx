@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import { siteConfig } from "@/data/portfolio";
@@ -89,6 +90,7 @@ export default function Navbar() {
           className={styles.wordmark}
           aria-label={`${siteConfig.name}, back to top`}
         >
+          <Image src="/ma-mark.webp" width={40} height={26} alt="" unoptimized />
           <span>Arsalan</span>
           <strong>WARSI</strong>
         </a>
@@ -137,6 +139,7 @@ export default function Navbar() {
             className={styles.wordmark}
             aria-label={`${siteConfig.name}, home`}
           >
+            <Image src="/ma-mark.webp" width={40} height={26} alt="" unoptimized />
             <span>Arsalan</span>
             <strong>WARSI</strong>
           </a>

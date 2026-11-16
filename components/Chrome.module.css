@@ -687,3 +687,5 @@
 .chrome .talk,.chrome .menuButton{height:42px;border-radius:5px}
 .chrome .menuButton{width:42px}.chrome .talk{background:#ececec;color:#151515}
 
+
+.chrome .wordmark img { align-self: center; object-fit: contain; margin-right: .15em; }
