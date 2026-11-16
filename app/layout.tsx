@@ -90,9 +90,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "192x192" }],
+    icon: [{ url: "/ma-favicon.png", type: "image/png", sizes: "48x48" }],
     apple: [
-      { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+      { url: "/ma-apple-touch-icon.png", type: "image/png", sizes: "180x180" },
     ],
   },
   openGraph: {
