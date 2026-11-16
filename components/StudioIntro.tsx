@@ -1,14 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./StudioIntro.module.css";
 
 export default function StudioIntro() {
   const [open, setOpen] = useState(true);
 
+  const dismiss = useCallback(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    setOpen(false);
+  }, []);
+
   useEffect(() => {
     if (!open) return;
-    const dismiss = () => setOpen(false);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     if (motion.matches) {
       dismiss();
@@ -25,7 +30,7 @@ export default function StudioIntro() {
       motion.removeEventListener("change", dismiss);
       window.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, [open, dismiss]);
 
   if (!open) return null;
   return (
@@ -39,7 +44,7 @@ export default function StudioIntro() {
         <div className={styles.resolve}>Until it all works together.</div>
         <small className={styles.credit}>Muhammad Arsalan Warsi<br />Full-stack developer</small>
       </div>
-      <button type="button" onClick={() => setOpen(false)}>Skip intro ↗</button>
+      <button type="button" onClick={dismiss}>Skip intro ↗</button>
     </div>
   );
 }

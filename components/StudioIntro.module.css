@@ -82,3 +82,7 @@
 @media (prefers-reduced-motion:reduce), (scripting:none) {
   .overlay {display:none}
 }
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  :global(html):has(.overlay) { overflow-y: clip; }
+}
