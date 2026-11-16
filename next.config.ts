@@ -11,19 +11,7 @@ const nextConfig: NextConfig = {
         search: "",
       },
       {
-        pathname: "/profile-photo.jpg",
-        search: "",
-      },
-      {
-        pathname: "/profile-photo.svg",
-        search: "",
-      },
-      {
         pathname: "/projects/**",
-        search: "",
-      },
-      {
-        pathname: "/avatar/**",
         search: "",
       },
     ],

@@ -44,10 +44,10 @@ describe('Tier 2 - Feature 1: Theme Tokens Boundaries & Extreme Values', () => {
   });
 
   test('T2-F1-03: Display Serif Accent Color Boundary on Dark Grounds', () => {
-    const manifestoCode = getComponentContent('Manifesto.tsx') + getComponentContent('Hero.tsx');
+    const statementCode = getComponentContent('Hero.tsx');
     const hasMossLimeVoice =
-      /#bcbcbc/i.test(manifestoCode) ||
-      /moss-lime/i.test(manifestoCode) ||
+      /#bcbcbc/i.test(statementCode) ||
+      /moss-lime/i.test(statementCode) ||
       /#bcbcbc/i.test(css);
     assert.ok(
       hasMossLimeVoice,

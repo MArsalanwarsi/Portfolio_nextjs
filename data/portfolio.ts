@@ -41,7 +41,6 @@ export interface SiteConfig {
   resumeUrl: string;
   portrait: {
     src: string;
-    fallbackSrc: string;
     alt: string;
     initials: string;
   };

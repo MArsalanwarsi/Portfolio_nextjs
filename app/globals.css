@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant data-open (&:is([data-state="open"], [data-open]:not([data-open="false"])));
 @custom-variant data-closed (&:is([data-state="closed"], [data-closed]:not([data-closed="false"])));

@@ -12,12 +12,6 @@ import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react
 import { cn } from "@/lib/utils";
 
 export const landoEase = [0.65, 0.05, 0, 1] as const;
-export const landoTransition = {
-  duration: 0.75,
-  ease: landoEase,
-} as const;
-
-export const premiumEase = landoEase;
 const instantTransition = { duration: 0.01 };
 type ScrollDirection = "down" | "up";
 
@@ -184,84 +178,6 @@ export function Reveal({
           transition: reduceMotion
             ? instantTransition
             : { duration: 0.75, ease: landoEase, delay },
-        },
-      }}
-      {...props}
-    >
-      {children}
-    </m.div>
-  );
-}
-
-interface StaggerProps extends ControlledMotionDivProps {
-  amount?: number;
-  delay?: number;
-  once?: boolean;
-  stagger?: number;
-}
-
-export function Stagger({
-  amount = 0.12,
-  children,
-  className,
-  delay = 0,
-  once = false,
-  stagger = 0.07,
-  ...props
-}: StaggerProps) {
-  return (
-    <m.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ amount, once, margin: "0px 0px -4% 0px" }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            delayChildren: delay,
-            staggerChildren: stagger,
-          },
-        },
-      }}
-      {...props}
-    >
-      {children}
-    </m.div>
-  );
-}
-
-interface StaggerItemProps extends ControlledMotionDivProps {
-  y?: number;
-}
-
-export function StaggerItem({
-  children,
-  className,
-  y = 16,
-  ...props
-}: StaggerItemProps) {
-  const reduceMotion = useReducedMotion();
-  const scrollDirection = useScrollDirection();
-  const offsetY = reduceMotion ? 0 : scrollDirection === "up" ? -y : y;
-
-  return (
-    <m.div
-      className={className}
-      variants={{
-        hidden: {
-          opacity: 0,
-          transition: reduceMotion
-            ? instantTransition
-            : { duration: 0.22, ease: landoEase },
-          y: offsetY,
-        },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: reduceMotion
-            ? instantTransition
-            : { duration: 0.75, ease: landoEase },
         },
       }}
       {...props}

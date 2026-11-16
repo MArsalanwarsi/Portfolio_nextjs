@@ -1,0 +1,150 @@
+﻿diff --git a/app/globals.css b/.agents/teamwork/m2_r2_explorer_2/proposed_globals.css
+index 50f87a6..c29bbbb 100644
+--- a/app/globals.css
++++ b/.agents/teamwork/m2_r2_explorer_2/proposed_globals.css
+@@ -11,14 +11,23 @@
+      Lando Norris Primitive Color Palette
+      ========================================================================== */
+   --paddock-olive: #282c20;
++  --color-paddock-olive: #282c20;
+   --chalk-cream: #f4f4ed;
++  --color-chalk-cream: #f4f4ed;
+   --signal-lime: #d2ff00;
++  --color-signal-lime: #d2ff00;
+   --moss-lime: #b2c73a;
++  --color-moss-lime: #b2c73a;
+   --visor-black: #111112;
++  --color-visor-black: #111112;
+   --sage-fog: #dde1d2;
++  --color-sage-fog: #dde1d2;
+   --tarmac-gray: #535450;
++  --color-tarmac-gray: #535450;
+   --lichen-gray: #b4b8a5;
++  --color-lichen-gray: #b4b8a5;
+   --stone-gray: #b9bbad;
++  --color-stone-gray: #b9bbad;
+ 
+   /* ==========================================================================
+      Default Semantic UI Tokens (Dark Ground Canvas: Paddock Olive)
+@@ -130,20 +139,20 @@
+    ============================================================================ */
+ @theme inline {
+   /* Lando Norris Colors (both short and verbose aliases) */
+-  --color-paddock: var(--paddock-olive);
+-  --color-paddock-olive: var(--paddock-olive);
+-  --color-chalk: var(--chalk-cream);
+-  --color-chalk-cream: var(--chalk-cream);
+-  --color-signal-lime: var(--signal-lime);
+-  --color-moss-lime: var(--moss-lime);
+-  --color-visor-black: var(--visor-black);
+-  --color-sage-fog: var(--sage-fog);
+-  --color-tarmac: var(--tarmac-gray);
+-  --color-tarmac-gray: var(--tarmac-gray);
+-  --color-lichen: var(--lichen-gray);
+-  --color-lichen-gray: var(--lichen-gray);
+-  --color-stone: var(--stone-gray);
+-  --color-stone-gray: var(--stone-gray);
++  --color-paddock: #282c20;
++  --color-paddock-olive: #282c20;
++  --color-chalk: #f4f4ed;
++  --color-chalk-cream: #f4f4ed;
++  --color-signal-lime: #d2ff00;
++  --color-moss-lime: #b2c73a;
++  --color-visor-black: #111112;
++  --color-sage-fog: #dde1d2;
++  --color-tarmac: #535450;
++  --color-tarmac-gray: #535450;
++  --color-lichen: #b4b8a5;
++  --color-lichen-gray: #b4b8a5;
++  --color-stone: #b9bbad;
++  --color-stone-gray: #b9bbad;
+ 
+   /* Semantic UI Colors */
+   --color-background: var(--background);
+@@ -171,6 +180,19 @@
+   --font-display: var(--font-serif), Georgia, serif;
+   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+ 
++  /* Mona Sans Font Weight Tokens (400 to 800) */
++  --font-weight-normal: 400;
++  --font-weight-semibold: 600;
++  --font-weight-bold: 700;
++  --font-weight-extrabold: 800;
++
++  /* Tracking Tokens */
++  --tracking-statement: -0.93px;
++  --tracking-title: -1.85px;
++  --tracking-impact: -3.7px;
++  --tracking-body: -0.19px;
++  --tracking-serif-wide: 0.74px;
++
+   /* Lando Precise Radii */
+   --radius-btn: 8px;
+   --radius-nav: 8px;
+@@ -209,6 +231,9 @@
+     min-height: 100vh;
+     overflow-x: hidden;
+     font-family: var(--font-sans), sans-serif;
++    font-weight: 400;
++    line-height: 1.25;
++    letter-spacing: -0.19px;
+     background-color: var(--background);
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+@@ -361,22 +386,53 @@
+ }
+ 
+ /* ============================================================================
+-   OpenType Mona Sans & Bodoni Moda Variation Presets
++   OpenType Mona Sans & Bodoni Moda Variation Presets & Type Scale Utilities
+    ============================================================================ */
+ .font-statement {
+   font-family: var(--font-sans), sans-serif;
+   font-variation-settings: "wdth" 93, "wght" 660;
++  font-size: 117.59px;
++  font-weight: 400;
+   text-transform: uppercase;
+   line-height: 0.9;
+-  letter-spacing: -0.01em;
++  letter-spacing: -0.93px;
+ }
+ 
+ .font-title {
+   font-family: var(--font-sans), sans-serif;
+   font-variation-settings: "wdth" 93, "wght" 750;
++  font-size: 66.67px;
++  font-weight: 700;
+   text-transform: uppercase;
+   line-height: 0.89;
+-  letter-spacing: -0.03em;
++  letter-spacing: -1.85px;
++}
++
++.font-impact {
++  font-family: var(--font-sans), sans-serif;
++  font-variation-settings: "wdth" 93, "wght" 750;
++  font-size: 103.7px;
++  font-weight: 700;
++  text-transform: uppercase;
++  line-height: 0.82;
++  letter-spacing: -3.7px;
++}
++
++.font-button {
++  font-family: var(--font-sans), sans-serif;
++  font-size: 14.81px;
++  font-weight: 800;
++  line-height: 1;
++  text-transform: uppercase;
++  letter-spacing: 0px;
++}
++
++.font-body {
++  font-family: var(--font-sans), sans-serif;
++  font-size: 18.52px;
++  font-weight: 400;
++  line-height: 1.25;
++  letter-spacing: -0.19px;
+ }
+ 
+ .font-serif-accent {

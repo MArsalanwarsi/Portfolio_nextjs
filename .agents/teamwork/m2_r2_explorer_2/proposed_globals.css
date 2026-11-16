@@ -1,0 +1,461 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant data-open (&:is([data-state="open"], [data-open]:not([data-open="false"])));
+@custom-variant data-closed (&:is([data-state="closed"], [data-closed]:not([data-closed="false"])));
+@custom-variant data-active (&:is([data-state="active"], [data-active]:not([data-active="false"])));
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ==========================================================================
+     Lando Norris Primitive Color Palette
+     ========================================================================== */
+  --paddock-olive: #282c20;
+  --color-paddock-olive: #282c20;
+  --chalk-cream: #f4f4ed;
+  --color-chalk-cream: #f4f4ed;
+  --signal-lime: #d2ff00;
+  --color-signal-lime: #d2ff00;
+  --moss-lime: #b2c73a;
+  --color-moss-lime: #b2c73a;
+  --visor-black: #111112;
+  --color-visor-black: #111112;
+  --sage-fog: #dde1d2;
+  --color-sage-fog: #dde1d2;
+  --tarmac-gray: #535450;
+  --color-tarmac-gray: #535450;
+  --lichen-gray: #b4b8a5;
+  --color-lichen-gray: #b4b8a5;
+  --stone-gray: #b9bbad;
+  --color-stone-gray: #b9bbad;
+
+  /* ==========================================================================
+     Default Semantic UI Tokens (Dark Ground Canvas: Paddock Olive)
+     ========================================================================== */
+  --surface: var(--paddock-olive);
+  --surface-foreground: var(--chalk-cream);
+  --background: var(--paddock-olive);
+  --foreground: var(--chalk-cream);
+  --card: var(--visor-black);
+  --card-foreground: var(--chalk-cream);
+  --popover: var(--visor-black);
+  --popover-foreground: var(--chalk-cream);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #313628;
+  --muted-foreground: var(--lichen-gray);
+  --accent: var(--moss-lime);
+  --accent-foreground: var(--paddock-olive);
+  --destructive: #fb7185;
+  --border: var(--tarmac-gray);
+  --input: var(--tarmac-gray);
+  --ring: var(--signal-lime);
+  --radius: 8px;
+
+  /* Navigation & Chrome */
+  --sidebar: var(--paddock-olive);
+  --sidebar-foreground: var(--chalk-cream);
+  --sidebar-primary: var(--signal-lime);
+  --sidebar-primary-foreground: var(--paddock-olive);
+  --sidebar-accent: var(--moss-lime);
+  --sidebar-accent-foreground: var(--paddock-olive);
+  --sidebar-border: var(--tarmac-gray);
+  --sidebar-ring: var(--signal-lime);
+}
+
+/* ============================================================================
+   Semantic Surface Overrides: Light Ground (Chalk Cream Sections)
+   ============================================================================ */
+[data-surface="light"],
+.surface-light {
+  --surface: var(--chalk-cream);
+  --surface-foreground: var(--paddock-olive);
+  --background: var(--chalk-cream);
+  --foreground: var(--paddock-olive);
+  --card: var(--chalk-cream);
+  --card-foreground: var(--paddock-olive);
+  --popover: var(--chalk-cream);
+  --popover-foreground: var(--paddock-olive);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #e6e6dc;
+  --muted-foreground: var(--tarmac-gray);
+  --border: rgba(40, 44, 32, 0.18);
+  --input: rgba(40, 44, 32, 0.22);
+  --ring: var(--signal-lime);
+}
+
+/* ============================================================================
+   Semantic Surface Overrides: Void Ground (Visor Black Showcase / Product Sections)
+   ============================================================================ */
+[data-surface="void"],
+.surface-void {
+  --surface: var(--visor-black);
+  --surface-foreground: var(--chalk-cream);
+  --background: var(--visor-black);
+  --foreground: var(--chalk-cream);
+  --card: var(--visor-black);
+  --card-foreground: var(--chalk-cream);
+  --popover: var(--visor-black);
+  --popover-foreground: var(--chalk-cream);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #1c1c1e;
+  --muted-foreground: var(--stone-gray);
+  --border: var(--tarmac-gray);
+  --input: var(--tarmac-gray);
+  --ring: var(--signal-lime);
+}
+
+/* Dark class synchronization */
+.dark {
+  --background: var(--paddock-olive);
+  --foreground: var(--chalk-cream);
+  --card: var(--visor-black);
+  --card-foreground: var(--chalk-cream);
+  --popover: var(--visor-black);
+  --popover-foreground: var(--chalk-cream);
+  --primary: var(--signal-lime);
+  --primary-foreground: var(--paddock-olive);
+  --secondary: var(--moss-lime);
+  --secondary-foreground: var(--paddock-olive);
+  --muted: #313628;
+  --muted-foreground: var(--lichen-gray);
+  --accent: var(--moss-lime);
+  --accent-foreground: var(--paddock-olive);
+  --border: var(--tarmac-gray);
+  --input: var(--tarmac-gray);
+  --ring: var(--signal-lime);
+}
+
+/* ============================================================================
+   Tailwind CSS v4 Inline Theme Definitions
+   ============================================================================ */
+@theme inline {
+  /* Lando Norris Colors (both short and verbose aliases) */
+  --color-paddock: #282c20;
+  --color-paddock-olive: #282c20;
+  --color-chalk: #f4f4ed;
+  --color-chalk-cream: #f4f4ed;
+  --color-signal-lime: #d2ff00;
+  --color-moss-lime: #b2c73a;
+  --color-visor-black: #111112;
+  --color-sage-fog: #dde1d2;
+  --color-tarmac: #535450;
+  --color-tarmac-gray: #535450;
+  --color-lichen: #b4b8a5;
+  --color-lichen-gray: #b4b8a5;
+  --color-stone: #b9bbad;
+  --color-stone-gray: #b9bbad;
+
+  /* Semantic UI Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Font Families */
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-display: var(--font-serif), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Mona Sans Font Weight Tokens (400 to 800) */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Tracking Tokens */
+  --tracking-statement: -0.93px;
+  --tracking-title: -1.85px;
+  --tracking-impact: -3.7px;
+  --tracking-body: -0.19px;
+  --tracking-serif-wide: 0.74px;
+
+  /* Lando Precise Radii */
+  --radius-btn: 8px;
+  --radius-nav: 8px;
+  --radius-badge: 2.96px;
+  --radius-indicator: 14px;
+  --radius-card: 0px;
+
+  /* Derived Radii */
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+
+  /* Motion Curves */
+  --ease-lando: cubic-bezier(0.65, 0.05, 0, 1);
+  --duration-lando: 0.75s;
+}
+
+/* ============================================================================
+   Base Layer & Typography
+   ============================================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tarmac-gray) var(--paddock-olive);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: var(--font-sans), sans-serif;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.19px;
+    background-color: var(--background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  img,
+  svg {
+    display: block;
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* ============================================================================
+   ZERO CAST SHADOWS (Lando Norris Elevation Mandate)
+   ============================================================================ */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Highlighter Ink Selection */
+::selection {
+  background: var(--signal-lime);
+  color: var(--paddock-olive);
+}
+
+/* Precise Minimal Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paddock-olive);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tarmac-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lichen-gray);
+}
+
+/* ============================================================================
+   Glassmorphism Flat Redefinition (Zero Cast Shadows, 1px Tarmac Border)
+   ============================================================================ */
+.glass-card,
+.glass-nav,
+.glass-control {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-control {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+}
+
+.dark .glass-card,
+.dark .glass-nav,
+.dark .glass-control {
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+}
+
+/* ============================================================================
+   Ambient Ground (Clean Neutral Base)
+   ============================================================================ */
+.ambient-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--background);
+}
+
+.ambient-vignette {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    rgba(210, 255, 0, 0.03),
+    transparent 70%
+  );
+}
+
+.ambient-grain {
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background: repeating-linear-gradient(
+    0deg,
+    var(--foreground) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.page-shell {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================================
+   Chamfer Notch & Elevation Utilities
+   ============================================================================ */
+/* 1. Chamfered Corner Card (Bottom-Right Notch for Helmet / Showcase Cards) */
+.chamfer-card {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%
+  );
+}
+
+/* 2. Raised Inset Footer Tab */
+.footer-tab {
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
+}
+
+/* 3. Lime Halo Glow (Radial Glow rising behind Inset Footer Panel) */
+.lime-halo-glow {
+  background: radial-gradient(
+    circle at 50% -190%,
+    rgba(210, 255, 0, 0) 68%,
+    rgb(210, 255, 0) 83%
+  );
+}
+
+/* ============================================================================
+   OpenType Mona Sans & Bodoni Moda Variation Presets & Type Scale Utilities
+   ============================================================================ */
+.font-statement {
+  font-family: var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 93, "wght" 660;
+  font-size: 117.59px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.93px;
+}
+
+.font-title {
+  font-family: var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 93, "wght" 750;
+  font-size: 66.67px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.89;
+  letter-spacing: -1.85px;
+}
+
+.font-impact {
+  font-family: var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 93, "wght" 750;
+  font-size: 103.7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.82;
+  letter-spacing: -3.7px;
+}
+
+.font-button {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14.81px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+}
+
+.font-body {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 18.52px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.19px;
+}
+
+.font-serif-accent {
+  font-family: var(--font-serif), Georgia, serif;
+  color: var(--moss-lime);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* ============================================================================
+   Accessibility: Reduced Motion
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
