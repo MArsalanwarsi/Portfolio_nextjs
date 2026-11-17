@@ -175,9 +175,9 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
         className={styles.carousel}
         aria-label="Selected projects"
         aria-roledescription="carousel"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onFocusCapture={() => setFocused(true)}
+        onPointerEnter={(event) => setHovered(event.pointerType === "mouse")}
+        onPointerLeave={() => setHovered(false)}
+        onFocusCapture={(event) => setFocused(event.target.matches(":focus-visible"))}
         onBlurCapture={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget))
             setFocused(false);

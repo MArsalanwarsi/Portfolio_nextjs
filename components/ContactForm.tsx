@@ -101,7 +101,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="rounded-[8px] border border-tarmac-gray/40 bg-visor-black/90 p-5 sm:p-7 text-chalk-cream">
+    <div className="order-1 flex min-w-0 flex-col rounded-[8px] border border-tarmac-gray/40 bg-visor-black/90 p-6 sm:p-8 lg:order-2 text-chalk-cream">
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <span className="mb-3 inline-flex items-center px-3 py-1 text-[9.26px] font-mono tracking-widest uppercase border border-signal-lime/40 text-signal-lime bg-paddock-olive/60">
@@ -116,7 +116,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <form className="relative space-y-4" onSubmit={handleSubmit} noValidate>
+      <form className="relative flex flex-1 flex-col gap-4" onSubmit={handleSubmit} noValidate>
           <div className="pointer-events-none absolute left-[-9999px] top-auto size-px overflow-hidden">
             <label htmlFor="company">Company</label>
             <input
@@ -204,7 +204,7 @@ export default function ContactForm() {
             />
           </Field>
 
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-auto flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
             <button
               type="submit"
               disabled={isSubmitting}

@@ -167,6 +167,7 @@ export default function Navbar() {
               <em>Better websites.</em>
             </p>
             <a
+              data-copyable draggable={false}
               href={`mailto:${siteConfig.email}`}
               className={styles.menuEmail}
             >

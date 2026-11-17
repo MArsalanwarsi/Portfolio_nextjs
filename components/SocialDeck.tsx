@@ -131,7 +131,7 @@ export default function SocialDeck() {
                 }}
                 className="w-[260px] sm:w-[280px] lg:w-[175px] shrink-0 lg:-ml-6 first:ml-0"
               >
-                <a
+                <a draggable={false}
                   href={item.url}
                   target={item.url.startsWith("http") || item.url.endsWith(".pdf") ? "_blank" : undefined}
                   rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
@@ -159,7 +159,7 @@ export default function SocialDeck() {
                   {/* Bottom Meta & Handle */}
                   <div className="border-t border-tarmac-gray/30 pt-3">
                     <p className="font-mono text-[10px] text-stone-gray truncate group-hover:text-chalk-cream transition-colors">
-                      {item.handle}
+                      <span data-copyable>{item.handle}</span>
                     </p>
                     <div className="mt-2 flex items-center justify-between">
                       <span className="font-mono text-[7.5px] uppercase tracking-widest text-tarmac-gray">

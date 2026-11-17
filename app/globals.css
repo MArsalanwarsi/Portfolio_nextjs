@@ -221,8 +221,7 @@
 
   html {
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--tarmac-gray) var(--paddock-olive);
+    scrollbar-width: none;
   }
 
   body {
@@ -270,23 +269,7 @@
   color: var(--paddock-olive);
 }
 
-/* Precise Minimal Scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--paddock-olive);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--tarmac-gray);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--lichen-gray);
-}
+html::-webkit-scrollbar { display: none; }
 
 /* ============================================================================
    Glassmorphism Flat Redefinition (Zero Cast Shadows, 1px Tarmac Border)
@@ -504,3 +487,32 @@
 .profile-note p:first-child{max-width:30ch;font:600 clamp(1.7rem,3.5vw,4rem)/1.05 var(--font-sans),sans-serif;letter-spacing:-.055em}
 .profile-note p+p{margin-top:1.25rem;max-width:56ch;color:#bbb}.font-display{font-family:var(--font-sans),sans-serif}
 @media(max-width:680px){.profile-note{grid-template-columns:1fr;gap:1.25rem}}
+
+@media (hover: hover) and (pointer: fine) and (forced-colors: none) {
+  html {
+    --cursor-text: url("/cursor-text.svg") 5 9, text;
+    cursor: url("/cursor-arrow.svg") 1 1, default;
+  }
+
+  html :is(a[href], button:enabled, select:enabled, summary, input[type="radio"] + label) {
+    cursor: url("/cursor-link.svg") 8 2, pointer;
+  }
+
+
+  form label { cursor: inherit; }
+
+  html :disabled {
+    cursor: not-allowed;
+  }
+}
+
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html :is([data-copyable], textarea, input:not([type]), input:is([type="text"], [type="email"], [type="tel"], [type="url"], [type="search"], [type="number"], [type="password"]), [contenteditable]:not([contenteditable="false"])):not(:disabled) {
+  -webkit-user-select: text;
+  user-select: text;
+  cursor: var(--cursor-text, text);
+}

@@ -20,7 +20,7 @@ export default function Footer() {
         <div data-scroll-enter className={styles.footerColumns}>
           <div className={styles.footerIdentity}>
             <a href="#home" className={styles.wordmark} aria-label={`${siteConfig.name}, home`}><span>Arsalan</span><strong>WARSI</strong></a>
-            <p>{siteConfig.role}<br />{siteConfig.location}</p>
+            <p data-copyable>{siteConfig.role}<br />{siteConfig.location}</p>
           </div>
           <div className={styles.footerLinkGroup}>
             <h3>Explore</h3>
@@ -34,12 +34,12 @@ export default function Footer() {
           </div>
           <div className={`${styles.footerLinkGroup} ${styles.footerContact}`}>
             <h3>Say hello</h3>
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-            {siteConfig.phone && <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>}
+            <a data-copyable draggable={false} href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            {siteConfig.phone && <a data-copyable draggable={false} href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>}
           </div>
         </div>
         <div className={styles.footerBottom}>
-          <p>© {CURRENT_YEAR} {siteConfig.name}</p>
+          <p>© {CURRENT_YEAR} <span data-copyable>{siteConfig.name}</span></p>
           <p>Designed with intent. Built with Next.js.</p>
         </div>
       </div>

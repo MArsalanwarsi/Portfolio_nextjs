@@ -1,3 +1,4 @@
+import ContextNavigation from "@/components/ContextNavigation";
 import PageScrollMotion from "@/components/PageScrollMotion";
 import StudioIntro from "@/components/StudioIntro";
 import AnimatedBackground from "@/components/AnimatedBackground";
@@ -24,6 +25,7 @@ export default function Home() {
       <PageScrollMotion />
       <AnimatedBackground />
       <Navbar />
+      <ContextNavigation />
 
       <main className="page-shell">
         <Hero />

@@ -7,11 +7,11 @@ export default function Hero() {
   return (
     <section id="home" data-surface="dark" aria-labelledby="hero-title" className={styles.hero}>
       <div className={styles.light} aria-hidden="true" />
-      <div className={styles.meta}><span>{siteConfig.location}</span><span>{siteConfig.availability}</span></div>
+      <div className={styles.meta}><span data-copyable>{siteConfig.location}</span><span>{siteConfig.availability}</span></div>
       <h1 id="hero-title" className={styles.name}><span className="sr-only">Muhammad </span><span>Arsalan</span>{" "}<span>Warsi</span></h1>
       <PhotoStage />
       <div className={styles.bottom}>
-        <div><p className={styles.role}>Full-stack developer</p><p className={styles.summary}>Custom websites and online stores for businesses.</p></div>
+        <div><p data-copyable className={styles.role}>Full-stack developer</p><p className={styles.summary}>Custom websites and online stores for businesses.</p></div>
         <div className={styles.actions}><a href="#projects">Selected work <ArrowDownRight /></a><a href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer">Résumé <ArrowUpRight /></a></div>
       </div>
     </section>
