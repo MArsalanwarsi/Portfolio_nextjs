@@ -1,3 +1,4 @@
+import CopyContact from "./CopyContact";
 import { ArrowUpRight, FileText, Globe2, Mail, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
@@ -103,19 +104,21 @@ export default function Contact() {
                   const isPhone = link.href.startsWith("tel:");
 
                   return (
+                    <div key={link.label} className="flex min-w-0 flex-wrap items-center rounded-[8px] border border-tarmac-gray/30 bg-paddock-olive/40 transition-colors hover:border-signal-lime/60">
                     <a
-                      key={link.label}
                       href={link.href}
                       target={isMail || isPhone ? undefined : "_blank"}
                       rel={isMail || isPhone ? undefined : "noopener noreferrer"}
-                      className="flex min-h-11 items-center justify-between gap-3 rounded-[8px] border border-tarmac-gray/30 bg-paddock-olive/40 px-3.5 text-xs font-sans uppercase tracking-wider text-sage-fog transition hover:border-signal-lime/60 hover:text-chalk-cream"
+                      className="flex min-h-11 flex-1 items-center justify-between gap-3 px-3.5 text-xs font-sans uppercase tracking-wider text-sage-fog transition hover:text-chalk-cream"
                     >
                       <span className="flex items-center gap-2.5">
                         <Icon className="size-3.5 text-signal-lime" aria-hidden="true" />
                         {link.label}
                       </span>
-                      <ArrowUpRight className="size-3.5 text-tarmac-gray" aria-hidden="true" />
+                      {!isMail && !isPhone && <ArrowUpRight className="size-3.5 text-tarmac-gray" aria-hidden="true" />}
                     </a>
+                    {(isMail || isPhone) && <CopyContact value={isMail ? siteConfig.email : siteConfig.phone} label={isMail ? "email address" : "phone number"} />}
+                    </div>
                   );
                 })}
               </div>

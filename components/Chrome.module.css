@@ -523,7 +523,9 @@
   color: #bcbcbc;
 }
 
-.footerContact > a {
+.footerContact [data-copyable] {
+  flex: 1;
+  min-width: 0;
   font-size: 13px;
   text-transform: none;
   font-weight: 400;

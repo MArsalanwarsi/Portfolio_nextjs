@@ -1,3 +1,4 @@
+import CopyContact from "./CopyContact";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { navLinks, siteConfig } from "@/data/portfolio";
 import styles from "./Chrome.module.css";
@@ -34,8 +35,11 @@ export default function Footer() {
           </div>
           <div className={`${styles.footerLinkGroup} ${styles.footerContact}`}>
             <h3>Say hello</h3>
+            <div className="flex w-full min-w-0 flex-wrap items-center">
             <a data-copyable draggable={false} href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-            {siteConfig.phone && <a data-copyable draggable={false} href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>}
+              <CopyContact value={siteConfig.email} label="email address" />
+            </div>
+            {siteConfig.phone && <div className="flex w-full min-w-0 flex-wrap items-center"><a data-copyable draggable={false} href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a><CopyContact value={siteConfig.phone} label="phone number" /></div>}
           </div>
         </div>
         <div className={styles.footerBottom}>
