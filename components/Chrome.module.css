@@ -383,7 +383,12 @@
   border-top: 1px solid #535353;
 }
 
-.menuBottom > a {
+.menuBottom > :is(a, button) {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -394,7 +399,7 @@
   transition: color .2s ease;
 }
 
-.menuBottom > a:hover {
+.menuBottom > :is(a, button):hover {
   color: #eeeeee;
 }
 
@@ -506,7 +511,12 @@
   font-weight: 400;
 }
 
-.footerLinkGroup > a {
+.footerLinkGroup > :is(a, button) {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -519,7 +529,7 @@
   text-decoration: none;
 }
 
-.footerLinkGroup > a:hover {
+.footerLinkGroup > :is(a, button):hover {
   color: #bcbcbc;
 }
 

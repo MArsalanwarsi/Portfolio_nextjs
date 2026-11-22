@@ -14,9 +14,9 @@ import PremiumMotion from "@/components/PremiumMotion";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import SocialDeck from "@/components/SocialDeck";
-
 import Stats from "@/components/Stats";
 import TechMarquee from "@/components/TechMarquee";
+import ResumePasswordModal from "@/components/ResumePasswordModal";
 
 export default function Home() {
   return (
@@ -33,7 +33,6 @@ export default function Home() {
         <Projects />
         <About />
 
-
         <Skills />
         <Experience />
         <Education />
@@ -44,10 +43,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <ResumePasswordModal />
     </PremiumMotion>
   );
 }
-
-
-
-

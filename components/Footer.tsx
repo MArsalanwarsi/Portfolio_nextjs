@@ -1,4 +1,5 @@
 import CopyContact from "./CopyContact";
+import ResumeButton from "./ResumeButton";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { navLinks, siteConfig } from "@/data/portfolio";
 import styles from "./Chrome.module.css";
@@ -31,7 +32,7 @@ export default function Footer() {
             <h3>Elsewhere</h3>
             <a href={siteConfig.github} target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={17} aria-hidden="true" /></a>
             <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <ArrowUpRight size={17} aria-hidden="true" /></a>
-            <a href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer">Résumé <ArrowUpRight size={17} aria-hidden="true" /></a>
+            <ResumeButton>Résumé <ArrowUpRight size={17} aria-hidden="true" /></ResumeButton>
           </div>
           <div className={`${styles.footerLinkGroup} ${styles.footerContact}`}>
             <h3>Say hello</h3>
@@ -43,11 +44,10 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.footerBottom}>
-          <p>© {CURRENT_YEAR} <span data-copyable>{siteConfig.name}</span></p>
-          <p>Designed with intent. Built with Next.js.</p>
+          <p>© {CURRENT_YEAR} {siteConfig.name}. All rights reserved.</p>
+          <p>Built with Next.js & Three.js · Karachi, PK</p>
         </div>
       </div>
     </footer>
   );
 }
-

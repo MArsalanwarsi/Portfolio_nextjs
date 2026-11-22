@@ -20,12 +20,12 @@
 .bottom {bottom:0;padding:clamp(1.3rem,3.6vw,3.4rem) 0;align-items:end}
 .hero::after {content:"";position:absolute;inset:61% 0 0;pointer-events:none;background:linear-gradient(transparent,#111c)}
 .role{color:#ccc}.summary{font-size:clamp(1rem,1.65vw,1.65rem);line-height:1.15;max-width:22ch;margin-top:.45rem;letter-spacing:-.035em}
-.actions{display:flex;gap:1.3rem}.actions a{min-height:44px;display:flex;align-items:center;gap:.35rem}.actions svg{width:15px}
-.actions a:hover{text-decoration:underline;text-underline-offset:5px}
+.actions{display:flex;gap:1.3rem}.actions :is(a, button){min-height:44px;display:flex;align-items:center;gap:.35rem;background:none;border:none;color:inherit;font:inherit;text-transform:inherit;letter-spacing:inherit;cursor:pointer;padding:0}.actions svg{width:15px}
+.actions :is(a, button):hover{text-decoration:underline;text-underline-offset:5px}
 @media(max-width:680px){
   .hero{height:85svh;min-height:515px;max-height:820px}.stage{height:78%;bottom:2%;max-width:110vw}
   .meta{top:5.4rem;font-size:.61rem}.name{inset:30% 3% auto;font-size:12.1vw}
-  .bottom{gap:.6rem}.actions{flex-direction:column;align-items:end;gap:0}.actions a{min-height:38px}
+  .bottom{gap:.6rem}.actions{flex-direction:column;align-items:end;gap:0}.actions :is(a, button){min-height:38px}
   .summary{max-width:18ch}.hero::after{inset:55% 0 0}
 }
 @media(prefers-reduced-motion:no-preference){

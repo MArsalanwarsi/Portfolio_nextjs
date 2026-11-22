@@ -29,10 +29,10 @@ export default function CopyContact({ value, label }: { value: string; label: st
         className="grid size-11 shrink-0 place-items-center rounded-md text-stone-gray transition-colors hover:bg-white/5 hover:text-chalk-cream focus-visible:outline-2 focus-visible:outline-current">
         <Icon size={16} strokeWidth={1.6} aria-hidden="true" />
       </button>
-      <span role="status" className={status === "manual" ? "basis-full break-all px-3 pb-2 text-xs" : "sr-only"}>
+      <output className={status === "manual" ? "basis-full break-all px-3 pb-2 text-xs" : "sr-only"}>
         {status === "copied" && `${label} copied`}
         {status === "manual" && <>Select to copy: <span data-copyable>{value}</span></>}
-      </span>
+      </output>
     </>
   );
 }

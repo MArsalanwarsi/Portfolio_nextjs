@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
+import { openResumeModal } from "./ResumePasswordModal";
 import { siteConfig } from "@/data/portfolio";
 import styles from "./Chrome.module.css";
 
@@ -200,13 +201,7 @@ export default function Navbar() {
           <span className={styles.micro}>
             {siteConfig.role} · Aptech Associate
           </span>
-          <a
-            href={siteConfig.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View résumé <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+          <button type="button" onClick={() => { closeMenu(); openResumeModal(); }}>View résumé <ArrowUpRight size={16} aria-hidden="true" /></button>
         </div>
       </dialog>
     </>

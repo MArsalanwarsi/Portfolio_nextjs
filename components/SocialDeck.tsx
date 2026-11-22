@@ -5,6 +5,7 @@ import { m, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, FileText, Globe, Mail, MessageSquare, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { siteConfig } from "@/data/portfolio";
+import { openResumeModal } from "./ResumePasswordModal";
 
 interface SocialCardItem {
   id: string;
@@ -135,6 +136,7 @@ export default function SocialDeck() {
                   href={item.url}
                   target={item.url.startsWith("http") || item.url.endsWith(".pdf") ? "_blank" : undefined}
                   rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                  onClick={(e) => { if (item.id === "cv") { e.preventDefault(); openResumeModal(); } }}
                   className="group block h-[240px] rounded-[8px] border border-tarmac-gray/50 bg-visor-black p-4 flex flex-col justify-between transition-colors hover:border-signal-lime"
                 >
                   {/* Top Bar */}
