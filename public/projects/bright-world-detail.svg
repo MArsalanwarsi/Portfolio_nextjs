@@ -1,5 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Bright World Product Specification</title>
+  <desc id="desc">Commercial luminaire catalog, Kelvin color temperature selector, and lighting energy efficiency specs.</desc>
+  <rect width="1200" height="760" fill="#0d0f14"/>
+  <rect x="60" y="50" width="1080" height="660" rx="16" fill="#161a23" stroke="#252b38"/>
+  <text x="100" y="115" fill="#f8fafc" font-family="Inter,sans-serif" font-size="28" font-weight="700">Luminaires &amp; Architecture Lighting Specification</text>
+  <text x="100" y="148" fill="#94a3b8" font-family="ui-monospace,monospace" font-size="14">Product ID: BW-LUM-940 // High-CRI Architectural Pendant</text>
+  <!-- Left Product Visual Mockup -->
+  <rect x="100" y="180" width="480" height="480" rx="12" fill="#0f1219" stroke="#2d3748"/>
+  <circle cx="340" cy="380" r="140" fill="none" stroke="#fbbf24" stroke-width="4" stroke-dasharray="8 8" opacity="0.6"/>
+  <circle cx="340" cy="380" r="100" fill="none" stroke="#f59e0b" stroke-width="6"/>
+  <circle cx="340" cy="380" r="60" fill="#fbbf24" fill-opacity="0.2"/>
+  <text x="340" y="386" fill="#fef3c7" font-family="ui-monospace,monospace" font-size="16" font-weight="700" text-anchor="middle">3000K WARM</text>
+  <!-- Right Specs Panel -->
+  <g font-family="Inter,sans-serif" transform="translate(620, 180)">
+    <rect width="460" height="480" rx="12" fill="#1e2433" stroke="#2d3748"/>
+    <text x="40" y="50" fill="#f1f5f9" font-size="20" font-weight="700">Technical Specifications</text>
+    <text x="40" y="95" fill="#94a3b8" font-size="14">Luminous Flux:</text>
+    <text x="240" y="95" fill="#fbbf24" font-weight="700" font-family="ui-monospace,monospace">3,800 Lumens</text>
+    <text x="40" y="140" fill="#94a3b8" font-size="14">Color Temp (CCT):</text>
+    <text x="240" y="140" fill="#f8fafc" font-family="ui-monospace,monospace">2700K - 6500K Tunable</text>
+    <text x="40" y="185" fill="#94a3b8" font-size="14">Color Rendering (CRI):</text>
+    <text x="240" y="185" fill="#34d399" font-weight="700" font-family="ui-monospace,monospace">Ra &gt; 95 (True Color)</text>
+    <text x="40" y="230" fill="#94a3b8" font-size="14">Power Consumption:</text>
+    <text x="240" y="230" fill="#f8fafc" font-family="ui-monospace,monospace">36W (Energy Class A++)</text>
+    <text x="40" y="275" fill="#94a3b8" font-size="14">Dimming Protocol:</text>
+    <text x="240" y="275" fill="#f8fafc" font-family="ui-monospace,monospace">DALI-2 / 0-10V / Zigbee</text>
+    <text x="40" y="320" fill="#94a3b8" font-size="14">Lifespan Rating:</text>
+    <text x="240" y="320" fill="#60a5fa" font-weight="700" font-family="ui-monospace,monospace">50,000 hrs (L80B10)</text>
+    <rect x="40" y="380" width="380" height="52" rx="8" fill="#f59e0b"/>
+    <text x="230" y="412" fill="#0f172a" font-size="15" font-weight="700" text-anchor="middle">ADD TO PROJECT SPEC SHEET</text>
+  </g>
+</svg>

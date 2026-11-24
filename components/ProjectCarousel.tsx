@@ -26,6 +26,7 @@ interface ProjectCarouselProps {
 }
 
 const AUTO_PLAY_MS = 5_000;
+const PAGE_SIZE = 6;
 const deckEase = [0.65, 0.05, 0, 1] as const;
 const motionQuery = "(prefers-reduced-motion: reduce)";
 function subscribeMotion(callback: () => void) {
@@ -61,6 +62,14 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
   const [focused, setFocused] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const totalPages = Math.max(1, Math.ceil(projects.length / PAGE_SIZE));
+  const currentPage = Math.min(totalPages - 1, Math.floor(activeIndex / PAGE_SIZE));
+
+  const handlePageChange = (newPage: number) => {
+    const boundedPage = Math.max(0, Math.min(totalPages - 1, newPage));
+    setActiveIndex(boundedPage * PAGE_SIZE);
+  };
   const reduceMotion = useSyncExternalStore(
     subscribeMotion,
     getMotionPreference,
@@ -360,17 +369,83 @@ export default function ProjectCarousel({ projects }: ProjectCarouselProps) {
           })}
         </div>
 
-        <div className={styles.workIndex} aria-label="Project index">
-          {projects.map((project, index) => (
-            <button type="button" key={project.title} aria-label={`Open ${project.title} details`}
-              data-current={index === activeIndex}
-              onPointerEnter={(event) => { if (event.pointerType === "mouse") setActiveIndex(index); }}
-              onFocus={() => setActiveIndex(index)}
-              onClick={() => { setActiveIndex(index); setSelectedProject(project); }}>
-              <span>{String(index + 1).padStart(2, "0")}</span><strong>{project.title}</strong>
-              <small>{project.label}</small><ArrowUpRight size={16} aria-hidden="true" />
-            </button>
-          ))}
+        <div className={styles.workIndexWrapper}>
+          <div className={styles.workIndex} aria-label="Project index">
+            {projects
+              .slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE)
+              .map((project, pageIdx) => {
+                const globalIndex = currentPage * PAGE_SIZE + pageIdx;
+                return (
+                  <button
+                    type="button"
+                    key={project.title}
+                    aria-label={`Open ${project.title} details`}
+                    data-current={globalIndex === activeIndex}
+                    onPointerEnter={(event) => {
+                      if (event.pointerType === "mouse") setActiveIndex(globalIndex);
+                    }}
+                    onFocus={() => setActiveIndex(globalIndex)}
+                    onClick={() => {
+                      setActiveIndex(globalIndex);
+                      setSelectedProject(project);
+                    }}
+                  >
+                    <span>{String(globalIndex + 1).padStart(2, "0")}</span>
+                    <strong>{project.title}</strong>
+                    <small>{project.label}</small>
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </button>
+                );
+              })}
+          </div>
+
+          {totalPages > 1 && (
+            <nav className={styles.pagination} aria-label="Selected works pagination">
+              <span className={styles.paginationInfo}>
+                Showing {String(currentPage * PAGE_SIZE + 1).padStart(2, "0")}–
+                {String(Math.min((currentPage + 1) * PAGE_SIZE, projects.length)).padStart(2, "0")} of {String(projects.length).padStart(2, "0")}
+              </span>
+              <div className={styles.paginationControls}>
+                <button
+                  type="button"
+                  className={styles.paginationButton}
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 0}
+                  aria-label="Previous page"
+                >
+                  <ArrowLeft className="size-3.5" aria-hidden="true" />
+                  <span>Prev</span>
+                </button>
+                <div className={styles.pageNumbers} aria-label="Page selection">
+                  {Array.from({ length: totalPages }).map((_, pIdx) => (
+                    <button
+                      key={pIdx}
+                      type="button"
+                      className={cn(
+                        styles.pageNumber,
+                        currentPage === pIdx && styles.activePageNumber
+                      )}
+                      onClick={() => handlePageChange(pIdx)}
+                      aria-current={currentPage === pIdx ? "page" : undefined}
+                      aria-label={`Go to page ${pIdx + 1}`}
+                    >
+                      {String(pIdx + 1).padStart(2, "0")}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  className={styles.paginationButton}
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages - 1}
+                  aria-label="Next page"
+                >
+                  <span>Next</span>
+                  <ArrowRight className="size-3.5" aria-hidden="true" />
+                </button>
+              </div>
+            </nav>
+          )}
         </div>
       </section>
 

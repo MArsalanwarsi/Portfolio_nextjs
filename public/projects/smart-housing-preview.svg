@@ -1,5 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Smart Housing Backend API &amp; Swagger</title>
+  <desc id="desc">RESTful API documentation and gate access control engine for housing societies.</desc>
+  <rect width="1200" height="760" fill="#0b0f19"/>
+  <rect x="50" y="40" width="1100" height="680" rx="14" fill="#111827" stroke="#1e293b"/>
+  <!-- Top API Bar -->
+  <rect x="50" y="40" width="1100" height="56" rx="14" fill="#1e293b"/>
+  <text x="90" y="75" fill="#38bdf8" font-family="ui-monospace,monospace" font-size="18" font-weight="700">Smart Housing REST API v1.4.0</text>
+  <rect x="980" y="52" width="130" height="30" rx="6" fill="#0284c7"/>
+  <text x="1045" y="72" fill="#fff" font-family="ui-monospace,monospace" font-size="12" font-weight="700" text-anchor="middle">OAS 3.0 VALID</text>
+  <!-- Endpoint List -->
+  <g font-family="ui-monospace,monospace" font-size="13">
+    <!-- EP 1 -->
+    <rect x="90" y="130" width="1020" height="64" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="110" y="146" width="60" height="32" rx="4" fill="#15803d"/>
+    <text x="140" y="167" fill="#fff" font-weight="700" text-anchor="middle">GET</text>
+    <text x="190" y="167" fill="#e2e8f0" font-weight="600">/api/v1/housing/tenants</text>
+    <text x="600" y="167" fill="#94a3b8">Retrieve tenant lease contracts, parking spots &amp; active residents</text>
+    <text x="1040" y="167" fill="#22c55e" font-weight="700">200 OK</text>
+    <!-- EP 2 -->
+    <rect x="90" y="210" width="1020" height="64" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="110" y="226" width="60" height="32" rx="4" fill="#1d4ed8"/>
+    <text x="140" y="247" fill="#fff" font-weight="700" text-anchor="middle">POST</text>
+    <text x="190" y="247" fill="#e2e8f0" font-weight="600">/api/v1/access/rfid-gate</text>
+    <text x="600" y="247" fill="#94a3b8">Validate RFID barcode vehicle badge and log timestamped gate entry</text>
+    <text x="1040" y="247" fill="#22c55e" font-weight="700">201 CREATED</text>
+    <!-- EP 3 -->
+    <rect x="90" y="290" width="1020" height="64" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <rect x="110" y="306" width="60" height="32" rx="4" fill="#b45309"/>
+    <text x="140" y="327" fill="#fff" font-weight="700" text-anchor="middle">PUT</text>
+    <text x="190" y="327" fill="#e2e8f0" font-weight="600">/api/v1/billing/maintenance</text>
+    <text x="600" y="327" fill="#94a3b8">Automated monthly billing reconciliation &amp; digital invoice generation</text>
+    <text x="1040" y="327" fill="#22c55e" font-weight="700">200 OK</text>
+  </g>
+  <!-- JSON Response Sandbox -->
+  <rect x="90" y="390" width="1020" height="290" rx="8" fill="#030712" stroke="#1f2937"/>
+  <text x="120" y="425" fill="#38bdf8" font-family="ui-monospace,monospace" font-size="13">// Example JSON response: /api/v1/access/rfid-gate</text>
+  <g font-family="ui-monospace,monospace" font-size="12">
+    <text x="120" y="460" fill="#e2e8f0">{</text>
+    <text x="140" y="485" fill="#93c5fd">"status": <tspan fill="#a7f3d0">"authorized"</tspan>,</text>
+    <text x="140" y="510" fill="#93c5fd">"resident": <tspan fill="#e2e8f0">{ "unit": "Block-C, Apt 402", "name": "M. Arsalan", "tier": "Owner" }</tspan>,</text>
+    <text x="140" y="535" fill="#93c5fd">"gateId": <tspan fill="#a7f3d0">"MAIN-NORTH-BOOM-01"</tspan>,</text>
+    <text x="140" y="560" fill="#93c5fd">"timestamp": <tspan fill="#fef08a">"2026-11-24T15:30:00Z"</tspan>,</text>
+    <text x="140" y="585" fill="#93c5fd">"securityClearance": <tspan fill="#86efac">true</tspan></text>
+    <text x="120" y="615" fill="#e2e8f0">}</text>
+  </g>
+</svg>

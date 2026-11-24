@@ -1,5 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Monument Architectural Blueprint</title>
+  <desc id="desc">Historical monument architectural breakdown, masonry data, and excavation chronology.</desc>
+  <rect width="1200" height="760" fill="#120f0c"/>
+  <rect x="60" y="50" width="1080" height="660" rx="14" fill="#1c1712" stroke="#3b2f23"/>
+  <text x="100" y="115" fill="#fef3c7" font-family="Georgia,serif" font-size="28" font-weight="700">Architectural Analysis &amp; Masonry Specifications</text>
+  <text x="100" y="148" fill="#b45309" font-family="ui-monospace,monospace" font-size="13">JSON DATA FEED: /data/monuments/taj-mahal.json</text>
+  <g font-family="Inter,sans-serif" transform="translate(100, 180)">
+    <rect width="460" height="480" rx="12" fill="#14100c" stroke="#3b2f23"/>
+    <text x="30" y="50" fill="#fde68a" font-size="18" font-weight="700">Structural Geometry &amp; Symmetry</text>
+    <text x="30" y="95" fill="#a8a29e" font-size="14">Base Plinth:</text>
+    <text x="220" y="95" fill="#fef3c7" font-family="ui-monospace,monospace">95.5m square marble</text>
+    <text x="30" y="145" fill="#a8a29e" font-size="14">Dome Height:</text>
+    <text x="220" y="145" fill="#fef3c7" font-family="ui-monospace,monospace">35 meters (Central)</text>
+    <text x="30" y="195" fill="#a8a29e" font-size="14">Minaret Incline:</text>
+    <text x="220" y="195" fill="#fef3c7" font-family="ui-monospace,monospace">Outward by 2.5 degrees</text>
+    <text x="30" y="245" fill="#a8a29e" font-size="14">Stone Inlay Technique:</text>
+    <text x="220" y="245" fill="#fbbf24" font-weight="700">Pietra Dura (Semiprecious)</text>
+    <text x="30" y="295" fill="#a8a29e" font-size="14">UNESCO Inscription:</text>
+    <text x="220" y="295" fill="#34d399" font-weight="700">1983 (Criterion i)</text>
+
+    <!-- Right Side Archaeological Chronology -->
+    <rect x="500" width="480" height="480" rx="12" fill="#14100c" stroke="#3b2f23"/>
+    <text x="530" y="50" fill="#fde68a" font-size="18" font-weight="700">Chronological Milestones</text>
+    <circle cx="540" cy="110" r="6" fill="#f59e0b"/>
+    <text x="560" y="115" fill="#fef3c7" font-size="14" font-weight="600">1632 AD: Construction Initiated</text>
+    <text x="560" y="140" fill="#a8a29e" font-size="13">Over 20,000 artisans mobilized from Persia, Europe, and India.</text>
+
+    <circle cx="540" cy="190" r="6" fill="#f59e0b"/>
+    <text x="560" y="195" fill="#fef3c7" font-size="14" font-weight="600">1648 AD: Central Mausoleum Complete</text>
+    <text x="560" y="220" fill="#a8a29e" font-size="13">Main dome and perimeter minarets finalized.</text>
+
+    <circle cx="540" cy="270" r="6" fill="#f59e0b"/>
+    <text x="560" y="275" fill="#fef3c7" font-size="14" font-weight="600">1653 AD: Gardens &amp; Outer Complex Finished</text>
+    <text x="560" y="300" fill="#a8a29e" font-size="13">Charbagh quadrilateral garden layout completed.</text>
+
+    <circle cx="540" cy="350" r="6" fill="#10b981"/>
+    <text x="560" y="355" fill="#fef3c7" font-size="14" font-weight="600">Present Day: Digital Preservation</text>
+    <text x="560" y="380" fill="#a8a29e" font-size="13">Photogrammetry 3D scans and JSON educational archive integration.</text>
+  </g>
+</svg>

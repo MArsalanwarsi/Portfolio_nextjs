@@ -1,5 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Botanical Nutrition &amp; Species Guide</title>
+  <desc id="desc">Interactive plant care telemetry, air purification index, and botanical nutrition guide.</desc>
+  <rect width="1200" height="760" fill="#0a140d"/>
+  <rect x="60" y="50" width="1080" height="660" rx="16" fill="#102216" stroke="#1d3d27"/>
+  <text x="100" y="115" fill="#f0fdf4" font-family="Inter,sans-serif" font-size="28" font-weight="700">Botanical Science &amp; Indoor Air Quality Index</text>
+  <text x="100" y="148" fill="#4ade80" font-family="ui-monospace,monospace" font-size="14">AZM Environmental Innovation Award Winner</text>
+  <g font-family="Inter,sans-serif" transform="translate(100, 180)">
+    <!-- Column 1 -->
+    <rect width="320" height="480" rx="12" fill="#0b170f" stroke="#1f422b"/>
+    <text x="30" y="50" fill="#86efac" font-size="18" font-weight="700">Ficus Elastica (Rubber)</text>
+    <text x="30" y="80" fill="#6ee7b7" font-family="ui-monospace,monospace" font-size="12">Air Score: 94/100</text>
+    <text x="30" y="130" fill="#bbf7d0" font-size="14" leading="24">Absorbs formaldehyde and airborne toxins. Thrives in moderate indirect sunlight with 7-day watering cycles.</text>
+    <text x="30" y="240" fill="#86efac" font-size="13" font-weight="600">WATERING:</text>
+    <text x="30" y="265" fill="#dcfce7" font-size="13">Every 7 to 10 days</text>
+    <text x="30" y="310" fill="#86efac" font-size="13" font-weight="600">LIGHT:</text>
+    <text x="30" y="335" fill="#dcfce7" font-size="13">Bright Indirect Sunlight</text>
+    <text x="30" y="380" fill="#86efac" font-size="13" font-weight="600">SOIL DRAINAGE:</text>
+    <text x="30" y="405" fill="#dcfce7" font-size="13">Aerated Perlite Mix (pH 6.0)</text>
+
+    <!-- Column 2 -->
+    <rect x="360" width="320" height="480" rx="12" fill="#0b170f" stroke="#1f422b"/>
+    <text x="390" y="50" fill="#86efac" font-size="18" font-weight="700">Monstera Deliciosa</text>
+    <text x="390" y="80" fill="#6ee7b7" font-family="ui-monospace,monospace" font-size="12">Air Score: 91/100</text>
+    <text x="390" y="130" fill="#bbf7d0" font-size="14" leading="24">Swiss cheese plant known for humidity stabilization and large fenestrated air-purifying foliage.</text>
+    <text x="390" y="240" fill="#86efac" font-size="13" font-weight="600">WATERING:</text>
+    <text x="390" y="265" fill="#dcfce7" font-size="13">When top 2 inches dry out</text>
+    <text x="390" y="310" fill="#86efac" font-size="13" font-weight="600">LIGHT:</text>
+    <text x="390" y="335" fill="#dcfce7" font-size="13">Medium to High Ambient</text>
+    <text x="390" y="380" fill="#86efac" font-size="13" font-weight="600">HUMIDITY:</text>
+    <text x="390" y="405" fill="#dcfce7" font-size="13">60% - 80% Optimal Range</text>
+
+    <!-- Column 3 -->
+    <rect x="720" width="260" height="480" rx="12" fill="#0b170f" stroke="#1f422b"/>
+    <text x="750" y="50" fill="#86efac" font-size="18" font-weight="700">Impact Stats</text>
+    <text x="750" y="110" fill="#4ade80" font-size="36" font-weight="800">-42%</text>
+    <text x="750" y="135" fill="#bbf7d0" font-size="12">Indoor VOC Contaminants</text>
+    <text x="750" y="190" fill="#4ade80" font-size="36" font-weight="800">+65%</text>
+    <text x="750" y="215" fill="#bbf7d0" font-size="12">Oxygen Replenishment</text>
+    <text x="750" y="270" fill="#4ade80" font-size="36" font-weight="800">100%</text>
+    <text x="750" y="295" fill="#bbf7d0" font-size="12">Organic Soil Substrates</text>
+  </g>
+</svg>

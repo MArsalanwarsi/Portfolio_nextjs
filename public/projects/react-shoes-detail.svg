@@ -1,5 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Sneaker Specification &amp; Cart State</title>
+  <desc id="desc">Footwear retail sizing matrix, inventory availability, and React state architecture.</desc>
+  <rect width="1200" height="760" fill="#0d0d10"/>
+  <rect x="50" y="40" width="1100" height="680" rx="16" fill="#16161b" stroke="#2b2b35"/>
+  <text x="90" y="95" fill="#ffffff" font-family="Inter,sans-serif" font-size="28" font-weight="800">Volt Kinetic Runner // Product Engineering</text>
+  <text x="90" y="125" fill="#d4ff00" font-family="ui-monospace,monospace" font-size="13">React Context &amp; Redux Toolkit Cart State Management</text>
+  <g font-family="Inter,sans-serif" transform="translate(90, 160)">
+    <!-- Specs Column -->
+    <rect width="520" height="500" rx="12" fill="#1d1d24" stroke="#33333f"/>
+    <text x="40" y="50" fill="#f4f4f5" font-size="20" font-weight="700">Cushioning &amp; Sole Technology</text>
+    <text x="40" y="95" fill="#a1a1aa" font-size="14">Midsole Material:</text>
+    <text x="260" y="95" fill="#ffffff" font-weight="600">Dual-density Nitrogen Foam</text>
+    <text x="40" y="145" fill="#a1a1aa" font-size="14">Outsole Traction:</text>
+    <text x="260" y="145" fill="#ffffff" font-weight="600">Waffle-lug Carbon Rubber</text>
+    <text x="40" y="195" fill="#a1a1aa" font-size="14">Upper Weave:</text>
+    <text x="260" y="195" fill="#ffffff" font-weight="600">Engineered Breathable Mesh</text>
+    <text x="40" y="245" fill="#a1a1aa" font-size="14">Drop (Heel to Toe):</text>
+    <text x="260" y="245" fill="#d4ff00" font-weight="700">8 mm Dynamic Gradient</text>
+    <!-- Size Selector -->
+    <text x="40" y="315" fill="#f4f4f5" font-size="16" font-weight="700">Select US Size:</text>
+    <rect x="40" y="340" width="60" height="44" rx="6" fill="#292933" stroke="#444455"/>
+    <text x="70" y="367" fill="#fff" font-size="14" text-anchor="middle">8.0</text>
+    <rect x="115" y="340" width="60" height="44" rx="6" fill="#292933" stroke="#444455"/>
+    <text x="145" y="367" fill="#fff" font-size="14" text-anchor="middle">9.0</text>
+    <rect x="190" y="340" width="60" height="44" rx="6" fill="#d4ff00"/>
+    <text x="220" y="367" fill="#111" font-size="14" font-weight="800" text-anchor="middle">10.0</text>
+    <rect x="265" y="340" width="60" height="44" rx="6" fill="#292933" stroke="#444455"/>
+    <text x="295" y="367" fill="#fff" font-size="14" text-anchor="middle">11.0</text>
+    <rect x="340" y="340" width="60" height="44" rx="6" fill="#292933" stroke="#444455"/>
+    <text x="370" y="367" fill="#fff" font-size="14" text-anchor="middle">12.0</text>
+
+    <!-- Cart State Column -->
+    <rect x="560" width="460" height="500" rx="12" fill="#1d1d24" stroke="#33333f"/>
+    <text x="600" y="50" fill="#f4f4f5" font-size="20" font-weight="700">Cart State Machine (Redux)</text>
+    <rect x="600" y="80" width="380" height="200" rx="8" fill="#111114" stroke="#2c2c36"/>
+    <text x="620" y="115" fill="#86efac" font-family="ui-monospace,monospace" font-size="13">// Redux Slice Dispatch</text>
+    <text x="620" y="145" fill="#e4e4e7" font-family="ui-monospace,monospace" font-size="12">dispatch(addToCart({</text>
+    <text x="640" y="170" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="12">  sku: "VKR-2026-LIME",</text>
+    <text x="640" y="195" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="12">  size: 10.0,</text>
+    <text x="640" y="220" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="12">  price: 210.00,</text>
+    <text x="640" y="245" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="12">  quantity: 1</text>
+    <text x="620" y="270" fill="#e4e4e7" font-family="ui-monospace,monospace" font-size="12">}));</text>
+
+    <rect x="600" y="310" width="380" height="150" rx="8" fill="#111114" stroke="#2c2c36"/>
+    <text x="620" y="345" fill="#e4e4e7" font-size="15" font-weight="600">Inventory Status:</text>
+    <text x="620" y="380" fill="#22c55e" font-size="22" font-weight="700">In Stock (14 pairs left)</text>
+    <text x="620" y="420" fill="#a1a1aa" font-size="13">Dispatched same-day via express delivery</text>
+  </g>
+</svg>

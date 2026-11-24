@@ -1,5 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">GlowAfter Animation Pipeline</title>
+  <desc id="desc">Shader timing, circular clip-path transition mechanics, and theme state reconciliation.</desc>
+  <rect width="1200" height="760" fill="#0d0d10"/>
+  <rect x="50" y="50" width="1100" height="660" rx="16" fill="#141418" stroke="#2a2a32" stroke-width="1"/>
+  <!-- Header -->
+  <text x="90" y="115" fill="#f4f4f5" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="700">Transition Shader &amp; Animation Engine</text>
+  <text x="90" y="148" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="14">glowafter/core/transition-pipeline.ts</text>
+  <!-- Code Frame -->
+  <rect x="90" y="180" width="620" height="480" rx="10" fill="#09090b" stroke="#27272a"/>
+  <text x="120" y="225" fill="#d4ff00" font-family="ui-monospace,monospace" font-size="13">const createThemeReveal = (origin: Point) =&gt; {</text>
+  <text x="140" y="255" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">  const maxRadius = Math.hypot(window.innerWidth, window.innerHeight);</text>
+  <text x="140" y="285" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">  return document.startViewTransition(() =&gt; {</text>
+  <text x="160" y="315" fill="#60a5fa" font-family="ui-monospace,monospace" font-size="13">    document.documentElement.classList.toggle('dark');</text>
+  <text x="160" y="345" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">    applyCanvasVariables(activeTheme);</text>
+  <text x="140" y="375" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">  }).ready.then(() =&gt; {</text>
+  <text x="160" y="405" fill="#34d399" font-family="ui-monospace,monospace" font-size="13">    document.documentElement.animate({</text>
+  <text x="180" y="435" fill="#fbbf24" font-family="ui-monospace,monospace" font-size="13">      clipPath: [`circle(0px at ${origin.x}px ${origin.y}px)`,</text>
+  <text x="180" y="465" fill="#fbbf24" font-family="ui-monospace,monospace" font-size="13">                 `circle(${maxRadius}px at ${origin.x}px ${origin.y}px)`]</text>
+  <text x="160" y="495" fill="#34d399" font-family="ui-monospace,monospace" font-size="13">    }, { duration: 650, easing: 'cubic-bezier(0.65, 0.05, 0, 1)' });</text>
+  <text x="140" y="525" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">  });</text>
+  <text x="120" y="555" fill="#d4ff00" font-family="ui-monospace,monospace" font-size="13">};</text>
+  <!-- Telemetry Card -->
+  <rect x="740" y="180" width="370" height="230" rx="10" fill="#18181c" stroke="#2e2e38"/>
+  <text x="770" y="220" fill="#e4e4e7" font-family="Inter,sans-serif" font-size="16" font-weight="600">Animation Telemetry</text>
+  <text x="770" y="260" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">Frame Rate: <tspan fill="#22c55e" font-weight="700">60.0 FPS</tspan></text>
+  <text x="770" y="295" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">GPU Render Cost: <tspan fill="#22c55e" font-weight="700">1.8 ms</tspan></text>
+  <text x="770" y="330" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">Layout Shifts (CLS): <tspan fill="#22c55e" font-weight="700">0.000</tspan></text>
+  <text x="770" y="365" fill="#a1a1aa" font-family="ui-monospace,monospace" font-size="13">Easing: <tspan fill="#60a5fa">Lando Easing</tspan></text>
+  <!-- Palette Card -->
+  <rect x="740" y="430" width="370" height="230" rx="10" fill="#18181c" stroke="#2e2e38"/>
+  <text x="770" y="470" fill="#e4e4e7" font-family="Inter,sans-serif" font-size="16" font-weight="600">Color System Tokens</text>
+  <circle cx="785" cy="515" r="14" fill="#0d0d10" stroke="#444"/>
+  <text x="815" y="520" fill="#e4e4e7" font-family="ui-monospace,monospace" font-size="13">#0d0d10 Void Ground</text>
+  <circle cx="785" cy="560" r="14" fill="#d4ff00"/>
+  <text x="815" y="565" fill="#e4e4e7" font-family="ui-monospace,monospace" font-size="13">#d4ff00 Signal Lime</text>
+  <circle cx="785" cy="605" r="14" fill="#262626" stroke="#555"/>
+  <text x="815" y="610" fill="#e4e4e7" font-family="ui-monospace,monospace" font-size="13">#262626 Tarmac Surface</text>
+</svg>

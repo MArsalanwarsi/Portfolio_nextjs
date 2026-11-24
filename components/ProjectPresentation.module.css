@@ -77,8 +77,106 @@
 .workIndex button:is(:hover,:focus-visible,[data-current=true]){background:#333}
 @media(min-width:920px){
   .carousel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:1.25rem 4vw}
-  .toolbar{grid-column:1/-1}.deck,.workIndex{margin:0}
+  .toolbar{grid-column:1/-1}.deck,.workIndex,.workIndexWrapper{margin:0}
   .projectCard,.cardPosition[data-reverse=true] .projectCard{grid-template-columns:1fr;gap:.6rem;align-content:start}
   .cardPosition[data-reverse=true] .projectImage{order:0}.projectTitle{font-size:clamp(1.6rem,2.5vw,3rem)}
   .workIndex button{min-height:clamp(44px,4.2vw,66px)}.workIndex strong{font-size:clamp(1rem,1.25vw,1.35rem)}
+}
+
+.workIndexWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding-top: 1.1rem;
+  margin-top: 0.25rem;
+  font: 500 0.72rem/1.4 var(--font-mono), monospace;
+  color: #bdbdbd;
+}
+
+.paginationInfo {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8e8e8e;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.paginationButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  background: #141415;
+  border: 1px solid #383838;
+  color: #f4f4f4;
+  font: 600 0.68rem/1.2 var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  user-select: none;
+}
+
+.paginationButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.paginationButton:not(:disabled):hover,
+.paginationButton:not(:disabled):focus-visible {
+  background: #252526;
+  border-color: #666;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pageNumber {
+  min-width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0 0.25rem;
+  background: #141415;
+  border: 1px solid #333;
+  color: #999;
+  font: 600 0.7rem/1 var(--font-mono), monospace;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.pageNumber:hover,
+.pageNumber:focus-visible {
+  background: #252526;
+  color: #fff;
+  border-color: #666;
+}
+
+.activePageNumber {
+  background: #1f2215;
+  border-color: #d4ff00;
+  color: #d4ff00;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
 }

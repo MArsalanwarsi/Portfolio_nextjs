@@ -1,5 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">History Monuments Portal</title>
+  <desc id="desc">Educational monuments and architectural heritage portal with JSON dataset feeds and gallery views.</desc>
+  <defs>
+    <radialGradient id="heritageGlow" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#b45309" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f0d0a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#heritageGlow)"/>
+  <rect x="60" y="50" width="1080" height="660" rx="16" fill="#181410" stroke="#382c20"/>
+  <!-- Top Navigation -->
+  <text x="100" y="115" fill="#fef3c7" font-family="Georgia,serif" font-size="32" font-weight="700">World Heritage &amp; Ancient Monuments</text>
+  <text x="100" y="148" fill="#d97706" font-family="ui-monospace,monospace" font-size="14">ARCHAEOLOGICAL PORTAL &amp; DIGITAL ENCYCLOPEDIA</text>
+  <!-- Monument Cards -->
+  <g font-family="Inter,sans-serif">
+    <!-- Card 1 -->
+    <rect x="100" y="180" width="310" height="480" rx="12" fill="#241d16" stroke="#4a3b2b"/>
+    <rect x="120" y="200" width="270" height="180" rx="8" fill="#3d3023"/>
+    <text x="255" y="300" fill="#fef3c7" font-family="Georgia,serif" font-size="20" font-weight="700" text-anchor="middle">Taj Mahal</text>
+    <text x="120" y="420" fill="#fef3c7" font-size="18" font-weight="700">Agra, India (1632)</text>
+    <text x="120" y="450" fill="#d6d3d1" font-size="13" leading="20">Ivory-white marble mausoleum on the right bank of the river Yamuna, commissioned by Mughal emperor Shah Jahan.</text>
+    <rect x="120" y="590" width="120" height="32" rx="4" fill="#b45309"/>
+    <text x="180" y="611" fill="#fff" font-size="12" font-weight="600" text-anchor="middle">EXPLORE</text>
+
+    <!-- Card 2 -->
+    <rect x="445" y="180" width="310" height="480" rx="12" fill="#241d16" stroke="#4a3b2b"/>
+    <rect x="465" y="200" width="270" height="180" rx="8" fill="#3d3023"/>
+    <text x="600" y="300" fill="#fef3c7" font-family="Georgia,serif" font-size="20" font-weight="700" text-anchor="middle">The Colosseum</text>
+    <text x="465" y="420" fill="#fef3c7" font-size="18" font-weight="700">Rome, Italy (70 AD)</text>
+    <text x="465" y="450" fill="#d6d3d1" font-size="13" leading="20">The largest ancient amphitheatre ever built, capable of holding an estimated 50,000 to 80,000 spectators.</text>
+    <rect x="465" y="590" width="120" height="32" rx="4" fill="#b45309"/>
+    <text x="525" y="611" fill="#fff" font-size="12" font-weight="600" text-anchor="middle">EXPLORE</text>
+
+    <!-- Card 3 -->
+    <rect x="790" y="180" width="310" height="480" rx="12" fill="#241d16" stroke="#4a3b2b"/>
+    <rect x="810" y="200" width="270" height="180" rx="8" fill="#3d3023"/>
+    <text x="945" y="300" fill="#fef3c7" font-family="Georgia,serif" font-size="20" font-weight="700" text-anchor="middle">Petra Al-Khazneh</text>
+    <text x="810" y="420" fill="#fef3c7" font-size="18" font-weight="700">Ma'an, Jordan (1st C)</text>
+    <text x="810" y="450" fill="#d6d3d1" font-size="13" leading="20">Historic and archaeological city in southern Jordan famous for its rock-cut architecture and water conduit system.</text>
+    <rect x="810" y="590" width="120" height="32" rx="4" fill="#b45309"/>
+    <text x="870" y="611" fill="#fff" font-size="12" font-weight="600" text-anchor="middle">EXPLORE</text>
+  </g>
+</svg>

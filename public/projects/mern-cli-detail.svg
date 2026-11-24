@@ -1,5 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Create Modern MERN App Terminal</title>
+  <desc id="desc">Interactive CLI scaffolding engine with automated TypeScript, Tailwind, and JWT configuration.</desc>
+  <rect width="1200" height="760" fill="#090a0f"/>
+  <rect x="60" y="50" width="1080" height="660" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <!-- Terminal Top Bar -->
+  <rect x="60" y="50" width="1080" height="42" rx="14" fill="#161b22"/>
+  <circle cx="92" cy="71" r="6" fill="#ff5f56"/>
+  <circle cx="112" cy="71" r="6" fill="#ffbd2e"/>
+  <circle cx="132" cy="71" r="6" fill="#27c93f"/>
+  <text x="600" y="76" fill="#8b949e" font-family="ui-monospace,monospace" font-size="13" text-anchor="middle">terminal — npx create-modern-mern-app</text>
+  <!-- Terminal Output -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">
+    <text x="100" y="130" fill="#58a6ff">$ npx create-modern-mern-app enterprise-portal</text>
+    <text x="100" y="165" fill="#3fb950">✔</text>
+    <text x="125" y="165" fill="#c9d1d9">Scaffolding modern fullstack project in ./enterprise-portal...</text>
+    <text x="100" y="200" fill="#3fb950">✔</text>
+    <text x="125" y="200" fill="#c9d1d9">Template: Next.js 16 + Express + TypeScript + MongoDB + Tailwind</text>
+    <text x="100" y="235" fill="#3fb950">✔</text>
+    <text x="125" y="235" fill="#c9d1d9">Configured secure cookie-based JWT &amp; OTP auth pipeline</text>
+    <text x="100" y="270" fill="#3fb950">✔</text>
+    <text x="125" y="270" fill="#c9d1d9">Generated 24 RESTful modular endpoints with Zod schema validation</text>
+    <text x="100" y="305" fill="#3fb950">✔</text>
+    <text x="125" y="305" fill="#c9d1d9">Installed dependencies (84 packages) in 3.42s with zero audit vulnerabilities</text>
+    <!-- Box Diagram -->
+    <rect x="100" y="340" width="980" height="320" rx="8" fill="#161b22" stroke="#30363d"/>
+    <text x="130" y="380" fill="#f0883e" font-weight="700">PROJECT ARCHITECTURE CONTRACT:</text>
+    <text x="130" y="420" fill="#79c0ff">├── client/          <tspan fill="#8b949e"># React 19 / Next.js with Server Components &amp; State Stores</tspan></text>
+    <text x="130" y="455" fill="#79c0ff">├── server/          <tspan fill="#8b949e"># Node.js + Express with rate-limiting &amp; helmet security</tspan></text>
+    <text x="130" y="490" fill="#79c0ff">├── middleware/      <tspan fill="#8b949e"># JWT Token validation, CSRF guard, Request Sanitizers</tspan></text>
+    <text x="130" y="525" fill="#79c0ff">├── models/          <tspan fill="#8b949e"># Mongoose schemas with indexing &amp; lifecycle hooks</tspan></text>
+    <text x="130" y="560" fill="#79c0ff">└── config/          <tspan fill="#8b949e"># Environment variables validation via Zod strict schema</tspan></text>
+    <text x="130" y="610" fill="#58a6ff">&gt; Next steps: <tspan fill="#c9d1d9">cd enterprise-portal &amp;&amp; npm run dev</tspan></text>
+  </g>
+</svg>

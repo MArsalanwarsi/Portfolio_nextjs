@@ -1,5 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">${svg.title}</title>
-  <desc id="desc">${svg.desc}</desc>
-  ${svg.content.trim()}
-</svg>\n
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">React Footwear Sneaker Store</title>
+  <desc id="desc">Responsive footwear retail catalog frontend with real-time faceted search and dynamic cart state management.</desc>
+  <rect width="1200" height="760" fill="#111114"/>
+  <rect x="50" y="40" width="1100" height="680" rx="16" fill="#18181c" stroke="#2e2e36"/>
+  <!-- Top Nav -->
+  <text x="90" y="95" fill="#ffffff" font-family="Inter,sans-serif" font-size="28" font-weight="900" letter-spacing="-0.04em">KICKS // STREETWEAR FOOTWEAR</text>
+  <text x="90" y="125" fill="#f43f5e" font-family="ui-monospace,monospace" font-size="13">NEW ARRIVALS 2026 // LIMITED RELEASE ARCHIVE</text>
+  <!-- Sneaker 1 -->
+  <g font-family="Inter,sans-serif">
+    <rect x="90" y="160" width="320" height="500" rx="12" fill="#1f1f24" stroke="#363640"/>
+    <rect x="110" y="180" width="280" height="220" rx="8" fill="#131316"/>
+    <!-- Abstract Sneaker Silhouette -->
+    <path d="M 140 310 Q 180 230 250 240 Q 300 230 350 280 L 370 340 L 140 340 Z" fill="#f43f5e"/>
+    <path d="M 130 340 L 380 340 L 370 360 L 140 360 Z" fill="#ffffff"/>
+    <text x="120" y="435" fill="#ffffff" font-size="20" font-weight="800">Air Velocity Retro 4</text>
+    <text x="120" y="465" fill="#9ca3af" font-size="14">Black / Crimson Red / White</text>
+    <text x="120" y="515" fill="#f43f5e" font-size="24" font-weight="800">$185.00</text>
+    <rect x="120" y="570" width="260" height="46" rx="8" fill="#f43f5e"/>
+    <text x="250" y="598" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">ADD TO CART</text>
+
+    <!-- Sneaker 2 -->
+    <rect x="440" y="160" width="320" height="500" rx="12" fill="#1f1f24" stroke="#363640"/>
+    <rect x="460" y="180" width="280" height="220" rx="8" fill="#131316"/>
+    <path d="M 490 310 Q 530 230 600 240 Q 650 230 700 280 L 720 340 L 490 340 Z" fill="#3b82f6"/>
+    <path d="M 480 340 L 730 340 L 720 360 L 490 360 Z" fill="#ffffff"/>
+    <text x="470" y="435" fill="#ffffff" font-size="20" font-weight="800">Quantum Boost Low</text>
+    <text x="470" y="465" fill="#9ca3af" font-size="14">Cobalt Blue / Pure Platinum</text>
+    <text x="470" y="515" fill="#3b82f6" font-size="24" font-weight="800">$160.00</text>
+    <rect x="470" y="570" width="260" height="46" rx="8" fill="#3b82f6"/>
+    <text x="600" y="598" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">ADD TO CART</text>
+
+    <!-- Sneaker 3 -->
+    <rect x="790" y="160" width="320" height="500" rx="12" fill="#1f1f24" stroke="#363640"/>
+    <rect x="810" y="180" width="280" height="220" rx="8" fill="#131316"/>
+    <path d="M 840 310 Q 880 230 950 240 Q 1000 230 1050 280 L 1070 340 L 840 340 Z" fill="#d4ff00"/>
+    <path d="M 830 340 L 1080 340 L 1070 360 L 840 360 Z" fill="#ffffff"/>
+    <text x="820" y="435" fill="#ffffff" font-size="20" font-weight="800">Volt Kinetic Runner</text>
+    <text x="820" y="465" fill="#9ca3af" font-size="14">Electric Lime / Jet Black</text>
+    <text x="820" y="515" fill="#d4ff00" font-size="24" font-weight="800">$210.00</text>
+    <rect x="820" y="570" width="260" height="46" rx="8" fill="#d4ff00"/>
+    <text x="950" y="598" fill="#111114" font-size="14" font-weight="800" text-anchor="middle">ADD TO CART</text>
+  </g>
+</svg>
