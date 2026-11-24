@@ -54,7 +54,7 @@
     ],
     "heroMetrics": [
       {
-        "value": "08",
+        "value": "18",
         "label": "Selected projects"
       },
       {
@@ -1060,6 +1060,418 @@
               "src": "/projects/medicos-admin.svg",
               "alt": "K-Medicos drug store admin panel preview",
               "caption": "Admin panel"
+            }
+          ]
+        },
+        {
+          "title": "GlowAfter Theme Engine",
+          "label": "React & Tailwind Tool",
+          "description": "Smooth, seamless view-transition theme engine for React 19 and Tailwind CSS with circular reveal physics and zero layout shifts.",
+          "longDescription": "GlowAfter is an ergonomic React component and utility library that unlocks native View Transition API ripple effects for dark/light mode switching in Next.js and Vite applications without layout jumps.",
+          "techStack": [
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS",
+            "View Transitions",
+            "Vite"
+          ],
+          "tools": [
+            "TypeScript",
+            "npm",
+            "Vercel",
+            "GitHub"
+          ],
+          "features": [
+            "Circular ripple theme transition using native View Transitions API",
+            "Custom easing curves, duration controls, and click origin positioning",
+            "Zero layout shift with automatic hydration and dark mode class sync"
+          ],
+          "outcome": "A published, reusable React library enabling modern, Apple-grade dark mode animations in one line of code.",
+          "github": "https://github.com/MArsalanwarsi/glowafter",
+          "live": "https://glowafter.vercel.app/",
+          "accent": "#6366f1",
+          "surface": "linear-gradient(135deg, #6366f1 0%, #1e1b4b 55%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/glowafter-preview.svg",
+              "alt": "GlowAfter theme transition engine dashboard preview",
+              "caption": "Theme transition engine"
+            },
+            {
+              "src": "/projects/glowafter-detail.svg",
+              "alt": "GlowAfter circular ripple transition detail preview",
+              "caption": "Ripple physics"
+            }
+          ]
+        },
+        {
+          "title": "Create Modern MERN App",
+          "label": "Developer CLI Tool",
+          "description": "Interactive CLI scaffolding utility that bootstraps production-grade MERN stack applications with TypeScript, security middleware, and modern React.",
+          "longDescription": "Create Modern MERN App is an npm CLI generator designed to streamline full-stack bootstrapping. It automates Express 5 backend setup, MongoDB schemas, JWT authentication guards, rate limiting, and React 19 frontend integration in seconds.",
+          "techStack": [
+            "Node.js",
+            "Express.js",
+            "React 19",
+            "MongoDB",
+            "TypeScript",
+            "Commander"
+          ],
+          "tools": [
+            "npm",
+            "Commander.js",
+            "Inquirer",
+            "Chalk",
+            "Vercel"
+          ],
+          "features": [
+            "Interactive terminal prompt for templates, databases, and auth configurations",
+            "Pre-configured production security headers with Helmet, CORS, and rate-limiting",
+            "Clean MVC folder architecture with TypeScript type safety across frontend and API"
+          ],
+          "outcome": "An open-source developer productivity tool that eliminates repetitive boilerplate and enforces scalable enterprise standards.",
+          "github": "https://github.com/MArsalanwarsi/create-modern-mern-app",
+          "live": "https://create-modern-mern-app.vercel.app",
+          "accent": "#10b981",
+          "surface": "linear-gradient(135deg, #10b981 0%, #064e3b 50%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/mern-cli-preview.svg",
+              "alt": "Create Modern MERN App CLI terminal workflow preview",
+              "caption": "CLI generator"
+            },
+            {
+              "src": "/projects/mern-cli-detail.svg",
+              "alt": "Create Modern MERN App architecture decomposition preview",
+              "caption": "MERN architecture"
+            }
+          ]
+        },
+        {
+          "title": "AAtech Software Agency",
+          "label": "Agency Web Platform",
+          "description": "Modern software engineering and technology solutions agency platform featuring responsive service showcases, case studies, and lead conversion.",
+          "longDescription": "AAtech is a digital agency web platform developed with Python and modern web standards. It delivers an immersive, high-speed agency experience showcasing custom software services, cloud integrations, and client engagement pipelines.",
+          "techStack": [
+            "Python",
+            "JavaScript",
+            "HTML5",
+            "CSS3",
+            "Responsive Design"
+          ],
+          "tools": [
+            "Python",
+            "Git",
+            "Vercel",
+            "Figma"
+          ],
+          "features": [
+            "High-speed responsive multi-page service catalog and solutions showcase",
+            "Interactive lead intake and project scoping inquiries",
+            "Clean modular architecture with cross-device typography and fluid layouts"
+          ],
+          "outcome": "A live agency portal driving client onboarding, enterprise software showcases, and technical consulting leads.",
+          "github": "https://github.com/MArsalanwarsi/AAtech",
+          "live": "https://a-atech.vercel.app",
+          "accent": "#3b82f6",
+          "surface": "linear-gradient(135deg, #3b82f6 0%, #1e3a8a 52%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/aatech-preview.svg",
+              "alt": "AAtech software agency portal preview",
+              "caption": "Agency solutions"
+            },
+            {
+              "src": "/projects/aatech-detail.svg",
+              "alt": "AAtech service delivery matrix preview",
+              "caption": "Service breakdown"
+            }
+          ]
+        },
+        {
+          "title": "Smart Housing Backend API",
+          "label": "RESTful Architecture",
+          "description": "Scalable REST API backend for residential estate management, role-based access control, tenant records, and automated utility billing.",
+          "longDescription": "Smart Housing Backend is an enterprise-grade RESTful API engineered with Express and Node.js. It coordinates complex multi-tenant housing workflows including resident verification, facility maintenance tickets, and automated invoice calculations.",
+          "techStack": [
+            "Node.js",
+            "Express.js",
+            "REST APIs",
+            "JWT Auth",
+            "Postman"
+          ],
+          "tools": [
+            "Postman",
+            "JWT",
+            "Express Router",
+            "Git"
+          ],
+          "features": [
+            "Role-based authentication (Admin, Manager, Resident) with signed JWT tokens",
+            "CRUD endpoints for lease contracts, maintenance tickets, and meter readings",
+            "Standardized error handling middleware and structured JSON response schemas"
+          ],
+          "outcome": "A hardened backend foundation supporting concurrent resident operations and estate administrative control.",
+          "github": "https://github.com/MArsalanwarsi/smart_housing_backend",
+          "live": "#",
+          "accent": "#22c55e",
+          "surface": "linear-gradient(135deg, #22c55e 0%, #14532d 48%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/smart-housing-preview.svg",
+              "alt": "Smart Housing API routes and architecture preview",
+              "caption": "RESTful endpoints"
+            },
+            {
+              "src": "/projects/smart-housing-detail.svg",
+              "alt": "Smart Housing schema and auth flow preview",
+              "caption": "Tenant flow"
+            }
+          ]
+        },
+        {
+          "title": "Bright World Lighting Store",
+          "label": "OOP Commerce Platform",
+          "description": "Object-oriented commercial e-commerce storefront for luxury chandeliers, lighting fixtures, dynamic shopping cart, and catalog search.",
+          "longDescription": "Bright World is an e-project retail platform structured around object-oriented programming principles. It features categorized fixture exploration, dynamic cart calculations, client-side filtering, and responsive checkout interfaces.",
+          "techStack": [
+            "JavaScript",
+            "HTML5",
+            "CSS3",
+            "OOP Architecture",
+            "Bootstrap"
+          ],
+          "tools": [
+            "OOP",
+            "Bootstrap 5",
+            "DOM Scripting",
+            "Git"
+          ],
+          "features": [
+            "Object-oriented product classes and polymorphic shopping cart models",
+            "Real-time faceted filtering by fixture style, wattage, and room ambiance",
+            "Client-side cart persistence with instant item quantity adjustments"
+          ],
+          "outcome": "An interactive e-commerce catalog delivering seamless luxury fixture purchasing and inventory exploration.",
+          "github": "https://github.com/MArsalanwarsi/E-Project-Bright-World",
+          "live": "#",
+          "accent": "#eab308",
+          "surface": "linear-gradient(135deg, #eab308 0%, #713f12 50%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/bright-world-preview.svg",
+              "alt": "Bright World lighting store catalog preview",
+              "caption": "Lighting catalog"
+            },
+            {
+              "src": "/projects/bright-world-detail.svg",
+              "alt": "Bright World cart and checkout preview",
+              "caption": "Cart operations"
+            }
+          ]
+        },
+        {
+          "title": "History Monuments Portal",
+          "label": "Educational Web Platform",
+          "description": "Interactive cultural heritage portal exploring world monuments, historical timelines, JSON data integration, and responsive photo galleries.",
+          "longDescription": "History Monuments is an educational web platform presenting global heritage landmarks through interactive architectural timelines, JSON-driven content cards, rich historical summaries, and responsive galleries.",
+          "techStack": [
+            "JavaScript",
+            "JSON",
+            "HTML5",
+            "CSS3",
+            "Bootstrap"
+          ],
+          "tools": [
+            "JSON Data",
+            "Bootstrap",
+            "Git",
+            "Responsive UI"
+          ],
+          "features": [
+            "Dynamic rendering of heritage sites from structured JSON data stores",
+            "Interactive timeline navigation detailing architectural eras and dynasties",
+            "High-resolution media galleries with historical trivia and preservation facts"
+          ],
+          "outcome": "An educational digital museum making architectural heritage accessible and engaging across devices.",
+          "github": "https://github.com/MArsalanwarsi/History-Monument",
+          "live": "#",
+          "accent": "#f97316",
+          "surface": "linear-gradient(135deg, #f97316 0%, #7c2d12 52%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/history-monument-preview.svg",
+              "alt": "History Monuments portal gallery preview",
+              "caption": "Monuments archive"
+            },
+            {
+              "src": "/projects/history-monument-detail.svg",
+              "alt": "History Monuments dataset explorer preview",
+              "caption": "Heritage data"
+            }
+          ]
+        },
+        {
+          "title": "Core PHP Admin Dashboard",
+          "label": "Custom Control Panel",
+          "description": "Custom administration control panel engineered with pure PHP, MySQL, session authentication, and dynamic CRUD data table operations.",
+          "longDescription": "Core PHP Admin Panel is a modular administrative dashboard developed without heavy frameworks to demonstrate core backend competency. It provides session-secure authentication, database manipulation, user management, and dynamic reporting.",
+          "techStack": [
+            "PHP",
+            "MySQL",
+            "HTML5",
+            "CSS3",
+            "Sessions"
+          ],
+          "tools": [
+            "Core PHP",
+            "phpMyAdmin",
+            "MySQL",
+            "Epizy"
+          ],
+          "features": [
+            "Secure cookie session authentication with privilege level validation",
+            "Dynamic MySQL CRUD operations for records, media, and site content",
+            "Sanitized SQL queries preventing injection attacks and unauthorized actions"
+          ],
+          "outcome": "A high-performance, lightweight management suite deployed and serving operational record updates in production.",
+          "github": "https://github.com/MArsalanwarsi/core-php-admin-panel",
+          "live": "http://freecs9.epizy.com/core-php-admin",
+          "accent": "#818cf8",
+          "surface": "linear-gradient(135deg, #818cf8 0%, #312e81 48%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/core-php-admin-preview.svg",
+              "alt": "Core PHP admin dashboard records preview",
+              "caption": "Admin control"
+            },
+            {
+              "src": "/projects/core-php-admin-detail.svg",
+              "alt": "Core PHP CRUD data operations preview",
+              "caption": "CRUD operations"
+            }
+          ]
+        },
+        {
+          "title": "Unity Game Engine Mechanics",
+          "label": "Interactive 3D Prototype",
+          "description": "Interactive 3D gameplay prototype developed in Unity and C#, featuring Rigidbody physics simulations, character movement controllers, and collision logic.",
+          "longDescription": "Unity Game Engine Mechanics is an interactive mechanics demonstration showcasing 3D physics, custom C# scripts for kinematic movement, jump curves, obstacle collision triggers, and real-time particle effects in Unity.",
+          "techStack": [
+            "C#",
+            "Unity Engine",
+            "Physics Simulation",
+            "Game Logic",
+            "3D Math"
+          ],
+          "tools": [
+            "Unity 3D",
+            "Visual Studio",
+            "C#",
+            "Git"
+          ],
+          "features": [
+            "Responsive character controller with raycast ground detection and velocity smoothing",
+            "Physics-based interaction triggers, dynamic obstacles, and collectible mechanics",
+            "Optimized frame rates maintaining a consistent 60 FPS under active physics load"
+          ],
+          "outcome": "A validated gameplay mechanics foundation showcasing object-oriented C# architecture in game environments.",
+          "github": "https://github.com/MArsalanwarsi/mygame",
+          "live": "#",
+          "accent": "#06b6d4",
+          "surface": "linear-gradient(135deg, #06b6d4 0%, #164e63 50%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/mygame-preview.svg",
+              "alt": "Unity 3D game mechanics viewport preview",
+              "caption": "3D mechanics"
+            },
+            {
+              "src": "/projects/mygame-detail.svg",
+              "alt": "Unity C# physics controller preview",
+              "caption": "Physics logic"
+            }
+          ]
+        },
+        {
+          "title": "React Footwear Catalog",
+          "label": "Frontend Retail Store",
+          "description": "Modular footwear retail store frontend built with React, interactive price and brand filtering, responsive product cards, and cart state.",
+          "longDescription": "React Footwear Catalog is a modern e-commerce storefront frontend. Built with React component architecture, it features real-time search, price range filters, multi-category toggling, dynamic cart state management, and fluid responsive design.",
+          "techStack": [
+            "React",
+            "JavaScript",
+            "CSS Modules",
+            "State Management",
+            "Responsive UI"
+          ],
+          "tools": [
+            "React",
+            "Vite",
+            "Git",
+            "Figma"
+          ],
+          "features": [
+            "Real-time faceted search and filtering across shoe brands and price brackets",
+            "Dynamic shopping cart drawer with live subtotal calculation and quantity counters",
+            "Mobile-first responsive card layouts with hover transformations and transitions"
+          ],
+          "outcome": "A polished retail browsing frontend offering an ultra-fast, smooth product discovery experience.",
+          "github": "https://github.com/MArsalanwarsi/React_Shoes_website",
+          "live": "#",
+          "accent": "#ec4899",
+          "surface": "linear-gradient(135deg, #ec4899 0%, #831843 52%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/react-shoes-preview.svg",
+              "alt": "React Footwear catalog store preview",
+              "caption": "Footwear catalog"
+            },
+            {
+              "src": "/projects/react-shoes-detail.svg",
+              "alt": "React Footwear cart state preview",
+              "caption": "Cart interaction"
+            }
+          ]
+        },
+        {
+          "title": "Plant-Based Living Portal",
+          "label": "Competition Winner Build",
+          "description": "Award-winning environmental and plant-based lifestyle awareness web platform featuring interactive sustainability metrics and nutrition guides.",
+          "longDescription": "Plant-Based Living is an AZM competition-winning web portal created to promote ecological awareness and sustainable nutrition. It educates visitors with interactive carbon reduction estimators, curated recipe cards, and responsive multimedia storytelling.",
+          "techStack": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Responsive Design",
+            "UI Design"
+          ],
+          "tools": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Git"
+          ],
+          "features": [
+            "Award-winning competition entry recognized for visual design and messaging impact",
+            "Interactive ecological footprint comparison between diet lifestyles",
+            "Accessible, responsive nutrition guides and plant-based transition roadmaps"
+          ],
+          "outcome": "A competition-winning sustainability platform recognized for environmental advocacy and clean UX.",
+          "github": "https://github.com/MArsalanwarsi/Contest-AZM-plant-based-website",
+          "live": "#",
+          "accent": "#4ade80",
+          "surface": "linear-gradient(135deg, #4ade80 0%, #14532d 50%, #050505 100%)",
+          "images": [
+            {
+              "src": "/projects/plant-based-preview.svg",
+              "alt": "Plant-Based Living portal showcase preview",
+              "caption": "Sustainability portal"
+            },
+            {
+              "src": "/projects/plant-based-detail.svg",
+              "alt": "Plant-Based Living contest winner details preview",
+              "caption": "Award build"
             }
           ]
         }

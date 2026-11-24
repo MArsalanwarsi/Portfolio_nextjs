@@ -35,7 +35,7 @@ describe('Tier 4: Real-World Recruiter, Visitor & Auditor Workload Scenarios', (
 
       // 3. Featured projects
       const projects = data.sections.projects.items;
-      assert.strictEqual(projects.length, 8);
+      assert.strictEqual(projects.length, 18);
       const featuredTitles = projects.map((p) => p.title);
       assert.ok(featuredTitles.includes('GrowthRadar AI'));
       assert.ok(featuredTitles.includes('Warranty Flow'));
@@ -68,7 +68,7 @@ describe('Tier 4: Real-World Recruiter, Visitor & Auditor Workload Scenarios', (
       // 1. Verify public GitHub repositories vs private commercial builds
       const publicRepos = projects.filter((p) => p.github !== '#');
       const privateRepos = projects.filter((p) => p.github === '#');
-      assert.strictEqual(publicRepos.length, 6, 'Must have 6 public GitHub repositories');
+      assert.strictEqual(publicRepos.length, 16, 'Must have 16 public GitHub repositories');
       assert.strictEqual(privateRepos.length, 2, 'Must have 2 private commercial builds');
 
       for (const p of publicRepos) {
@@ -181,13 +181,13 @@ describe('Tier 4: Real-World Recruiter, Visitor & Auditor Workload Scenarios', (
         'Contact route must intercept honeypot company submissions and exit silently with HTTP 200'
       );
 
-      // 2. Verify all 16 project SVG assets exist on disk
+      // 2. Verify all 36 project SVG assets exist on disk
       const projectsDir = path.join(publicDir, 'projects');
       assert.ok(fs.existsSync(projectsDir), 'public/projects directory must exist');
       const svgs = fs
         .readdirSync(projectsDir)
         .filter((f) => f.endsWith('.svg'));
-      assert.strictEqual(svgs.length, 16, 'Exactly 16 project SVG preview assets must exist');
+      assert.strictEqual(svgs.length, 36, 'Exactly 36 project SVG preview assets must exist');
       for (const svg of svgs) {
         const stat = fs.statSync(path.join(projectsDir, svg));
         assert.ok(stat.size > 0, `SVG file ${svg} must not be zero-byte empty`);

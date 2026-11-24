@@ -9,12 +9,12 @@ import {
   getComponentContent,
 } from '../../helpers/test-context.mjs';
 
-describe('Tier 1 - Feature 5: 8 Featured Projects Showcase', () => {
+describe('Tier 1 - Feature 5: Projects Showcase', () => {
   const data = getPortfolioData();
   const projects = data.sections.projects.items;
 
-  test('T1-F5-01: Exact 8 Projects Inventory Verification', () => {
-    assert.strictEqual(projects.length, 8, 'Portfolio data must contain exactly 8 projects');
+  test('T1-F5-01: Projects Inventory Verification', () => {
+    assert.strictEqual(projects.length, 18, 'Portfolio data must contain 18 projects');
 
     const titles = projects.map((p) => p.title);
     const expectedTitles = [
@@ -36,7 +36,7 @@ describe('Tier 1 - Feature 5: 8 Featured Projects Showcase', () => {
     }
   });
 
-  test('T1-F5-02: 16 SVG Project Image Mockup Assets on Disk', () => {
+  test('T1-F5-02: 36 SVG Project Image Mockup Assets on Disk', () => {
     let totalImagesChecked = 0;
     for (const project of projects) {
       assert.ok(
@@ -52,7 +52,7 @@ describe('Tier 1 - Feature 5: 8 Featured Projects Showcase', () => {
         assert.ok(stat.size > 0, `Image asset must not be empty: ${fullPath}`);
       }
     }
-    assert.strictEqual(totalImagesChecked, 16, 'Exactly 16 project SVG assets must be verified');
+    assert.strictEqual(totalImagesChecked, 36, 'Exactly 36 project SVG assets must be verified');
   });
 
   test('T1-F5-03: Project Tech Stack Non-Empty Arrays (>=3 items each)', () => {
