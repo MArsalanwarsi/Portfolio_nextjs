@@ -35,6 +35,8 @@ export interface SiteConfig {
   location: string;
   website: string;
   phone: string;
+  whatsapp?: string;
+  whatsappUrl?: string;
   email: string;
   github: string;
   linkedin: string;
@@ -54,6 +56,15 @@ export interface SiteConfig {
     value: string;
     label: string;
   }>;
+  repositories?: GitRepository[];
+}
+
+export interface GitRepository {
+  name: string;
+  description: string;
+  url: string;
+  language: string;
+  live?: string;
 }
 
 export interface NavLink {
@@ -280,5 +291,6 @@ export const statsContent = portfolio.sections.stats;
 export const stats = statsContent.items;
 
 export const contactContent = portfolio.sections.contact;
+export const repositories = siteConfig.repositories || [];
 
 export default portfolio;

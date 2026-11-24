@@ -31,9 +31,11 @@
     "location": "Karachi, Pakistan",
     "website": "https://arsalanwarsi.vercel.app/",
     "phone": "+923150207265",
+    "whatsapp": "+923150207265",
+    "whatsappUrl": "https://wa.me/923150207265",
     "email": "mohammadarsalanwarsi@gmail.com",
     "github": "https://github.com/MArsalanwarsi",
-    "linkedin": "https://www.linkedin.com/in/m-sheikh-arsalan/",
+    "linkedin": "https://www.linkedin.com/in/m-arsalan-warsi/",
     "resumeUrl": "/M_Arsalan_Warsi_CV.pdf",
     "portrait": {
       "src": "/portrait-cutout.webp",
@@ -62,6 +64,112 @@
       {
         "value": "25",
         "label": "Public repos"
+      }
+    ],
+    "repositories": [
+      {
+        "name": "glowafter",
+        "description": "Smooth, seamless theme transitions for React and Tailwind CSS applications with view-transition ergonomics.",
+        "url": "https://github.com/MArsalanwarsi/glowafter",
+        "language": "TypeScript",
+        "live": "https://glowafter.vercel.app/"
+      },
+      {
+        "name": "create-modern-mern-app",
+        "description": "CLI scaffolding tool to bootstrap modern full-stack MERN applications with clean architecture, JWT, and best practices.",
+        "url": "https://github.com/MArsalanwarsi/create-modern-mern-app",
+        "language": "JavaScript",
+        "live": "https://create-modern-mern-app.vercel.app"
+      },
+      {
+        "name": "growthAi",
+        "description": "AI competitor intelligence & social analytics command center with real-time momentum signals and AI marketing suggestions.",
+        "url": "https://github.com/MArsalanwarsi/growthAi",
+        "language": "JavaScript",
+        "live": "https://growth-ai-eight.vercel.app"
+      },
+      {
+        "name": "thriftshoewear-dashboard",
+        "description": "Production commerce management admin dashboard for inventory, orders, discount coupons, shipments, and analytics.",
+        "url": "https://github.com/MArsalanwarsi/thriftshoewear-dashboard",
+        "language": "JavaScript",
+        "live": "https://thriftshoewear-dashboard.vercel.app"
+      },
+      {
+        "name": "AAtech",
+        "description": "Modern software solutions platform built with Python, clean architecture, and responsive UI components.",
+        "url": "https://github.com/MArsalanwarsi/AAtech",
+        "language": "Python",
+        "live": "https://a-atech.vercel.app"
+      },
+      {
+        "name": "sustainable_living",
+        "description": "Cross-platform Flutter application for carbon footprint tracking, daily emission breakdowns, and eco tips.",
+        "url": "https://github.com/MArsalanwarsi/sustainable_living",
+        "language": "Dart"
+      },
+      {
+        "name": "Wood_Works",
+        "description": "Furniture commerce store built with PHP & MySQL featuring CRUD catalog operations and direct WhatsApp ordering.",
+        "url": "https://github.com/MArsalanwarsi/Wood_Works",
+        "language": "PHP"
+      },
+      {
+        "name": "K-Medicos-drug-store-using-PHP-and-MYSQL",
+        "description": "Pharmacy web platform featuring medicine purchasing workflows and drug interaction safety checks.",
+        "url": "https://github.com/MArsalanwarsi/K-Medicos-drug-store-using-PHP-and-MYSQL",
+        "language": "PHP",
+        "live": "https://k-medicos.free.nf/"
+      },
+      {
+        "name": "smart_housing_backend",
+        "description": "RESTful API backend for housing estate management, tenant authentication, access rules, and service billing.",
+        "url": "https://github.com/MArsalanwarsi/smart_housing_backend",
+        "language": "JavaScript"
+      },
+      {
+        "name": "E-Project-Bright-World",
+        "description": "Commercial lighting & fixture storefront built with OOP architecture, catalog search, and cart workflows.",
+        "url": "https://github.com/MArsalanwarsi/E-Project-Bright-World",
+        "language": "JavaScript"
+      },
+      {
+        "name": "History-Monument",
+        "description": "Educational monuments and architectural heritage portal with JSON dataset feeds and gallery views.",
+        "url": "https://github.com/MArsalanwarsi/History-Monument",
+        "language": "JavaScript"
+      },
+      {
+        "name": "core-php-admin-panel",
+        "description": "Lightweight custom administrative control panel and data management suite engineered in core PHP and MySQL.",
+        "url": "https://github.com/MArsalanwarsi/core-php-admin-panel",
+        "language": "PHP",
+        "live": "http://freecs9.epizy.com/core-php-admin"
+      },
+      {
+        "name": "mygame",
+        "description": "Physics interactions, character control, and level mechanics prototype developed in C# and Unity.",
+        "url": "https://github.com/MArsalanwarsi/mygame",
+        "language": "C#"
+      },
+      {
+        "name": "React_Shoes_website",
+        "description": "Responsive footwear retail catalog frontend with real-time faceted search and dynamic cart state management.",
+        "url": "https://github.com/MArsalanwarsi/React_Shoes_website",
+        "language": "JavaScript"
+      },
+      {
+        "name": "Contest-AZM-plant-based-website",
+        "description": "Award-winning environmental and plant-based nutrition awareness web portal.",
+        "url": "https://github.com/MArsalanwarsi/Contest-AZM-plant-based-website",
+        "language": "HTML"
+      },
+      {
+        "name": "Portfolio_nextjs",
+        "description": "Interactive 2.5D character portfolio built with Next.js 16, TypeScript, Tailwind CSS, and Framer Motion.",
+        "url": "https://github.com/MArsalanwarsi/Portfolio_nextjs",
+        "language": "TypeScript",
+        "live": "https://arsalanwarsi.vercel.app/"
       }
     ]
   },
@@ -765,7 +873,7 @@
             "Shared design tokens, reusable UI widgets, animations, and mock warranty repository"
           ],
           "outcome": "A cross-platform customer portal foundation for warranty tracking, service status visibility, receipts, and reusable Flutter product UI.",
-          "github": "https://github.com/MArsalanwarsi/Warranty-Flow",
+          "github": "#",
           "live": "#",
           "accent": "#38bdf8",
           "surface": "linear-gradient(135deg, #38bdf8 0%, #7c3aed 46%, #100710 100%)",
@@ -854,7 +962,7 @@
             "WhatsApp ordering flow for direct customer communication"
           ],
           "outcome": "A client-focused commerce workflow for browsing furniture, managing stock, and converting customer interest into direct WhatsApp orders.",
-          "github": "#",
+          "github": "https://github.com/MArsalanwarsi/Wood_Works",
           "live": "#",
           "accent": "#c084fc",
           "surface": "linear-gradient(135deg, #7c2d12 0%, #7e22ce 48%, #100710 100%)",

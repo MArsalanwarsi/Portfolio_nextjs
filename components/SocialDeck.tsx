@@ -29,7 +29,7 @@ const SOCIAL_ITEMS: SocialCardItem[] = [
   {
     id: "linkedin",
     name: "LINKEDIN",
-    handle: "in/m-sheikh-arsalan",
+    handle: "in/m-arsalan-warsi",
     category: "CAREER & NETWORK",
     url: siteConfig.linkedin,
     icon: LinkedinIcon,
@@ -69,9 +69,9 @@ const SOCIAL_ITEMS: SocialCardItem[] = [
   {
     id: "whatsapp",
     name: "WHATSAPP",
-    handle: "+92 333 0277258",
+    handle: "+92 315 0207265",
     category: "INSTANT CHAT",
-    url: "https://wa.me/923330277258",
+    url: "https://wa.me/923150207265",
     icon: MessageSquare,
   },
 ];

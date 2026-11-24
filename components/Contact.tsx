@@ -1,6 +1,6 @@
 import CopyContact from "./CopyContact";
 import ResumeButton from "./ResumeButton";
-import { ArrowUpRight, FileText, Globe2, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, FileText, Globe2, Mail, MapPin, MessageSquare, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { Reveal } from "@/components/PremiumMotion";
@@ -45,6 +45,13 @@ const contactLinks = [
     icon: Phone,
     description: "Direct call.",
     disabled: !siteConfig.phone,
+  },
+  {
+    label: "WhatsApp",
+    href: siteConfig.whatsappUrl || "https://wa.me/923150207265",
+    icon: MessageSquare,
+    description: "Instant chat.",
+    disabled: false,
   },
   {
     label: "Resume",
